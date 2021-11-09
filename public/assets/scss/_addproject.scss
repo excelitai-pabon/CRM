@@ -1,0 +1,355 @@
+#mytask-layout{
+    .main{
+        .body{
+            .card-header{
+                h6{
+                    font-size: 18px;
+                    color: #7B2182;
+                    font-weight: 600;
+                }
+            }
+            .add-project{
+                .project-content{
+                    .p-form{
+                        margin-left: 50px;
+                        .pform-single{
+                            margin: 10px 0;
+                            .pform-text{
+                                span{
+                                    font-size: 16px;
+                                    
+                                }
+                                a{
+                                    width: 225px;
+                                    height: 45px;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background: #7B2182;
+                                    border-radius: 10px;
+                                    color: #fff;
+                                    font-size: 24px;
+                                }
+
+                            }
+                            .pform-input{
+                                overflow: hidden;
+                                .pid{
+                                    width: 250px;
+                                    height: 35px;
+                                    border-radius: 10px;
+                                    border: 1px solid#CCA8CF;
+                                    padding: 0 15px;
+                                    &::placeholder{
+                                        color: #CCA8CF;
+                                    }
+                                    &:focus{
+                                        outline: none;
+                                    }
+                                    
+                                }
+                                .pname{
+                                    width: 700px;
+                                    height: 35px;
+                                    border-radius: 10px;
+                                    border: 1px solid#CCA8CF;
+                                    padding: 0 15px;
+                                    &::placeholder{
+                                        color: #CCA8CF;
+                                    }
+                                    &:focus{
+                                        outline: none;
+                                    }
+                                }
+                                .p-description{
+                                    width: 100%; 
+                                    border-radius: 10px;
+                                    height: 100px;
+                                    padding: 10px 15px;
+                                    border: 1px solid#CCA8CF;
+                                    &::placeholder{
+                                        color: #CCA8CF;
+                                    }
+                                    &:focus{
+                                        outline: none;
+                                    }
+                                }
+                                .pfrom-category{
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    align-items: center;
+                                    
+                                    select{
+                                        width: 250px;
+                                        height: 35px;
+                                        border-radius: 10px;
+                                        border: 1px solid#CCA8CF;
+                                        padding: 0 15px;
+                                        color: #CCA8CF;
+                                        option{
+                                            padding: 10px 0;
+                                        }
+                                        &:focus{
+                                            outline: none;
+                                        }
+                                    }
+                                    .form-btn{
+                                        ul{
+                                            display: flex;
+                                            list-style: none;
+                                            margin-left: 15px;
+                                            li{
+                                                a{
+                                                    width: 45px;
+                                                    height: 45px;
+                                                    border: 1px solid#7B2182;
+                                                    border-radius: 10px;
+                                                    display: inline-flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    font-size: 30px;
+                                                    cursor: pointer;
+                                                    margin: 10px;
+                                                    &:nth-child(1){
+                                                        color: #CCA8CF;
+                                                    }
+                                                }
+                           
+                                                
+                                                
+                                            }
+    
+                                        }
+                                    }
+                                }
+                                .upload-wrapper{
+
+                                    .upload-l{
+                                        height: 86px;
+                                        width: 210px;
+                                        border: 1px solid#CCA8CF;
+                                        border-radius: 10px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        background: #fff;
+                                        .upload-img{
+                                          font-size: 24px;
+                                          width: 65px;
+                                          height: 65px;
+                                          display: inline-flex;
+                                          justify-content: center;
+                                          align-items: center;
+                                          background: #FCE8FB;
+                                          border: 1px solid#CCA8CF;
+                                          border-radius: 50%;    
+                                          color: #CCA8CF;                                     
+                                        }
+                                    }
+                                    .upload-r{
+                                        width: 225px;
+                                        height: 35px;
+                                        border-radius: 10px;                                      
+                                        border: 1px solid#CCA8CF;
+                                        background: #fff;
+                                        color: #CCA8CF;
+                                        
+                                        .upload-document{
+                                            display: flex;
+                                            justify-content: space-between;
+                                            padding: 0 15px;
+                                            margin-top: 6px;
+
+                                        }
+                                    }
+
+                                }
+                                .pstart-date{
+                                    width: 250px;
+                                    height: 35px;
+                                    border-radius: 10px;
+                                    border: 1px solid#CCA8CF;
+                                    padding: 0 15px;
+                                    color: #CCA8CF;
+                                    &:focus{
+                                        outline: none;
+                                    }
+                                }
+                                .pend-date{
+                                    width: 225px;
+                                    height: 35px;
+                                    border-radius: 10px;
+                                    border: 1px solid#CCA8CF;
+                                    padding: 0 15px;
+                                    color: #CCA8CF;
+                                    &:focus{
+                                        outline: none;
+                                    }
+
+                                }
+
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+.add-Category{
+    .modal{
+        .modal-dialog{
+            .modal-content{
+                width: 500px;
+                height: 600px;
+                border-radius: 30px;
+                background: #FCE8FB;
+                border: 2px solid#CCA8CF;
+                position: relative;
+                .modal-body{
+                    .addcat-wrapper{
+                        width: 400px;
+                        transform: translate(-50%,-50%);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        .addcat-input{
+                            .add-btn{
+                                display: flex;
+                                justify-content: end;
+                                
+                                a{
+                                    background:#fff;
+                                    border: 1px solid#CCA8CF;
+                                    color: #7B2182;
+                                    width: 200px;
+                                    height: 40px;
+                                    display: inline-flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 10px;
+                                    margin-top: 10px;
+                                }
+                            }
+                            
+
+                            ul{
+                                list-style: none;
+                                
+                                li{
+                                    margin-bottom: 30px;
+                                    span{
+                                        font-size: 16px;
+                                        color: #7B2182;
+                                        display: block;
+                                        margin-bottom: 10px;
+                                    }
+                                    input{
+                                       width: 100%;
+                                        height: 40px;
+                                        border-radius: 10px;
+                                        padding: 0 20px;
+                                        border: #CCA8CF;
+                                        &:focus{
+                                            outline: none;
+                                        }
+                                       
+                                    }
+                                    textarea{
+                                       width: 100%;
+                                        height: 100px;
+                                        border-radius: 10px;
+                                        padding: 0 20px;
+                                        border: #CCA8CF;
+                                        &:focus{
+                                            outline: none;
+                                        }
+                                    }
+                                  
+                                }
+                            }
+                        }
+                    }
+                  
+                }
+            }
+        }
+    }
+}
+
+.edit-Category{
+    .modal{
+        .modal-dialog{
+            .modal-content{
+                width: 500px;
+                height: 600px;
+                border-radius: 30px;
+                background: #FCE8FB;
+                border: 2px solid#CCA8CF;
+                position: relative;
+                .modal-body{
+                    .addcat-wrapper{
+                        width: 400px;
+                        transform: translate(-50%,-50%);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        .addcat-input{
+                            .add-btn{
+                                display: flex;
+                                justify-content: end;
+                                
+                                a{
+                                    background:#fff;
+                                    border: 1px solid#CCA8CF;
+                                    color: #7B2182;
+                                    width: 200px;
+                                    height: 40px;
+                                    display: inline-flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 10px;
+                                    margin-top: 10px;
+                                }
+                            }
+                            
+
+                            ul{
+                                list-style: none;
+                                
+                                li{
+                                    margin-bottom: 30px;
+                                    span{
+                                        font-size: 16px;
+                                        color: #7B2182;
+                                        display: block;
+                                        margin-bottom: 10px;
+                                    }
+                                    input{
+                                       width: 100%;
+                                        height: 40px;
+                                        border-radius: 10px;
+                                        padding: 0 20px;
+                                        border: #CCA8CF;
+                                       
+                                    }
+                                    textarea{
+                                       width: 100%;
+                                        height: 100px;
+                                        border-radius: 10px;
+                                        padding: 0 20px;
+                                        border: #CCA8CF;
+                                    }
+                                  
+                                }
+                            }
+                        }
+                    }
+                  
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,633 @@
+#mytask-layout{
+    .sidebar{
+        background: #7B2182;
+    }
+    .main {
+        background: #FCE8FB;
+        .header{
+            .h-right{
+                .notifications{
+                    
+                    a{
+                        i{
+                            position: relative;
+                            font-size: 40px;
+                            color: #fff;
+                            text-shadow: 6px 6px 3px #7b2182;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke-color: #7b2182;
+                        }
+                        .notification-icon-bg{
+                            position: absolute;
+                            top: 14px;
+                            right: 10px;
+                            width: 22px;
+                            height: 22px;
+                            border-radius: 50%;
+                            background: red;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            .navbar{
+                .input-group{
+                    width: 370px;
+                    background: #fff;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    overflow: hidden;
+                    height: 45px;
+                    filter: drop-shadow(5.905px 6.792px 3.5px rgba(0,0,0,0.16));
+                    .input-group-text{
+                        background: transparent;
+                    }
+                    .form-control{
+                        background: transparent;
+                    }
+                }
+            }
+        }
+        .body{
+            .tab-content{
+                .tab-pane{
+                    .card{
+                        border-radius: 10px;
+                        .card-body{
+                            .cd-wrapper{
+                                position: relative;
+                                .cd-over{
+                                    .cd-title{
+                                        h5{
+                                            position: absolute;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            text-align: center;
+                                            color: #7B2182;                                    
+                                            font-size: 18px;
+                                        }
+                                        .cd-ed{
+                                            display: flex;
+                                            justify-content: end;
+                                            a{
+                                                margin-left: 10px;
+                                                i{
+                                                    font-size: 24px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-content{
+                                        margin-top: 25px;
+                                        .card-team{
+                                            display: flex;
+                                            justify-content: end;
+    
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 40px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 10px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .card-time{
+                                            display: flex;
+                                            justify-content: end;
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 120px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 20px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                    &:nth-child(2){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                    &:nth-child(3){
+                                                        color: #fe0000;
+                                                        span{
+                                                            color: #fe0000;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-progress{
+                                        padding: 10px;
+                                        .card-progress-text{
+                                            ul{
+                                                list-style: none;
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: baseline;
+                                                li{
+                                                    font-size: 12px;
+                                                    color: #FE9000;
+                                                    &:last-child{
+                                                        width: 105px;
+                                                        height: 30px;                                                  
+                                                        color: #fff;
+                                                        border-radius: 8px;
+                                                        display: inline-flex;
+                                                        background: #fe0000;                                
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+                                                        
+                                                    }
+                                                }
+                                            }
+    
+                                        }
+                                        .card-progress-bar{
+                                            margin-top: 10px;
+                                            .cp-single{
+                                                background: #f0f0f0;
+                                                width: 100%;
+                                                height: 8px;
+                                                border-radius: 5px;
+                                                overflow: hidden;
+                                                .cps-over{
+                                                    background: #fe0000;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    .cp-single-value{
+                                                        background: #f19828;
+                                                        width: 90%;
+                                                        height: 100%;
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                }
+                                .cd-process{
+                                    .cd-title{
+                                        h5{
+                                            position: absolute;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            text-align: center;
+                                            color: #7B2182;                                    
+                                            font-size: 18px;
+                                        }
+                                        .cd-ed{
+                                            display: flex;
+                                            justify-content: end;
+                                            a{
+                                                margin-left: 10px;
+                                                i{
+                                                    font-size: 24px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-content{
+                                        margin-top: 25px;
+                                        .card-team{
+                                            display: flex;
+                                            justify-content: end;
+    
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 40px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 10px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .card-time{
+                                            display: flex;
+                                            justify-content: end;
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 120px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 20px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                    &:nth-child(2){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                    &:nth-child(3){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-progress{
+                                        padding: 10px;
+                                        .card-progress-text{
+                                            ul{
+                                                list-style: none;
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: baseline;
+                                                li{
+                                                    font-size: 12px;
+                                                    color: #FE9000;
+                                                    &:last-child{
+                                                        width: 105px;
+                                                        height: 30px;                                                  
+                                                        color: #0bb516;
+                                                        border-radius: 8px;
+                                                        display: inline-flex;
+                                                        background: #fce8fb;                                
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+                                                        
+                                                    }
+                                                }
+                                            }
+    
+                                        }
+                                        .card-progress-bar{
+                                            margin-top: 10px;
+                                            .cp-single{
+                                                background: #f0f0f0;
+                                                width: 100%;
+                                                height: 8px;
+                                                border-radius: 5px;
+                                                overflow: hidden;
+                                                .cps-over{
+                                                    // background: #fe0000;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    .cp-single-value{
+                                                        background: #f19828;
+                                                        width: 90%;
+                                                        height: 100%;
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                }
+                                .cd-completed{
+                                    .cd-title{
+                                        h5{
+                                            position: absolute;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            text-align: center;
+                                            color: #7B2182;                                    
+                                            font-size: 18px;
+                                        }
+                                        .cd-ed{
+                                            display: flex;
+                                            justify-content: end;
+                                            a{
+                                                margin-left: 10px;
+                                                i{
+                                                    font-size: 24px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-content{
+                                        margin-top: 25px;
+                                        .card-team{
+                                            display: flex;
+                                            justify-content: end;
+    
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 40px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 10px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .card-time{
+                                            display: flex;
+                                            justify-content: end;
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 120px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 20px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                    &:nth-child(2){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                    &:nth-child(3){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-progress{
+                                        padding: 10px;
+                                        .card-progress-text{
+                                            ul{
+                                                list-style: none;
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: baseline;
+                                                li{
+                                                    font-size: 12px;
+                                                    color: #FE9000;
+                                                    &:last-child{
+                                                        width: 105px;
+                                                        height: 30px;                                                  
+                                                        color: #0bb516;
+                                                        border-radius: 8px;
+                                                        display: inline-flex;
+                                                        background: #fce8fb;                                
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+                                                        
+                                                    }
+                                                }
+                                            }
+    
+                                        }
+                                        .card-progress-bar{
+                                            margin-top: 10px;
+                                            .cp-single{
+                                                background: #f0f0f0;
+                                                width: 100%;
+                                                height: 8px;
+                                                border-radius: 5px;
+                                                overflow: hidden;
+                                                .cps-over{
+                                                    // background: #fe0000;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    .cp-single-value{
+                                                        background: #0bb516;
+                                                        width: 100%;
+                                                        height: 100%;
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                }
+                                .cd-upcoming{
+                                    .cd-title{
+                                        h5{
+                                            position: absolute;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            text-align: center;
+                                            color: #7B2182;                                    
+                                            font-size: 18px;
+                                        }
+                                        .cd-ed{
+                                            display: flex;
+                                            justify-content: end;
+                                            a{
+                                                margin-left: 10px;
+                                                i{
+                                                    font-size: 24px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-content{
+                                        margin-top: 25px;
+                                        .card-team{
+                                            display: flex;
+                                            justify-content: end;
+    
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 40px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 10px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .card-time{
+                                            display: flex;
+                                            justify-content: end;
+                                            ul{
+                                                li{
+                                                    list-style: none;
+                                                    text-align: right;
+                                                    margin: 10px ;
+                                                    font-size: 12px;
+                                                    color: #8D3F93;
+                                                    span{
+                                                        width: 120px;
+                                                        height: 30px;
+                                                        border: 2px solid#CCA8CF;
+                                                        background: #FCE8FB;
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        border-radius: 8px;                                               
+                                                        margin-left: 20px;
+                                                        font-size: 12px;
+                                                        color: #FE0000;
+                                                    }
+                                                    &:nth-child(2){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                    &:nth-child(3){
+                                                        color: #0bb516;
+                                                        span{
+                                                            color: #0bb516;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .card-progress{
+                                        padding: 10px;
+                                        .card-progress-text{
+                                            ul{
+                                                list-style: none;
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: baseline;
+                                                li{
+                                                    font-size: 12px;
+                                                    color: #FE9000;
+                                                    &:last-child{
+                                                        width: 105px;
+                                                        height: 30px;                                                  
+                                                        color: #0bb516;
+                                                        border-radius: 8px;
+                                                        display: inline-flex;
+                                                        background: #fce8fb;                                
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+                                                        
+                                                    }
+                                                }
+                                            }
+    
+                                        }
+                                        .card-progress-bar{
+                                            margin-top: 10px;
+                                            .cp-single{
+                                                background: #f0f0f0;
+                                                width: 100%;
+                                                height: 8px;
+                                                border-radius: 5px;
+                                                overflow: hidden;
+                                                .cps-over{
+                                                    // background: #fe0000;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    .cp-single-value{
+                                                        // background: #0bb516;
+                                                        width: 100%;
+                                                        height: 100%;
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

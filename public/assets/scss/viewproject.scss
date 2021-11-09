@@ -1,0 +1,34 @@
+#mytask-layout{
+    .main{
+        .body{
+            .card-header{
+                .view-tab{
+                    display: flex;
+                    .view-ed{
+                        padding: 0 10px;
+                        ul{
+                            display: flex;
+                            list-style: none;
+                            li{
+                                a{
+                                    font-size: 30px;
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .view-option{
+                       select{
+                        width: 225px;
+                        height: 40px; 
+                        border-radius: 15px;
+                        padding: 0 15px;
+                        
+                       }
+                    }
+                }
+
+            }
+        }
+    }
+}

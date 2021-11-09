@@ -1,0 +1,1078 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 16px;
+}
+
+a {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 25;
+}
+
+.nav-tabs.tab-body-header .nav-link.active {
+  background: #7B2182;
+  border: 1px solid #7B2182;
+}
+
+.nav-tabs.tab-body-header {
+  border: none;
+}
+
+.nav-tabs.tab-body-header .nav-item {
+  border: 1px solid #CCA8CF;
+}
+
+ol, ul, dl {
+  margin: 0;
+  padding: 0;
+}
+
+.signin-form {
+  margin-top: 100px;
+}
+.signin-form .signin-wrapper {
+  width: 635px;
+  margin: 0px auto;
+  border: 3px solid #cca8cf;
+  height: 705px;
+  border-radius: 40px;
+  background-color: #fce8fb;
+  filter: drop-shadow(5.905px 6.792px 3.5px rgba(0, 0, 0, 0.16));
+  margin-bottom: -400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signin-form .signin-wrapper .signin {
+  text-align: center;
+}
+.signin-form .signin-wrapper .signin h3 {
+  color: #7b2182;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.signin-form .signin-wrapper .signin .input-grp input {
+  width: 350px;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 20px;
+  height: 45px;
+  border-radius: 10px;
+  border: 1px solid #cca8cf;
+  filter: drop-shadow(0px 2px 3.5px rgba(173, 128, 128, 0.5));
+  padding: 5px 30px;
+}
+.signin-form .signin-wrapper .signin .input-grp input::placeholder {
+  color: #cca8cf;
+  font-size: 14px;
+}
+.signin-form .signin-wrapper .signin .input-grp input:focus {
+  outline: none;
+}
+.signin-form .signin-wrapper .signin .signin-main-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+}
+.signin-form .signin-wrapper .signin .signin-main-btn button {
+  width: 295px;
+  height: 40px;
+  display: inline-flex;
+  color: #fff;
+  background: #7b2182;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.footer-main .footer-subbg {
+  margin: 0 0 -250px 25px;
+}
+.footer-main .footerbg {
+  position: a;
+  background-image: url(../images/backgrounds/sign\ in\ shape.png);
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.signup-form {
+  margin-top: 100px;
+}
+.signup-form .signup-wrapper {
+  width: 635px;
+  margin: 0px auto;
+  border: 3px solid #cca8cf;
+  height: 705px;
+  border-radius: 40px;
+  background-color: #fce8fb;
+  filter: drop-shadow(5.905px 6.792px 3.5px rgba(0, 0, 0, 0.16));
+  margin-bottom: -350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-form .signup-wrapper .signup {
+  text-align: center;
+}
+.signup-form .signup-wrapper .signup h3 {
+  color: #7b2182;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.signup-form .signup-wrapper .signup .input-grp input {
+  width: 350px;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 20px;
+  height: 45px;
+  border-radius: 10px;
+  border: 1px solid #cca8cf;
+  filter: drop-shadow(0px 2px 3.5px rgba(173, 128, 128, 0.5));
+  padding: 5px 30px;
+}
+.signup-form .signup-wrapper .signup .input-grp input::placeholder {
+  color: #cca8cf;
+  font-size: 14px;
+}
+.signup-form .signup-wrapper .signup .input-grp input:focus {
+  outline: none;
+}
+.signup-form .signup-wrapper .signup .signup-main-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+}
+.signup-form .signup-wrapper .signup .signup-main-btn a {
+  width: 295px;
+  height: 40px;
+  display: inline-flex;
+  color: #fff;
+  background: #7b2182;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.footer-main .footer-subbg {
+  margin: 0 0 -250px 15px;
+}
+.footer-main .footerbg {
+  position: a;
+  background-image: url(../images/backgrounds/sign\ in\ shape.png);
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#mytask-layout .sidebar {
+  background: #7B2182;
+}
+#mytask-layout .main {
+  background: #FCE8FB;
+}
+#mytask-layout .main .header .h-right .notifications a i {
+  position: relative;
+  font-size: 40px;
+  color: #fff;
+  text-shadow: 6px 6px 3px #7b2182;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #7b2182;
+}
+#mytask-layout .main .header .h-right .notifications a .notification-icon-bg {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#mytask-layout .main .header .navbar .input-group {
+  width: 370px;
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  height: 45px;
+  filter: drop-shadow(5.905px 6.792px 3.5px rgba(0, 0, 0, 0.16));
+}
+#mytask-layout .main .header .navbar .input-group .input-group-text {
+  background: transparent;
+}
+#mytask-layout .main .header .navbar .input-group .form-control {
+  background: transparent;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card {
+  border-radius: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper {
+  position: relative;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .cd-title h5 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #7B2182;
+  font-size: 18px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .cd-title .cd-ed {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .cd-title .cd-ed a {
+  margin-left: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .cd-title .cd-ed a i {
+  font-size: 24px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content {
+  margin-top: 25px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-team {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-team ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-team ul li span {
+  width: 40px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li span {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li:nth-child(2) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li:nth-child(2) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li:nth-child(3) {
+  color: #fe0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-content .card-time ul li:nth-child(3) span {
+  color: #fe0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress {
+  padding: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-text ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-text ul li {
+  font-size: 12px;
+  color: #FE9000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-text ul li:last-child {
+  width: 105px;
+  height: 30px;
+  color: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  background: #fe0000;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-bar {
+  margin-top: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-bar .cp-single {
+  background: #f0f0f0;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-bar .cp-single .cps-over {
+  background: #fe0000;
+  width: 100%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-over .card-progress .card-progress-bar .cp-single .cps-over .cp-single-value {
+  background: #f19828;
+  width: 90%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .cd-title h5 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #7B2182;
+  font-size: 18px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .cd-title .cd-ed {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .cd-title .cd-ed a {
+  margin-left: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .cd-title .cd-ed a i {
+  font-size: 24px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content {
+  margin-top: 25px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-team {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-team ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-team ul li span {
+  width: 40px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li span {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li:nth-child(2) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li:nth-child(2) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li:nth-child(3) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-content .card-time ul li:nth-child(3) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress {
+  padding: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-text ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-text ul li {
+  font-size: 12px;
+  color: #FE9000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-text ul li:last-child {
+  width: 105px;
+  height: 30px;
+  color: #0bb516;
+  border-radius: 8px;
+  display: inline-flex;
+  background: #fce8fb;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-bar {
+  margin-top: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-bar .cp-single {
+  background: #f0f0f0;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-bar .cp-single .cps-over {
+  width: 100%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-process .card-progress .card-progress-bar .cp-single .cps-over .cp-single-value {
+  background: #f19828;
+  width: 90%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .cd-title h5 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #7B2182;
+  font-size: 18px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .cd-title .cd-ed {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .cd-title .cd-ed a {
+  margin-left: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .cd-title .cd-ed a i {
+  font-size: 24px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content {
+  margin-top: 25px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-team {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-team ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-team ul li span {
+  width: 40px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li span {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li:nth-child(2) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li:nth-child(2) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li:nth-child(3) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-content .card-time ul li:nth-child(3) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress {
+  padding: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-text ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-text ul li {
+  font-size: 12px;
+  color: #FE9000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-text ul li:last-child {
+  width: 105px;
+  height: 30px;
+  color: #0bb516;
+  border-radius: 8px;
+  display: inline-flex;
+  background: #fce8fb;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-bar {
+  margin-top: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-bar .cp-single {
+  background: #f0f0f0;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-bar .cp-single .cps-over {
+  width: 100%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-completed .card-progress .card-progress-bar .cp-single .cps-over .cp-single-value {
+  background: #0bb516;
+  width: 100%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .cd-title h5 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #7B2182;
+  font-size: 18px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .cd-title .cd-ed {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .cd-title .cd-ed a {
+  margin-left: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .cd-title .cd-ed a i {
+  font-size: 24px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content {
+  margin-top: 25px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-team {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-team ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-team ul li span {
+  width: 40px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time {
+  display: flex;
+  justify-content: end;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li {
+  list-style: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
+  color: #8D3F93;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li span {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #CCA8CF;
+  background: #FCE8FB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #FE0000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li:nth-child(2) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li:nth-child(2) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li:nth-child(3) {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-content .card-time ul li:nth-child(3) span {
+  color: #0bb516;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress {
+  padding: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-text ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-text ul li {
+  font-size: 12px;
+  color: #FE9000;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-text ul li:last-child {
+  width: 105px;
+  height: 30px;
+  color: #0bb516;
+  border-radius: 8px;
+  display: inline-flex;
+  background: #fce8fb;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-bar {
+  margin-top: 10px;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-bar .cp-single {
+  background: #f0f0f0;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-bar .cp-single .cps-over {
+  width: 100%;
+  height: 100%;
+}
+#mytask-layout .main .body .tab-content .tab-pane .card .card-body .cd-wrapper .cd-upcoming .card-progress .card-progress-bar .cp-single .cps-over .cp-single-value {
+  width: 100%;
+  height: 100%;
+}
+
+#mytask-layout .main .body .card-header h6 {
+  font-size: 18px;
+  color: #7B2182;
+  font-weight: 600;
+}
+#mytask-layout .main .body .add-project .project-content .p-form {
+  margin-left: 50px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single {
+  margin: 10px 0;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-text span {
+  font-size: 16px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-text a {
+  width: 225px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #7B2182;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 24px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input {
+  overflow: hidden;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pid {
+  width: 250px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  padding: 0 15px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pid::placeholder {
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pid:focus {
+  outline: none;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pname {
+  width: 700px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  padding: 0 15px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pname::placeholder {
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pname:focus {
+  outline: none;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .p-description {
+  width: 100%;
+  border-radius: 10px;
+  height: 100px;
+  padding: 10px 15px;
+  border: 1px solid #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .p-description::placeholder {
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .p-description:focus {
+  outline: none;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category select {
+  width: 250px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  padding: 0 15px;
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category select option {
+  padding: 10px 0;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category select:focus {
+  outline: none;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category .form-btn ul {
+  display: flex;
+  list-style: none;
+  margin-left: 15px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category .form-btn ul li a {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #7B2182;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pfrom-category .form-btn ul li a:nth-child(1) {
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .upload-wrapper .upload-l {
+  height: 86px;
+  width: 210px;
+  border: 1px solid #CCA8CF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .upload-wrapper .upload-l .upload-img {
+  font-size: 24px;
+  width: 65px;
+  height: 65px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #FCE8FB;
+  border: 1px solid #CCA8CF;
+  border-radius: 50%;
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .upload-wrapper .upload-r {
+  width: 225px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  background: #fff;
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .upload-wrapper .upload-r .upload-document {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin-top: 6px;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pstart-date {
+  width: 250px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  padding: 0 15px;
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pstart-date:focus {
+  outline: none;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pend-date {
+  width: 225px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #CCA8CF;
+  padding: 0 15px;
+  color: #CCA8CF;
+}
+#mytask-layout .main .body .add-project .project-content .p-form .pform-single .pform-input .pend-date:focus {
+  outline: none;
+}
+
+.add-Category .modal .modal-dialog .modal-content {
+  width: 500px;
+  height: 600px;
+  border-radius: 30px;
+  background: #FCE8FB;
+  border: 2px solid #CCA8CF;
+  position: relative;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper {
+  width: 400px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input .add-btn {
+  display: flex;
+  justify-content: end;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input .add-btn a {
+  background: #fff;
+  border: 1px solid #CCA8CF;
+  color: #7B2182;
+  width: 200px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul {
+  list-style: none;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li {
+  margin-bottom: 30px;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li span {
+  font-size: 16px;
+  color: #7B2182;
+  display: block;
+  margin-bottom: 10px;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 20px;
+  border: #CCA8CF;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li input:focus {
+  outline: none;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  padding: 0 20px;
+  border: #CCA8CF;
+}
+.add-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li textarea:focus {
+  outline: none;
+}
+
+.edit-Category .modal .modal-dialog .modal-content {
+  width: 500px;
+  height: 600px;
+  border-radius: 30px;
+  background: #FCE8FB;
+  border: 2px solid #CCA8CF;
+  position: relative;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper {
+  width: 400px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input .add-btn {
+  display: flex;
+  justify-content: end;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input .add-btn a {
+  background: #fff;
+  border: 1px solid #CCA8CF;
+  color: #7B2182;
+  width: 200px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul {
+  list-style: none;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li {
+  margin-bottom: 30px;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li span {
+  font-size: 16px;
+  color: #7B2182;
+  display: block;
+  margin-bottom: 10px;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 20px;
+  border: #CCA8CF;
+}
+.edit-Category .modal .modal-dialog .modal-content .modal-body .addcat-wrapper .addcat-input ul li textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  padding: 0 20px;
+  border: #CCA8CF;
+}
+
+#mytask-layout .main .body .card-header .view-tab {
+  display: flex;
+}
+#mytask-layout .main .body .card-header .view-tab .view-ed {
+  padding: 0 10px;
+}
+#mytask-layout .main .body .card-header .view-tab .view-ed ul {
+  display: flex;
+  list-style: none;
+}
+#mytask-layout .main .body .card-header .view-tab .view-ed ul li a {
+  font-size: 30px;
+  margin-left: 10px;
+}
+#mytask-layout .main .body .card-header .view-tab .view-option select {
+  width: 225px;
+  height: 40px;
+  border-radius: 15px;
+  padding: 0 15px;
+}
+
+#mytask-layout .main .body .tab-content .tab-pane .employee-ac-wrapper {
+  position: relative;
+}
+#mytask-layout .main .body .tab-content .tab-pane .employee-ac-wrapper .employee-account {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+}
+
+#mytask-layout .main .body .client-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 15px;
+}
+#mytask-layout .main .body .client-card .client-profile .client-thumb {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.514);
+}
+#mytask-layout .main .body .client-card .client-profile .client-thumb img {
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,90 @@
+.signup-form{
+    margin-top: 100px;
+    .signup-wrapper{
+        width: 635px;
+        margin: 0px auto;
+        border: 3px solid#cca8cf;
+        height: 705px;
+        border-radius: 40px;
+        background-color: #fce8fb;
+        filter: drop-shadow(5.905px 6.792px 3.5px rgba(0,0,0,0.16));
+        margin-bottom: -350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .signup{
+            text-align: center;
+           
+            h3{
+                color: #7b2182;
+                font-size: 24px;
+                margin-bottom: 30px;          
+            }
+            .input-grp{
+                input{
+                    width: 350px;
+                    background: #fff;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                    height: 45px;
+                    border-radius: 10px;
+                    border: 1px solid#cca8cf;
+                    filter: drop-shadow(0px 2px 3.5px rgba(173, 128, 128, 0.5));
+                    padding: 5px 30px;
+    
+                   
+                    &::placeholder{
+                        color: #cca8cf;
+                        // letter-spacing: 4px;
+                        font-size: 14px;
+                       
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+            .signup-main-btn{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-top: 9px;
+                
+                a{
+                    width: 295px;
+                    height: 40px;
+                    display: inline-flex;
+                    color: #fff;
+                    background: #7b2182;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    font-size: 20px;
+                   
+    
+                }
+            }
+           
+     
+           
+        }
+
+    }
+    
+}
+.footer-main{
+    .footer-subbg{
+        margin: 0 0 -250px 15px;
+    }
+    .footerbg{
+        position: a;
+        background-image: url(../images/backgrounds/sign\ in\ shape.png);
+        height: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;  
+      }
+}

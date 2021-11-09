@@ -1,0 +1,21 @@
+#mytask-layout{
+    .main{
+        .body{
+            .tab-content{
+                .tab-pane{
+                    .employee-ac-wrapper{
+                        position: relative;
+                        .employee-account{
+                            width: 80%;
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background-color: red;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
