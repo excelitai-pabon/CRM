@@ -15,7 +15,7 @@ class CreateDownpaymentStatusesTable extends Migration
     {
         Schema::create('downpayment_statuses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');  
+            $table->bigInteger('user_id');
             $table->bigInteger('downpayment_money');
             $table->string('downpayment_money_payment_type');
             $table->string('downpayment_money_paid')->nullable();

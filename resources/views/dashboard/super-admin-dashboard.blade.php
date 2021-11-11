@@ -16,7 +16,7 @@
             <div class="col-md-4">
                 <div class="float-end d-none d-md-block">
                     <div class="dropdown">
-                      
+
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <!-- end page title -->
-    
+
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card mini-stat bg-primary text-white">
@@ -131,7 +131,7 @@
     </div>
     <!-- end row -->
 
-    
+
 
 
 

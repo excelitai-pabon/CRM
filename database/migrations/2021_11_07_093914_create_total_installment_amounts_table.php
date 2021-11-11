@@ -18,6 +18,8 @@ class CreateTotalInstallmentAmountsTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('number_of_installment');
             $table->text('description')->nullable();
+
+
             $table->timestamps();
         });
     }
