@@ -28,7 +28,14 @@ class InstallmentController extends Controller
         if($validated)
         {
             $user = User::where('file_no',$request->file_no)->first();
-            return redirect()->route('super_admin.installments.all',$user);
+            if($user)
+            {
+                return redirect()->route('super_admin.installments.all',$user);
+            }
+            else
+            {
+                return redirect()->back();
+            }
         }
         else
         {

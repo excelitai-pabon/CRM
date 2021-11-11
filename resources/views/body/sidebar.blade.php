@@ -31,7 +31,7 @@
                         <span>Amounts</span>
                     </a>
                     <ul class="sub-menu ">
-                        <li><a href="{{route('admin.basicAmount')}}">Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.basicAmount')}}">Basic Amounts</a></li>
 
                     </ul>
                 </li>
