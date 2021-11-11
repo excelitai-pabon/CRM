@@ -56,6 +56,9 @@ Route::prefix('admin')->name('admin.')->group(function()
 });
 
 
+
+
+
 /***** Super admin Route with middleware */
 
 
@@ -83,8 +86,16 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
         Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:super_admin')->name('installments.all');
         Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:super_admin')->name('installments.edit');
         Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:super_admin')->name('installments.edit.store');
-        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createeNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
+        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
         Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:super_admin')->name('installments.create.store');
+
+         //Basic amounts
+         Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:super_admin')->name('basicAmount');
+
+         Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
+
+         Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
+
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

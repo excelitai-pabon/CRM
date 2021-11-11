@@ -8,7 +8,7 @@
     <div>
         <h2>Basic Amount</h2>
     </div>
-    <form method="get" action="{{url('/admin/basic/showingData')}}" >
+    <form method="get" action="{{url('/super-admin/basic/showingData')}}" >
         @csrf
         <div class="row">
             <div class="form-group col">

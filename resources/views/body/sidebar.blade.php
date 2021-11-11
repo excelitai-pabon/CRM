@@ -28,6 +28,10 @@
                     </a>
                     <ul class="sub-menu ">
 
+
+                        <li><a href="{{route('super_admin.basicAmount')}}">Basic Amounts</a></li>
+
+
                         <li><a href="{{route('super_admin.all_user')}}">All User</a></li>
                         <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
                     </ul>
