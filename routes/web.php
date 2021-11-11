@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
 use Illuminate\Support\Facades\Route;
@@ -72,8 +73,18 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
             'guest:super_admin',
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
-
+ 
         Route::view('/dashboard','dashboard.super-admin-dashboard')->middleware('auth:super_admin')->name('dashboard');
+
+            //** installment Routes */
+            
+        Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:super_admin')->name('installments');
+        Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:super_admin')->name('installments.find');
+        Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:super_admin')->name('installments.all');
+        Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:super_admin')->name('installments.edit');
+        Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:super_admin')->name('installments.edit.store');
+        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createeNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
+        Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:super_admin')->name('installments.create.store');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

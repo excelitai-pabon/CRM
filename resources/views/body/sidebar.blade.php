@@ -46,6 +46,12 @@
                         <li><a href="email-inbox.html">tyeds</a></li>
                     </ul>
                 </li>
+                <li >
+                    <a href="{{route('super_admin.installments')}}" class=" waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Installments</span>
+                    </a>
+                </li>
 
 
             </ul>

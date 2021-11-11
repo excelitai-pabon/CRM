@@ -17,6 +17,8 @@ class CreateTotalInstallmentAmountsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('number_of_installment');
+            $table->date('installment_starting_date');
+            $table->bigInteger('total_installment_amount');
             $table->text('description')->nullable();
 
 
