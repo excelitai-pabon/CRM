@@ -22,14 +22,17 @@
                     </a>
                 </li>
 
+
+
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ti-email"></i>
-                        <span>Email</span>
+                        <span>Amounts</span>
                     </a>
                     <ul class="sub-menu ">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-inbox.html">tyeds</a></li>
+                        <li><a href="{{route('admin.basicAmount')}}">Basic Amounts</a></li>
+
                     </ul>
                 </li>
 

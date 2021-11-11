@@ -13,19 +13,19 @@ class CreateLandFillingStatus2ndsTable extends Migration
      */
     public function up()
     {
-        Schema::create('land_filling_status2nds', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id');  
-            $table->bigInteger('land_filling_money');
-            $table->string('land_filling_money_payment_type');
-            $table->string('land_filling_money_paid')->nullable();
-            $table->string('land_filling_money_due')->nullable();
-            $table->dateTime('land_filling_money_paid_date')->nullable();
-            $table->dateTime('land_filling_money_due_date')->nullable();
-            $table->text('land_filling_money_note')->nullable();
-            $table->boolean('approval')->default(1);
-            $table->timestamps();
-        });
+Schema::create('land_filling_status2nds', function (Blueprint $table) {
+    $table->id();
+    $table->bigInteger('user_id');
+    $table->bigInteger('land_filling_money');
+    $table->string('land_filling_money_payment_type');
+    $table->string('land_filling_money_paid')->nullable();
+    $table->string('land_filling_money_due')->nullable();
+    $table->dateTime('land_filling_money_paid_date')->nullable();
+    $table->dateTime('land_filling_money_due_date')->nullable();
+    $table->text('land_filling_money_note')->nullable();
+    $table->boolean('approval')->default(1);
+    $table->timestamps();
+});
     }
 
     /**

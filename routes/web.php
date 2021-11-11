@@ -2,19 +2,10 @@
 
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BasicAmountController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
-
-
-
-
-
-
-
-
-
-
 
 
 Route::get('/', function () {
@@ -28,11 +19,11 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')->group(function()
 {
     $limiter = config('fortify.limiters.login');
-    
+
     Route::get('/login', function () {
         return view('signin_pages.admin_login');
     })->middleware(['guest:web','guest:admin','guest:employee','guest:super_admin'])->name('login');
-    
+
 
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->middleware(array_filter([
@@ -47,6 +38,21 @@ Route::prefix('admin')->name('admin.')->group(function()
 
         // =====================user route ======================
         Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+
+
+
+
+            //Basic
+            Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:admin')->name('basicAmount');
+
+            Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:admin');
+
+            Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:admin');
+
+
+
+
+
 });
 
 
@@ -56,11 +62,11 @@ Route::prefix('admin')->name('admin.')->group(function()
 Route::prefix('super-admin')->name('super_admin.')->group(function()
 {
     $limiter = config('fortify.limiters.login');
-    
+
     Route::get('/login', function () {
         return view('signin_pages.super_admin_login');
     })->middleware(['guest:web','guest:admin','guest:super_admin','guest:employee'])->name('login');
-    
+
 
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->middleware(array_filter([
@@ -89,7 +95,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
 
 
 
-   
+
 
 /***** Employee Route with middleware */
 
@@ -97,11 +103,11 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
 Route::prefix('employee')->name('employee.')->group(function()
 {
     $limiter = config('fortify.limiters.login');
-    
+
     Route::get('/login', function () {
         return view('signin_pages.employee_login');
     })->middleware(['guest:web','guest:admin','guest:super_admin','guest:employee'])->name('login');
-    
+
 
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->middleware(array_filter([
@@ -121,24 +127,16 @@ Route::prefix('employee')->name('employee.')->group(function()
 
 
 
+//basic amount routes
+
+
+
+
 
 
 
 
 /***** Route with middleware */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
