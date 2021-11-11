@@ -76,11 +76,11 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
             'guest:super_admin',
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
- 
+
         Route::view('/dashboard','dashboard.super-admin-dashboard')->middleware('auth:super_admin')->name('dashboard');
 
             //** installment Routes */
-            
+
         Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:super_admin')->name('installments');
         Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:super_admin')->name('installments.find');
         Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:super_admin')->name('installments.all');
@@ -101,7 +101,12 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
         ->name('logout');
 
         // =====================user route ======================
-        Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+        Route::get('/all-user',[UserController::class,'index'])->name('all_user');
+        Route::get('/add-user',[UserController::class,'create'])->name('add_user');
+        Route::post('/store-user',[UserController::class,'store'])->name('user.store');
+        Route::get('/edit-user/{user}',[UserController::class,'edit'])->name('user.edit');
+        Route::post('/update-user/{user}',[UserController::class,'update'])->name('user.update');
+        Route::delete('/delete-user/{user}',[UserController::class,'destroy'])->name('user.delete');
 });
 
 
