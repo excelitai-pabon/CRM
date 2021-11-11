@@ -27,13 +27,7 @@
         <link href="{{asset('assets')}}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
         <script src="{{asset('assets')}}/libs/jquery/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script type="text/javascript">
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        </script>
+
     </head>
 
     <body data-sidebar="dark">
