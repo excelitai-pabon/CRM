@@ -1,6 +1,30 @@
 
 @extends('master.master')
 
+@section('logout')
+
+<div class="dropdown-menu dropdown-menu-end">
+    <!-- item-->
+    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet font-size-17 align-middle me-1"></i> My Wallet</a>
+    <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
+    <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-17 align-middle me-1"></i> Lock screen</a>
+    <div class="dropdown-divider"></div>
+    <form method="POST" action="{{ route('super_admin.logout') }}">
+        @csrf
+
+        <x-jet-responsive-nav-link href="{{ route('super_admin.logout') }}"
+                       onclick="event.preventDefault();
+                        this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </x-jet-responsive-nav-link>
+    </form>
+</div>
+    
+@endsection
+
+
+
 @section('content')
 <div class="container-fluid">
 
