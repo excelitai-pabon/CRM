@@ -94,6 +94,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
 
          Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
 
+         Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
          Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
 
 
