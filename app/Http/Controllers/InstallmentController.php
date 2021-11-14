@@ -49,9 +49,18 @@ class InstallmentController extends Controller
         $user = User::with(['totalNoOfInstallment','installment','installment_year'])->findOrFail($user->id);
        
         
-        $paid_date = Carbon::parse($user->totalNoOfInstallment->installment_starting_date);
+        $paid_date = Carbon::parse(optional($user->totalNoOfInstallment)->installment_starting_date);
         
-        return view('installment.all-installment',compact('user','paid_date'));
+        if(isset($paid_date))
+        {
+            return view('installment.all-installment',compact('user','paid_date'));
+
+        }
+        else
+        {
+            return redirect()->back();
+        }
+        
     }
 
     public function editInstallment($id)
