@@ -56,6 +56,9 @@ Route::prefix('admin')->name('admin.')->group(function()
 });
 
 
+
+
+
 /***** Super admin Route with middleware */
 
 
@@ -86,6 +89,15 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
         Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
         Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:super_admin')->name('installments.create.store');
 
+         //Basic amounts
+         Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:super_admin')->name('basicAmount');
+
+         Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
+
+         Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
+         Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
+
+
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
@@ -98,7 +110,12 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
             Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
 
         // =====================user route ======================
-        Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+        Route::get('/all-user',[UserController::class,'index'])->name('all_user');
+        Route::get('/add-user',[UserController::class,'create'])->name('add_user');
+        Route::post('/store-user',[UserController::class,'store'])->name('user.store');
+        Route::get('/edit-user/{user}',[UserController::class,'edit'])->name('user.edit');
+        Route::post('/update-user/{user}',[UserController::class,'update'])->name('user.update');
+        Route::delete('/delete-user/{user}',[UserController::class,'destroy'])->name('user.delete');
 });
 
 

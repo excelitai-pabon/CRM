@@ -16,6 +16,7 @@
                         $monthCounter = 0;
                         $yearCounter = 0;
                         $addMonth = 1;
+                        $paymentCheck=1;
                     @endphp
 
                     <div class="table-responsive">
@@ -88,15 +89,18 @@
 
                                         @else
 
-                                            {{-- @if (((Carbon\Carbon::now()->firstOfMonth())->eq(($paid_date->firstOfMonth())))) --}}
+                                            @if ($paymentCheck == 1)
 
                                                 <td><a href="{{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}" class="btn btn-primary">Payment</a></td>
+                                                @php
+                                                    $paymentCheck=0;
+                                                @endphp
 
-                                            {{-- @else
+                                            @else
 
                                                 <td><a href="javascript:void(0)" class="btn btn-dark" >Payment</a></td>
 
-                                            @endif --}}
+                                            @endif
 
                                         @endif
 
