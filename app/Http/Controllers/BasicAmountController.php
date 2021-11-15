@@ -56,6 +56,8 @@ class BasicAmountController extends Controller
         $booking_status-> booking_money_due_date =$request->booking_money_due_date;
         $booking_status->booking_money_due=$request->booking_money_due;
         $booking_status->booking_money_note=$request->booking_money_note;
+        $booking_status->booking_money_payment_type=$request->booking_money_payment_type;
+
         // dd($booking_status);
         $booking_status->save();
 
@@ -68,6 +70,7 @@ class BasicAmountController extends Controller
         $down_payment-> downpayment_money_due_date =$request->downpayment_money_due_date;
         $down_payment->downpayment_money_due=$request->downpayment_money_due;
         $down_payment->downpayment_money_note=$request->downpayment_money_note;
+        $down_payment->downpayment_money_payment_type=$request->downpayment_money_payment_type;
         $down_payment->save();
 
 
@@ -81,6 +84,7 @@ class BasicAmountController extends Controller
         $car_parking-> car_parking_money_due_date =$request->car_parking_money_due_date;
         $car_parking->car_parking_money_due=$request->car_parking_money_due;
         $car_parking->car_parking_money_note=$request->car_parking_money_note;
+        $car_parking->car_parking_money_payment_type=$request->car_parking_money_payment_type;
 
         $car_parking->save();
 
@@ -93,6 +97,7 @@ class BasicAmountController extends Controller
         $land_filing_1st-> land_filling_money_due_date =$request->land_filling_money_due_date;
         $land_filing_1st->land_filling_money_due=$request->land_filling_money_due;
         $land_filing_1st->land_filling_money_note=$request->land_filling_money_note;
+        $land_filing_1st->land_filling_money_payment_type=$request->land_filling_money_payment_type;
         $land_filing_1st->save();
 
 
@@ -106,6 +111,7 @@ class BasicAmountController extends Controller
           $land_filing_2nd-> land_filling_money_due_date =$request->land_filling_money_due_date2;
           $land_filing_2nd->land_filling_money_due=$request->land_filling_money_due2;
           $land_filing_2nd->land_filling_money_note=$request->land_filling_money_note2;
+          $land_filing_2nd->land_filling_money_payment_type=$request->land_filling_money_payment_type2;
           $land_filing_2nd->save();
 
 
@@ -133,6 +139,7 @@ class BasicAmountController extends Controller
           $roof_casting_1st-> floor_roof_casting_money_due_date_1st =$request->floor_roof_casting_money_due_date_1st;
           $roof_casting_1st->floor_roof_casting_money_due_1st=$request->floor_roof_casting_money_due_1st;
           $roof_casting_1st->floor_roof_casting_money_note_1st=$request->floor_roof_casting_money_note_1st;
+          $roof_casting_1st->floor_roof_casting_money_payment_type_1st=$request->floor_roof_casting_money_payment_type_1st;
           $roof_casting_1st->save();
 
 
@@ -148,6 +155,7 @@ class BasicAmountController extends Controller
           $finishing_work-> finishing_work_money_due =$request->finishing_work_money_due;
           $finishing_work->finishing_work_money_due_date=$request->finishing_work_money_due_date;
           $finishing_work->finishing_work_money_note=$request->finishing_work_money_note;
+          $finishing_work->finishing_work_money_payment_type=$request->finishing_work_money_payment_type;
           $finishing_work->save();
 
 
@@ -164,6 +172,7 @@ class BasicAmountController extends Controller
              $after_hand_over_money-> after_handover_money_due_date =$request->after_handover_money_due_date;
              $after_hand_over_money->after_handover_money_money_due=$request->after_handover_money_money_due;
              $after_hand_over_money->after_handover_money_note=$request->after_handover_money_note;
+             $after_hand_over_money->after_handover_money_payment_type=$request->after_handover_money_payment_type;
              $after_hand_over_money->save();
 
 

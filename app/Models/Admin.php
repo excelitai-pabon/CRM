@@ -26,7 +26,7 @@ class Admin extends Authenticatable
      * @var string[]
      */
     protected $guarded = [
-        
+
     ];
 
 

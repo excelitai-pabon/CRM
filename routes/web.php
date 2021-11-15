@@ -43,11 +43,11 @@ Route::prefix('admin')->name('admin.')->group(function()
 
 
             //Basic
-            Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:admin')->name('basicAmount');
+            // Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:admin')->name('basicAmount');
 
-            Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:admin');
+            // Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:admin');
 
-            Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:admin');
+            // Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:admin');
 
 
 
@@ -73,21 +73,29 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
             'guest:super_admin',
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
- 
+
         Route::view('/dashboard','dashboard.super-admin-dashboard')->middleware('auth:super_admin')->name('dashboard');
 
             //** installment Routes */
-            
+
         Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:super_admin')->name('installments');
         Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:super_admin')->name('installments.find');
         Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:super_admin')->name('installments.all');
         Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:super_admin')->name('installments.edit');
         Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:super_admin')->name('installments.edit.store');
-        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createeNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
+        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
         Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:super_admin')->name('installments.create.store');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+
+            //Basic Amount
+            Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:super_admin')->name('basicAmount');
+
+            Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
+
+            Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
 
         // =====================user route ======================
         Route::get('/all-user',[UserController::class,'index'])->name('all-user');

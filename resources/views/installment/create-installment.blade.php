@@ -8,13 +8,13 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card">
                 <div class="card-body">
-                   
+
                     <h4 class="card-title">Installment</h4>
                     <h5 class="card-title">User Information</h5>
                     <p class="card-title-desc text-primary">File No: {{$user->file_no}}</p>
                     <p class="card-title-desc  text-primary">Name: {{$user->member_name}}</p>
                     <p class="card-title-desc  text-primary">Installment No: {{$installment_no}}</p>
-                    
+
 
                     <form class="custom-validation" method="POST" action="{{route('super_admin.installments.create.store',[$user->id,$installment_no,$payment])}}">
                         @csrf
@@ -55,11 +55,11 @@
                                 Please select a valid state.
                             </div>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label">Note</label>
                             <div>
-                                
+
                                 <textarea  name="payment_note" type="text"  class="form-control" rows="5"></textarea>
                             </div>
                         </div>

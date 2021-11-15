@@ -9,6 +9,6 @@ class BookingStatus extends Model
 {
     use HasFactory;
     protected $guarded = [
-        
+
     ];
 }

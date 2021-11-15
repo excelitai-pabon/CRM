@@ -9,6 +9,6 @@ class CarParkingStatus extends Model
 {
     use HasFactory;
     protected $guarded = [
-        
+
     ];
 }

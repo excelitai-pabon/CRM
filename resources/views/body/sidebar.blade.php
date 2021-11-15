@@ -9,7 +9,7 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="ti-home"></i><span class="badge rounded-pill bg-primary float-end">2</span>
                         <span>Dashboard</span>
                     </a>
@@ -31,7 +31,7 @@
                         <span>Amounts</span>
                     </a>
                     <ul class="sub-menu ">
-                        <li><a href="{{route('admin.basicAmount')}}">Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.basicAmount')}}">Basic Amounts</a></li>
 
                     </ul>
                 </li>

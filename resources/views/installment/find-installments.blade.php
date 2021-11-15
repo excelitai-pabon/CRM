@@ -9,9 +9,9 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <h6 class="page-title">Find Client Installment Report</h6>
-                
+
             </div>
-            
+
         </div>
     </div>
     <!-- end page title -->
@@ -36,9 +36,9 @@
                                     Please provide a valid No.
                                 </span>
                             @enderror
-                           
+
                         </div>
-                        
+
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Find</button>
                         </div>
@@ -46,11 +46,11 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
-   
-    
+
+
 </div>
 @endsection
 
