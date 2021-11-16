@@ -15,9 +15,9 @@ class CreateAfterHandoverMoneyTable extends Migration
     {
         Schema::create('after_handover_money', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');  
-            $table->bigInteger('after_handover_money');
-            $table->string('after_handover_money_payment_type');
+            $table->bigInteger('user_id');
+            $table->bigInteger('after_handover_money')->nullable();
+            $table->string('after_handover_money_payment_type')->nullable();
             $table->string('after_handover_money_money_paid')->nullable();
             $table->string('after_handover_money_money_due')->nullable();
             $table->dateTime('after_handover_money_paid_date')->nullable();
