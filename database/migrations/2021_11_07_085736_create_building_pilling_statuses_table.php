@@ -15,9 +15,9 @@ class CreateBuildingPillingStatusesTable extends Migration
     {
         Schema::create('building_pilling_statuses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');  
-            $table->bigInteger('building_pilling_money');
-            $table->string('building_pilling_money_payment_type');
+            $table->bigInteger('user_id');
+            $table->bigInteger('building_pilling_money')->nullable();
+            $table->string('building_pilling_money_payment_type')->nullable();
             $table->string('building_pilling_money_paid')->nullable();
             $table->string('building_pilling_money_due')->nullable();
             $table->dateTime('building_pilling_money_paid_date')->nullable();

@@ -15,9 +15,9 @@ class CreateFinishingWorkStatusesTable extends Migration
     {
         Schema::create('finishing_work_statuses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');  
-            $table->bigInteger('finishing_work_money');
-            $table->string('finishing_work_money_payment_type');
+            $table->bigInteger('user_id');
+            $table->bigInteger('finishing_work_money')->nullable();
+            $table->string('finishing_work_money_payment_type')->nullable();
             $table->string('finishing_work_money_paid')->nullable();
             $table->string('finishing_work_money_due')->nullable();
             $table->dateTime('finishing_work_money_paid_date')->nullable();

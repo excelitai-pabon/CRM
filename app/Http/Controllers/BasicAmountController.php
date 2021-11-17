@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BasicAmountRequest;
 use App\Models\AfterHandoverMoney;
 use App\Models\BookingStatus;
 use App\Models\BuildingPillingStatus;
@@ -9,11 +10,16 @@ use App\Models\CarParkingStatus;
 use App\Models\DownpaymentStatus;
 use App\Models\FinishingWorkStatus;
 use App\Models\FloorRoofCasting1st;
+use App\Models\Installment;
+use App\Models\InstallmentYear;
 use App\Models\LandFillingStatus1st;
 use App\Models\LandFillingStatus2nd;
+use App\Models\TotalAmount;
+use App\Models\TotalInstallmentAmount;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BasicAmountController extends Controller
 {
@@ -23,6 +29,193 @@ class BasicAmountController extends Controller
 
         return view('basic_amount.basic');
     }
+
+    public function addBasicAmountSearch(){
+
+        return view('basic_amount.basic_add_search');
+    }
+
+    public function createBasicAmount(Request $request){
+        // dd($request->all());
+        $file_no=$request->file_no;
+        $user= User::where('file_no',$file_no)->first();
+        $total=TotalAmount::where('user_id',$user->id)->first();
+        if($total){
+            return redirect()->back()->with(['error'=>'This user basic information al-ready exits']);
+        }
+        return view('basic_amount.basic_add',compact('user'));
+    }
+
+    public function basicAmountStore(BasicAmountRequest $request, User $user){
+        //dd($request->all());
+
+         //Total amount
+        $totalAmount=[
+            'user_id'=>$user->id,
+            'total_amount'=>$request->total_amount,
+            'description'=>$request->total_amount_note,
+        ];
+        TotalAmount::create($totalAmount);
+
+        // Total Installment Amount
+        TotalInstallmentAmount::create([
+            'user_id'=>$user->id,
+            'number_of_installment'=>$request->installment_number,
+            'total_installment_amount'=>$request->installment_amount,
+            'installment_starting_date'=>$request->installment_start_date,
+            'description'=>$request->installment_amount_note,
+        ]);
+
+        //Installment Years
+        $istallment_Year=ceil($request->installment_number/12);
+        $installmentYears=[
+            'user_id'=>$user->id,
+            'installment_years'=>$istallment_Year,
+            'installment_years_amount'=>$request->installment_years_amount,
+        ];
+        InstallmentYear::create($installmentYears);
+
+        // Bokking Money
+
+        $booking_money_due=$request->booking_money-$request->booking_money_paid;
+        $bookingMoney=[
+            'user_id'=>$user->id,
+            'booking_money'=>$request->booking_money,
+            'booking_money_payment_type'=>$request->booking_money_payment_type,
+            'booking_money_paid'=>$request->booking_money_paid,
+            'booking_money_due'=>$booking_money_due,
+            'booking_money_paid_date'=>$request->booking_money_paid_date,
+            'booking_money_due_date'=>$request->booking_money_due_date,
+            'booking_money_note'=>$request->booking_money_note,
+        ];
+        BookingStatus::create($bookingMoney);
+
+        //Down Payment
+        $down_payment_due=$request->downpayment_money - $request->downpayment_money_paid;
+        $downPayment=[
+            'user_id'=>$user->id,
+            'downpayment_money'=>$request->downpayment_money,
+            'downpayment_money_payment_type'=>$request->downpayment_money_payment_type,
+            'downpayment_money_paid'=>$request->downpayment_money_paid,
+            'downpayment_money_due'=>$down_payment_due,
+            'downpayment_money_paid_date'=>$request->downpayment_money_paid_date,
+            'downpayment_money_due_date'=>$request->downpayment_money_due_date,
+            'downpayment_money_note'=>$request->downpayment_money_note,
+        ];
+        DownpaymentStatus::create($downPayment);
+
+        //Car Parking
+        $car_parking_due=$request->car_parking_money - $request->car_parking_money_paid;
+        $carParking=[
+            'user_id'=>$user->id,
+            'car_parking_money'=>$request->car_parking_money,
+            'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
+            'car_parking_money_paid'=>$request->car_parking_money_paid,
+            'car_parking_money_due'=>$car_parking_due,
+            'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
+            'car_parking_money_due_date'=>$request->car_parking_due_date,
+            'car_parking_money_note'=>$request->car_parking_money_note,
+        ];
+        CarParkingStatus::create($carParking);
+
+        //1st Land Filling
+        $land_filling_due= $request->land_filling_money - $request->land_filling_money_paid;
+        $lanfFilling=[
+            'user_id'=>$user->id,
+            'land_filling_money'=>$request->land_filling_money,
+            'land_filling_money_payment_type'=>$request->land_filling_money_payment_type,
+            'land_filling_money_paid'=>$request->land_filling_money_paid,
+            'land_filling_money_due'=>$land_filling_due,
+            'land_filling_money_paid_date'=>$request->land_filling_money_paid_date,
+            'land_filling_money_due_date'=>$request->land_filling_money_due_date,
+            'land_filling_money_note'=>$request->land_filling_money_note,
+        ];
+        LandFillingStatus1st::create($lanfFilling);
+        // 2nd Land Filling
+
+        $land_filing_due_2=$request->land_filling_money2 - $request->land_filling_money_paid2;
+        $landFilling2nd=[
+            'user_id'=>$user->id,
+            'land_filling_money'=>$request->land_filling_money2,
+            'land_filling_money_payment_type'=>$request->land_filling_money_payment_type2,
+            'land_filling_money_paid'=>$request->land_filling_money_paid2,
+            'land_filling_money_due'=>$land_filing_due_2,
+            'land_filling_money_paid_date'=>$request->land_filling_money_paid_date2,
+            'land_filling_money_due_date'=>$request->land_filling_money_due_date2,
+            'land_filling_money_note'=>$request->land_filling_money_note2,
+        ];
+        LandFillingStatus2nd::create($landFilling2nd);
+
+        //Bulding Pilling
+        $building_pilling_due= $request->building_pilling_money - $request->building_pilling_money_paid;
+        $buildingPilling=[
+            'user_id'=>$user->id,
+            'building_pilling_money'=>$request->building_pilling_money,
+            'building_pilling_money_payment_type'=>$request->building_pilling_money_payment_type,
+            'building_pilling_money_paid'=>$request->building_pilling_money_paid,
+            'building_pilling_money_due'=>$building_pilling_due,
+            'building_pilling_money_paid_date'=>$request->building_pilling_money_paid_date,
+            'building_pilling_money_due_date'=>$request->building_pilling_money_due_date,
+            'building_pilling_money_note'=>$request->building_pilling_money_note,
+        ];
+        BuildingPillingStatus::create($buildingPilling);
+
+        //Floor Roof Casting
+        $floor_roof_casting_amount_due_1st= $request->floor_roof_casting_money_1st - $request->floor_roof_casting_money_paid_1st;
+        $floorRoofCasting=[
+            'user_id'=>$user->id,
+            'floor_roof_casting_money_1st'=>$request->floor_roof_casting_money_1st,
+            'floor_roof_casting_money_payment_type_1st'=>$request->floor_roof_casting_money_payment_type_1st,
+            'floor_roof_casting_money_paid_1st'=>$request->floor_roof_casting_money_paid_1st,
+            'floor_roof_casting_money_due_1st'=>$floor_roof_casting_amount_due_1st,
+            'floor_roof_casting_money_paid_date_1st'=>$request->floor_roof_casting_money_paid_date_1st,
+            'floor_roof_casting_money_due_date_1st'=>$request->floor_roof_casting_money_due_1st,
+            'floor_roof_casting_money_note_1st'=>$request->floor_roof_casting_money_note_1st,
+        ];
+        FloorRoofCasting1st::create($floorRoofCasting);
+
+        // Finishing Work Money
+        $finishing_work_due=$request->finishing_work_money - $request->finishing_work_money_paid;
+        $finishigWork=[
+            'user_id'=>$user->id,
+            'finishing_work_money'=>$request->finishing_work_money,
+            'finishing_work_money_payment_type'=>$request->finishing_work_money_payment_type,
+            'finishing_work_money_paid'=>$request->finishing_work_money_paid,
+            'finishing_work_money_due'=>$finishing_work_due,
+            'finishing_work_money_paid_date'=>$request->finishing_work_money_paid_date,
+            'finishing_work_money_due_date'=>$request->finishing_work_money_due_date,
+            'finishing_work_money_note'=>$request->finishing_work_money_note,
+        ];
+        FinishingWorkStatus::create($finishigWork);
+
+        //After handover
+        $after_handover_money_due= $request->after_handover_money - $request->after_handover_money_money_paid;
+        $afterhandOver=[
+            'user_id'=>$user->id,
+            'after_handover_money'=>$request->after_handover_money,
+            'after_handover_money_payment_type'=>$request->after_handover_money_payment_type,
+            'after_handover_money_money_paid'=>$request->after_handover_money_money_paid,
+            'after_handover_money_money_due'=>$after_handover_money_due,
+            'after_handover_money_paid_date'=>$request->after_handover_money_paid_date,
+            'after_handover_money_due_date'=>$request->after_handover_money_due_date,
+            'after_handover_money_note'=>$request->after_handover_money_note,
+        ];
+        AfterHandoverMoney::create($afterhandOver);
+
+        Session::flash('success',"Successfully Insert  Basic Amounts");
+
+        if(auth()->guard('super_admin')->check()){
+            return redirect()->route('super_admin.all_user')->with(['success'=>'Successfully insert basic amount']);
+        }
+        else if(auth()->guard('admin')->check()){
+            return redirect()->route('admin.all_user')->with(['success'=>'Successfully insert basic amount']);
+        }
+
+
+
+
+    }
+
 
     // update basic amount page
     // change the view page with compact to do
@@ -175,29 +368,7 @@ class BasicAmountController extends Controller
              $after_hand_over_money->after_handover_money_payment_type=$request->after_handover_money_payment_type;
              $after_hand_over_money->save();
 
-
-
              return redirect()->back();
-
-
-
-
-//#dae2e5
-#ooooo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
