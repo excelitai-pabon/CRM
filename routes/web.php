@@ -3,6 +3,7 @@
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
@@ -185,6 +186,13 @@ Route::get('/project/all/views', function () {
 Route::get('/clients', function () {
     return view('ourclients.clients');
 });
+
+
+//pdf routes for basic info
+Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
+Route::get('/member/{id}/pdf',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+
+
 
 
 
