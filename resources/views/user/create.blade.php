@@ -96,7 +96,7 @@
 
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Permant Address</label>
-                            <input type="text" class="form-control @error('permanent_address')is-invalid @enderror" name="permanent_address" id="validationCustom01" placeholder="Permanenrt Address" value="{{old('permanent_address')}}" required>
+                            <input type="text" class="form-control @error('permanent_address')is-invalid @enderror" name="permanent_address" id="validationCustom01" placeholder="Permanent Address" value="{{old('permanent_address')}}" required>
                             @error('permanent_address')
                             <div class="invalid-feedback">
                                 {{$message}}

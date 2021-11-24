@@ -24,6 +24,7 @@ class CreateDownpaymentStatusesTable extends Migration
             $table->dateTime('downpayment_money_due_date')->nullable();
             $table->text('downpayment_money_note')->nullable();
             $table->boolean('approval')->default(1);
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

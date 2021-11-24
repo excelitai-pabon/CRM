@@ -20,6 +20,7 @@ class CreateTotalInstallmentAmountsTable extends Migration
             $table->date('installment_starting_date');
             $table->bigInteger('total_installment_amount');
             $table->text('description')->nullable();
+            
 
 
             $table->timestamps();

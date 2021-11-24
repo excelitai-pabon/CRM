@@ -11,4 +11,9 @@ class LandFillingStatus2nd extends Model
     protected $guarded = [
         
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -24,6 +24,7 @@ class CreateFloorRoofCasting1stsTable extends Migration
             $table->dateTime('floor_roof_casting_money_due_date_1st')->nullable();
             $table->text('floor_roof_casting_money_note_1st')->nullable();
             $table->boolean('approval')->default(1);
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

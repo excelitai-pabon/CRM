@@ -28,6 +28,7 @@ class CreateEmployeesTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('general')->default(0);
             $table->text('profile_photo_path')->nullable();
+            $table->string('crm_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken(); 
             $table->timestamps();

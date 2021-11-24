@@ -24,6 +24,7 @@ class CreateAfterHandoverMoneyTable extends Migration
             $table->dateTime('after_handover_money_due_date')->nullable();
             $table->text('after_handover_money_note')->nullable();
             $table->boolean('approval')->default(1);
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

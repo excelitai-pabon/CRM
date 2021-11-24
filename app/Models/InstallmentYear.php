@@ -15,4 +15,9 @@ class InstallmentYear extends Model
         'installment_years_amount' => 'array'
     ]; 
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
