@@ -38,7 +38,6 @@
                             @enderror
                            
                         </div>
-                        
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Find</button>
                         </div>

@@ -19,6 +19,7 @@ class CreateBrokersTable extends Migration
             $table->string('number');
             $table->string('address')->nullable();
             $table->string('broker_image')->nullable();
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

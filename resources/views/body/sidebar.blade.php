@@ -53,6 +53,24 @@
                         <span>Installments</span>
                     </a>
                 </li>
+                <li >
+                    <a href="{{route('super_admin.all.user.due')}}" class=" waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Today Due</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-email"></i>
+                        <span>CRM</span>
+                    </a>
+                    <ul class="sub-menu ">
+
+                        <li><a href="{{route('super_admin.all.crm')}}">All CRM</a></li>
+                        <li><a href="{{route('super_admin.add.crm')}}">Add CRM</a></li>
+                    </ul>
+                </li>
 
 
             </ul>

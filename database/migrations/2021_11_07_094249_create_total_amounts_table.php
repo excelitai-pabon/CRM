@@ -20,6 +20,7 @@ class CreateTotalAmountsTable extends Migration
             $table->bigInteger('total_amount');
             $table->string('total_amount_payment_type');
             $table->text('description')->nullable();
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

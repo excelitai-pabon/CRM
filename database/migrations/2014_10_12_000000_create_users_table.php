@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
 	        $table->string('member_image')->nullable();
 	        $table->string('nominee_image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('crm_id')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

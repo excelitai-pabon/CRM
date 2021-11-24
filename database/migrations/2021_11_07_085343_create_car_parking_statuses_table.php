@@ -24,6 +24,7 @@ class CreateCarParkingStatusesTable extends Migration
             $table->dateTime('car_parking_money_due_date')->nullable();
             $table->text('car_parking_money_note')->nullable();
             $table->boolean('approval')->default(1);
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

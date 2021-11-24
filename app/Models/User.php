@@ -77,4 +77,54 @@ class User extends Authenticatable
     
         return $this->hasOne(InstallmentYear::class,'user_id','id');
     }
+
+    public function afterHandOverMoney()
+    {
+        return $this->hasOne(AfterHandoverMoney::class);
+    }
+
+    public function bookingStatus()
+    {
+        return $this->hasOne(BookingStatus::class);
+    }
+
+    public function buildingPilling()
+    {
+        return $this->hasOne(BuildingPillingStatus::class);
+    }
+
+    public function carParking()
+    {
+        return $this->hasOne(CarParkingStatus::class);
+    }
+
+    public function downPayment()
+    {
+        return $this->hasOne(DownpaymentStatus::class);
+    }
+
+    public function finishingWork()
+    {
+        return $this->hasOne(FinishingWorkStatus::class);
+    }
+
+    public function floorRoof()
+    {
+        return $this->hasOne(FloorRoofCasting1st::class);
+    }
+
+    public function landFilling1()
+    {
+        return $this->hasOne(LandFillingStatus1st::class);
+    }
+
+    public function landFilling2()
+    {
+        return $this->hasOne(LandFillingStatus2nd::class);
+    }
+    public function totalAmount()
+    {
+        return $this->hasOne(TotalAmount::class);
+    }
+    
 }

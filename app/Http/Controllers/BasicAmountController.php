@@ -141,11 +141,11 @@ class BasicAmountController extends Controller
 
           //finishing work
 
-          $finishing_work= FinishingWorkStatus::where('user_id', $id)->first();
+          $finishing_work = FinishingWorkStatus::where('user_id', $id)->first();
           $finishing_work->finishing_work_money= $request->finishing_work_money;
           $finishing_work->finishing_work_money_paid=$request->finishing_work_money_paid;
-          $finishing_work-> finishing_work_money_paid_date =$request->finishing_work_money_paid_date;
-          $finishing_work-> finishing_work_money_due =$request->finishing_work_money_due;
+          $finishing_work->finishing_work_money_paid_date =$request->finishing_work_money_paid_date;
+          $finishing_work->finishing_work_money_due =$request->finishing_work_money_due;
           $finishing_work->finishing_work_money_due_date=$request->finishing_work_money_due_date;
           $finishing_work->finishing_work_money_note=$request->finishing_work_money_note;
           $finishing_work->save();
@@ -169,25 +169,6 @@ class BasicAmountController extends Controller
 
 
              return redirect()->back();
-
-
-
-
-//#dae2e5
-#ooooo
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

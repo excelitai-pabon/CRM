@@ -54,7 +54,6 @@ class InstallmentController extends Controller
         if(isset($paid_date))
         {
             return view('installment.all-installment',compact('user','paid_date'));
-
         }
         else
         {
@@ -125,8 +124,8 @@ class InstallmentController extends Controller
         $installment->payment_installment_type =$request->payment_type;
         $installment->installment_note =$request->payment_note;
         $installment->save();
-        return redirect()->route('super_admin.installments');
 
+        return redirect()->route('super_admin.installments');
 
     }
 }

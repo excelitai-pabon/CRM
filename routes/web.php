@@ -3,10 +3,12 @@
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
+use App\Http\Controllers\CrmController;
+use App\Http\Controllers\DueController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
-
+use GuzzleHttp\Psr7\Request;
 
 Route::get('/', function () {
     return view('signin_pages.client_login');
@@ -108,7 +110,41 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
         Route::get('/edit-user/{user}',[UserController::class,'edit'])->name('user.edit');
         Route::post('/update-user/{user}',[UserController::class,'update'])->name('user.update');
         Route::delete('/delete-user/{user}',[UserController::class,'destroy'])->name('user.delete');
+        Route::get('/user-profile/{id}',[UserController::class,'profile'])->name('user.profile');
+
+
+        // ==================== Due Route ====================
+        Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
+
+
+        //===================== CRM Route ====================
+
+        Route::get('/add-crm',[CrmController::class,'addCrm'])->name('add.crm');
+        Route::post('/store-crm',[CrmController::class,'storeCrm'])->name('store.crm');
+
+        Route::get('/all-crm',[CrmController::class,'allCrm'])->name('all.crm');
+        Route::post('/delete-crm',[CrmController::class,'deleteCrm'])->name('crm.delete');
+        Route::get('/edit-crm/{id}',[CrmController::class,'editCrm'])->name('crm.edit');
+        Route::post('/update-crm/{id}',[CrmController::class,'updateCrm'])->name('crm.update');
+
+        Route::get('/add-view-employee/{crm_id}',[CrmController::class,'addCrmEmployee'])->name('crm.add.employee');
+
+        Route::post('/store-admin/{crm_id}',[CrmController::class,'storeCrmAdmin'])->name('crm.store.admin');
+        Route::get('/edit-admin/{id}',[CrmController::class,'editCrmAdmin'])->name('crm.edit.admin');
+        Route::post('/details-update-admin/{id}',[CrmController::class,'detailsUpdateCrmAdmin'])->name('crm.details.update.admin');
+        Route::post('/password-update-admin/{id}',[CrmController::class,'passwordUpdateCrmAdmin'])->name('crm.password.update.admin');
+        Route::post('/delete-admin',[CrmController::class,'deleteCrmAdmin'])->name('crm.delete.admin');
+
+        Route::post('/store-employee/{crm_id}',[CrmController::class,'storeCrmEmployee'])->name('crm.store.employee');
+        Route::post('/delete-employee',[CrmController::class,'deleteCrmEmployee'])->name('crm.delete.employee');
+        Route::get('/edit-employee/{id}',[CrmController::class,'editCrmemployee'])->name('crm.edit.employee');
+        Route::post('/details-update-employee/{id}',[CrmController::class,'detailsUpdateCrmEmployee'])->name('crm.details.update.employee');
+        Route::post('/password-update-employee/{id}',[CrmController::class,'passwordUpdateCrmEmployee'])->name('crm.password.update.employee');
+
+
 });
+
+
 
 
 
@@ -154,9 +190,6 @@ Route::prefix('employee')->name('employee.')->group(function()
 
 
 /***** Route with middleware */
-
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

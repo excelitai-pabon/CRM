@@ -22,6 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->rememberToken(); 
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }
