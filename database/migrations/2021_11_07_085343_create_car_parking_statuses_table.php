@@ -15,9 +15,9 @@ class CreateCarParkingStatusesTable extends Migration
     {
         Schema::create('car_parking_statuses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');  
-            $table->bigInteger('car_parking_money');
-            $table->string('car_parking_money_payment_type');
+            $table->bigInteger('user_id');
+            $table->bigInteger('car_parking_money')->nullable();
+            $table->string('car_parking_money_payment_type')->nullable();
             $table->string('car_parking_money_paid')->nullable();
             $table->string('car_parking_money_due')->nullable();
             $table->dateTime('car_parking_money_paid_date')->nullable();

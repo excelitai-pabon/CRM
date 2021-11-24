@@ -113,8 +113,10 @@ class InstallmentController extends Controller
         ]);
 
         $installment = new Installment();
+        
 
         $installment->user_id = $user->id;
+        $installment->crm_id = $user->crm_id;
         $installment->installment_no = $installment_no;
         $installment->installment_amount = $request->payment;
         $installment->installment_paid = $request->paid;

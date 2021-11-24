@@ -16,8 +16,8 @@ class CreateBookingStatusesTable extends Migration
         Schema::create('booking_statuses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('booking_money');
-            $table->string('booking_money_payment_type');
+            $table->bigInteger('booking_money')->nullable();
+            $table->string('booking_money_payment_type')->nullable();
             $table->string('booking_money_paid')->nullable();
             $table->string('booking_money_due')->nullable();
             $table->dateTime('booking_money_paid_date')->nullable();

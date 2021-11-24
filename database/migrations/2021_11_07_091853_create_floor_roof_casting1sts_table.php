@@ -16,8 +16,8 @@ class CreateFloorRoofCasting1stsTable extends Migration
         Schema::create('floor_roof_casting1sts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('floor_roof_casting_money_1st');
-            $table->string('floor_roof_casting_money_payment_type_1st');
+            $table->bigInteger('floor_roof_casting_money_1st')->nullable();
+            $table->string('floor_roof_casting_money_payment_type_1st')->nullable();
             $table->string('floor_roof_casting_money_paid_1st')->nullable();
             $table->string('floor_roof_casting_money_due_1st')->nullable();
             $table->dateTime('floor_roof_casting_money_paid_date_1st')->nullable();

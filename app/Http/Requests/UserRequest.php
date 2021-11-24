@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         if(isset($this->user)){
             return [
-                'file_no'=>'required|string',
+                'file_no'=>'required|string|unique:users,file_no,'.$this->user->id,
                 'member_name'=>'required|regex:/^[a-zA-Z ]*/',
                 'father_name'=>'required|regex:/^[a-zA-Z ]*/',
                 'mother_name'=>'required|regex:/^[a-zA-Z ]*/',
@@ -47,7 +47,7 @@ class UserRequest extends FormRequest
             ];
         }
         return [
-            'file_no'=>'required|string',
+            'file_no'=>'required|string|unique:users,file_no',
             'member_name'=>'required|regex:/^[a-zA-Z ]*/',
             'father_name'=>'required|regex:/^[a-zA-Z ]*/',
             'mother_name'=>'required|regex:/^[a-zA-Z ]*/',

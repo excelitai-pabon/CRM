@@ -15,10 +15,10 @@ class CreateTotalAmountsTable extends Migration
     {
         Schema::create('total_amounts', function (Blueprint $table) {
             $table->id();
-            
+
             $table->bigInteger('user_id');
             $table->bigInteger('total_amount');
-            $table->string('total_amount_payment_type');
+            $table->string('total_amount_payment_type')->nullable();
             $table->text('description')->nullable();
             $table->string('crm_id')->nullable();
             $table->timestamps();

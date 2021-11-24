@@ -21,7 +21,9 @@
                         <span>Calendar</span>
                     </a>
                 </li>
-                <li>
+                
+                @auth('super_admin')
+                    <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ti-email"></i>
                         <span>Users</span>
@@ -32,6 +34,22 @@
                         <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
                     </ul>
                 </li>
+                @endauth
+
+                @auth('admin')
+                    <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Users</span>
+                    </a>
+                    <ul class="sub-menu ">
+
+                        <li><a href="{{route('super_admin.all_user')}}">All User</a></li>
+                        <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
+                    </ul>
+                </li>
+                @endauth
+                
 
 
 
@@ -41,7 +59,8 @@
                         <span>Amounts</span>
                     </a>
                     <ul class="sub-menu ">
-                        <li><a href="{{route('super_admin.basicAmount')}}">Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
 
                     </ul>
                 </li>
