@@ -51,10 +51,6 @@ Route::prefix('admin')->name('admin.')->group(function()
 
             Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:admin');
 
-
-
-
-
 });
 
 
