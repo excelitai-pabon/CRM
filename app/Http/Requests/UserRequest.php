@@ -47,6 +47,7 @@ class UserRequest extends FormRequest
             ];
         }
         return [
+            'crm'=>'required',
             'file_no'=>'required|string|unique:users,file_no',
             'member_name'=>'required|regex:/^[a-zA-Z ]*/',
             'father_name'=>'required|regex:/^[a-zA-Z ]*/',

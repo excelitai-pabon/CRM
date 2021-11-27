@@ -8,7 +8,7 @@
     <div>
         <h2>Basic Amount</h2>
     </div>
-    <form method="get" action="{{url('/super-admin/basic/showingData')}}" >
+    <form method="get" action="@if(Auth::guard('super_admin')->check()) {{route('super_admin.basic_amount.update.search')}} @elseif(Auth::guard('admin')->check()) {{route('admin.basic_amount.update.search')}} @endif ">
         @csrf
         <div class="row">
             <div class="form-group col">

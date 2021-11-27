@@ -15,13 +15,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class=" waves-effect">
-                        <i class="ti-calendar"></i>
-                        <span>Calendar</span>
-                    </a>
-                </li>
-                
                 @auth('super_admin')
                     <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -34,24 +27,6 @@
                         <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
                     </ul>
                 </li>
-                @endauth
-
-                @auth('admin')
-                    <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-email"></i>
-                        <span>Users</span>
-                    </a>
-                    <ul class="sub-menu ">
-
-                        <li><a href="{{route('super_admin.all_user')}}">All User</a></li>
-                        <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
-                    </ul>
-                </li>
-                @endauth
-                
-
-
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -65,23 +40,69 @@
                     </ul>
                 </li>
 
+                @endauth
 
+                @auth('admin')
+                    <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-folder"></i>
+                        <span>Users</span>
+                    </a>
+                    <ul class="sub-menu ">
+
+                        <li><a href="{{route('admin.all_user')}}">All User</a></li>
+                        <li><a href="{{route('admin.add_user')}}">Add User</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-folder"></i>
+                        <span>Amounts</span>
+                    </a>
+                    <ul class="sub-menu ">
+                        <li><a href="{{route('admin.basic_amount.add')}}">Add Basic Amounts</a></li>
+                        <li><a href="{{route('admin.basicAmount')}}">Update Basic Amounts</a></li>
+
+                    </ul>
+                </li>
+                <li >
+                    <a href="{{route('admin.installments')}}" class=" waves-effect">
+                        <i class="fas fa-file"></i>
+                        <span>Installments</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{route('admin.all.user.due')}}" class=" waves-effect">
+                        <i class="fas fa-folder"></i>
+                        <span>Today Due</span>
+                    </a>
+                </li>
+                @endauth
+
+
+
+
+
+
+
+
+                @auth('super_admin')
                 <li >
                     <a href="{{route('super_admin.installments')}}" class=" waves-effect">
-                        <i class="ti-email"></i>
+                        <i class="fas fa-file"></i>
                         <span>Installments</span>
                     </a>
                 </li>
                 <li >
                     <a href="{{route('super_admin.all.user.due')}}" class=" waves-effect">
-                        <i class="ti-email"></i>
+                        <i class="fas fa-folder"></i>
                         <span>Today Due</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-email"></i>
+                        <i class="fas fa-folder"></i>
                         <span>CRM</span>
                     </a>
                     <ul class="sub-menu ">
@@ -90,6 +111,8 @@
                         <li><a href="{{route('super_admin.add.crm')}}">Add CRM</a></li>
                     </ul>
                 </li>
+                @endauth
+
 
 
             </ul>

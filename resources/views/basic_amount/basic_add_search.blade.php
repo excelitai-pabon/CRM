@@ -8,7 +8,9 @@
     <div>
         <h2>Add Member Basic Amount</h2>
     </div>
-    <form method="GET" action="{{route('super_admin.basic_amount.create')}}" >
+
+    <form method="GET" action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.basic_amount.create') }}
+            @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.create') }} @endif ">
 
         <div class="row">
             <div class="form-group col">

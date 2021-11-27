@@ -18,9 +18,8 @@ class DatabaseSeeder extends Seeder
         // Super Admin
         $this->call([
             AdminSeeder::class,
-           
 
-            
+
         ]);
 
 

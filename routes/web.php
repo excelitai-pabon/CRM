@@ -39,22 +39,37 @@ Route::prefix('admin')->name('admin.')->group(function()
         ->name('logout');
 
         // =====================user route ======================
-        Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+        Route::get('/all-user',[UserController::class,'index'])->name('all_user');
+        Route::get('/add-user',[UserController::class,'create'])->name('add_user');
+        Route::post('/store-user',[UserController::class,'store'])->name('user.store');
 
 
 
+        //Basic
+         Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:admin')->name('basicAmount');
 
-            //Basic
-            Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:admin')->name('basicAmount');
+        Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:admin');
 
-            Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:admin');
+        Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:admin');
 
-            Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:admin');
-
-
-
+        Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:admin')->name('basic_amount.add');
+        Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:admin')->name('basic_amount.create');
+        Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])->middleware('auth:admin')->name('basic_amount.store');
 
 
+
+        //** installment Routes */
+        Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:admin')->name('installments');
+        Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:admin')->name('installments.find');
+        Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:admin')->name('installments.all');
+        Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:admin')->name('installments.edit');
+        Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:admin')->name('installments.edit.store');
+        Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:admin')->name('installments.create');
+        Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:admin')->name('installments.create.store');
+
+
+        // ==================== Due Route ====================
+        Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 });
 
 
@@ -102,10 +117,10 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     ->middleware('auth:super_admin')->name('basic_amount.store');
 
 
-    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
+    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:super_admin');
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
-    Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
+    Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:super_admin');
 
 
         // =====================user route ======================
