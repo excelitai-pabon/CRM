@@ -38,7 +38,7 @@
     <!-- end page title -->
 
 
-    <form method="POST" action="{{ url('/super-admin/basic/update/' . $user->id) }}" enctype="multipart/form-data">
+    <form method="POST" action="@if(Auth::guard('admin')->check()) {{ route('admin.basic_amount.update', $user->id) }} @elseif(Auth::guard('super_admin')->check())  {{ route('super_admin.basic_amount.update', $user->id) }} @elseif(Auth::guard('employee')->check())  {{ route('employee.basic_amount.update', $user->id) }} @endif" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-6">

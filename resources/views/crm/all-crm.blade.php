@@ -23,11 +23,11 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead class="bg-dark text-white">
                                 <tr>
-                                    
+
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Action</th>
-                                    
+
                                 </tr>
                             </thead>
 
@@ -36,7 +36,7 @@
                                     <tr>
                                         <td>{{$crm->name}}</td>
                                         <td>{{$crm->address}}</td>
-                                        
+
                                         <td class="d-flex flex-row">
                                             <a href="{{route('super_admin.crm.add.employee',$crm->id)}}" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
                                             <a href="{{route('super_admin.crm.edit',$crm->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
@@ -46,9 +46,9 @@
                                                 <button type="submit"  class="btn btn-danger show_confirm" data-toggle="tooltip"><i class="far fa-trash-alt"></i></button>
                                             </form>
                                         </td>
-                                    </tr> 
+                                    </tr>
                                 @endforeach
-                               
+
 
                             </tbody>
                         </table>
@@ -77,7 +77,7 @@
 
     $(".show_confirm").click(function(e)
     {
-        console.log('work');
+
         e.preventDefault();
         var form =  $(this).closest("form");
             swal({
@@ -95,13 +95,18 @@
                         form.submit();
 
                     } else {
-                        swal("Your imaginary file is safe!");
+                        swal({
+                            title: "Your imaginary file is safe!",
+                            text: " ",
+                            icon: "info",
+
+                        });
                     }
             });
     });
-    
-    
 
-    
+
+
+
 </script>
 @endsection

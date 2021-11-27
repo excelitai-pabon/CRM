@@ -9,6 +9,7 @@ use App\Models\BookingStatus;
 use App\Models\AfterHandoverMoney;
 use App\Models\BuildingPillingStatus;
 use App\Models\CarParkingStatus;
+use App\Models\Crm;
 use App\Models\DownpaymentStatus;
 use App\Models\FinishingWorkStatus;
 use App\Models\FloorRoofCasting1st;
@@ -16,6 +17,7 @@ use App\Models\LandFillingStatus1st;
 use App\Models\LandFillingStatus2nd;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -23,13 +25,32 @@ class UserController extends Controller
 {
     //all user
     public function index(){
-        $users=User::all();
+        if(Auth::guard('admin')->check()){
+            $users=User::where('crm_id',Auth::guard('admin')->user()->crm_id)->get();
+        }
+        elseif(Auth::guard('employee')->check()){
+            $users=User::all();
+        }elseif(Auth::guard('super_admin')->check()){
+            $users=User::all();
+        }
         return view('user.all',compact('users'));
     }
 
+
+
     // user add page show
     public function create(){
-        return view('user.create');
+
+        if(Auth::guard('admin')->check()){
+            $crms=Crm::where('id',Auth::guard('admin')->user()->crm_id)->get();
+            return view('user.create',compact('crms'));
+        }
+        if(Auth::guard('employee')->check()){
+            $crms=Crm::where('id',Auth::guard('employee')->user()->crm_id)->get();
+            return view('user.create',compact('crms'));
+        }
+        $crms=Crm::all();
+        return view('user.create',compact('crms'));
 
     }
 
@@ -38,6 +59,7 @@ class UserController extends Controller
         //  dd($request->all());
 
         $userData=[
+            'crm_id'=>$request->crm,
             'file_no'=>$request->file_no,
             'member_name'=>$request->member_name,
             'father_name'=>$request->father_name,
@@ -167,18 +189,18 @@ class UserController extends Controller
 
         $paidInstallment = 0;
         $paidInstallment = Installment::where('user_id',$id)->sum('installment_paid');
-        
+
 
         $total_paid = 0;
         $total_paid = optional($user->afterHandOverMoney)->after_handover_money_money_paid + optional($user->bookingStatus)->booking_money_paid + optional($user->buildingPilling)->building_pilling_money_paid + optional($user->carParking)->car_parking_money_paid + optional($user->downPayment)->downpayment_money_paid + optional($user->finishingWork)->finishing_work_money_paid + optional($user->floorRoof)->floor_roof_casting_money_paid_1st + optional($user->landFilling1)-> land_filling_money_paid + optional($user->landFilling2)-> land_filling_money_paid;
 
         $total_paid += $paidInstallment;
-        
+
 
         $total_due = 0;
         $total_due = optional($user->afterHandOverMoney)->after_handover_money_money_due + optional($user->bookingStatus)->booking_money_due + optional($user->buildingPilling)->building_pilling_money_due + optional($user->carParking)->car_parking_money_due + optional($user->downPayment)->downpayment_money_due + optional($user->finishingWork)->finishing_work_money_due + optional($user->floorRoof)->floor_roof_casting_money_due_1st + optional($user->landFilling1)-> land_filling_money_due + optional($user->landFilling2)->land_filling_money_due;
-        
-        
+
+
         $total_due += (optional($user->totalNoOfInstallment)->total_installment_amount - $paidInstallment);
 
         $installment_paid_date = Carbon::parse(optional($user->totalNoOfInstallment)->installment_starting_date);
@@ -189,8 +211,8 @@ class UserController extends Controller
         $start = $start->toDateTime();
         $end = $todayDate->endOfDay();
         $end = $end->toDateTime();
-      
-        
+
+
 
         $booking_status = BookingStatus::whereBetween('booking_money_due_date',[$start,$end])->first();
         $after_handover_money = AfterHandoverMoney::whereBetween('after_handover_money_due_date',[$start,$end])->first();
@@ -203,20 +225,20 @@ class UserController extends Controller
         $land_filling_2nd = LandFillingStatus2nd::whereBetween('land_filling_money_due_date',[$start,$end])->first();
         $installments = Installment::whereBetween('installment_due_date',[$start,$end])->get();
 
-        
+
         $dueTillToday = 0;
         $dueTillToday = optional($booking_status)->booking_money_due + optional($after_handover_money)->after_handover_money_money_due + optional($building_pilling)->building_pilling_money_due + optional($car_parking)->car_parking_money_due + optional($down_payment)->downpayment_money_due + optional($finishing_money)->finishing_work_money_due + optional($first_floor)->floor_roof_casting_money_due_1st + optional($land_filling_1st)->land_filling_money_due + optional($land_filling_2nd)->land_filling_money_due;
 
-        
-        
+
+
         foreach($installments as $installment)
         {
             $dueTillToday += optional($installment)->installment_due;
         }
 
-        
 
-       
+
+
 
         return view('user.profile',compact('user','total_paid','total_due','installment_paid_date','dueTillToday'));
     }
