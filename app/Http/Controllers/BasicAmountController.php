@@ -67,7 +67,7 @@ class BasicAmountController extends Controller
     public function basicAmountStore(BasicAmountRequest $request, User $user){
         //dd($request->all());
 
-         //Total amount
+        //Total amount
         $totalAmount=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
@@ -250,11 +250,13 @@ class BasicAmountController extends Controller
 
     // update basic amount page
     // change the view page with compact to do
+
     public function basicShowDataUpdate(Request $request){
 
         //$user= User::find($request->file_no);
 
         //$user = User::where('file_no', $request->file_no)->first();
+
 
         if(Auth::guard('admin')->check()){
             $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
@@ -357,23 +359,23 @@ class BasicAmountController extends Controller
 
 
 
-          //land_filling2nd part
+        //land_filling2nd part
 
-          $land_filing_2nd = LandFillingStatus2nd::where('user_id', $id)->first();
-          $land_filing_2nd->land_filling_money= $approve_updates->land_filling_money_2;
-          $land_filing_2nd->land_filling_money_paid=$approve_updates->land_filling_money_paid_2;
-          $land_filing_2nd-> land_filling_money_paid_date =$approve_updates->land_filling_money_paid_date_2;
-          $land_filing_2nd-> land_filling_money_due_date =$approve_updates->land_filling_money_due_date_2;
-          $land_filing_2nd->land_filling_money_due=$approve_updates->land_filling_money_due_2;
-          $land_filing_2nd->land_filling_money_note=$approve_updates->land_filling_money_note_2;
-          $land_filing_2nd->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_2;
-          $land_filing_2nd->save();
-
-
+        $land_filing_2nd = LandFillingStatus2nd::where('user_id', $id)->first();
+        $land_filing_2nd->land_filling_money= $approve_updates->land_filling_money_2;
+        $land_filing_2nd->land_filling_money_paid=$approve_updates->land_filling_money_paid_2;
+        $land_filing_2nd-> land_filling_money_paid_date =$approve_updates->land_filling_money_paid_date_2;
+        $land_filing_2nd-> land_filling_money_due_date =$approve_updates->land_filling_money_due_date_2;
+        $land_filing_2nd->land_filling_money_due=$approve_updates->land_filling_money_due_2;
+        $land_filing_2nd->land_filling_money_note=$approve_updates->land_filling_money_note_2;
+        $land_filing_2nd->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_2;
+        $land_filing_2nd->save();
 
 
 
-          //land_filling2nd part
+
+
+        //land_filling2nd part
 
         $building_pilling_status = BuildingPillingStatus::where('user_id', $id)->first();
         $building_pilling_status->building_pilling_money= $approve_updates->building_pilling_money;
@@ -388,56 +390,56 @@ class BasicAmountController extends Controller
 
 
 
-          //roof casting  part
+        //roof casting  part
 
-          $roof_casting_1st= FloorRoofCasting1st::where('user_id', $id)->first();
-          $roof_casting_1st->floor_roof_casting_money_1st= $approve_updates->floor_roof_casting_money_1st;
-          $roof_casting_1st->floor_roof_casting_money_paid_1st=$approve_updates->floor_roof_casting_money_paid_1st;
-          $roof_casting_1st-> floor_roof_casting_money_paid_date_1st =$approve_updates->floor_roof_casting_money_paid_date_1st;
-          $roof_casting_1st-> floor_roof_casting_money_due_date_1st =$approve_updates->floor_roof_casting_money_due_date_1st;
-          $roof_casting_1st->floor_roof_casting_money_due_1st=$approve_updates->floor_roof_casting_money_due_1st;
-          $roof_casting_1st->floor_roof_casting_money_note_1st=$approve_updates->floor_roof_casting_money_note_1st;
-          $roof_casting_1st->floor_roof_casting_money_payment_type_1st=$approve_updates->floor_roof_casting_money_payment_type_1st;
-          $roof_casting_1st->save();
-
-
-
-
-
-          //finishing work
-
-          $finishing_work= FinishingWorkStatus::where('user_id', $id)->first();
-          $finishing_work->finishing_work_money= $approve_updates->finishing_work_money;
-          $finishing_work->finishing_work_money_paid=$approve_updates->finishing_work_money_paid;
-          $finishing_work-> finishing_work_money_paid_date =$approve_updates->finishing_work_money_paid_date;
-          $finishing_work-> finishing_work_money_due =$approve_updates->finishing_work_money_due;
-          $finishing_work->finishing_work_money_due_date=$approve_updates->finishing_work_money_due_date;
-          $finishing_work->finishing_work_money_note=$approve_updates->finishing_work_money_note;
-          $finishing_work->finishing_work_money_payment_type=$approve_updates->finishing_work_money_payment_type;
-          $finishing_work->save();
+        $roof_casting_1st= FloorRoofCasting1st::where('user_id', $id)->first();
+        $roof_casting_1st->floor_roof_casting_money_1st= $approve_updates->floor_roof_casting_money_1st;
+        $roof_casting_1st->floor_roof_casting_money_paid_1st=$approve_updates->floor_roof_casting_money_paid_1st;
+        $roof_casting_1st-> floor_roof_casting_money_paid_date_1st =$approve_updates->floor_roof_casting_money_paid_date_1st;
+        $roof_casting_1st-> floor_roof_casting_money_due_date_1st =$approve_updates->floor_roof_casting_money_due_date_1st;
+        $roof_casting_1st->floor_roof_casting_money_due_1st=$approve_updates->floor_roof_casting_money_due_1st;
+        $roof_casting_1st->floor_roof_casting_money_note_1st=$approve_updates->floor_roof_casting_money_note_1st;
+        $roof_casting_1st->floor_roof_casting_money_payment_type_1st=$approve_updates->floor_roof_casting_money_payment_type_1st;
+        $roof_casting_1st->save();
 
 
 
 
 
+        //finishing work
 
-             //after hand over part
-
-             $after_hand_over_money= AfterHandoverMoney::where('user_id', $id)->first();
-             $after_hand_over_money->after_handover_money= $approve_updates->after_handover_money;
-             $after_hand_over_money->after_handover_money_money_paid=$approve_updates->after_handover_money_money_paid;
-             $after_hand_over_money-> after_handover_money_paid_date =$approve_updates->after_handover_money_paid_date;
-             $after_hand_over_money-> after_handover_money_due_date =$approve_updates->after_handover_money_due_date;
-             $after_hand_over_money->after_handover_money_money_due=$approve_updates->after_handover_money_money_due;
-             $after_hand_over_money->after_handover_money_note=$approve_updates->after_handover_money_note;
-             $after_hand_over_money->after_handover_money_payment_type=$approve_updates->after_handover_money_payment_type;
-             $after_hand_over_money->save();
-
+        $finishing_work= FinishingWorkStatus::where('user_id', $id)->first();
+        $finishing_work->finishing_work_money= $approve_updates->finishing_work_money;
+        $finishing_work->finishing_work_money_paid=$approve_updates->finishing_work_money_paid;
+        $finishing_work-> finishing_work_money_paid_date =$approve_updates->finishing_work_money_paid_date;
+        $finishing_work-> finishing_work_money_due =$approve_updates->finishing_work_money_due;
+        $finishing_work->finishing_work_money_due_date=$approve_updates->finishing_work_money_due_date;
+        $finishing_work->finishing_work_money_note=$approve_updates->finishing_work_money_note;
+        $finishing_work->finishing_work_money_payment_type=$approve_updates->finishing_work_money_payment_type;
+        $finishing_work->save();
 
 
 
 
-             return redirect()->route('super_admin.dashboard');
+
+
+        //after hand over part
+
+        $after_hand_over_money= AfterHandoverMoney::where('user_id', $id)->first();
+        $after_hand_over_money->after_handover_money= $approve_updates->after_handover_money;
+        $after_hand_over_money->after_handover_money_money_paid=$approve_updates->after_handover_money_money_paid;
+        $after_hand_over_money-> after_handover_money_paid_date =$approve_updates->after_handover_money_paid_date;
+        $after_hand_over_money-> after_handover_money_due_date =$approve_updates->after_handover_money_due_date;
+        $after_hand_over_money->after_handover_money_money_due=$approve_updates->after_handover_money_money_due;
+        $after_hand_over_money->after_handover_money_note=$approve_updates->after_handover_money_note;
+        $after_hand_over_money->after_handover_money_payment_type=$approve_updates->after_handover_money_payment_type;
+        $after_hand_over_money->save();
+
+
+
+
+
+        return redirect()->route('super_admin.dashboard');
 
     }
 

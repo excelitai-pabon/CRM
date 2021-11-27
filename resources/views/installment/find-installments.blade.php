@@ -38,10 +38,6 @@
                             @enderror
 
                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 9c1297f214513032bbdb6a5df8db104a3eb8d49d
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Find</button>
                         </div>
