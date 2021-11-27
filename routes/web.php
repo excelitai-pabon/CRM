@@ -3,11 +3,14 @@
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
+use App\Http\Controllers\BasicAmountUpdateController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
-
+use FontLib\Table\Type\name;
 
 Route::get('/', function () {
     return view('signin_pages.client_login');
@@ -98,10 +101,23 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     ->middleware('auth:super_admin')->name('basic_amount.store');
 
 
-    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin');
+
+    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->middleware('auth:super_admin')->name('basic.show.data');
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
-    Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin');
+
+    Route::get('/basic/store/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin')->name('basic.approve.store');
+
+
+    //request
+
+
+    Route::post('/basic/update/{id}', [BasicAmountUpdateController::class, 'basicUpdateRequest'])->middleware('auth:super_admin');
+
+
+
+    Route::get('/show/basicrequest',   [BasicAmountUpdateController::class,   'show_request'])->name('show.request')->middleware('auth:super_admin');
+    Route::get('/destroy/request/{id}', [BasicAmountUpdateController::class, 'destroy_request'])->name('basic.destroy')->middleware('auth:super_admin');
 
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -113,6 +129,21 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::get('/edit-user/{user}',[UserController::class,'edit'])->name('user.edit');
     Route::post('/update-user/{user}',[UserController::class,'update'])->name('user.update');
     Route::delete('/delete-user/{user}',[UserController::class,'destroy'])->name('user.delete');
+
+            //pdf
+    Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
+    Route::get('/member/pdf/{id}',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+
+
+
+        //excel
+     Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');
+    Route::get('/export-excel/installment/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin');
+
+
+    Route::get('/tables/index/{id}',[TableController::class,'basic'])->middleware('auth:super_admin');
+    Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
+    Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
 });
 
 
@@ -184,11 +215,26 @@ Route::get('/clients', function () {
 });
 
 
+
+
+
 //pdf routes for basic info
-Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
-Route::get('/member/{id}/pdf',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+// Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
+// Route::get('/member/pdf/{id}',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+
+
+
+// //excel
+// Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');
+// Route::get('/export-excel/installment/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin');
+
+
+// Route::get('/tables/index/{id}',[TableController::class,'basic'])->middleware('auth:super_admin');
+// Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
+// Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
 
 
 
 
-
+Route::get('/data/{id}', [BasicAmountUpdateController::class, 'getBasic_data'])->name('getData')->middleware('auth:super_admin');
+Route::get('/fetchData/{id}', [BasicAmountUpdateController::class, 'fetch_data'])->middleware('auth:super_admin');

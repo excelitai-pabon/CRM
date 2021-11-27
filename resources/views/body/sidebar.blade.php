@@ -43,6 +43,7 @@
                     <ul class="sub-menu ">
                         <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
                         <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.show.request')}}">Basic Amounts Request</a></li>
 
                     </ul>
                 </li>
@@ -52,6 +53,13 @@
                     <a href="{{route('super_admin.installments')}}" class=" waves-effect">
                         <i class="ti-email"></i>
                         <span>Installments</span>
+                    </a>
+                </li>
+
+                <li >
+                    <a href="{{ route ('super_admin.tableshow')}}" class=" waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Tables</span>
                     </a>
                 </li>
 

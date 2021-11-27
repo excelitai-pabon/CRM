@@ -40,6 +40,8 @@
         <!-- Essential script-->
         @yield('script')
         <script src="{{asset('assets')}}/js/custom.js"></script>
+        <script src="{{asset('assets')}}/js/myScript.js"></script>
+
 
     </body>
 

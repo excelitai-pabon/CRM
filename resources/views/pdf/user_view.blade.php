@@ -439,7 +439,82 @@
                   <!--//2021-10-10-->
 
                </table>
+
+
  --}}
+             <table width="1200"  class="table table-bordered mb-0">
+                <tr class="br_none">
+                    <td style="border: 0px; padding: 0px;">
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="border: 0px !important;" >
+
+
+                                     <thead style="height: 65px; font-size: larger ; color:#38a4f8" >
+                                         <tr >
+                                             <th colspan="3" style="text-align: center">Basic Information</th>
+                                         </tr>
+                                     </thead>
+
+                                     <thead style="height: 65px; font-size: larger ; color:#38a4f8" >
+                                        <tr >
+                                            <th  style="text-align: center">Basic Amount</th>
+                                            <th style="text-align: center">Paid Amount</th>
+                                            <th  style="text-align: center">Paid Date</th>
+                                        </tr>
+                                    </thead>
+
+                            <tr>
+                                <td>Booking Money:</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$booking_status->booking_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$booking_status->booking_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Down Payment:</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$down_payment->downpayment_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$down_payment->downpayment_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Car Parking:</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$car_parking->car_parking_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$car_parking->car_parking_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Land Fillig 1</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$land_filing_1st->land_filling_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$land_filing_1st->land_filling_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Land Filling 2</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$land_filing_2nd->land_filling_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$land_filing_2nd->land_filling_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Building Pilling</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$building_pilling_status->building_pilling_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$building_pilling_status->building_pilling_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>1st Floor Roof Casting:</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$roof_casting_1st->floor_roof_casting_money_paid_1st}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$roof_casting_1st->floor_roof_casting_money_due_date_1st}}</td>
+                            </tr>
+                            <tr>
+                                <td>Finising Work Amount</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$finishing_work->finishing_work_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$finishing_work->finishing_work_money_paid_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>After HandOver Amount</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$after_hand_over_money->after_handover_money_money_paid}}</td>
+                                <td style="border-left:1px solid #C9CACC;">{{$after_hand_over_money->after_handover_money_paid_date}}</td>
+                            </tr>
+
+
+
+
+                        </table>
+                    </td>
+                </tr>
+             </table>
 
                <table cellpadding="0" cellspacing="0" border="0" align="center" width="350" style="border: 0px;" class="mt-4 ">
                 <tr class="br_none">
@@ -449,6 +524,8 @@
                     </td>
                 </tr>
             </table>
+
+
            </div>
        </section>
    </div>

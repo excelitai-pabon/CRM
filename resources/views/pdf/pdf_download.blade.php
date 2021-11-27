@@ -46,9 +46,8 @@
 	top: .3em;
 }
 .hero {
-	background: linear-gradient( rgba(0, 0, 0, .75), rgba(0, 0, 0, .5) ), url('http://s7d2.scene7.com/is/image/Watscocom/baker_landing_20161212_rheem-destination-unknown-04?scl=1&qlt=90,1&resMode=sharp2&op_usm=1.75,0.3,2,0') no-repeat;
 	background-size: cover;
-	background-color: #000000;
+
 	text-shadow: 1px 2px 3px #000000;
 	position: relative;
 	padding: 30px 30px 0 30px;
@@ -71,7 +70,7 @@
 	background: #D6D6D6;
 	font-size: .75rem;
 	font-weight: 400;
-	color: #474443;
+    color: #1F1752;
 	border-bottom: solid thin #C1C1C1;
 	border-right: solid thin #C1C1C1;
 	border-top: solid thin #D6D6D6;
@@ -81,7 +80,7 @@
 	padding: 4px 8px;
 	font-size: .75rem;
 	font-weight: 400;
-	color: #474443;
+
 	border-bottom: solid thin #C1C1C1;
 	border-right: solid thin #C1C1C1;
 	border-top: solid thin #D6D6D6;
@@ -91,7 +90,7 @@
 }
 /*controls odd rows*/
 #fantasyTable tr:nth-child(odd) {
-	background: #FFFFFF;
+
 	border-bottom: solid thin #C1C1C1;
 	border-right: solid thin #C1C1C1;
 	border-top: solid thin #D6D6D6;
@@ -99,7 +98,7 @@
 }
 /*controls even rows*/
 #fantasyTable tr:nth-child(even) {
-	background: #FFFFFF;
+
 	border-bottom: solid thin #C1C1C1;
 	border-right: solid thin #C1C1C1;
 	border-top: solid thin #D6D6D6;
@@ -120,26 +119,24 @@
 }
 /*controls column 5*/
 #fantasyTable td:nth-child(5) {
-	background: #EDEDED;
+
 	text-align: left;
-	color: #0082D6;
 	font-weight: 700;
 }
 /*controls column head 5*/
 #fantasyTable th:nth-child(5) {
-	background: #D6D6D6;
+
 	text-align: left;
 }
 /*controls column 6*/
 #fantasyTable td:nth-child(6) {
-	background: #EDEDED;
-	color: #0082D6;
+
 	text-align: left;
 	font-weight: 700;
 }
 /*controls column head 6*/
 #fantasyTable th:nth-child(6) {
-	background: #D6D6D6;
+
 	text-align: left;
 }
 .pointsTable {
@@ -164,7 +161,7 @@
 	padding: 0 0 0 10px
 }
 .md-label {
-	background: #BABABA
+
 }
 .md-label-orange {
 	background: #f78d2c;
@@ -181,7 +178,7 @@
 }
 .callout {
 	border: solid thin #F5F5F5;
-	background-color: #D6D6D6;
+
 	border-radius: 5px;
 	padding: .5rem;
 	width: auto;
@@ -195,7 +192,7 @@
 	z-index: 1;
 }
 .linethrough:before {
-	border-top: 2px solid #dfdfdf;
+
 	content: "";
 	margin: 0 auto; /* this centers the line to the full width specified */
 	position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
@@ -208,7 +205,7 @@
 }
 .linethrough span {
 	/* to hide the lines from behind the text, you have to set the background color the same as the container */
-	background: #FFFFFF;
+
 	padding: 0 15px;
 }
 .max-width-50 {
@@ -279,13 +276,19 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
         </tr>
     </table>
-<table id="fantasyTable" class="display responsive no-wrap order-column" width="100% " style="margin-top:50px !important;">
-<thead>
-  <tr>
 
-    <th>Entries</th>
-    <th>Entries</th>
-  </tr>
+
+
+<table id="fantasyTable" class="display responsive no-wrap order-column" width="100% " style="margin-top:30px !important;">
+<thead>
+
+    <tr >
+
+
+        <th colspan="2" style="text-align: center">Basic Information</th>
+
+
+    </tr>
  </thead>
  <tr>
     <td>File No:</td>
@@ -360,8 +363,19 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
 
 
-<table id="fantasyTable" class="display responsive no-wrap order-column" width="100% " style=" margin-top:50px !important;">
+    <table id="fantasyTable" class="display responsive no-wrap order-column" width="100% " style=" margin-top:30px !important;">
+
 	<thead>
+
+        <tr >
+
+
+            <th colspan="8" style="text-align: center">Installment History</th>
+
+
+        </tr>
+     </thead>
+     <thead>
         <tr>
             <th>Installment Information</th>
             <th>Amount</th>
@@ -373,8 +387,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
             <th>Note</th>
         </tr>
+     </thead>
 
-	 </thead>
+
      @php
      $monthCounter = 0;
      $yearCounter = 0;
@@ -391,7 +406,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
             @endphp
 
             <tr>
-                <th>Installment {{$i+1}}</th>
+                <td>Installment {{$i+1}}</td>
 
                 @if (isset($user->Installment[$i]))
                     <td>{{$user->Installment[$i]->installment_amount}}</td>
@@ -459,6 +474,81 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     </tbody>
 
 	</table>
+
+
+
+
+
+<table id="fantasyTable" class="display responsive no-wrap order-column" width="100% " style="margin-top:70px !important;">
+    <thead>
+
+        <tr >
+
+
+            <th colspan="3" style="text-align: center">Basic Amount</th>
+
+
+        </tr>
+     </thead>
+    <thead>
+      <tr>
+
+        <th>Basic Amount</th>
+        <th>Paid Amount</th>
+        <th>Paid Amount Date</th>
+      </tr>
+     </thead>
+
+     <tr>
+        <td>Booking Money:</td>
+        <td>{{$booking_status->booking_money_paid}}</td>
+        <td>{{$booking_status->booking_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>Down Payment:</td>
+        <td>{{$down_payment->downpayment_money_paid}}</td>
+        <td>{{$down_payment->downpayment_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>Car Parking:</td>
+        <td>{{$car_parking->car_parking_money_paid}}</td>
+        <td>{{$car_parking->car_parking_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>Land Fillig 1</td>
+        <td>{{$land_filing_1st->land_filling_money_paid}}</td>
+        <td>{{$land_filing_1st->land_filling_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>Land Filling 2</td>
+        <td>{{$land_filing_2nd->land_filling_money_paid}}</td>
+        <td>{{$land_filing_2nd->land_filling_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>Building Pilling</td>
+        <td>{{$building_pilling_status->building_pilling_money_paid}}</td>
+        <td>{{$building_pilling_status->building_pilling_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>1st Floor Roof Casting:</td>
+        <td>{{$roof_casting_1st->floor_roof_casting_money_paid_1st}}</td>
+        <td>{{$roof_casting_1st->floor_roof_casting_money_due_date_1st}}</td>
+    </tr>
+    <tr>
+        <td>Finising Work Amount</td>
+        <td>{{$finishing_work->finishing_work_money_paid}}</td>
+        <td>{{$finishing_work->finishing_work_money_paid_date}}</td>
+    </tr>
+    <tr>
+        <td>After HandOver Amount</td>
+        <td>{{$after_hand_over_money->after_handover_money_money_paid}}</td>
+        <td>{{$after_hand_over_money->after_handover_money_paid_date}}</td>
+    </tr>
+
+    </table>
+
+
+
 
   </body>
 </html>
