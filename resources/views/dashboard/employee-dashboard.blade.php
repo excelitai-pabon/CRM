@@ -1,6 +1,28 @@
 
 @extends('master.master')
 
+@section('logout')
+
+<div class="dropdown-menu dropdown-menu-end">
+    <!-- item-->
+    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet font-size-17 align-middle me-1"></i> My Wallet</a>
+    <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
+    <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-17 align-middle me-1"></i> Lock screen</a>
+    <div class="dropdown-divider"></div>
+    <form method="POST" action="{{ route('employee.logout') }}">
+        @csrf
+
+        <x-jet-responsive-nav-link href="{{ route('employee.logout') }}"
+                       onclick="event.preventDefault();
+                        this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </x-jet-responsive-nav-link>
+    </form>
+</div>
+    
+@endsection
+
 @section('content')
 <div class="container-fluid">
 
@@ -11,6 +33,9 @@
                 <h6 class="page-title">Dashboard</h6>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active">Welcome to Veltrix Dashboard</li>
+                </ol>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">{{Auth::user()->crm_id}}</li>
                 </ol>
             </div>
             <div class="col-md-4">

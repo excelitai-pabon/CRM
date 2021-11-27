@@ -14,7 +14,7 @@
                         library. It helps you provide your users with feedback on their form
                         submission before sending it to your server.</p>
 
-                    <form class="custom-validation" method="POST" action="{{route('super_admin.installments.edit.store',$installment->id)}}">
+                    <form class="custom-validation" method="POST" action="@if(Auth::guard('admin')->check()) {{route('admin.installments.edit.store',$installment->id)}} @elseif(Auth::guard('super_admin')->check()) {{route('super_admin.installments.edit.store',$installment->id)}}  @elseif(Auth::guard('employee')->check()) {{route('employee.installments.edit.store',$installment->id)}} @endif ">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Installment payment of this month</label>
@@ -53,11 +53,11 @@
                                 Please select a valid state.
                             </div>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label">Note</label>
                             <div>
-                                
+
                                 <textarea  name="payment_note" type="text"  class="form-control" rows="5">{{$installment->installment_note}}</textarea>
                             </div>
                         </div>

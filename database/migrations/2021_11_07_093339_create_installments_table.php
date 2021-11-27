@@ -24,6 +24,7 @@ class CreateInstallmentsTable extends Migration
             $table->dateTime('installment_due_date')->nullable();
             $table->text('installment_note')->nullable();
             $table->string('payment_installment_type')->nullable();
+            $table->string('crm_id')->nullable();
             $table->timestamps();
         });
     }

@@ -8,7 +8,9 @@ use App\Models\TotalInstallmentAmount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Session;
 
 class InstallmentController extends Controller
 {
@@ -25,20 +27,33 @@ class InstallmentController extends Controller
 
         ]);
 
-        if($validated)
-        {
-            $user = User::where('file_no',$request->file_no)->first();
-            if($user)
-            {
-                return redirect()->route('super_admin.installments.all',$user);
+        if($validated){
+            if(Auth::guard('admin')->check()){
+                $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
             }
-            else
-            {
-                return redirect()->back();
+            if(Auth::guard('employee')->check()){
+                $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
+            }else{
+                $user = User::where('file_no',$request->file_no)->first();
+            }
+
+            if($user){
+                if(Auth::guard('admin')->check()){
+
+                    return redirect()->route('admin.installments.all',$user);
+                }
+                if(Auth::guard('employee')->check()){
+
+                    return redirect()->route('employee.installments.all',$user);
+                }else{
+                    return redirect()->route('super_admin.installments.all',$user);
+                }
+            }
+            else{
+                return redirect()->back()->with('error','User dose not Exits');
             }
         }
-        else
-        {
+        else{
             return redirect()->back();
         }
 
@@ -54,7 +69,6 @@ class InstallmentController extends Controller
         if(isset($paid_date))
         {
             return view('installment.all-installment',compact('user','paid_date'));
-
         }
         else
         {
@@ -94,7 +108,15 @@ class InstallmentController extends Controller
         $installment->installment_note = $request->payment_note;
         $installment->save();
 
-        return redirect()->route('super_admin.installments');
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('admin.installments')->with('success','Installment update successfully');
+        }
+        if(Auth::guard('employee')->check()){
+            return redirect()->route('employee.installments')->with('success','Installment update successfully');
+        }else{
+
+            return redirect()->route('super_admin.installments')->with('success','Installment update successfully');
+        }
     }
 
     public function createNewInstallment(User $user, $installment_no, $payment)
@@ -116,6 +138,7 @@ class InstallmentController extends Controller
         $installment = new Installment();
 
         $installment->user_id = $user->id;
+        $installment->crm_id = $user->crm_id;
         $installment->installment_no = $installment_no;
         $installment->installment_amount = $request->payment;
         $installment->installment_paid = $request->paid;
@@ -125,7 +148,17 @@ class InstallmentController extends Controller
         $installment->payment_installment_type =$request->payment_type;
         $installment->installment_note =$request->payment_note;
         $installment->save();
-        return redirect()->route('super_admin.installments');
+
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('admin.installments')->with('success','Installment update successfully');
+        }
+        if(Auth::guard('employee')->check()){
+            return redirect()->route('employee.installments')->with('success','Installment update successfully');
+        }else{
+
+            return redirect()->route('super_admin.installments')->with('success','Installment update successfully');
+        }
+
 
 
     }

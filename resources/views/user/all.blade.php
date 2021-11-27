@@ -40,6 +40,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone_no_1}}</td>
                                     <td>
+                                        <a href="{{route('super_admin.user.profile',$user->id)}}" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
                                         <a href="{{route('super_admin.user.edit',$user->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         <a href="javascript:void(0)" class="btn btn-danger deleteBtn" data-url="{{route('super_admin.user.delete',$user->id)}}" ><i class="fas fa-trash"></i></a>
                                     </td>

@@ -21,8 +21,9 @@
                     <p class="card-title-desc">Parsley is a javascript form validation
                         library. It helps you provide your users with feedback on their form
                         submission before sending it to your server.</p>
-                    <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data" method="POST" action="{{route('super_admin.user.store')}}">
+                    <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data" method="POST" action="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.store')}} @elseif(Auth::guard('admin')->check()){{route('admin.user.store')}} @endif">
                         @csrf
+
 
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">File No</label>
@@ -96,7 +97,7 @@
 
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Permant Address</label>
-                            <input type="text" class="form-control @error('permanent_address')is-invalid @enderror" name="permanent_address" id="validationCustom01" placeholder="Permanenrt Address" value="{{old('permanent_address')}}" required>
+                            <input type="text" class="form-control @error('permanent_address')is-invalid @enderror" name="permanent_address" id="validationCustom01" placeholder="Permanent Address" value="{{old('permanent_address')}}" required>
                             @error('permanent_address')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -230,6 +231,7 @@
                         <div class="col-md-6">
                             <img id="image_preview2" src="{{asset('assets')}}/images/users/user-4.jpg" alt="your image" />
                         </div>
+
                         <div class="col-md-6">
                             <label for="password" class="form-label">Password </label>
                             <input type="password" class="form-control @error('password')is-invalid @enderror" name="password" id="password" placeholder="Password" required>
@@ -239,6 +241,23 @@
                             </div>
                             @enderror
                         </div>
+
+                        <div class="col-md-6">
+                            <label for="validationCustom001" class="form-label">Chose CRM</label>
+
+                            <select name="crm" id="validationCustom001"  class="form-control @error('crm')is-invalid @enderror" required>
+                                <option disabled selected>Please Select One</option>
+                                @foreach ($crms as $crm)
+                                <option @if(Auth::guard('admin')->user()->crm_id == $crm->id) selected @endif value="{{$crm->id}}">{{$crm->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('crm')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Submit form</button>
                         </div>

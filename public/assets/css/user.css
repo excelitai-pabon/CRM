@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500|Sarabun:400,600,700&display=swap");
+*{
+    outline: 0;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.main-body{
+    background:rgba(145, 186, 228, 0.205);
+    
+}
+.user-avater img{
+    border-radius: 20px;
+    height: 79%;
+    width: 67%;
+}
+.user-info{
+    background: #fff;
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    position:sticky;
+    top:0;
+    z-index: 999;
+}
+.user-avater{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.users-name h3{
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: medium;
+    font-size: 28px;
+}
+.contacts p{
+    margin-right: 20px;
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+    font-weight: medium;
+    font-size: 18px;
+}
+.user-name{
+    border-radius: 10px;
+    border: 1px dotted grey;
+    margin-right: 20px;
+}
+.number{
+    font-size: 30px;
+}
+.fa-book,.fa-calendar-week{
+    font-size: 30px;
+}
+.user-para{
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+    font-weight: medium;
+    font-size: 18px;
+}
+.submenu ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 30px;
+    
+}
+.submenu ul li a{
+    text-decoration: none;
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+    font-weight: medium;
+    font-size: 18px;
+    position: relative;    
+}
+.submenu ul a:hover{
+    color: blue;
+}
+.submenu ul a:hover:after{
+    position: absolute;
+    content: "";
+    background: blue;
+    width: 100%;
+    height: 2px;
+    bottom: 0px;
+    left: 0;
+}
+.user-detail{
+    background: #fff;
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.user-detail-info{
+    border-bottom: 1px solid #cccc;
+}
+
+/* Grid Page Starts */
+.user-image{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.user-image img{
+    border-radius: 50%;
+}
+.userInfo{
+    margin: 3rem auto 0 ;
+
+}
+.userInfo-text{
+    margin-top: -50px;
+    margin-left: 30px;
+}
+.userInfo-text p{
+   line-height: 15px;
+}
+.userInfo-text h3{
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 20px;
+}
+.user-infoTwo{
+    border-top: 1px solid #ccc;
+}
+.user-infoTwo div p:first-child{
+    font-weight: 500;
+}

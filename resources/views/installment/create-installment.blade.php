@@ -16,7 +16,7 @@
                     <p class="card-title-desc  text-primary">Installment No: {{$installment_no}}</p>
 
 
-                    <form class="custom-validation" method="POST" action="{{route('super_admin.installments.create.store',[$user->id,$installment_no,$payment])}}">
+                    <form class="custom-validation" method="POST" action="@if(Auth::guard('admin')->check()) {{route('admin.installments.create.store',[$user->id,$installment_no,$payment])}} @elseif(Auth::guard('super_admin')->check()) {{route('super_admin.installments.create.store',[$user->id,$installment_no,$payment])}} @elseif(Auth::guard('employee')->check()) {{route('employee.installments.create.store',[$user->id,$installment_no,$payment])}} @endif">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Installment payment of this month</label>

@@ -38,12 +38,29 @@ class BasicAmountController extends Controller
 
     public function createBasicAmount(Request $request){
         // dd($request->all());
+        //dd(Auth::guard('employee')->check());
+
         $file_no=$request->file_no;
-        $user= User::where('file_no',$file_no)->first();
-        $total=TotalAmount::where('user_id',$user->id)->first();
-        if($total){
-            return redirect()->back()->with(['error'=>'This user basic information al-ready exits']);
+
+        if(Auth::guard('admin')->check()){
+            $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
         }
+        if(Auth::guard('employee')->check()){
+            $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
+        }else{
+            $user= User::where('file_no',$file_no)->first();
+        }
+
+        if($user){
+            $total=TotalAmount::where('user_id',$user->id)->first();
+
+            if($total){
+                return redirect()->back()->with(['error'=>'This user basic information al-ready exits']);
+            }
+        }else{
+            return redirect()->back()->with(['error'=>'This user not  exits']);
+        }
+
         return view('basic_amount.basic_add',compact('user'));
     }
 
@@ -53,6 +70,7 @@ class BasicAmountController extends Controller
          //Total amount
         $totalAmount=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'total_amount'=>$request->total_amount,
             'description'=>$request->total_amount_note,
         ];
@@ -81,6 +99,7 @@ class BasicAmountController extends Controller
         $booking_money_due=$request->booking_money-$request->booking_money_paid;
         $bookingMoney=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'booking_money'=>$request->booking_money,
             'booking_money_payment_type'=>$request->booking_money_payment_type,
             'booking_money_paid'=>$request->booking_money_paid,
@@ -95,6 +114,7 @@ class BasicAmountController extends Controller
         $down_payment_due=$request->downpayment_money - $request->downpayment_money_paid;
         $downPayment=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'downpayment_money'=>$request->downpayment_money,
             'downpayment_money_payment_type'=>$request->downpayment_money_payment_type,
             'downpayment_money_paid'=>$request->downpayment_money_paid,
@@ -109,6 +129,7 @@ class BasicAmountController extends Controller
         $car_parking_due=$request->car_parking_money - $request->car_parking_money_paid;
         $carParking=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'car_parking_money'=>$request->car_parking_money,
             'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
             'car_parking_money_paid'=>$request->car_parking_money_paid,
@@ -123,6 +144,7 @@ class BasicAmountController extends Controller
         $land_filling_due= $request->land_filling_money - $request->land_filling_money_paid;
         $lanfFilling=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'land_filling_money'=>$request->land_filling_money,
             'land_filling_money_payment_type'=>$request->land_filling_money_payment_type,
             'land_filling_money_paid'=>$request->land_filling_money_paid,
@@ -137,6 +159,7 @@ class BasicAmountController extends Controller
         $land_filing_due_2=$request->land_filling_money2 - $request->land_filling_money_paid2;
         $landFilling2nd=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'land_filling_money'=>$request->land_filling_money2,
             'land_filling_money_payment_type'=>$request->land_filling_money_payment_type2,
             'land_filling_money_paid'=>$request->land_filling_money_paid2,
@@ -151,6 +174,7 @@ class BasicAmountController extends Controller
         $building_pilling_due= $request->building_pilling_money - $request->building_pilling_money_paid;
         $buildingPilling=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'building_pilling_money'=>$request->building_pilling_money,
             'building_pilling_money_payment_type'=>$request->building_pilling_money_payment_type,
             'building_pilling_money_paid'=>$request->building_pilling_money_paid,
@@ -165,6 +189,7 @@ class BasicAmountController extends Controller
         $floor_roof_casting_amount_due_1st= $request->floor_roof_casting_money_1st - $request->floor_roof_casting_money_paid_1st;
         $floorRoofCasting=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'floor_roof_casting_money_1st'=>$request->floor_roof_casting_money_1st,
             'floor_roof_casting_money_payment_type_1st'=>$request->floor_roof_casting_money_payment_type_1st,
             'floor_roof_casting_money_paid_1st'=>$request->floor_roof_casting_money_paid_1st,
@@ -179,6 +204,7 @@ class BasicAmountController extends Controller
         $finishing_work_due=$request->finishing_work_money - $request->finishing_work_money_paid;
         $finishigWork=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'finishing_work_money'=>$request->finishing_work_money,
             'finishing_work_money_payment_type'=>$request->finishing_work_money_payment_type,
             'finishing_work_money_paid'=>$request->finishing_work_money_paid,
@@ -193,6 +219,7 @@ class BasicAmountController extends Controller
         $after_handover_money_due= $request->after_handover_money - $request->after_handover_money_money_paid;
         $afterhandOver=[
             'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
             'after_handover_money'=>$request->after_handover_money,
             'after_handover_money_payment_type'=>$request->after_handover_money_payment_type,
             'after_handover_money_money_paid'=>$request->after_handover_money_money_paid,
@@ -207,6 +234,9 @@ class BasicAmountController extends Controller
 
         if(auth()->guard('super_admin')->check()){
             return redirect()->route('super_admin.all_user')->with(['success'=>'Successfully insert basic amount']);
+        }
+        if(auth()->guard('employee')->check()){
+            return redirect()->route('employee.all_user')->with(['success'=>'Successfully insert basic amount']);
         }
         else if(auth()->guard('admin')->check()){
             return redirect()->route('admin.all_user')->with(['success'=>'Successfully insert basic amount']);
@@ -224,21 +254,46 @@ class BasicAmountController extends Controller
 
         //$user= User::find($request->file_no);
 
-        $user = User::where('file_no', $request->file_no)->first();
-        $booking_status = BookingStatus::where('user_id', $user->id)->first();
-        $down_payment= DownpaymentStatus::where('user_id', $user->id)->first();
-        $car_parking= CarParkingStatus::where('user_id', $user->id)->first();
-        $land_filing_1st= LandFillingStatus1st::where('user_id', $user->id)->first();
-        $land_filing_2nd= LandFillingStatus2nd::where('user_id', $user->id)->first();
-        $building_pilling_status=BuildingPillingStatus::where('user_id', $user->id)->first();
-        $roof_casting_1st=FloorRoofCasting1st::where('user_id', $user->id)->first();
-        $finishing_work=FinishingWorkStatus::where('user_id', $user->id)->first();
-        $after_hand_over_money=AfterHandoverMoney::where('user_id', $user->id)->first();
+        //$user = User::where('file_no', $request->file_no)->first();
+
+        if(Auth::guard('admin')->check()){
+            $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
+        }
+        if(Auth::guard('employee')->check()){
+            $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
+        }else{
+            $user= User::where('file_no',$request->file_no)->first();
+        }
 
 
+        if($user){
+            $total=TotalAmount::where('user_id',$user->id)->first();
+
+            $booking_status = BookingStatus::where('user_id', $user->id)->first();
+            $down_payment= DownpaymentStatus::where('user_id', $user->id)->first();
+            $car_parking= CarParkingStatus::where('user_id', $user->id)->first();
+            $land_filing_1st= LandFillingStatus1st::where('user_id', $user->id)->first();
+            $land_filing_2nd= LandFillingStatus2nd::where('user_id', $user->id)->first();
+            $building_pilling_status=BuildingPillingStatus::where('user_id', $user->id)->first();
+            $roof_casting_1st=FloorRoofCasting1st::where('user_id', $user->id)->first();
+            $finishing_work=FinishingWorkStatus::where('user_id', $user->id)->first();
+            $after_hand_over_money=AfterHandoverMoney::where('user_id', $user->id)->first();
+
+            if($total){
+                return view('basic_amount.basicUpdate',compact('booking_status','user','down_payment','car_parking','land_filing_1st','land_filing_2nd','building_pilling_status','roof_casting_1st','finishing_work','after_hand_over_money'));
+            }else{
+                return redirect()->back()->with(['error'=>'This user basic information dose not exits']);
+            }
+
+        }else{
+            return redirect()->back()->with(['error'=>'This user information dose not exits']);
+        }
 
 
-        return view('basic_amount.basicUpdate',compact('booking_status','user','down_payment','car_parking','land_filing_1st','land_filing_2nd','building_pilling_status','roof_casting_1st','finishing_work','after_hand_over_money'));
+        // if($user){
+        // }else{
+        //     return redirect()->back()->with('error','User dose not exits.');
+        // }
     }
 
 
