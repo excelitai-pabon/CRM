@@ -37,10 +37,15 @@ class BasicAmountController extends Controller
 
     public function createBasicAmount(Request $request){
         // dd($request->all());
+        //dd(Auth::guard('employee')->check());
+
         $file_no=$request->file_no;
 
-        if(Auth::guard('admin')){
+        if(Auth::guard('admin')->check()){
             $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
+        }
+        if(Auth::guard('employee')->check()){
+            $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
         }else{
             $user= User::where('file_no',$file_no)->first();
         }
@@ -229,6 +234,9 @@ class BasicAmountController extends Controller
         if(auth()->guard('super_admin')->check()){
             return redirect()->route('super_admin.all_user')->with(['success'=>'Successfully insert basic amount']);
         }
+        if(auth()->guard('employee')->check()){
+            return redirect()->route('employee.all_user')->with(['success'=>'Successfully insert basic amount']);
+        }
         else if(auth()->guard('admin')->check()){
             return redirect()->route('admin.all_user')->with(['success'=>'Successfully insert basic amount']);
         }
@@ -247,8 +255,11 @@ class BasicAmountController extends Controller
 
         //$user = User::where('file_no', $request->file_no)->first();
 
-        if(Auth::guard('admin')){
+        if(Auth::guard('admin')->check()){
             $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
+        }
+        if(Auth::guard('employee')->check()){
+            $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
         }else{
             $user= User::where('file_no',$request->file_no)->first();
         }

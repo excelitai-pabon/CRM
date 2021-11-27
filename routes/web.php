@@ -193,8 +193,39 @@ Route::prefix('employee')->name('employee.')->group(function()
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-        // =====================user route ======================
-        Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+        
+          // =====================user route ======================
+          Route::get('/all-user',[UserController::class,'index'])->name('all_user')->middleware('auth:employee');
+          Route::get('/add-user',[UserController::class,'create'])->name('add_user');
+          Route::post('/store-user',[UserController::class,'store'])->name('user.store');
+  
+  
+  
+          //Basic
+           Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:employee')->name('basicAmount');
+  
+          Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:employee');
+  
+          Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:employee');
+  
+          Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:employee')->name('basic_amount.add');
+          Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:employee')->name('basic_amount.create');
+          Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])->middleware('auth:employee')->name('basic_amount.store');
+  
+  
+  
+          //** installment Routes */
+          Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:employee')->name('installments');
+          Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:employee')->name('installments.find');
+          Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:employee')->name('installments.all');
+          Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:employee')->name('installments.edit');
+          Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:employee')->name('installments.edit.store');
+          Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:employee')->name('installments.create');
+          Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:employee')->name('installments.create.store');
+  
+  
+          // ==================== Due Route ====================
+          Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 });
 
 

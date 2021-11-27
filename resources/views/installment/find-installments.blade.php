@@ -26,7 +26,7 @@
                     <p class="card-title-desc">Parsley is a javascript form validation
                         library. It helps you provide your users with feedback on their form
                         submission before sending it to your server.</p>
-                    <form method="POST" action="@if(Auth::guard('admin')->check()) {{route('admin.installments.find')}} @elseif(Auth::guard('super_admin')->check()) {{route('super_admin.installments.find')}} @endif" class="row g-3 needs-validation" novalidate>
+                    <form method="POST" action="@if(Auth::guard('admin')->check()) {{route('admin.installments.find')}} @elseif(Auth::guard('super_admin')->check()) {{route('super_admin.installments.find')}}  @elseif(Auth::guard('employee')->check()) {{route('employee.installments.find')}} @endif" class="row g-3 needs-validation" novalidate>
                         @csrf
                         <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">File No</label>

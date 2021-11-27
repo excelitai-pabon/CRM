@@ -85,13 +85,13 @@
 
                                         @if (isset($user->Installment[$i]))
 
-                                            <td><a href="@if(Auth::guard('admin')->check()){{route('admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.edit',$user->Installment[$i]->id)}} @endif" class="btn btn-success">Edit</a></td>
+                                            <td><a href="@if(Auth::guard('admin')->check()){{route('admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.edit',$user->Installment[$i]->id)}} @endif" class="btn btn-success">Edit</a></td>
 
                                         @else
 
                                             @if ($paymentCheck == 1)
 
-                                                <td><a href="@if(Auth::guard('admin')->check()) {{route('admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}@elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @endif" class="btn btn-primary">Payment</a></td>
+                                                <td><a href="@if(Auth::guard('admin')->check()) {{route('admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}@elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @endif" class="btn btn-primary">Payment</a></td>
                                                 @php
                                                     $paymentCheck=0;
                                                 @endphp

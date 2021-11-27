@@ -10,7 +10,7 @@
     </div>
 
     <form method="GET" action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.basic_amount.create') }}
-            @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.create') }} @endif ">
+            @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.create')  }}  @elseif(Auth::guard('employee')->check()) {{ route('employee.basic_amount.create')  }} @endif ">
 
         <div class="row">
             <div class="form-group col">
