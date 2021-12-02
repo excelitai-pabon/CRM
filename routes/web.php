@@ -100,6 +100,9 @@ Route::prefix('admin')->name('admin.')->group(function()
         Route::get('/yearly-report',[ReportController::class,'yearlyReport'])->name('yearly_report');
         Route::get('/custom-report',[ReportController::class,'searchReport'])->name('search_report');
 
+        // pdf
+        Route::get('/daily-report/pdf',[ReportController::class,'pdfDailyReport'])->name('pdf.daily_report');
+
 
 });
 

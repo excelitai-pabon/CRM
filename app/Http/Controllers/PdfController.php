@@ -117,9 +117,12 @@ class PdfController extends Controller
 
 
         $pdf = PDF::loadView('pdf.pdf_download', compact('user','pic','pic2','ins','installmentYear','timeformate','paid_date','booking_status', 'down_payment' ,'car_parking', 'land_filing_1st', 'land_filing_2nd', 'building_pilling_status', 'roof_casting_1st' ,'finishing_work', 'after_hand_over_money'));
-
         return $pdf->download('user_pdf.pdf');
 
     } // end mathod
+
+
+
+
 
 }

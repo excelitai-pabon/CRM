@@ -1,4 +1,15 @@
 @extends('master.master')
+@section('css')
+<style>
+@media print{
+ .printb{
+     display: none;
+ }
+}
+
+</style>
+
+@endsection
 @section('content')
 <div class="page-title-box">
     <div class="row align-items-center">
@@ -122,7 +133,7 @@
                                 @foreach($land_filling_2nd as $item)
                                 <tr>
                                     <th>{{optional($item->user)->file_no}}</th>
-                                    <td>Land Filling 1st </td>
+                                    <td>Land Filling 2nd </td>
                                     <td>{{$item->land_filling_money_paid}}</td>
                                     <td>{{$item->land_filling_money_paid_date}}</td>
                                     <td>{{$item->land_filling_money_due}}</td>
@@ -138,7 +149,7 @@
                                 @foreach($building_pilling as $item)
                                 <tr>
                                     <th>{{optional($item->user)->file_no}}</th>
-                                    <td>Land Filling 1st </td>
+                                    <td>Building Pilling </td>
                                     <td>{{$item->building_pilling_money_paid}}</td>
                                     <td>{{$item->building_pilling_money_paid_date}}</td>
                                     <td>{{$item->building_pilling_money_due}}</td>
@@ -154,7 +165,7 @@
                                 @foreach($first_floor as $item)
                                 <tr>
                                     <th>{{optional($item->user)->file_no}}</th>
-                                    <td>Land Filling 1st </td>
+                                    <td>Floor Roof Casting 1st </td>
                                     <td>{{$item->floor_roof_casting_money_paid_1st}}</td>
                                     <td>{{$item->floor_roof_casting_money_paid_date_1st}}</td>
                                     <td>{{$item->floor_roof_casting_money_due_1st}}</td>
@@ -194,10 +205,10 @@
 
                                 @endforeach
                                 <tr>
-                                    <td colspan="2" class="text-success " style="text-align: right;"><h4>Total  Amount </h4> </td>
-                                    <td ><h4>{{$totalPaidAmount}}</h4></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                    <td><h4 class="text-success ">{{$totalPaidAmount}}</h4></td>
+                                    <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                    <td><h4 class="text-danger">{{$totalDueAmount}}</h4></td>
                                     <td></td>
                                 </tr>
 
@@ -208,8 +219,8 @@
                         </tbody>
                     </table>
 
-
-
+                    {{-- <a class="btn btn-primary px-4 mt-3 printb" href="{{route('admin.pdf.daily_report')}}" ><i class="fas fa-download"></i> Download PDF</a> --}}
+                    <a class="btn btn-primary px-4 mt-3 printb" href="javaScript:void(0)" onclick="window.print();"><i class="fas fa-download"></i> Print </a>
 
                 </div>
 
@@ -219,6 +230,7 @@
 
 
 </div>
+
 @endsection
 @section('script')
 <script src="{{asset('assets')}}/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>

@@ -1,4 +1,15 @@
 @extends('master.master')
+@section('css')
+<style>
+@media print{
+ .printb{
+     display: none;
+ }
+}
+
+</style>
+
+@endsection
 @section('content')
 <div class="page-title-box">
     <div class="row align-items-center">
@@ -273,8 +284,9 @@
                                 @endforeach
                                 <tr>
                                     <td colspan="2">Total Amount</td>
-                                    <td colspan="2">{{$after_handover_money_total}}</td>
+                                    <td>{{$after_handover_money_total}}</td>
                                     <td></td>
+                                    
                                     <td></td>
                                 </tr>
 
@@ -284,7 +296,7 @@
 
                         </tbody>
                     </table>
-
+                    <a class="btn btn-primary px-4 mt-3 printb" href="javaScript:void(0)" onclick="window.print();"><i class="fas fa-download"></i> Print </a>
 
 
 

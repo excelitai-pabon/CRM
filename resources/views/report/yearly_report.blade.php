@@ -1,4 +1,16 @@
 @extends('master.master')
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+<style>
+@media print{
+ .printb{
+     display: none;
+ }
+}
+
+</style>
+
+@endsection
 @section('content')
 <div class="page-title-box">
     <div class="row align-items-center">
@@ -28,7 +40,31 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <div class="card printb">
+            <div class="card-body">
+                <form action="{{route('admin.yearly_report')}}" autocomplete="off">
+                    <div class="mb-4">
+                        <label class="form-label">Search Range</label>
+                        <div class="row">
+                            <div class="col-lg-4">
 
+                                <div class="form-group">
+                                    <input type="text" id="datepickerYear2" class="form-control" name="year" placeholder="Enter only year..">
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <button class="btn btn-primary" type="submit" name="search"> Search </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -194,10 +230,10 @@
 
                                 @endforeach
                                 <tr>
-                                    <td colspan="2" class="text-success " style="text-align: right;"><h4>Total  Amount </h4> </td>
-                                    <td ><h4>{{$totalPaidAmount}}</h4></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                    <td><h4 class="text-success ">{{$totalPaidAmount}}</h4></td>
+                                    <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                    <td><h4 class="text-danger">{{$totalDueAmount}}</h4></td>
                                     <td></td>
                                 </tr>
 
@@ -205,7 +241,7 @@
 
                         </tbody>
                     </table>
-
+                    <a class="btn btn-primary px-4 mt-3 printb" href="javaScript:void(0)" onclick="window.print();"><i class="fas fa-download"></i> Print </a>
                 </div>
 
             </div>
@@ -216,8 +252,21 @@
 </div>
 @endsection
 @section('script')
-<script src="{{asset('assets')}}/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+{{-- <script src="{{asset('assets')}}/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script> --}}
 <script src="{{asset('assets')}}/js/pages/form-validation.init.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{{asset('assets')}}/js/pages/form-validation.init.js"></script>
+<script>
+
+    //select only Year
+    $("#datepickerYear2").datepicker({
+        format: "dd-mm-yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose:true
+    });
+
+</script>
 
 @endsection
 
