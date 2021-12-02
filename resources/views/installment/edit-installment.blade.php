@@ -28,7 +28,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Due</label>
-                            <input type="text" name="due" value="{{$installment->installment_due}}" class="form-control" required placeholder="Type something">
+                            <input type="text" name="due" value="{{$installment->installment_due}}" class="form-control"  placeholder="Type something">
                         </div>
 
                         <div class="mb-3">

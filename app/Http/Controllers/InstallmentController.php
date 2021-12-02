@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Installment;
 use App\Models\InstallmentYear;
 use App\Models\TotalInstallmentAmount;
 use App\Models\User;
+use App\Notifications\InstallmentPaid;
+use App\Notifications\NotifyToAdmin;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Mail;
 
 class InstallmentController extends Controller
 {
@@ -113,6 +117,7 @@ class InstallmentController extends Controller
 
         return view('installment.create-installment',compact('user','installment_no','payment'));
     }
+
     public function storeNewInstallment(Request $request,User $user, $installment_no, $payment)
     {
         $validated = $request->validate([
@@ -137,6 +142,30 @@ class InstallmentController extends Controller
         $installment->payment_installment_type =$request->payment_type;
         $installment->installment_note =$request->payment_note;
         $installment->save();
+
+
+        $PaidDate = Carbon::parse($request->paid_date)->format('d-M-Y');
+        $DueDate = Carbon::parse($request->due_date)->format('d-M-Y');
+        // $data = [
+        //     'subject' => "Installment Paid",
+        //     'name' => $user->member_name,
+        //     'email' => $user->email,
+        //     'content' => "Successfully paid your installment amount <p> Paid Amount: {$PaidDate} </p>
+        //     <p> Paid Date: {$PaidDate}</p>
+        //     <p> Due Amount: {$request->due}</p>
+        //     <p> Due Date: {$DueDate}</p>
+        //     <p> Note: {$request->payment_note}</p>",
+        //   ];
+
+
+        //   Mail::send('user.email-template', compact('data'), function($message) use ($data) {
+        //     $message->to($data['email'])
+        //     ->subject($data['subject']);
+        //   });
+
+        $user->notify(new InstallmentPaid($user));
+        $admin=Admin::find(2);
+        $admin->notify(new NotifyToAdmin($user));
 
         if(Auth::guard('admin')->check()){
             return redirect()->route('admin.installments')->with('success','Installment update successfully');

@@ -7,6 +7,7 @@
 <div class="page-content">
     <div class="container-fluid">
 
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -20,6 +21,7 @@
                         </p>
 
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
                             <thead class="bg-dark text-white">
                                 <tr>
                                     <th>Image</th>
@@ -32,6 +34,14 @@
                             </thead>
 
                             <tbody>
+                                <tr>
+                                    <td>dfag regg  </td>
+                                    <td>sdgeg  srtgh  th </td>
+                                    <td>fhr th r rt hr</td>
+                                    <td>dsrgty rtyrth trs wrth</td>
+                                    <td>dsrgty rtyrth trs wrth</td>
+                                    <td>dsrgty rtyrth trs wrth</td>
+                                </tr>
                                 @foreach ($users as $user)
                                 <tr>
                                     <td><img src="{{asset('/').$user->member_image}}" alt="" style="height: 50px; width:50px; border-radius:50%;"></td>
@@ -40,9 +50,9 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone_no_1}}</td>
                                     <td>
-                                        <a href="{{route('super_admin.user.profile',$user->id)}}" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
-                                        <a href="{{route('super_admin.user.edit',$user->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger deleteBtn" data-url="{{route('super_admin.user.delete',$user->id)}}" ><i class="fas fa-trash"></i></a>
+                                        <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.profile',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.profile',$user->id)}} @endif" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
+                                        <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.edit',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.edit',$user->id)}} @endif" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                        <a href="javascript:void(0)" class="btn btn-danger deleteBtn" data-url="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.delete',$user->id)}} @elseif(Auth::guard('admin')->check())  {{route('admin.user.delete',$user->id)}} @endif" ><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

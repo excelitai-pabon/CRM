@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -236,7 +238,40 @@ class UserController extends Controller
         return view('user.profile',compact('user','total_paid','total_due','installment_paid_date','dueTillToday'));
     }
 
+    public function createMail($id , $subject){
+        $user=User::findOrFail($id);
+        $subject= Str::replace('-', ' ', $subject);
+        $subject=ucfirst($subject);
 
+        return view('user.email',compact('user','subject'));
+    }
+
+    public function SendMail(Request $request){
+        $request->validate([
+
+            'email' => 'required|email',
+            'subject' => 'required',
+            'name' => 'required',
+            'content' => 'required',
+          ]);
+
+          $data = [
+            'subject' => $request->subject,
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->content
+          ];
+        //   dd($data['email']);
+
+          Mail::send('user.email-template', compact('data'), function($message) use ($data) {
+            $message->to($data['email'])
+            ->subject($data['subject']);
+          });
+
+        //   return view('user.email-template',compact('data'));
+
+          return back()->with(['success' => 'Email successfully sent!']);
+    }
 
 
 }

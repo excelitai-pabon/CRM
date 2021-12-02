@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $guarded = [
-        
+
     ];
 
     /**
@@ -69,12 +69,12 @@ class User extends Authenticatable
 
     public function installment()
     {
-    
+
         return $this->hasMany(Installment::class,'user_id','id');
     }
     public function installment_year()
     {
-    
+
         return $this->hasOne(InstallmentYear::class,'user_id','id');
     }
 
@@ -126,5 +126,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(TotalAmount::class);
     }
+
     
+
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
 use App\Http\Controllers\CrmController;
 use App\Http\Controllers\DueController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
@@ -42,6 +43,15 @@ Route::prefix('admin')->name('admin.')->group(function()
         Route::get('/all-user',[UserController::class,'index'])->name('all_user');
         Route::get('/add-user',[UserController::class,'create'])->name('add_user');
         Route::post('/store-user',[UserController::class,'store'])->name('user.store');
+        Route::get('/edit-user/{user}',[UserController::class,'edit'])->name('user.edit');
+        Route::post('/update-user/{user}',[UserController::class,'update'])->name('user.update');
+        Route::delete('/delete-user/{user}',[UserController::class,'destroy'])->name('user.delete');
+        Route::get('/user-profile/{id}',[UserController::class,'profile'])->name('user.profile');
+
+
+        //======================= Send Mail ==================
+        Route::get('/email/{id}/{subject}', [UserController::class,'createMail'])->name('user.email');
+        Route::post('/email', [UserController::class,'sendMail'])->name('user.send.email');
 
 
 
@@ -70,6 +80,14 @@ Route::prefix('admin')->name('admin.')->group(function()
 
         // ==================== Due Route ====================
         Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
+
+        //================== Report Route ====================
+        Route::get('/daily-report',[ReportController::class,'dailyReport'])->name('daily_report');
+        Route::get('/mothly-report',[ReportController::class,'monthlyReport'])->name('monthly_report');
+        Route::get('/yearly-report',[ReportController::class,'yearlyReport'])->name('yearly_report');
+        Route::get('/custom-report',[ReportController::class,'searchReport'])->name('search_report');
+
+
 });
 
 

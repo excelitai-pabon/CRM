@@ -78,6 +78,20 @@
                         <span>Today Due</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-file"></i>
+                        <span>Report</span>
+                    </a>
+                    <ul class="sub-menu ">
+                        <li><a href="{{route('admin.daily_report')}}">Daily Report</a></li>
+                        <li><a href="{{route('admin.monthly_report')}}">Monthly Report</a></li>
+                        <li><a href="{{route('admin.yearly_report')}}">Yearly Report</a></li>
+                        <li><a href="{{route('admin.search_report')}}">Custom Report</a></li>
+
+                    </ul>
+                </li>
                 @endauth
 
 
