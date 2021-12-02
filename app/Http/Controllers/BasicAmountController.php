@@ -47,7 +47,7 @@ class BasicAmountController extends Controller
         }
         if(Auth::guard('employee')->check()){
             $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
-        }elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
+        }else{
             $user= User::where('file_no',$file_no)->first();
         }
 
@@ -263,7 +263,7 @@ class BasicAmountController extends Controller
         }
         if(Auth::guard('employee')->check()){
             $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
-        }elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
+        }else{
             $user= User::where('file_no',$request->file_no)->first();
         }
 
@@ -280,6 +280,7 @@ class BasicAmountController extends Controller
             $roof_casting_1st=FloorRoofCasting1st::where('user_id', $user->id)->first();
             $finishing_work=FinishingWorkStatus::where('user_id', $user->id)->first();
             $after_hand_over_money=AfterHandoverMoney::where('user_id', $user->id)->first();
+
 
             if($total){
                 return view('basic_amount.basicUpdate',compact('booking_status','user','down_payment','car_parking','land_filing_1st','land_filing_2nd','building_pilling_status','roof_casting_1st','finishing_work','after_hand_over_money'));
@@ -311,6 +312,12 @@ class BasicAmountController extends Controller
         $booking_status->booking_money_paid=$approve_updates->booking_money_paid;
         $booking_status-> booking_money_paid_date =$approve_updates->booking_money_paid_date;
         $booking_status-> booking_money_due_date =$approve_updates->booking_money_due_date;
+
+        $booking_status->booking_money_due=$approve_updates->booking_money_due;
+
+
+
+
         $booking_status->booking_money_due=$approve_updates->booking_money_due;
         $booking_status->booking_money_note=$approve_updates->booking_money_note;
         $booking_status->booking_money_payment_type=$approve_updates->booking_money_payment_type;
@@ -321,11 +328,17 @@ class BasicAmountController extends Controller
 
         //downpayment part
         $down_payment = DownpaymentStatus::where('user_id', $id)->first();
+
         $down_payment->downpayment_money= $approve_updates->downpayment_money;
         $down_payment->downpayment_money_paid=$approve_updates->downpayment_money_paid;
         $down_payment-> downpayment_money_paid_date =$approve_updates->downpayment_money_paid_date;
         $down_payment-> downpayment_money_due_date =$approve_updates->downpayment_money_due_date;
-        $down_payment->downpayment_money_due=$approve_updates->downpayment_money_due;
+
+
+
+
+        $down_payment->downpayment_money_due =$approve_updates->downpayment_money_due;
+
         $down_payment->downpayment_money_note=$approve_updates->downpayment_money_note;
         $down_payment->downpayment_money_payment_type=$approve_updates->downpayment_money_payment_type;
         $down_payment->save();
@@ -339,6 +352,10 @@ class BasicAmountController extends Controller
         $car_parking->car_parking_money_paid=$approve_updates->car_parking_money_paid;
         $car_parking-> car_parking_money_paid_date =$approve_updates->car_parking_money_paid_date;
         $car_parking-> car_parking_money_due_date =$approve_updates->car_parking_money_due_date;
+
+
+
+
         $car_parking->car_parking_money_due=$approve_updates->car_parking_money_due;
         $car_parking->car_parking_money_note=$approve_updates->car_parking_money_note;
         $car_parking->car_parking_money_payment_type=$approve_updates->car_parking_money_payment_type;
@@ -436,7 +453,7 @@ class BasicAmountController extends Controller
         $after_hand_over_money->save();
 
 
-
+        $approve_updates->delete();
 
 
         return redirect()->route('super_admin.dashboard');
