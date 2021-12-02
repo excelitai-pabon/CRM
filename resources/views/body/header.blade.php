@@ -19,6 +19,8 @@
         <link href="{{asset('assets')}}/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
         <!-- Icons Css -->
         <link href="{{asset('assets')}}/css/icons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets')}}/css/css.css">
+
 
         <!-- Essential css-->
         @yield('css')
@@ -27,6 +29,10 @@
         <link href="{{asset('assets')}}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
         <script src="{{asset('assets')}}/libs/jquery/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script
+         src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
 
     </head>
 

@@ -85,13 +85,21 @@
 
                                         @if (isset($user->Installment[$i]))
 
+<<<<<<< HEAD
+                                            <td><a href="{{route('super_admin.installments.edit',$user->Installment[$i]->id)}}" class="btn btn-success">Edit</a></td>
+=======
                                             <td><a href="@if(Auth::guard('admin')->check()){{route('admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.edit',$user->Installment[$i]->id)}} @endif" class="btn btn-success">Edit</a></td>
+>>>>>>> 9c1297f214513032bbdb6a5df8db104a3eb8d49d
 
                                         @else
 
                                             @if ($paymentCheck == 1)
 
+<<<<<<< HEAD
+                                                <td><a href="{{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}" class="btn btn-primary">Payment</a></td>
+=======
                                                 <td><a href="@if(Auth::guard('admin')->check()) {{route('admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}@elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @endif" class="btn btn-primary">Payment</a></td>
+>>>>>>> 9c1297f214513032bbdb6a5df8db104a3eb8d49d
                                                 @php
                                                     $paymentCheck=0;
                                                 @endphp
