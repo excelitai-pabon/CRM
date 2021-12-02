@@ -46,7 +46,7 @@ class BasicAmountController extends Controller
         }
         if(Auth::guard('employee')->check()){
             $user= User::where('file_no',$file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
-        }else{
+        }elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
             $user= User::where('file_no',$file_no)->first();
         }
 
@@ -260,7 +260,7 @@ class BasicAmountController extends Controller
         }
         if(Auth::guard('employee')->check()){
             $user= User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
-        }else{
+        }elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
             $user= User::where('file_no',$request->file_no)->first();
         }
         
