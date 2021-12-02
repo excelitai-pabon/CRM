@@ -641,5 +641,4 @@ class ReportController extends Controller
 
 
 
-    }
 }

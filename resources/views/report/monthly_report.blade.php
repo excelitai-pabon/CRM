@@ -73,8 +73,8 @@
 
                                 </div>
                             @endauth
-                           
-                            
+
+
                             <div class="col-lg-4">
                                 <button class="btn btn-primary" type="submit" name="search"> Search </button>
                             </div>
@@ -252,7 +252,7 @@
                                     <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
                                     <td><h4 class="text-success ">{{$totalPaidAmount}}</h4></td>
                                     <td><h5 style="text-align: right;">Total Due Amount </h5></td>
-                                    <td><h4 class="text-danger">{{$totalDueAmount}}</h4></td>
+                                    {{-- <td><h4 class="text-danger">{{$totalDueAmount}}</h4></td> --}}
                                     <td></td>
                                 </tr>
 
