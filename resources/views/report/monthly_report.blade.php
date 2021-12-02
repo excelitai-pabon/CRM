@@ -57,6 +57,24 @@
                                 </div>
 
                             </div>
+
+                            @auth('super_admin')
+                                <div class="col-lg-8 mt-3">
+
+                                    <div class="form-group">
+                                        <select class="form-select" name="crm" aria-label="Default select example">
+                                            <option value="" selected>Select any specfic CRM</option>
+                                            <option value="all">All Together</option>
+                                            @foreach ($crms as $crm)
+                                                <option value="{{$crm->id}}">{{$crm->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+                            @endauth
+                           
+                            
                             <div class="col-lg-4">
                                 <button class="btn btn-primary" type="submit" name="search"> Search </button>
                             </div>

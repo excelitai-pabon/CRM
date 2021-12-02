@@ -40,31 +40,42 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="card printb">
-            <div class="card-body">
-                <form action="{{route('admin.yearly_report')}}" autocomplete="off">
-                    <div class="mb-4">
-                        <label class="form-label">Search Range</label>
-                        <div class="row">
-                            <div class="col-lg-4">
+@auth('super_admin')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.yearly_report') }}
+                        @elseif(Auth::guard('admin')->check()) {{ route('admin.yearly_report')  }} @endif " autocomplete="off">
+                        <div class="mb-4">
+                            <label class="form-label">Search Range</label>
+                            <div class="row">
+                                <div class="col-lg-8">
 
-                                <div class="form-group">
-                                    <input type="text" id="datepickerYear2" class="form-control" name="year" placeholder="Enter only year..">
+                                    <div class="form-group">
+                                        <select class="form-select" name="crm" aria-label="Default select example">
+                                            <option value="" selected>Select any specfic CRM</option>
+                                            <option value="all">All Together</option>
+                                            @foreach ($crms as $crm)
+                                                <option value="{{$crm->id}}">{{$crm->name}}</option>
+                                            @endforeach
+                                          </select>
+                                    </div>
+
                                 </div>
 
-                            </div>
-                            <div class="col-lg-4">
-                                <button class="btn btn-primary" type="submit" name="search"> Search </button>
+                                <div class="col-lg-4">
+                                    <button class="btn btn-primary" type="submit" name="search"> Search </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endauth
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">

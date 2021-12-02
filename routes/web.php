@@ -220,6 +220,12 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
     Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
 
+     //================== Report Route ====================
+     Route::get('/daily-report',[ReportController::class,'dailyReport'])->name('daily_report');
+     Route::get('/mothly-report',[ReportController::class,'monthlyReport'])->name('monthly_report');
+     Route::get('/yearly-report',[ReportController::class,'yearlyReport'])->name('yearly_report');
+     Route::get('/custom-report',[ReportController::class,'searchReport'])->name('search_report');
+
 
 });
 
