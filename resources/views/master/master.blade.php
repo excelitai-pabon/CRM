@@ -1,9 +1,12 @@
 
 @include('body.header')
 <!-- Begin page -->
+
+
 <div id="layout-wrapper">
 
-
+   
+  
     <header id="page-topbar">
         <div class="navbar-header">
             <div class="d-flex">
@@ -27,21 +30,9 @@
                         </span>
                     </a>
                 </div>
-
-
-
-
             </div>
 
             <div class="d-flex">
-
-
-
-
-
-
-
-
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,7 +98,7 @@
     @include('body.sidebar')
     <!-- Left Sidebar End -->
 
-
+           
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -118,9 +109,11 @@
             @yield('content')
         </div>
         <!-- End Page-content -->
+    </div>
 
 
-
-
-
+   
 @include('body.footer')
+
+</div>
+<!-- END layout-wrapper -->

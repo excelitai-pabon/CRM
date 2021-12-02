@@ -279,6 +279,42 @@ class UserController extends Controller
 
           return back()->with(['success' => 'Email successfully sent!']);
     }
+   public function userProfile()
+   {
+        $id = Auth::user()->id;
+
+        $user = User::with(['installment','totalNoOfInstallment','installment_year','afterHandOverMoney','bookingStatus','buildingPilling','carParking','downPayment','finishingWork','floorRoof','landFilling1','landFilling2','totalAmount'])->find($id);
+
+        $paidInstallment = 0;
+        $paidInstallment = Installment::where('user_id',$id)->sum('installment_paid');
+
+
+        $total_paid = 0;
+        $total_paid = optional($user->afterHandOverMoney)->after_handover_money_money_paid + optional($user->bookingStatus)->booking_money_paid + optional($user->buildingPilling)->building_pilling_money_paid + optional($user->carParking)->car_parking_money_paid + optional($user->downPayment)->downpayment_money_paid + optional($user->finishingWork)->finishing_work_money_paid + optional($user->floorRoof)->floor_roof_casting_money_paid_1st + optional($user->landFilling1)-> land_filling_money_paid + optional($user->landFilling2)-> land_filling_money_paid;
+
+        $total_paid += $paidInstallment;
+
+
+        $total_due = 0;
+        $total_due = optional($user->afterHandOverMoney)->after_handover_money_money_due + optional($user->bookingStatus)->booking_money_due + optional($user->buildingPilling)->building_pilling_money_due + optional($user->carParking)->car_parking_money_due + optional($user->downPayment)->downpayment_money_due + optional($user->finishingWork)->finishing_work_money_due + optional($user->floorRoof)->floor_roof_casting_money_due_1st + optional($user->landFilling1)-> land_filling_money_due + optional($user->landFilling2)->land_filling_money_due;
+
+
+        $total_due += (optional($user->totalNoOfInstallment)->total_installment_amount - $paidInstallment);
+
+        $installment_paid_date = Carbon::parse(optional($user->totalNoOfInstallment)->installment_starting_date);
+
+
+        $todayDate = Carbon::now();
+        $start = $todayDate->startOfDay();
+        $start = $start->toDateTime();
+        $end = $todayDate->endOfDay();
+        $end = $end->toDateTime();
+
+        return view('user.user-profile',compact('user','total_due','total_paid','todayDate','start','end','installment_paid_date'));
+
+   }
+
+
 
 
 }

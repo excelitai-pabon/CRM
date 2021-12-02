@@ -248,7 +248,7 @@
                             <select name="crm" id="validationCustom001"  class="form-control @error('crm')is-invalid @enderror" required>
                                 <option disabled selected>Please Select One</option>
                                 @foreach ($crms as $crm)
-                                <option @if(Auth::guard('admin')->user()->crm_id == $crm->id) selected @endif value="{{$crm->id}}">{{$crm->name}}</option>
+                                <option @if(optional(Auth::guard('admin')->user())->crm_id == $crm->id) selected @endif value="{{$crm->id}}">{{$crm->name}}</option>
                                 @endforeach
                             </select>
                             @error('crm')

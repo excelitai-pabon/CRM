@@ -13,12 +13,18 @@
                 <div class="card">
                     <div class="card-body">
 
+
+                       
+
+
                         <h4 class="card-title">Buttons example</h4>
                         <p class="card-title-desc">The Buttons extension for DataTables
                             provides a common set of options, API methods and styling to display
                             buttons on a page that will interact with a DataTable. The core library
                             provides the based framework upon which plug-ins can built.
                         </p>
+
+                      
 
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
@@ -48,7 +54,8 @@
                                     <td>{{$user->member_name}}</td>
                                     <td>{{$user->file_no}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->phone_no_1}}</td>
+                                    <td>{{$user->phone_no_1}}
+                                      
                                     <td>
                                         <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.profile',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.profile',$user->id)}} @endif" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
                                         <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.edit',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.edit',$user->id)}} @endif" class="btn btn-warning"><i class="fas fa-edit"></i></a>
@@ -59,6 +66,7 @@
 
                             </tbody>
                         </table>
+
 
                     </div>
                 </div>
