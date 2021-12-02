@@ -9,11 +9,11 @@ class InstallmentYear extends Model
 {
     use HasFactory;
     protected $guarded = [
-        
+
     ];
     protected $casts = [
         'installment_years_amount' => 'array'
-    ]; 
+    ];
 
     public function user()
     {

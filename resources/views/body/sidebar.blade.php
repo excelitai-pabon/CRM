@@ -9,7 +9,7 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="ti-home"></i><span class="badge rounded-pill bg-primary float-end">2</span>
                         <span>Dashboard</span>
                     </a>
@@ -30,14 +30,15 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="ti-email"></i>
-                            <span>Amounts</span>
-                        </a>
-                        <ul class="sub-menu ">
-                            <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
-                            <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Amounts</span>
+                    </a>
+                    <ul class="sub-menu ">
+                        <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
+                        <li><a href="{{route('super_admin.show.request')}}">Basic Amounts Request</a></li>
 
                         </ul>
                     </li>
@@ -175,10 +176,13 @@
                
                 
 
-                <li>
-                   
-            </td>
+                <li >
+                    <a href="{{ route ('super_admin.tableshow')}}" class=" waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Tables</span>
+                    </a>
                 </li>
+
 
             </ul>
 
@@ -186,3 +190,4 @@
         <!-- Sidebar -->
     </div>
 </div>
+
