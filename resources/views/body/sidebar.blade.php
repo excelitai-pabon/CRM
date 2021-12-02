@@ -15,18 +15,20 @@
                     </a>
                 </li>
 
+               
+
                 @auth('super_admin')
                     <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-email"></i>
-                        <span>Users</span>
-                    </a>
-                    <ul class="sub-menu ">
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ti-email"></i>
+                            <span>Users</span>
+                        </a>
+                        <ul class="sub-menu ">
 
-                        <li><a href="{{route('super_admin.all_user')}}">All User</a></li>
-                        <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
-                    </ul>
-                </li>
+                            <li><a href="{{route('super_admin.all_user')}}">All User</a></li>
+                            <li><a href="{{route('super_admin.add_user')}}">Add User</a></li>
+                        </ul>
+                    </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -38,23 +40,22 @@
                         <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
                         <li><a href="{{route('super_admin.show.request')}}">Basic Amounts Request</a></li>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
 
                 @endauth
 
                 @auth('admin')
                     <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-folder"></i>
-                        <span>Users</span>
-                    </a>
-                    <ul class="sub-menu ">
-
-                        <li><a href="{{route('admin.all_user')}}">All User</a></li>
-                        <li><a href="{{route('admin.add_user')}}">Add User</a></li>
-                    </ul>
-                </li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="fas fa-folder"></i>
+                            <span>Users</span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li><a href="{{route('admin.all_user')}}">All User</a></li>
+                            <li><a href="{{route('admin.add_user')}}">Add User</a></li>
+                        </ul>
+                    </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -79,6 +80,18 @@
                         <span>Today Due</span>
                     </a>
                 </li>
+
+                @role('manager')
+
+                <li>
+                    <a href="{{route('admin.all-installments')}}" class=" waves-effect">
+                        <i class="fas fa-file"></i>
+                        <span>All Installments</span>
+                    </a>
+                    
+                </li>
+            
+            @endrole
                 @endauth
                 @auth('employee')
                     <li>
@@ -118,6 +131,15 @@
                 </li>
                 @endauth
 
+                @auth('web')
+                <li >
+                    <a href="{{route('user.profile')}}" class=" waves-effect">
+                        <i class="fas fa-folder"></i>
+                        <span>Report</span>
+                    </a>
+                </li>
+                @endauth
+
 
 
 
@@ -151,6 +173,8 @@
                 </li>
                 @endauth
 
+               
+                
 
                 <li >
                     <a href="{{ route ('super_admin.tableshow')}}" class=" waves-effect">
@@ -161,6 +185,7 @@
 
 
             </ul>
+
         </div>
         <!-- Sidebar -->
     </div>

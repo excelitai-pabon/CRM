@@ -30,10 +30,11 @@ class InstallmentController extends Controller
         if($validated){
             if(Auth::guard('admin')->check()){
                 $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
+                
             }
             if(Auth::guard('employee')->check()){
                 $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
-            }else{
+            }elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
                 $user = User::where('file_no',$request->file_no)->first();
             }
 
@@ -61,10 +62,28 @@ class InstallmentController extends Controller
 
     public function allInstallment(User $user)
     {
-        $user = User::with(['totalNoOfInstallment','installment','installment_year'])->findOrFail($user->id);
+        $userdata=null;
+        if(Auth::guard('admin')->check()){
+            // $user = User::where('file_no',$request->file_no)->first();
+            $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('admin')->user()->crm_id)->where('id',$user->id);
+           
+            
+        }
+        if(Auth::guard('employee')->check()){
+            $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('employee')->user()->crm_id)->where('id',$user->id);
+        }
+        elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
+            
+            $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->findOrFail($user->id);
+        }
+        else
+        {
+            return redirect()->back();
+        }
 
 
-        $paid_date = Carbon::parse(optional($user->totalNoOfInstallment)->installment_starting_date);
+
+        $paid_date = Carbon::parse(optional($userdata->totalNoOfInstallment)->installment_starting_date);
 
         if(isset($paid_date))
         {
@@ -72,6 +91,7 @@ class InstallmentController extends Controller
         }
         else
         {
+            
             return redirect()->back();
         }
 
@@ -124,6 +144,7 @@ class InstallmentController extends Controller
 
         return view('installment.create-installment',compact('user','installment_no','payment'));
     }
+
     public function storeNewInstallment(Request $request,User $user, $installment_no, $payment)
     {
         $validated = $request->validate([
@@ -158,8 +179,6 @@ class InstallmentController extends Controller
 
             return redirect()->route('super_admin.installments')->with('success','Installment update successfully');
         }
-
-
 
     }
 }

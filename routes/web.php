@@ -6,6 +6,7 @@ use App\Http\Controllers\BasicAmountController;
 use App\Http\Controllers\BasicAmountUpdateController;
 use App\Http\Controllers\CrmController;
 use App\Http\Controllers\DueController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PdfController;
@@ -17,6 +18,8 @@ use GuzzleHttp\Psr7\Request;
 Route::get('/', function () {
     return view('signin_pages.client_login');
 })->name('user.login')->middleware(['guest:web','guest:admin','guest:employee','guest:super_admin']);
+
+Route::get('/profile',[UserController::class,'userProfile'])->name('user.profile');
 
 
 /***** Route with middleware */
@@ -77,7 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function()
         Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:admin')->name('installments.create');
         Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:admin')->name('installments.create.store');
 
-
+        Route::get('/all-installment',[InstallmentController::class,'getFileNo'])->middleware('auth:admin')->name('all-installments');
         // ==================== Due Route ====================
         Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 });
@@ -280,6 +283,7 @@ Route::prefix('employee')->name('employee.')->group(function()
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [UserController::class,'userProfile'])->name('user.profile');
 
 Route::get('/view', function () {
     return view('admin.index');
@@ -300,6 +304,8 @@ Route::get('/clients', function () {
 
 
 
+Route::get('/roles', [PermissionController::class,'Permission']);
+Route::get('/permission_show', [PermissionController::class,'permission_show']);
 
 //pdf routes for basic info
 // Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
