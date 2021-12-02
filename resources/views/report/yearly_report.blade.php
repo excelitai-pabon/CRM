@@ -28,6 +28,41 @@
         </div>
     </div>
 </div>
+@auth('super_admin')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.yearly_report') }}
+                        @elseif(Auth::guard('admin')->check()) {{ route('admin.yearly_report')  }} @endif " autocomplete="off">
+                        <div class="mb-4">
+                            <label class="form-label">Search Range</label>
+                            <div class="row">
+                                <div class="col-lg-8">
+
+                                    <div class="form-group">
+                                        <select class="form-select" name="crm" aria-label="Default select example">
+                                            <option value="" selected>Select any specfic CRM</option>
+                                            <option value="all">All Together</option>
+                                            @foreach ($crms as $crm)
+                                                <option value="{{$crm->id}}">{{$crm->name}}</option>
+                                            @endforeach
+                                          </select>
+                                    </div>
+
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <button class="btn btn-primary" type="submit" name="search"> Search </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endauth
 
 <div class="row">
     <div class="col-lg-12">
