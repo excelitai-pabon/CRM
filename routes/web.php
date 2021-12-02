@@ -3,10 +3,14 @@
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicAmountController;
+use App\Http\Controllers\BasicAmountUpdateController;
 use App\Http\Controllers\CrmController;
 use App\Http\Controllers\DueController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\PdfController;
+use App\Http\Controllers\TableController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Models\Admin;
 use GuzzleHttp\Psr7\Request;
@@ -52,6 +56,12 @@ Route::prefix('admin')->name('admin.')->group(function()
         //======================= Send Mail ==================
         Route::get('/email/{id}/{subject}', [UserController::class,'createMail'])->name('user.email');
         Route::post('/email', [UserController::class,'sendMail'])->name('user.send.email');
+
+
+
+    //request
+
+
 
 
 
@@ -135,13 +145,22 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     ->middleware('auth:super_admin')->name('basic_amount.store');
 
 
-    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:super_admin');
+
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
     Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:super_admin');
+    Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:super_admin');
+    Route::get('/basic/store/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin')->name('basic.approve.store');
+    //basic request
+
+    Route::post('/basic/update/{id}', [BasicAmountUpdateController::class, 'basicUpdateRequest'])->middleware('auth:super_admin');
 
 
-        // =====================user route ======================
+
+    Route::get('/show/basicrequest',   [BasicAmountUpdateController::class,   'show_request'])->name('show.request')->middleware('auth:super_admin');
+    Route::get('/destroy/request/{id}', [BasicAmountUpdateController::class, 'destroy_request'])->name('basic.destroy')->middleware('auth:super_admin');
+
+    // =====================user route ======================
         Route::get('/all-user',[UserController::class,'index'])->name('all_user');
         Route::get('/add-user',[UserController::class,'create'])->name('add_user');
         Route::post('/store-user',[UserController::class,'store'])->name('user.store');
@@ -180,6 +199,22 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
         Route::post('/password-update-employee/{id}',[CrmController::class,'passwordUpdateCrmEmployee'])->name('crm.password.update.employee');
 
 
+    //pdf
+    Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
+    Route::get('/member/pdf/{id}',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+
+
+
+    //excel
+    Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');
+    Route::get('/export-excel/installment/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin');
+
+
+    Route::get('/tables/index/{id}',[TableController::class,'basic'])->middleware('auth:super_admin');
+    Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
+    Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
+
+
 });
 
 
@@ -211,8 +246,39 @@ Route::prefix('employee')->name('employee.')->group(function()
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-        // =====================user route ======================
-        Route::get('/all-user',[UserController::class,'index'])->name('all-user');
+
+          // =====================user route ======================
+          Route::get('/all-user',[UserController::class,'index'])->name('all_user')->middleware('auth:employee');
+          Route::get('/add-user',[UserController::class,'create'])->name('add_user');
+          Route::post('/store-user',[UserController::class,'store'])->name('user.store');
+
+
+
+          //Basic
+           Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:employee')->name('basicAmount');
+
+          Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:employee');
+
+          Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:employee');
+
+          Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:employee')->name('basic_amount.add');
+          Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:employee')->name('basic_amount.create');
+          Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])->middleware('auth:employee')->name('basic_amount.store');
+
+
+
+          //** installment Routes */
+          Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:employee')->name('installments');
+          Route::post('/installment/find',[InstallmentController::class,'findFile'])->middleware('auth:employee')->name('installments.find');
+          Route::get('/installment/all/{user}',[InstallmentController::class,'allInstallment'])->middleware('auth:employee')->name('installments.all');
+          Route::get('/installment/edit/{id}',[InstallmentController::class,'editInstallment'])->middleware('auth:employee')->name('installments.edit');
+          Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:employee')->name('installments.edit.store');
+          Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:employee')->name('installments.create');
+          Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:employee')->name('installments.create.store');
+
+
+          // ==================== Due Route ====================
+          Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 });
 
 
@@ -251,3 +317,25 @@ Route::get('/clients', function () {
 
 
 
+
+
+//pdf routes for basic info
+// Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
+// Route::get('/member/pdf/{id}',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
+
+
+
+// //excel
+// Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');
+// Route::get('/export-excel/installment/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin');
+
+
+// Route::get('/tables/index/{id}',[TableController::class,'basic'])->middleware('auth:super_admin');
+// Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
+// Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
+
+
+
+
+Route::get('/data/{id}', [BasicAmountUpdateController::class, 'getBasic_data'])->name('getData')->middleware('auth:super_admin');
+Route::get('/fetchData/{id}', [BasicAmountUpdateController::class, 'fetch_data'])->middleware('auth:super_admin');

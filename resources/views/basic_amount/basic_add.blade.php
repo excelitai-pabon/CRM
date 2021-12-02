@@ -38,7 +38,7 @@
     <!-- end page title -->
 
 
-    <form method="POST" action=" @if(Auth::guard('super_admin')->check()) {{ route('super_admin.basic_amount.store',$user->id) }} @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.store',$user->id) }}@endif" class="row g-3 needs-validation" novalidate>
+    <form method="POST" action=" @if(Auth::guard('super_admin')->check()) {{ route('super_admin.basic_amount.store',$user->id) }} @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.store',$user->id) }} @elseif(Auth::guard('employee')->check()) {{ route('employee.basic_amount.store',$user->id) }}@endif" class="row g-3 needs-validation" novalidate>
         @csrf
         <div class="row">
             <div class="col-lg-6">

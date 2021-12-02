@@ -6,12 +6,10 @@
 <div class="content-wrapper p-5">
     <!-- Content Header (Page header) -->
     <div>
-        <h2>Add Member Basic Amount</h2>
+        <h2>Search Tables</h2>
     </div>
-
-    <form method="GET" action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.basic_amount.create') }}
-            @elseif(Auth::guard('admin')->check()) {{ route('admin.basic_amount.create')  }}  @elseif(Auth::guard('employee')->check()) {{ route('employee.basic_amount.create')  }} @endif ">
-
+    <form method="get" action="{{url('super-admin/basic/searchtable')}}" >
+        @csrf
         <div class="row">
             <div class="form-group col">
                 <label>File Number</label><br>

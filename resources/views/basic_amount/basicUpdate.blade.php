@@ -38,7 +38,7 @@
     <!-- end page title -->
 
 
-    <form method="POST" action="@if(Auth::guard('admin')->check()) {{ route('admin.basic_amount.update', $user->id) }} @elseif(Auth::guard('super_admin')->check())  {{ route('super_admin.basic_amount.update', $user->id) }} @endif" enctype="multipart/form-data">
+    <form method="POST" action="@if(Auth::guard('admin')->check())    {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('super_admin')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('employee')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @endif" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-6">
@@ -476,7 +476,7 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Payment Type </label>
 
-                                                    <select id="" name="land_filling_money_payment_type"
+                                                    <select id="" name="land_filling_money_payment_type2"
                                                         class="form-control">
                                                         <option value="" disabled <?php if ($land_filing_2nd->land_filling_money_payment_type == '') {
                                                             echo 'selected="selected"';
@@ -502,7 +502,7 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Note</label>
                                                     <textarea rows="3" cols="50" type="text" name="land_filling_money_note2"
-                                                        class="form-control">{{ $land_filing_2nd->land_filling_2_note }}</textarea>
+                                                        class="form-control">{{ $land_filing_2nd->land_filling_money_note }}</textarea>
                                                 </div>
                                             </div>
                                         </div>

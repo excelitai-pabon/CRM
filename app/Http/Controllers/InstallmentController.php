@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Mail;
+use Illuminate\Support\Facades\Session;
 
 class InstallmentController extends Controller
 {
@@ -33,6 +34,9 @@ class InstallmentController extends Controller
         if($validated){
             if(Auth::guard('admin')->check()){
                 $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
+            }
+            if(Auth::guard('employee')->check()){
+                $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
             }else{
                 $user = User::where('file_no',$request->file_no)->first();
             }
@@ -41,6 +45,10 @@ class InstallmentController extends Controller
                 if(Auth::guard('admin')->check()){
 
                     return redirect()->route('admin.installments.all',$user);
+                }
+                if(Auth::guard('employee')->check()){
+
+                    return redirect()->route('employee.installments.all',$user);
                 }else{
                     return redirect()->route('super_admin.installments.all',$user);
                 }
@@ -106,6 +114,9 @@ class InstallmentController extends Controller
 
         if(Auth::guard('admin')->check()){
             return redirect()->route('admin.installments')->with('success','Installment update successfully');
+        }
+        if(Auth::guard('employee')->check()){
+            return redirect()->route('employee.installments')->with('success','Installment update successfully');
         }else{
 
             return redirect()->route('super_admin.installments')->with('success','Installment update successfully');
@@ -169,6 +180,9 @@ class InstallmentController extends Controller
 
         if(Auth::guard('admin')->check()){
             return redirect()->route('admin.installments')->with('success','Installment update successfully');
+        }
+        if(Auth::guard('employee')->check()){
+            return redirect()->route('employee.installments')->with('success','Installment update successfully');
         }else{
 
             return redirect()->route('super_admin.installments')->with('success','Installment update successfully');

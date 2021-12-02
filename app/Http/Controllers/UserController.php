@@ -29,6 +29,9 @@ class UserController extends Controller
     public function index(){
         if(Auth::guard('admin')->check()){
             $users=User::where('crm_id',Auth::guard('admin')->user()->crm_id)->get();
+        }
+        elseif(Auth::guard('employee')->check()){
+            $users=User::all();
         }elseif(Auth::guard('super_admin')->check()){
             $users=User::all();
         }
@@ -42,6 +45,10 @@ class UserController extends Controller
 
         if(Auth::guard('admin')->check()){
             $crms=Crm::where('id',Auth::guard('admin')->user()->crm_id)->get();
+            return view('user.create',compact('crms'));
+        }
+        if(Auth::guard('employee')->check()){
+            $crms=Crm::where('id',Auth::guard('employee')->user()->crm_id)->get();
             return view('user.create',compact('crms'));
         }
         $crms=Crm::all();
