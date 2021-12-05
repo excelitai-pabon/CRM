@@ -38,7 +38,7 @@
     <!-- end page title -->
 
 
-    <form method="POST" action="@if(Auth::guard('admin')->check())    {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('super_admin')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('employee')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @endif" enctype="multipart/form-data">
+    <form method="POST" action="@if(Auth::guard('admin')->check()){{ url('admin/basic/update/'.$user->id)}} @elseif(Auth::guard('super_admin')->check()){{ url('super-admin/basic/update/'.$user->id) }} @elseif(Auth::guard('employee')->check()){{ url('employee/basic/update/' . $user->id) }} @endif" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-6">
@@ -55,7 +55,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Total</label>
-                                                                <input type="text" name="booking_money"
+                                                                <input  type="text" name="booking_money"
                                                                     value="{{$booking_status->booking_money_due}}" id="booking-money"
                                                                     class="form-control">
                                                             </div>
@@ -151,7 +151,8 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Total</label>
-                                                <input type="text" name="downpayment_money"
+                                                <input
+                                                 type="text" name="downpayment_money"
                                                     value="{{ $down_payment->downpayment_money_due }}" id="down-payment"
                                                     class="form-control">
                                             </div>
@@ -243,7 +244,8 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Car Parking Total</label>
-                                                    <input type="text" name="car_parking_money"
+                                                    <input
+                                                    type="text" name="car_parking_money"
                                                         value="{{ $car_parking->car_parking_money_due }}" id="car-parking"
                                                         class="form-control">
                                                 </div>
@@ -334,7 +336,8 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Total</label>
-                                                    <input type="text" name="land_filling_money"
+                                                    <input
+                                                     type="text" name="land_filling_money"
                                                         value="{{ $land_filing_1st->land_filling_money_due }}"
                                                         id="land-filling-1" class="form-control">
                                                 </div>
@@ -438,7 +441,8 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Total</label>
-                                                    <input type="text" name="land_filling_money2"
+                                                    <input
+                                                     type="text" name="land_filling_money2"
                                                         value="{{ $land_filing_2nd->land_filling_money_due }}"
                                                         id="land-filling-2" class="form-control">
                                                 </div>
@@ -634,7 +638,8 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Total</label>
-                                                    <input type="text"
+                                                    <input
+                                                    type="text"
                                                         value="{{ $roof_casting_1st->floor_roof_casting_money_due_1st }}"
                                                         name="floor_roof_casting_money_1st" id="roof-casting"
                                                         class="form-control">
@@ -727,7 +732,8 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work</label>
-                                                <input type="text" name="finishing_work_money"
+                                                <input
+                                                 type="text" name="finishing_work_money"
                                                     value="{{ $finishing_work->finishing_work_money_due }}"
                                                     id="finishing-work" class="form-control">
                                             </div>
@@ -827,7 +833,8 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>After Handover Money </label>
-                                                <input type="text" name="after_handover_money"
+                                                <input
+                                                 type="text" name="after_handover_money"
                                                     value="{{$after_hand_over_money->after_handover_money_money_due}}"
                                                     id="after-handover-money" class="form-control">
                                             </div>

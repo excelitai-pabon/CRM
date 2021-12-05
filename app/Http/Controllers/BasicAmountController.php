@@ -302,6 +302,7 @@ class BasicAmountController extends Controller
 
 
     public function basicUpdate($id){
+
         //booking status part
         // dd($request);
 

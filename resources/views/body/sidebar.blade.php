@@ -10,7 +10,7 @@
 
                 <li>
                     <a href="{{route('dashboard')}}" class="waves-effect">
-                        <i class="ti-home"></i><span class="badge rounded-pill bg-primary float-end">2</span>
+                        <i class="ti-home"></i><span class="badge rounded-pill bg-primary float-end"></span>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -20,7 +20,7 @@
                 @auth('super_admin')
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="ti-email"></i>
+                            <i class="fa fa-user"></i>
                             <span>Users</span>
                         </a>
                         <ul class="sub-menu ">
@@ -65,6 +65,7 @@
                     <ul class="sub-menu ">
                         <li><a href="{{route('admin.basic_amount.add')}}">Add Basic Amounts</a></li>
                         <li><a href="{{route('admin.basicAmount')}}">Update Basic Amounts</a></li>
+
 
                     </ul>
                 </li>
@@ -161,42 +162,49 @@
 
 
                 @auth('super_admin')
-                <li >
-                    <a href="{{route('super_admin.installments')}}" class=" waves-effect">
-                        <i class="fas fa-file"></i>
-                        <span>Installments</span>
-                    </a>
-                </li>
-                <li >
-                    <a href="{{route('super_admin.all.user.due')}}" class=" waves-effect">
-                        <i class="fas fa-folder"></i>
-                        <span>Today Due</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-folder"></i>
-                        <span>CRM</span>
-                    </a>
-                    <ul class="sub-menu ">
+                    <li >
+                        <a href="{{route('super_admin.installments')}}" class=" waves-effect">
+                            <i class="fas fa-file"></i>
+                            <span>Installments</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="{{route('super_admin.all.user.due')}}" class=" waves-effect">
+                            <i class="fas fa-folder"></i>
+                            <span>Today Due</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="fas fa-folder"></i>
+                            <span>CRM</span>
+                        </a>
+                        <ul class="sub-menu ">
 
-                        <li><a href="{{route('super_admin.all.crm')}}">All CRM</a></li>
-                        <li><a href="{{route('super_admin.add.crm')}}">Add CRM</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-file"></i>
-                        <span>Report</span>
-                    </a>
-                    <ul class="sub-menu ">
-                        <li><a href="{{route('super_admin.daily_report')}}">Daily Report</a></li>
-                        <li><a href="{{route('super_admin.monthly_report')}}">Monthly Report</a></li>
-                        <li><a href="{{route('super_admin.yearly_report')}}">Yearly Report</a></li>
-                        <li><a href="{{route('super_admin.search_report')}}">Custom Report</a></li>
+                            <li><a href="{{route('super_admin.all.crm')}}">All CRM</a></li>
+                            <li><a href="{{route('super_admin.add.crm')}}">Add CRM</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ti-file"></i>
+                            <span>Report</span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li><a href="{{route('super_admin.daily_report')}}">Daily Report</a></li>
+                            <li><a href="{{route('super_admin.monthly_report')}}">Monthly Report</a></li>
+                            <li><a href="{{route('super_admin.yearly_report')}}">Yearly Report</a></li>
+                            <li><a href="{{route('super_admin.search_report')}}">Custom Report</a></li>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{route('super_admin.powerOfAtorney')}}" class="has-arrow waves-effect">
+                            <i class="ti-file"></i>
+                            <span>Power of atorney</span>
+                        </a>
+
+                    </li>
                 @endauth
 
 
@@ -205,7 +213,7 @@
                 <li >
                     <a href="{{ route ('super_admin.tableshow')}}" class=" waves-effect">
                         <i class="ti-email"></i>
-                        <span>Tables</span>
+                        <span>Information</span>
                     </a>
                 </li>
 

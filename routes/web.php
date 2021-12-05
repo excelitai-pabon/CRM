@@ -73,7 +73,7 @@ Route::prefix('admin')->name('admin.')->group(function()
 
         Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:admin');
 
-        Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:admin');
+        Route::post('/basic/update/{id}', [BasicAmountUpdateController::class, 'basicUpdateRequest'])->middleware('auth:admin');
 
         Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:admin')->name('basic_amount.add');
         Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:admin')->name('basic_amount.create');
@@ -151,10 +151,13 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     ->middleware('auth:super_admin')->name('basic_amount.store');
 
 
+    ///power of atorney routes
+    Route::get('/powerOfAtorney',[PermissionController::class, 'powerOfAtorney'])->middleware('auth:super_admin')->name('powerOfAtorney');
+    Route::post('/powerOfAtorney/store',[PermissionController::class, 'powerOfAtorneyStore'])->middleware('auth:super_admin')->name('powerOfAtorney.store');
 
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
-    Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:super_admin');
+    // Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:super_admin');
     Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:super_admin');
     Route::get('/basic/store/{id}', [BasicAmountController::class, 'basicUpdate'])->middleware('auth:super_admin')->name('basic.approve.store');
     //basic request
@@ -216,6 +219,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::get('/export-excel/installment/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin');
 
 
+
     Route::get('/tables/index/{id}',[TableController::class,'basic'])->middleware('auth:super_admin');
     Route::get('/basic/showingtable',[TableController::class,'basicTable'])->middleware('auth:super_admin')->name('tableshow');
     Route::get('/basic/searchtable',[TableController::class,'basicSearch'])->middleware('auth:super_admin');
@@ -225,6 +229,10 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
      Route::get('/mothly-report',[ReportController::class,'monthlyReport'])->name('monthly_report');
      Route::get('/yearly-report',[ReportController::class,'yearlyReport'])->name('yearly_report');
      Route::get('/custom-report',[ReportController::class,'searchReport'])->name('search_report');
+
+     Route::get('/email/{id}/{subject}', [UserController::class,'createMail'])->name('user.email');
+     Route::post('/email', [UserController::class,'sendMail'])->name('user.send.email');
+     Route::post('/userPasswordChange/{id}', [UserController::class,'userPasswordChange'])->name('user.password.change');
 
 
 });
@@ -271,7 +279,7 @@ Route::prefix('employee')->name('employee.')->group(function()
 
           Route::get('/basic/showingData', [BasicAmountController::class, 'basicShowDataUpdate'])->name('basic_amount.update.search')->middleware('auth:employee');
 
-          Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdate'])->name('basic_amount.update')->middleware('auth:employee');
+          Route::post('/basic/update/{id}', [BasicAmountController::class, 'basicUpdateRequest'])->name('basic_amount.update')->middleware('auth:employee');
 
           Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:employee')->name('basic_amount.add');
           Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:employee')->name('basic_amount.create');

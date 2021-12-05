@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Admin;
+use App\Models\AdminsRole;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -14,7 +15,7 @@ class PermissionController extends Controller
 {
     //
     public function Permission()
-    {   
+    {
     	$dev_permission = Permission::where('slug','create-tasks')->first();
 		$manager_permission = Permission::where('slug', 'edit-users')->first();
 
@@ -51,7 +52,7 @@ class PermissionController extends Controller
 		$dev_perm = Permission::where('slug','create-tasks')->first();
 		$manager_perm = Permission::where('slug','edit-users')->first();
 
-	
+
 
 		$manager = new Admin();
 		$manager->name = 'admin1';
@@ -61,12 +62,38 @@ class PermissionController extends Controller
 		$manager->roles()->attach($manager_role);
 		$manager->permissions()->attach($manager_perm);
 
-		
+
 		return redirect()->back();
     }
 
     public function permission_show(){
         $user=Auth::guard('admin')->user();
         dd( $user);
+    }
+
+    public function powerOfAtorney()
+    {
+        $admins = Admin::all();
+        $super_admins = AdminsRole::all();
+        return view('powerOfAtorney.powerOfAtorney-add-view',compact('admins','super_admins'));
+    }
+
+    public function powerOfAtorneyStore(Request $request)
+    {
+        $find = AdminsRole::where('admin_id',$request->name)->get();
+        if($find)
+        {
+            return redirect()->back()->with(['error'=>'Already Exists']);
+        }
+        else
+        {
+            $role = new AdminsRole();
+            $role->admin_id = $request->name;
+            $role->role_id = $request->check;
+            $role->save();
+            return redirect()->back()->with(['success'=>'success fully added as Super Admin']);
+
+        }
+
     }
 }

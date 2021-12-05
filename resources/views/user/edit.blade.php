@@ -18,9 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Add User</h4>
-                    <p class="card-title-desc">Parsley is a javascript form validation
-                        library. It helps you provide your users with feedback on their form
-                        submission before sending it to your server.</p>
+                    <p class="card-title-desc">Here you can edit specific user from the CRM</p>
                     <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data" method="POST" action="{{route('super_admin.user.update',$user->id)}}">
                         @csrf
                         <div class="col-md-6">
@@ -239,6 +237,48 @@
         </div>
 
     </div>
+
+    @auth('super_admin')
+        <div class="row mt-4">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update User Password</h4>
+                    <p class="card-title-desc">Parsley is a javascript form validation
+                        library. It helps you provide your users with feedback on their form
+                        submission before sending it to your server.</p>
+                    <form class="row g-3 needs-validation"  enctype="multipart/form-data" method="POST" action="{{route('super_admin.user.password.change',$user->id)}}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" id="validationCustom03" placeholder="Password"  required>
+                                @error('password')
+                                    <span class="text-danger"> {{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" name="confirm_password" id="validationCustom03" placeholder="Confirm Password"  required>
+                                @error('confirm_password')
+                                    <span class="text-danger"> {{$message}}</span>
+                                @enderror
+                            </div>
+                            <div>
+                                @if (Session::has('notMatched'))
+                                    <span class="text-danger">{{Session::get('notMatched')}}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endauth
 </div>
 @endsection
 

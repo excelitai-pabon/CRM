@@ -11,7 +11,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('assets')}}/images/favicon.ico">
+        <link rel="shortcut icon" href="{{asset('assets')}}/logo/mobilelogo.png">
 
         <link href="{{asset('assets')}}/libs/chartist/chartist.min.css" rel="stylesheet">
 

@@ -26,18 +26,10 @@
                 </thead>
 
                 <tbody class="user_table">
-
-
-
-
-
-
-
-
                   <tr>
                     <td >Booking Money
                     </td>
-                      <td id="booking_money">
+                      <td id="booking_money" >
 
                       </td>
                   </tr>
@@ -451,9 +443,6 @@
 
                                         <td>{{$req->user->file_no}}</td>
 
-
-
-
                                         @if ($req->approve_status!=0)
                                         <td><button disabled type="button" class="btn btn-success">Approved</button></td>
                                         @else
@@ -461,13 +450,6 @@
                                         <td><button disabled type="button" class="btn btn-danger">Pending</button></td>
 
                                          @endif
-
-
-
-
-
-
-
 
 
                                         <td class="text-end">
@@ -551,12 +533,9 @@
                dataType:"json",
 
                success:function(response){
-
-                console.log("hello");
                 $('#booking_money').text(response.update_request.booking_money);
                 $('#booking_money_payment_type').text(response.update_request.booking_money_payment_type);
                 $('#booking_money_paid').text(response.update_request.booking_money_paid);
-                console.log(response);
                 $('#booking_money_paid_date').text(response.update_request.booking_money_paid_date);
                 $('#booking_money_note').text(response.update_request.booking_money_note);
                 $('#booking_money_due_date').text(response.update_request.booking_money_due_date);

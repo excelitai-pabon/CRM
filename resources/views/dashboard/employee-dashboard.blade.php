@@ -20,7 +20,7 @@
         </x-jet-responsive-nav-link>
     </form>
 </div>
-    
+
 @endsection
 
 @section('content')
@@ -32,7 +32,7 @@
             <div class="col-md-8">
                 <h6 class="page-title">Dashboard</h6>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">Welcome to Veltrix Dashboard</li>
+                    <li class="breadcrumb-item active">Welcome to ShaplaCity Dashboard</li>
                 </ol>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active">{{Auth::user()->crm_id}}</li>
@@ -41,7 +41,7 @@
             <div class="col-md-4">
                 <div class="float-end d-none d-md-block">
                     <div class="dropdown">
-                      
+
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -55,7 +55,7 @@
         </div>
     </div>
     <!-- end page title -->
-    
+
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card mini-stat bg-primary text-white">
@@ -156,7 +156,7 @@
     </div>
     <!-- end row -->
 
-    
+
 
 
 
