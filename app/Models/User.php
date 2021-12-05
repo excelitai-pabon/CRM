@@ -126,7 +126,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(TotalAmount::class);
     }
+    public function approveUpdate()
+    {
+        return $this->hasOne(ApproveUpdate::class);
+    }
 
-    
+
 
 }

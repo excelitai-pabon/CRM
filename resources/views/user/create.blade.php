@@ -18,9 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Add User</h4>
-                    <p class="card-title-desc">Parsley is a javascript form validation
-                        library. It helps you provide your users with feedback on their form
-                        submission before sending it to your server.</p>
+                    <p class="card-title-desc">Here you can create users into the CRM</p>
                     <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data" method="POST" action="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.store')}} @elseif(Auth::guard('admin')->check()){{route('admin.user.store')}} @endif">
                         @csrf
 

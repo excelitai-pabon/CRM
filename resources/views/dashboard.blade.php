@@ -34,7 +34,7 @@
             <div class="col-md-8">
                 <h6 class="page-title">Dashboard</h6>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">Welcome to Veltrix Dashboard</li>
+                    <li class="breadcrumb-item active">Welcome to Shapla City CRM</li>
                 </ol>
             </div>
             <div class="col-md-4">
@@ -54,7 +54,7 @@
         </div>
     </div>
     <!-- end page title -->
-   
+
 
 
 
@@ -131,16 +131,16 @@
                 </div>
             </div>
         </div>
-        
 
-            
-        
+
+
+
     </div>
     <!-- end row -->
 
 
 
-    
+
 
 
 

@@ -38,7 +38,7 @@
     <!-- end page title -->
 
 
-    <form method="POST" action="@if(Auth::guard('admin')->check())    {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('super_admin')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @elseif(Auth::guard('employee')->check())  {{ url('super-admin/basic/update/' . $user->id) }} @endif" enctype="multipart/form-data">
+    <form method="POST" action="@if(Auth::guard('admin')->check()){{ url('admin/basic/update/'.$user->id)}} @elseif(Auth::guard('super_admin')->check()){{ url('super-admin/basic/update/'.$user->id) }} @elseif(Auth::guard('employee')->check()){{ url('employee/basic/update/' . $user->id) }} @endif" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-6">
@@ -55,8 +55,8 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Total</label>
-                                                                <input type="text" name="booking_money"
-                                                                    value="{{ $booking_status->booking_money }}" id="booking-money"
+                                                                <input  type="text" name="booking_money"
+                                                                    value="{{$booking_status->booking_money_due}}" id="booking-money"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
@@ -151,8 +151,9 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Total</label>
-                                                <input type="text" name="downpayment_money"
-                                                    value="{{ $down_payment->downpayment_money }}" id="down-payment"
+                                                <input
+                                                 type="text" name="downpayment_money"
+                                                    value="{{ $down_payment->downpayment_money_due }}" id="down-payment"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -243,8 +244,9 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Car Parking Total</label>
-                                                    <input type="text" name="car_parking_money"
-                                                        value="{{ $car_parking->car_parking_money }}" id="car-parking"
+                                                    <input
+                                                    type="text" name="car_parking_money"
+                                                        value="{{ $car_parking->car_parking_money_due }}" id="car-parking"
                                                         class="form-control">
                                                 </div>
                                             </div>
@@ -334,8 +336,9 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Total</label>
-                                                    <input type="text" name="land_filling_money"
-                                                        value="{{ $land_filing_1st->land_filling_money }}"
+                                                    <input
+                                                     type="text" name="land_filling_money"
+                                                        value="{{ $land_filing_1st->land_filling_money_due }}"
                                                         id="land-filling-1" class="form-control">
                                                 </div>
                                             </div>
@@ -438,8 +441,9 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Total</label>
-                                                    <input type="text" name="land_filling_money2"
-                                                        value="{{ $land_filing_2nd->land_filling_money }}"
+                                                    <input
+                                                     type="text" name="land_filling_money2"
+                                                        value="{{ $land_filing_2nd->land_filling_money_due }}"
                                                         id="land-filling-2" class="form-control">
                                                 </div>
                                             </div>
@@ -454,9 +458,9 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid Date</label>
-                                                    <input type="date" name="land_filling_money_paid_date2"
+                                                    <input type="date" name="land_filling_money_due_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date2))}}"
                                                         id="land-filling-2-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -466,9 +470,9 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Due Date</label>
-                                                    <input type="date" name="land_filling_money_due_date"
+                                                    <input type="date" name="land_filling_money_paid_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date2))}}"
                                                         id="land-filling-2-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -530,7 +534,7 @@
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Total</label>
                                                     <input type="text" name="building_pilling_money"
-                                                        value="{{ $building_pilling_status->building_pilling_money }}"
+                                                        value="{{ $building_pilling_status->building_pilling_money_due }}"
                                                         id="building-pilling" class="form-control">
                                                 </div>
                                             </div>
@@ -538,7 +542,7 @@
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Paid :</label>
                                                     <input type="text" name="building_pilling_money_paid"
-                                                        value="{{date('Y-m-d',strtotime($building_pilling_status->building_pilling_money_paid))}}"
+                                                        value="{{$building_pilling_status->building_pilling_money_paid}}"
                                                         id="building-pilling-paid" class="form-control">
                                                 </div>
                                             </div>
@@ -568,7 +572,7 @@
                                                     <label>Building Pilling Payment Type </label>
                                                     <select name="building_pilling_money_payment_type" id=""
                                                         class="form-control">
-                                                        <option value="" disabled <?php if ($building_pilling_status->building_pilling_money_payment_type == '') {
+                                                        <option value="" disabled <?php if($building_pilling_status->building_pilling_money_payment_type == '') {
                                                             echo 'selected="selected"';
                                                         } ?>>Select Payment type
                                                         </option>
@@ -634,8 +638,9 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Total</label>
-                                                    <input type="text"
-                                                        value="{{ $roof_casting_1st->floor_roof_casting_money_1st }}"
+                                                    <input
+                                                    type="text"
+                                                        value="{{ $roof_casting_1st->floor_roof_casting_money_due_1st }}"
                                                         name="floor_roof_casting_money_1st" id="roof-casting"
                                                         class="form-control">
                                                 </div>
@@ -727,8 +732,9 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work</label>
-                                                <input type="text" name="finishing_work_money"
-                                                    value="{{ $finishing_work->finishing_work_money }}"
+                                                <input
+                                                 type="text" name="finishing_work_money"
+                                                    value="{{ $finishing_work->finishing_work_money_due }}"
                                                     id="finishing-work" class="form-control">
                                             </div>
                                         </div>
@@ -827,8 +833,9 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>After Handover Money </label>
-                                                <input type="text" name="after_handover_money"
-                                                    value="{{$after_hand_over_money->after_handover_money }}"
+                                                <input
+                                                 type="text" name="after_handover_money"
+                                                    value="{{$after_hand_over_money->after_handover_money_money_due}}"
                                                     id="after-handover-money" class="form-control">
                                             </div>
                                         </div>

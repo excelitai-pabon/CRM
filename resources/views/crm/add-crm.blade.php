@@ -6,13 +6,11 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Add Crm</h4>
-                    <p class="card-title-desc">Parsley is a javascript form validation
-                        library. It helps you provide your users with feedback on their form
-                        submission before sending it to your server.</p>
+                    <p class="card-title-desc"></p>
                     <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data" method="POST" action="{{route('super_admin.store.crm')}}">
                         @csrf
 
-                        
+
                          <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">CRM Name</label>
                             <input type="text" class="form-control" name="name" id="validationCustom02" placeholder="CRM Name" required>

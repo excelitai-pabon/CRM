@@ -314,9 +314,28 @@ class UserController extends Controller
 
    }
 
+   public function userPasswordChange(Request $request,$id)
+   {
+    $validated = $request->validate([
+        'password' => 'required|min:8',
+        'confirm_password' => 'required|min:8',
+    ]);
+        if($request->password == $request->confirm_password)
+        {
+            $user = User::find($id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect()->back()->with(['success' => 'Password Successfully Changed!']);
+        }
+        else
+        {
+            return redirect()->back()->with(['error' => 'Password and Confirm Password did not Matched!']);
+        }
+   }
 
 
-   
+
+
 
 
 

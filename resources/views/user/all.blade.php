@@ -1,7 +1,14 @@
 @extends('master.master')
 @section('css')
+
+
 <link href="{{asset('assets')}}/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="{{asset('assets')}}/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<style>
+    .btn-secondary{
+        background-color: #406b97 !important;
+    }
+</style>
 @endsection
 @section('content')
 <div class="page-content">
@@ -14,17 +21,14 @@
                     <div class="card-body">
 
 
-                       
 
 
-                        <h4 class="card-title">Buttons example</h4>
-                        <p class="card-title-desc">The Buttons extension for DataTables
-                            provides a common set of options, API methods and styling to display
-                            buttons on a page that will interact with a DataTable. The core library
-                            provides the based framework upon which plug-ins can built.
+
+                        <h4 class="card-title">All Users</h4>
+                        <p class="card-title-desc">Here you can view all users from the CRM
                         </p>
 
-                      
+
 
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
@@ -40,14 +44,7 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>dfag regg  </td>
-                                    <td>sdgeg  srtgh  th </td>
-                                    <td>fhr th r rt hr</td>
-                                    <td>dsrgty rtyrth trs wrth</td>
-                                    <td>dsrgty rtyrth trs wrth</td>
-                                    <td>dsrgty rtyrth trs wrth</td>
-                                </tr>
+
                                 @foreach ($users as $user)
                                 <tr>
                                     <td><img src="{{asset('/').$user->member_image}}" alt="" style="height: 50px; width:50px; border-radius:50%;"></td>
@@ -55,7 +52,7 @@
                                     <td>{{$user->file_no}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone_no_1}}
-                                      
+
                                     <td>
                                         <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.profile',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.profile',$user->id)}} @endif" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
                                         <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.edit',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.edit',$user->id)}} @endif" class="btn btn-warning"><i class="fas fa-edit"></i></a>

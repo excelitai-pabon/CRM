@@ -7,10 +7,10 @@
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Requests</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -18,7 +18,7 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Fields</th>
                     <th scope="col">DATA</th>
 
 
@@ -26,18 +26,10 @@
                 </thead>
 
                 <tbody class="user_table">
-
-
-
-
-
-
-
-
                   <tr>
                     <td >Booking Money
                     </td>
-                      <td id="booking_money">
+                      <td id="booking_money" >
 
                       </td>
                   </tr>
@@ -83,7 +75,7 @@
                   </tr>
 
                   <tr>
-                    <td>building_pilling_money
+                    <td>Building Pilling Money
 
                     </td>
                     <td id="building_pilling_money">
@@ -91,23 +83,7 @@
                     </td>
               </tr>
                   <tr>
-                    <td>building_pilling_money_due
-
-                    </td>
-                    <td id="building_pilling_money_due">
-
-                    </td>
-              </tr>
-                  <tr>
-                    <td>building_pilling_money_due_date
-
-                    </td>
-                    <td id="building_pilling_money_due_date">
-
-                    </td>
-              </tr>
-                  <tr>
-                    <td>building_pilling_money_note
+                    <td>Building Pilling Money Note
 
                     </td>
                     <td id="building_pilling_money_note">
@@ -115,7 +91,7 @@
                     </td>
               </tr>
                   <tr>
-                    <td>building_pilling_money_paid
+                    <td>Building Pilling Money Paid
 
                     </td>
                     <td id="building_pilling_money_paid">
@@ -123,7 +99,15 @@
                     </td>
               </tr>
                   <tr>
-                    <td>building_pilling_money_due
+                    <td>Building Pilling Money Due
+
+                    </td>
+                    <td id="building_pilling_money_due">
+
+                    </td>
+                    </tr>
+                  <tr>
+                    <td>Building Pilling Money Paid Date
 
                     </td>
                     <td id="building_pilling_money_paid_date">
@@ -131,24 +115,16 @@
                     </td>
                     </tr>
                   <tr>
-                    <td>building_pilling_money_paid_date
+                    <td>Building Pilling Money Due Date
 
                     </td>
-                    <td id="building_pilling_money_paid_date">
-
-                    </td>
-                    </tr>
-                  <tr>
-                    <td>building_pilling_money_paid_date
-
-                    </td>
-                    <td id="building_pilling_money_paid_date">
+                    <td id="building_pilling_money_due_date">
 
                     </td>
                     </tr>
 
                     <tr>
-                      <td>car_parking_money
+                      <td>Car Parking Money
 
                       </td>
                       <td id="car_parking_money">
@@ -156,7 +132,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_due
+                      <td>Car Parking Money Due
 
                       </td>
                       <td id="car_parking_money_due">
@@ -164,7 +140,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_due_date
+                      <td>Car Parking Money Due Date
 
                       </td>
                       <td id="car_parking_money_due_date">
@@ -172,15 +148,15 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_due
+                      <td>Car Parking Money Paid
 
                       </td>
-                      <td id="car_parking_money_due">
+                      <td id="car_parking_money_paid">
 
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_note
+                      <td>Car Parking Money Note
 
                       </td>
                       <td id="car_parking_money_note">
@@ -188,7 +164,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_paid_date
+                      <td>Car Parking Money Paid Date
 
                       </td>
                       <td id="car_parking_money_paid_date">
@@ -196,17 +172,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>car_parking_money_paid_date
-
-                      </td>
-                      <td id="car_parking_money_paid_date">
-
-                      </td>
-                      </tr>
-
-
-                    <tr>
-                      <td>downpayment_money
+                      <td>Downpayment Money
 
                       </td>
                       <td id="downpayment_money">
@@ -214,7 +180,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>downpayment_money_due
+                      <td>Downpayment Money Due
 
                       </td>
                       <td id="downpayment_money_due">
@@ -222,7 +188,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>downpayment_money_due_date
+                      <td>Downpayment Money Due Date
 
                       </td>
                       <td id="downpayment_money_due_date">
@@ -230,7 +196,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>downpayment_money_note
+                      <td>Downpayment Money Note
 
                       </td>
                       <td id="downpayment_money_note">
@@ -238,7 +204,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>downpayment_money_paid
+                      <td>Downpayment Money Paid
 
                       </td>
                       <td id="downpayment_money_paid">
@@ -246,7 +212,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>downpayment_money_payment_type
+                      <td>Downpayment Money Payment Type
 
                       </td>
                       <td id="downpayment_money_payment_type">
@@ -256,7 +222,7 @@
 
 
                     <tr>
-                      <td>finishing_work_money
+                      <td>Finishing Work Money
 
                       </td>
                       <td id="finishing_work_money">
@@ -264,7 +230,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>finishing_work_money_due_date
+                      <td>Finishing Work Money Due Date
 
                       </td>
                       <td id="finishing_work_money_due_date">
@@ -272,7 +238,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>finishing_work_money_note
+                      <td>Finishing Work Money Note
 
                       </td>
                       <td id="finishing_work_money_note">
@@ -280,7 +246,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>finishing_work_money_paid
+                      <td>Finishing Work Money Paid
 
                       </td>
                       <td id="finishing_work_money_paid">
@@ -288,7 +254,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>finishing_work_money_paid_date
+                      <td>Finishing Work Money Paid Date
 
                       </td>
                       <td id="finishing_work_money_paid_date">
@@ -296,7 +262,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>finishing_work_money_payment_type
+                      <td>Finishing Work Money Payment Type
 
                       </td>
                       <td id="finishing_work_money_payment_type">
@@ -304,7 +270,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_1
+                      <td>Land Filling Money 1
 
                       </td>
                       <td id="land_filling_money_1">
@@ -312,7 +278,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_due_1
+                      <td>Land Filling Money Due_1
 
                       </td>
                       <td id="land_filling_money_due_1">
@@ -320,7 +286,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_due_date_1
+                      <td>Land Filling Money Due Date_1
 
                       </td>
                       <td id="land_filling_money_due_date_1">
@@ -328,7 +294,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_note_1
+                      <td>Land Filling Money Note 1
 
                       </td>
                       <td id="land_filling_money_note_1">
@@ -336,7 +302,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_due_date_1
+                      <td>Land Filling Money Due Date 1
 
                       </td>
                       <td id="land_filling_money_due_date_1">
@@ -344,7 +310,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_paid_date_1
+                      <td>Land Filling Money Paid Date_1
 
                       </td>
                       <td id="land_filling_money_paid_date_1">
@@ -352,7 +318,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_paid_1
+                      <td>Land Filling Money Paid_1
 
                       </td>
                       <td id="land_filling_money_paid_1">
@@ -360,7 +326,7 @@
                       </td>
                       </tr>
                     <tr>
-                      <td>land_filling_money_payment_type_1
+                      <td>Land  Filling Money Payment Type_1
 
                       </td>
                       <td id="land_filling_money_payment_type_1">
@@ -375,7 +341,7 @@
 
                     <tr>
                         <td>
-                        land_filling_money_2
+                        Land Filling Money 2
                       </td>
                       <td id="land_filling_money_2">
 
@@ -385,7 +351,7 @@
 
                     <tr>
                         <td>
-                        land_filling_money_due_2
+                        Land Filling Money Due_2
                       </td>
                       <td id="land_filling_money_due_2">
 
@@ -393,28 +359,28 @@
                       </tr>
                     <tr>
                          <td>
-                        land_filling_money_due_date_2
+                        Land Filling Money Due Date_2
                       </td>
                       <td id="land_filling_money_due_date_2">
 
                       </td>
                       </tr>
                     <tr> <td>
-                        land_filling_money_note_2
+                        Land Filling Money Note_2
                       </td>
                       <td id="land_filling_money_note_2">
 
                       </td>
                       </tr>
                     <tr> <td>
-                        land_filling_money_paid_date_2
+                        Land Filling Money Paid Date_2
                       </td>
                       <td id="land_filling_money_paid_date_2">
 
                       </td>
                       </tr>
                     <tr> <td>
-                        land_filling_money_payment_type_2
+                        Land Filling Money Payment Type_2
                       </td>
                       <td id="land_filling_money_payment_type_2">
 
@@ -433,13 +399,14 @@
         </div>
       </div>
     </div>
+
   </div>
 
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Table head</h4>
+                <h4 class="card-title">Basic Amount Request</h4>
                 <p class="card-title-desc">
 
                 <div class="table-responsive">
@@ -448,9 +415,10 @@
 
                                 <thead>
                                     <tr>
-                                        <th>ar</th>
+
                                         <th>User Name</th>
                                         <th>UserId</th>
+                                        <th>File No</th>
 
                                         <th> status</th>
 
@@ -469,11 +437,11 @@
 
 
                                     <tr>
+                                        <td>{{$req->user->member_name}}</td>
+                                        <td>{{$req->user->id}}</td>
 
-                                        <td>1</td>
-                                        <td>name</td>
-                                        <td>{{$req->user_id}}</td>
 
+                                        <td>{{$req->user->file_no}}</td>
 
                                         @if ($req->approve_status!=0)
                                         <td><button disabled type="button" class="btn btn-success">Approved</button></td>
@@ -482,13 +450,6 @@
                                         <td><button disabled type="button" class="btn btn-danger">Pending</button></td>
 
                                          @endif
-
-
-
-
-
-
-
 
 
                                         <td class="text-end">
@@ -572,12 +533,9 @@
                dataType:"json",
 
                success:function(response){
-
-                console.log("hello");
                 $('#booking_money').text(response.update_request.booking_money);
                 $('#booking_money_payment_type').text(response.update_request.booking_money_payment_type);
                 $('#booking_money_paid').text(response.update_request.booking_money_paid);
-                console.log(response);
                 $('#booking_money_paid_date').text(response.update_request.booking_money_paid_date);
                 $('#booking_money_note').text(response.update_request.booking_money_note);
                 $('#booking_money_due_date').text(response.update_request.booking_money_due_date);
@@ -587,10 +545,10 @@
                 $('#building_pilling_money_due_date').text(response.update_request.building_pilling_money_due_date);
                 $('#building_pilling_money_note').text(response.update_request.building_pilling_money_note);
                 $('#building_pilling_money_paid').text(response.update_request.building_pilling_money_paid);
-                $('#building_pilling_money_due').text(response.update_request.building_pilling_money_due);
                 $('#building_pilling_money_paid_date').text(response.update_request.building_pilling_money_paid_date);
 
                 $('#car_parking_money').text(response.update_request.car_parking_money);
+                $('#car_parking_money_paid').text(response.update_request.car_parking_money_paid);
                 $('#car_parking_money_due').text(response.update_request.car_parking_money_due);
                 $('#car_parking_money_note').text(response.update_request.car_parking_money_note);
                 $('#car_parking_money_due_date').text(response.update_request.car_parking_money_due_date);
@@ -607,6 +565,7 @@
                 $('#finishing_work_money').text(response.update_request.finishing_work_money);
                 $('#finishing_work_money_due').text(response.update_request.finishing_work_money_due);
                 $('#finishing_work_money_due_date').text(response.update_request.finishing_work_money_due_date);
+                $('#finishing_work_money_paid_date').text(response.update_request.finishing_work_money_paid_date);
                 $('#finishing_work_money_note').text(response.update_request.finishing_work_money_note);
                 $('#finishing_work_money_paid').text(response.update_request.finishing_work_money_paid);
                 $('#finishing_work_money_payment_type').text(response.update_request.finishing_work_money_payment_type);
@@ -622,7 +581,6 @@
 
                 $('#land_filling_money_1').text(response.update_request.land_filling_money_1);
                 $('#land_filling_money_due_1').text(response.update_request.land_filling_money_1);
-                $('#land_filling_money_due_date_1').text(response.update_request.land_filling_money_due_date_1);
                 $('#land_filling_money_note_1').text(response.update_request.land_filling_money_note_1);
                 $('#land_filling_money_due_date_1').text(response.update_request.land_filling_money_due_date_1);
                 $('#land_filling_money_paid_1').text(response.update_request.land_filling_money_paid_1);
