@@ -67,6 +67,7 @@ class BasicAmountController extends Controller
     public function basicAmountStore(BasicAmountRequest $request, User $user){
         //dd($request->all());
 
+
         //Total amount
         $totalAmount=[
             'user_id'=>$user->id,
@@ -100,6 +101,7 @@ class BasicAmountController extends Controller
         $bookingMoney=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_booking_money'=>$request->initial_booking_money,
             'booking_money'=>$request->booking_money,
             'booking_money_payment_type'=>$request->booking_money_payment_type,
             'booking_money_paid'=>$request->booking_money_paid,
@@ -115,6 +117,7 @@ class BasicAmountController extends Controller
         $downPayment=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_downpayment_money'=>$request->initial_downpayment_money,
             'downpayment_money'=>$request->downpayment_money,
             'downpayment_money_payment_type'=>$request->downpayment_money_payment_type,
             'downpayment_money_paid'=>$request->downpayment_money_paid,
@@ -130,6 +133,7 @@ class BasicAmountController extends Controller
         $carParking=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_car_parking_money'=>$request->initial_car_parking_money,
             'car_parking_money'=>$request->car_parking_money,
             'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
             'car_parking_money_paid'=>$request->car_parking_money_paid,
@@ -145,6 +149,7 @@ class BasicAmountController extends Controller
         $lanfFilling=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_land_filling_money'=>$request->initial_land_filling_money,
             'land_filling_money'=>$request->land_filling_money,
             'land_filling_money_payment_type'=>$request->land_filling_money_payment_type,
             'land_filling_money_paid'=>$request->land_filling_money_paid,
@@ -160,6 +165,7 @@ class BasicAmountController extends Controller
         $landFilling2nd=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_land_filling_money'=>$request->initial_land_filling_money2,
             'land_filling_money'=>$request->land_filling_money2,
             'land_filling_money_payment_type'=>$request->land_filling_money_payment_type2,
             'land_filling_money_paid'=>$request->land_filling_money_paid2,
@@ -175,6 +181,7 @@ class BasicAmountController extends Controller
         $buildingPilling=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_building_pilling_money'=>$request->initial_building_pilling_money,
             'building_pilling_money'=>$request->building_pilling_money,
             'building_pilling_money_payment_type'=>$request->building_pilling_money_payment_type,
             'building_pilling_money_paid'=>$request->building_pilling_money_paid,
@@ -190,6 +197,7 @@ class BasicAmountController extends Controller
         $floorRoofCasting=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_floor_roof_casting_money_1st'=>$request->initial_floor_roof_casting_money_1st,
             'floor_roof_casting_money_1st'=>$request->floor_roof_casting_money_1st,
             'floor_roof_casting_money_payment_type_1st'=>$request->floor_roof_casting_money_payment_type_1st,
             'floor_roof_casting_money_paid_1st'=>$request->floor_roof_casting_money_paid_1st,
@@ -205,6 +213,7 @@ class BasicAmountController extends Controller
         $finishigWork=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_finishing_work_money'=>$request->initial_finishing_work_money,
             'finishing_work_money'=>$request->finishing_work_money,
             'finishing_work_money_payment_type'=>$request->finishing_work_money_payment_type,
             'finishing_work_money_paid'=>$request->finishing_work_money_paid,
@@ -220,6 +229,7 @@ class BasicAmountController extends Controller
         $afterhandOver=[
             'user_id'=>$user->id,
             'crm_id'=>$user->crm_id,
+            'initial_after_handover_money'=>$request->initial_after_handover_money,
             'after_handover_money'=>$request->after_handover_money,
             'after_handover_money_payment_type'=>$request->after_handover_money_payment_type,
             'after_handover_money_money_paid'=>$request->after_handover_money_money_paid,
@@ -306,10 +316,13 @@ class BasicAmountController extends Controller
         //booking status part
         // dd($request);
 
+
         $booking_status = BookingStatus::where('user_id', $id)->first();
+
         $approve_updates=ApproveUpdate::where('user_id',$id)->first();
 
         $booking_status->booking_money= $approve_updates->booking_money;
+        $booking_status->initial_booking_money= $approve_updates->initial_booking_money;
         $booking_status->booking_money_paid=$approve_updates->booking_money_paid;
         $booking_status-> booking_money_paid_date =$approve_updates->booking_money_paid_date;
         $booking_status-> booking_money_due_date =$approve_updates->booking_money_due_date;
@@ -331,6 +344,7 @@ class BasicAmountController extends Controller
         $down_payment = DownpaymentStatus::where('user_id', $id)->first();
 
         $down_payment->downpayment_money= $approve_updates->downpayment_money;
+        $down_payment->initial_downpayment_money= $approve_updates->initial_downpayment_money;
         $down_payment->downpayment_money_paid=$approve_updates->downpayment_money_paid;
         $down_payment-> downpayment_money_paid_date =$approve_updates->downpayment_money_paid_date;
         $down_payment-> downpayment_money_due_date =$approve_updates->downpayment_money_due_date;
@@ -350,6 +364,7 @@ class BasicAmountController extends Controller
         //car_parking part
         $car_parking = CarParkingStatus::where('user_id', $id)->first();
         $car_parking->car_parking_money= $approve_updates->car_parking_money;
+        $car_parking->initial_car_parking_money= $approve_updates->initial_car_parking_money;
         $car_parking->car_parking_money_paid=$approve_updates->car_parking_money_paid;
         $car_parking-> car_parking_money_paid_date =$approve_updates->car_parking_money_paid_date;
         $car_parking-> car_parking_money_due_date =$approve_updates->car_parking_money_due_date;
@@ -364,9 +379,11 @@ class BasicAmountController extends Controller
         $car_parking->save();
 
 
+
         //land_filling1st part
         $land_filing_1st = LandFillingStatus1st::where('user_id', $id)->first();
         $land_filing_1st->land_filling_money= $approve_updates->land_filling_money_1;
+        $land_filing_1st->initial_land_filling_money= $approve_updates->initial_land_filling_money;
         $land_filing_1st->land_filling_money_paid=$approve_updates->land_filling_money_paid_1;
         $land_filing_1st-> land_filling_money_paid_date =$approve_updates->land_filling_money_paid_date_1;
         $land_filing_1st-> land_filling_money_due_date =$approve_updates->land_filling_money_due_date_1;
@@ -381,6 +398,7 @@ class BasicAmountController extends Controller
 
         $land_filing_2nd = LandFillingStatus2nd::where('user_id', $id)->first();
         $land_filing_2nd->land_filling_money= $approve_updates->land_filling_money_2;
+        $land_filing_2nd->initial_land_filling_money= $approve_updates->initial_land_filling_money2;
         $land_filing_2nd->land_filling_money_paid=$approve_updates->land_filling_money_paid_2;
         $land_filing_2nd-> land_filling_money_paid_date =$approve_updates->land_filling_money_paid_date_2;
         $land_filing_2nd-> land_filling_money_due_date =$approve_updates->land_filling_money_due_date_2;
@@ -397,6 +415,7 @@ class BasicAmountController extends Controller
 
         $building_pilling_status = BuildingPillingStatus::where('user_id', $id)->first();
         $building_pilling_status->building_pilling_money= $approve_updates->building_pilling_money;
+        $building_pilling_status->initial_building_pilling_money= $approve_updates->initial_building_pilling_money;
         $building_pilling_status->building_pilling_money_paid=$approve_updates->building_pilling_money_paid;
         $building_pilling_status-> building_pilling_money_paid_date =$approve_updates->building_pilling_money_paid_date;
         $building_pilling_status-> building_pilling_money_due_date =$approve_updates->land_filling_money_due_date2;
@@ -412,6 +431,7 @@ class BasicAmountController extends Controller
 
         $roof_casting_1st= FloorRoofCasting1st::where('user_id', $id)->first();
         $roof_casting_1st->floor_roof_casting_money_1st= $approve_updates->floor_roof_casting_money_1st;
+        $roof_casting_1st->initial_floor_roof_casting_money_1st= $approve_updates->initial_floor_roof_casting_money_1st;
         $roof_casting_1st->floor_roof_casting_money_paid_1st=$approve_updates->floor_roof_casting_money_paid_1st;
         $roof_casting_1st-> floor_roof_casting_money_paid_date_1st =$approve_updates->floor_roof_casting_money_paid_date_1st;
         $roof_casting_1st-> floor_roof_casting_money_due_date_1st =$approve_updates->floor_roof_casting_money_due_date_1st;
@@ -428,6 +448,7 @@ class BasicAmountController extends Controller
 
         $finishing_work= FinishingWorkStatus::where('user_id', $id)->first();
         $finishing_work->finishing_work_money= $approve_updates->finishing_work_money;
+        $finishing_work->initial_finishing_work_money= $approve_updates->initial_finishing_work_money;
         $finishing_work->finishing_work_money_paid=$approve_updates->finishing_work_money_paid;
         $finishing_work-> finishing_work_money_paid_date =$approve_updates->finishing_work_money_paid_date;
         $finishing_work-> finishing_work_money_due =$approve_updates->finishing_work_money_due;
@@ -445,10 +466,11 @@ class BasicAmountController extends Controller
 
         $after_hand_over_money= AfterHandoverMoney::where('user_id', $id)->first();
         $after_hand_over_money->after_handover_money= $approve_updates->after_handover_money;
-        $after_hand_over_money->after_handover_money_money_paid=$approve_updates->after_handover_money_money_paid;
+        $after_hand_over_money->initial_after_handover_money= $approve_updates->initial_after_handover_money;
+        $after_hand_over_money->after_handover_money_money_paid=$approve_updates->after_handover_money_paid;
         $after_hand_over_money-> after_handover_money_paid_date =$approve_updates->after_handover_money_paid_date;
         $after_hand_over_money-> after_handover_money_due_date =$approve_updates->after_handover_money_due_date;
-        $after_hand_over_money->after_handover_money_money_due=$approve_updates->after_handover_money_money_due;
+        $after_hand_over_money->after_handover_money_money_due=$approve_updates->after_handover_money_due;
         $after_hand_over_money->after_handover_money_note=$approve_updates->after_handover_money_note;
         $after_hand_over_money->after_handover_money_payment_type=$approve_updates->after_handover_money_payment_type;
         $after_hand_over_money->save();

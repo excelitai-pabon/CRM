@@ -13,6 +13,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\TableController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Admin;
 use GuzzleHttp\Psr7\Request;
 
@@ -41,7 +42,7 @@ Route::prefix('admin')->name('admin.')->group(function()
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
 
-        Route::view('/dashboard','dashboard.dashboard')->middleware('auth:admin')->name('dashboard');
+        Route::get('/dashboard',[DashboardController::class,'adminDashboard'])->middleware('auth:admin')->name('dashboard');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
@@ -131,7 +132,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
 
-    Route::view('/dashboard','dashboard.super-admin-dashboard')->middleware('auth:super_admin')->name('dashboard');
+        Route::get('/dashboard',[DashboardController::class,'superAdminDashboard'])->middleware('auth:super_admin')->name('dashboard');
 
     //** installment Routes */
     Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:super_admin')->name('installments');
@@ -154,6 +155,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     ///power of atorney routes
     Route::get('/powerOfAtorney',[PermissionController::class, 'powerOfAtorney'])->middleware('auth:super_admin')->name('powerOfAtorney');
     Route::post('/powerOfAtorney/store',[PermissionController::class, 'powerOfAtorneyStore'])->middleware('auth:super_admin')->name('powerOfAtorney.store');
+    Route::get('/powerOfAtorney/delete/{id}',[PermissionController::class, 'powerOfAtorneyDelete'])->middleware('auth:super_admin')->name('powerOfAtorney.delete');
 
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
@@ -261,7 +263,7 @@ Route::prefix('employee')->name('employee.')->group(function()
             $limiter ? 'throttle:'.$limiter : null,
         ]))->name('check');
 
-        Route::view('/dashboard','dashboard.employee-dashboard')->middleware('auth:employee')->name('dashboard');
+        Route::get('/dashboard',[DashboardController::class,'employeeDashboard'])->middleware('auth:employee')->name('dashboard');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

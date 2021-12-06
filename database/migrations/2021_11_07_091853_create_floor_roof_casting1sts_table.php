@@ -17,6 +17,7 @@ class CreateFloorRoofCasting1stsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('floor_roof_casting_money_1st')->nullable();
+            $table->string('initial_floor_roof_casting_money_1st')->nullable();
             $table->string('floor_roof_casting_money_payment_type_1st')->nullable();
             $table->string('floor_roof_casting_money_paid_1st')->nullable();
             $table->string('floor_roof_casting_money_due_1st')->nullable();

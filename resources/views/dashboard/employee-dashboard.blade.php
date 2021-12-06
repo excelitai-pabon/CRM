@@ -1,27 +1,7 @@
 
 @extends('master.master')
 
-@section('logout')
 
-<div class="dropdown-menu dropdown-menu-end">
-    <!-- item-->
-    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
-    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet font-size-17 align-middle me-1"></i> My Wallet</a>
-    <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
-    <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-17 align-middle me-1"></i> Lock screen</a>
-    <div class="dropdown-divider"></div>
-    <form method="POST" action="{{ route('employee.logout') }}">
-        @csrf
-
-        <x-jet-responsive-nav-link href="{{ route('employee.logout') }}"
-                       onclick="event.preventDefault();
-                        this.closest('form').submit();">
-            {{ __('Log Out') }}
-        </x-jet-responsive-nav-link>
-    </form>
-</div>
-
-@endsection
 
 @section('content')
 <div class="container-fluid">
@@ -62,21 +42,17 @@
                 <div class="card-body">
                     <div class="mb-4">
                         <div class="float-start mini-stat-img me-4">
-                            <img src="{{asset('assets')}}/images/services-icon/01.png" alt="">
+                            <i class="fas fa-users" style="width:380; height:380;"></i>
                         </div>
-                        <h5 class="font-size-16 text-uppercase text-white-50">Orders</h5>
-                        <h4 class="fw-medium font-size-24">1,685 <i
-                                class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                        <h5 class="font-size-16 text-uppercase text-white-50">Users</h5>
+                        <h4 class="fw-medium font-size-24">{{$users}} </h4>
                         <div class="mini-stat-label bg-success">
-                            <p class="mb-0">+ 12%</p>
                         </div>
                     </div>
                     <div class="pt-2">
                         <div class="float-end">
                             <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                         </div>
-
-                        <p class="text-white-50 mb-0 mt-1">Since last month</p>
                     </div>
                 </div>
             </div>
@@ -88,19 +64,15 @@
                         <div class="float-start mini-stat-img me-4">
                             <img src="{{asset('assets')}}/images/services-icon/02.png" alt="">
                         </div>
-                        <h5 class="font-size-16 text-uppercase text-white-50">Revenue</h5>
-                        <h4 class="fw-medium font-size-24">52,368 <i
-                                class="mdi mdi-arrow-down text-danger ms-2"></i></h4>
+                        <h5 class="font-size-16 text-uppercase text-white-50">Total Due</h5>
+                        <h4 class="fw-medium font-size-24">{{$totalDueAmount}} </h4>
                         <div class="mini-stat-label bg-danger">
-                            <p class="mb-0">- 28%</p>
                         </div>
                     </div>
                     <div class="pt-2">
                         <div class="float-end">
                             <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                         </div>
-
-                        <p class="text-white-50 mb-0 mt-1">Since last month</p>
                     </div>
                 </div>
             </div>
@@ -112,19 +84,15 @@
                         <div class="float-start mini-stat-img me-4">
                             <img src="{{asset('assets')}}/images/services-icon/03.png" alt="">
                         </div>
-                        <h5 class="font-size-16 text-uppercase text-white-50">Average Price</h5>
-                        <h4 class="fw-medium font-size-24">15.8 <i
-                                class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                        <h5 class="font-size-16 text-uppercase text-white-50">Total Paid</h5>
+                        <h4 class="fw-medium font-size-24">{{$totalPaidAmount}} </h4>
                         <div class="mini-stat-label bg-info">
-                            <p class="mb-0"> 00%</p>
                         </div>
                     </div>
                     <div class="pt-2">
                         <div class="float-end">
                             <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                         </div>
-
-                        <p class="text-white-50 mb-0 mt-1">Since last month</p>
                     </div>
                 </div>
             </div>
@@ -136,19 +104,15 @@
                         <div class="float-start mini-stat-img me-4">
                             <img src="{{asset('assets')}}/images/services-icon/04.png" alt="">
                         </div>
-                        <h5 class="font-size-16 text-uppercase text-white-50">Product Sold</h5>
-                        <h4 class="fw-medium font-size-24">2436 <i
-                                class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                        <h5 class="font-size-16 text-uppercase text-white-50">Today Total Due</h5>
+                        <h4 class="fw-medium font-size-24">{{$todayTotalDue}} </h4>
                         <div class="mini-stat-label bg-warning">
-                            <p class="mb-0">+ 84%</p>
                         </div>
                     </div>
                     <div class="pt-2">
                         <div class="float-end">
                             <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                         </div>
-
-                        <p class="text-white-50 mb-0 mt-1">Since last month</p>
                     </div>
                 </div>
             </div>

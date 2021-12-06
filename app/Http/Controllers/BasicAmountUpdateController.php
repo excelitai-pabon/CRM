@@ -34,6 +34,7 @@ public function basicUpdateRequest(Request $request,$id){
 
 
         // dd($request->after_handover_money_money_paid);
+        // dd($request->initial_booking_money);
 
         $approve_status =new ApproveUpdate;
 
@@ -62,6 +63,9 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status->booking_money=$request->booking_money;
             $approve_status->booking_money_note=$request->booking_money_note;
             $approve_status->booking_money_payment_type=$request->booking_money_payment_type;
+            $approve_status->initial_booking_money=$request->initial_booking_money;
+
+
 
 
         }
@@ -84,6 +88,7 @@ public function basicUpdateRequest(Request $request,$id){
               $approve_status->booking_money=$request->booking_money;
             $approve_status->booking_money_note=$request->booking_money_note;
             $approve_status->booking_money_payment_type=$request->booking_money_payment_type;
+            $approve_status->initial_booking_money=$request->initial_booking_money;
         }
 
 
@@ -106,6 +111,7 @@ public function basicUpdateRequest(Request $request,$id){
               $approve_status->downpayment_money=$request->downpayment_money;
             $approve_status->downpayment_money_note=$request->downpayment_money_note;
             $approve_status->downpayment_money_payment_type=$request->downpayment_money_payment_type;
+            $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
 
 
         }
@@ -133,6 +139,7 @@ public function basicUpdateRequest(Request $request,$id){
          $approve_status->downpayment_money=$request->downpayment_money;
         $approve_status->downpayment_money_note=$request->downpayment_money_note;
         $approve_status->downpayment_money_payment_type=$request->downpayment_money_payment_type;
+        $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
 
     }
     $car_parking = CarParkingStatus::where('user_id', $id)->first();
@@ -152,6 +159,7 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
         //adding booking money field
         $approve_status->car_parking_money=$request->car_parking_money;
+        $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
     }
     elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -175,6 +183,7 @@ public function basicUpdateRequest(Request $request,$id){
         //car parking ends
         //adding booking money field
         $approve_status->car_parking_money=$request->car_parking_money;
+        $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
     }
 
     $land_filling_1 = LandFillingStatus1st::where('user_id', $id)->first();
@@ -191,6 +200,7 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->land_filling_money_payment_type_1=$request->land_filling_money_payment_type;
          //adding booking money field
          $approve_status->land_filling_money_1=$request->land_filling_money;
+         $approve_status->initial_land_filling_money=$request->initial_land_filling_money;
     }
     elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -209,6 +219,7 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->land_filling_money_payment_type_1=$request->land_filling_money_payment_type;
          //adding booking money field
          $approve_status->land_filling_money_1=$request->land_filling_money;
+         $approve_status->initial_land_filling_money=$request->initial_land_filling_money;
     }
     $land_filling_2 = LandFillingStatus2nd::where('user_id', $id)->first();
     $check_due=$land_filling_2->land_filling_money_due-$request->land_filling_money_paid2;
@@ -225,6 +236,7 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->land_filling_money_payment_type_2=$request->land_filling_money_payment_type2;
          //adding booking money field
          $approve_status->land_filling_money_2=$request->land_filling_money2;
+         $approve_status->initial_land_filling_money2=$request->initial_land_filling_money2;
     }
     elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -247,6 +259,7 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->land_filling_money_payment_type_2=$request->land_filling_money_payment_type2;
           //adding booking money field
           $approve_status->land_filling_money_2=$request->land_filling_money2;
+          $approve_status->initial_land_filling_money2=$request->initial_land_filling_money2;
 
     }
         //building pilling
@@ -262,6 +275,7 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status->building_pilling_money_note=$request->building_pilling_money_note;
              //adding booking money field
           $approve_status->building_pilling_money=$request->building_pilling_money;
+          $approve_status->initial_building_pilling_money=$request->initial_building_pilling_money;
         }
     elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -280,6 +294,7 @@ public function basicUpdateRequest(Request $request,$id){
            $approve_status->building_pilling_money_note=$request->building_pilling_money_note;
              //adding booking money field
           $approve_status->building_pilling_money=$request->building_pilling_money;
+          $approve_status->initial_building_pilling_money=$request->initial_building_pilling_money;
 
         }
 
@@ -303,6 +318,7 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status->floor_roof_casting_money_payment_type_1st=$request->floor_roof_casting_money_payment_type_1st;
               //adding booking money field
           $approve_status->floor_roof_casting_money_1st=$request->floor_roof_casting_money_1st;
+          $approve_status->initial_floor_roof_casting_money_1st=$request->initial_floor_roof_casting_money_1st;
 
      }
      elseif($check_due<0){
@@ -327,6 +343,7 @@ public function basicUpdateRequest(Request $request,$id){
 
           //adding booking money field
           $approve_status->floor_roof_casting_money_1st=$request->floor_roof_casting_money_1st;
+          $approve_status->initial_floor_roof_casting_money_1st=$request->initial_floor_roof_casting_money_1st;
 
 
 
@@ -347,6 +364,7 @@ public function basicUpdateRequest(Request $request,$id){
 
           //adding booking money field
           $approve_status->finishing_work_money=$request->finishing_work_money;
+          $approve_status->initial_finishing_work_money=$request->initial_finishing_work_money;
      }
      elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -366,6 +384,7 @@ public function basicUpdateRequest(Request $request,$id){
           $approve_status->finishing_work_money_payment_type=$request->finishing_work_money_payment_type;
            //adding booking money field
            $approve_status->finishing_work_money=$request->finishing_work_money;
+           $approve_status->initial_finishing_work_money=$request->initial_finishing_work_money;
      }
 
 
@@ -385,6 +404,8 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->after_handover_money_payment_type=$request->after_handover_money_payment_type;
          //adding booking money field
          $approve_status->after_handover_money=$request->after_handover_money;
+         $approve_status->initial_after_handover_money=$request->initial_after_handover_money;
+
      }
      elseif($check_due<0){
         Session::flash('error',"Check the Due");
@@ -405,6 +426,8 @@ public function basicUpdateRequest(Request $request,$id){
           $approve_status->after_handover_money_payment_type=$request->after_handover_money_payment_type;
              //adding booking money field
          $approve_status->after_handover_money=$request->after_handover_money;
+         $approve_status->initial_after_handover_money=$request->initial_after_handover_money;
+
 
      }
 

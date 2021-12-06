@@ -30,16 +30,15 @@
                         </ul>
                     </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-email"></i>
-                        <span>Amounts</span>
-                    </a>
-                    <ul class="sub-menu ">
-                        <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
-                        <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
-                        <li><a href="{{route('super_admin.show.request')}}">Basic Amounts Request</a></li>
-
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ti-email"></i>
+                            <span>Amounts</span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li><a href="{{route('super_admin.basic_amount.add')}}">Add Basic Amounts</a></li>
+                            <li><a href="{{route('super_admin.basicAmount')}}">Update Basic Amounts</a></li>
+                            <li><a href="{{route('super_admin.show.request')}}">Basic Amounts Request</a></li>
                         </ul>
                     </li>
 

@@ -17,6 +17,7 @@ class CreateFinishingWorkStatusesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('finishing_work_money')->nullable();
+            $table->string('initial_finishing_work_money')->nullable();
             $table->string('finishing_work_money_payment_type')->nullable();
             $table->string('finishing_work_money_paid')->nullable();
             $table->string('finishing_work_money_due')->nullable();

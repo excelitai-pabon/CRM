@@ -54,6 +54,14 @@
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
+                                                                <label>Initial Booking Money Total</label>
+                                                                <input  type="text" name="initial_booking_money"
+                                                                    value="{{$booking_status->initial_booking_money}}" id="initial_booking_money"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group mb-3">
                                                                 <label>Booking Money Total</label>
                                                                 <input  type="text" name="booking_money"
                                                                     value="{{$booking_status->booking_money_due}}" id="booking-money"
@@ -72,6 +80,12 @@
                                                             </div>
                                                         </div>
 
+
+
+                                                    </div>
+
+
+                                                    <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Paid Date</label>
@@ -81,11 +95,7 @@
                                                                     id="booking-money-paid-date" class="form-control">
                                                             </div>
                                                         </div>
-                                                    </div>
-
-
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Due Date</label>
                                                                 <input type="date" name="booking_money_due_date"
@@ -95,7 +105,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Payment Type </label>
                                                                 <select name="booking_money_payment_type" id="" class="form-control">
@@ -150,6 +160,15 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
+                                                <label>Initial Payment Total</label>
+                                                <input
+                                                 type="text" name="initial_downpayment_money"
+                                                    value="{{ $down_payment->initial_downpayment_money }}" id="initial_downpayment_money"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group mb-3">
                                                 <label>Down Payment Total</label>
                                                 <input
                                                  type="text" name="downpayment_money"
@@ -165,6 +184,10 @@
                                                     id="down-payment-paid" class="form-control">
                                             </div>
                                         </div>
+
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Paid Date</label>
@@ -174,10 +197,7 @@
                                                     id="down-payment-paid-date" class="form-control">
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Due Date</label>
                                                 <input type="date" name="downpayment_money_due_date"
@@ -186,7 +206,7 @@
                                                     id="down-payment-due-date" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Payment Type </label>
                                                 <select name="downpayment_money_payment_type" id="" class="form-control">
@@ -243,6 +263,16 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
+                                                    <label>Initail Car Parking Total</label>
+                                                    <input
+                                                    type="text" name="initial_car_parking_money"
+                                                        value="{{ $car_parking->initial_car_parking_money }}" id="car-parking"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
                                                     <label>Car Parking Total</label>
                                                     <input
                                                     type="text" name="car_parking_money"
@@ -258,6 +288,10 @@
                                                         id="car-parking-paid" class="form-control">
                                                 </div>
                                             </div>
+
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Car Parking Paid Date</label>
@@ -267,10 +301,7 @@
                                                         id="car-parking-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Car Parking Due Date</label>
                                                     <input type="date" name="car_parking_due_date"
@@ -279,7 +310,7 @@
                                                         id="car-parking-due-date" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Car Parking Payment Type </label>
 
@@ -335,6 +366,15 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
+                                                    <label>Initial Land Filling(1st) Total</label>
+                                                    <input
+                                                     type="text" name="initial_land_filling_money"
+                                                        value="{{ $land_filing_1st->initial_land_filling_money }}"
+                                                        id="land-filling-1" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Total</label>
                                                     <input
                                                      type="text" name="land_filling_money"
@@ -350,6 +390,10 @@
                                                         id="land-filling-1-paid" class="form-control">
                                                 </div>
                                             </div>
+
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Paid Date</label>
@@ -359,10 +403,8 @@
                                                         id="land-filling-1-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Due Date</label>
                                                     <input type="date" name="land_filling_money_due_date"
@@ -371,7 +413,7 @@
                                                         id="land-filling-1-due-date" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Payment Type </label>
 
@@ -440,6 +482,16 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
+                                                    <label>Initial Land Filling(2nd) Total</label>
+                                                    <input
+                                                     type="text" name="initial_land_filling_money2"
+                                                        value="{{ $land_filing_2nd->initial_land_filling_money }}"
+                                                        id="initial_land_filling_money2" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Total</label>
                                                     <input
                                                      type="text" name="land_filling_money2"
@@ -447,6 +499,22 @@
                                                         id="land-filling-2" class="form-control">
                                                 </div>
                                             </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
+                                                    <label>Land Filling(2nd) Due Date</label>
+                                                    <input type="date" name="land_filling_money_paid_date2"
+
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date2))}}"
+                                                        id="land-filling-2-due-date" class="form-control">
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid: </label>
@@ -455,6 +523,7 @@
                                                         id="land_filling_money_paid2" class="form-control">
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid Date</label>
@@ -464,19 +533,10 @@
                                                         id="land-filling-2-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group mb-3">
-                                                    <label>Land Filling(2nd) Due Date</label>
-                                                    <input type="date" name="land_filling_money_paid_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date2))}}"
-                                                        id="land-filling-2-due-date" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
+
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Payment Type </label>
 
@@ -499,9 +559,11 @@
                                                 </div>
                                             </div>
 
+
                                         </div>
 
                                         <div class="row">
+
                                             <div class="col-lg-12">
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Note</label>
@@ -532,6 +594,14 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
+                                                    <label>Initial Building Pilling Total</label>
+                                                    <input type="text" name="initial_building_pilling_money"
+                                                        value="{{ $building_pilling_status->initial_building_pilling_money }}"
+                                                        id="initial_building_pilling_money" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
                                                     <label>Building Pilling Total</label>
                                                     <input type="text" name="building_pilling_money"
                                                         value="{{ $building_pilling_status->building_pilling_money_due }}"
@@ -546,6 +616,10 @@
                                                         id="building-pilling-paid" class="form-control">
                                                 </div>
                                             </div>
+
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Paid Date</label>
@@ -555,10 +629,8 @@
                                                         id="building-pilling-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Due Date</label>
                                                     <input type="date" name="building_pilling_money_due_date"
@@ -567,7 +639,7 @@
                                                         id="building-pilling-due-date" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Payment Type </label>
                                                     <select name="building_pilling_money_payment_type" id=""
@@ -637,6 +709,16 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
+                                                    <label>Initial 1st floor Roof Casting Total</label>
+                                                    <input
+                                                    type="text"
+                                                        value="{{ $roof_casting_1st->initial_floor_roof_casting_money_1st }}"
+                                                        name="initial_floor_roof_casting_money_1st" id="initial_floor_roof_casting_money_1st"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Total</label>
                                                     <input
                                                     type="text"
@@ -654,6 +736,10 @@
                                                         class="form-control">
                                                 </div>
                                             </div>
+
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Paid Date</label>
@@ -663,10 +749,7 @@
                                                         id="roof-casting-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Due Date</label>
                                                     <input type="date" name="floor_roof_casting_money_due_1st"
@@ -675,7 +758,7 @@
                                                         id="roof-casting-due-date" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Payment Type </label>
 
@@ -731,6 +814,15 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
+                                                <label>Initial Finishing Work</label>
+                                                <input
+                                                 type="text" name="initial_finishing_work_money"
+                                                    value="{{ $finishing_work->initial_finishing_work_money }}"
+                                                    id="initial_finishing_work_money" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group mb-3">
                                                 <label>Finishing Work</label>
                                                 <input
                                                  type="text" name="finishing_work_money"
@@ -746,6 +838,12 @@
                                                     class="form-control">
                                             </div>
                                         </div>
+
+
+                                    </div>
+
+
+                                    <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Payment Type </label>
@@ -767,12 +865,7 @@
                                                 </select>
                                             </div>
                                         </div>
-
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Paid Date</label>
                                                 <input type="date" name="finishing_work_money_paid_date"
@@ -781,7 +874,7 @@
                                                     id="finishing-work-paid-date" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Due Date</label>
                                                 <input type="date" name="finishing_work_money_due_date"
@@ -834,6 +927,15 @@
                                             <div class="form-group mb-3">
                                                 <label>After Handover Money </label>
                                                 <input
+                                                 type="text" name="initial_after_handover_money"
+                                                    value="{{$after_hand_over_money->initial_after_handover_money}}"
+                                                    id="initial_after_handover_money" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group mb-3">
+                                                <label>After Handover Money </label>
+                                                <input
                                                  type="text" name="after_handover_money"
                                                     value="{{$after_hand_over_money->after_handover_money_money_due}}"
                                                     id="after-handover-money" class="form-control">
@@ -847,29 +949,30 @@
                                                     id="after_handover_money_paid_amount" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>After Handover Money Payment Type </label>
 
-                                                <select name="after_handover_money_payment_type" id="" class="form-control">
-                                                    <option value="" disabled <?php if ($after_hand_over_money->after_handover_money_payment_type == '') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Select Payment type </option>
-                                                    <option value="Check" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Check') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Check</option>
-                                                    <option value="Bank" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Bank') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Bank</option>
-                                                    <option value="Cash" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Cash') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Cash</option>
-                                                </select>
-                                            </div>
-                                        </div>
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
+                                                    <label>After Handover Money Payment Type </label>
+
+                                                    <select name="after_handover_money_payment_type" id="" class="form-control">
+                                                        <option value="" disabled <?php if ($after_hand_over_money->after_handover_money_payment_type == '') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Select Payment type </option>
+                                                        <option value="Check" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Check') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Check</option>
+                                                        <option value="Bank" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Bank') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Bank</option>
+                                                        <option value="Cash" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Cash') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Cash</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>After Handover Money Paid Date</label>
                                                     <input type="date" name="after_handover_money_paid_date"
@@ -878,7 +981,7 @@
                                                         id="after-handover-money-paid-date" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>After Handover Money Due Date</label>
                                                     <input type="date" name="after_handover_money_due_date"

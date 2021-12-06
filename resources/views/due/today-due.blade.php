@@ -4,7 +4,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <h2 class="d-flex justify-content-center">Today All Due</h2>
+        <h2 class="d-flex justify-content-center py-4">Today All Due</h2>
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -14,8 +14,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -25,7 +25,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($booking_status as $data)
@@ -38,12 +38,12 @@
                                             <td>{{$data->booking_money_note}}</td>
                                     </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -57,8 +57,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -68,7 +68,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($after_handover_money as $data)
@@ -79,14 +79,14 @@
                                         <td>{{$data->after_handover_money_money_due}}</td>
                                         <td>{{Carbon\Carbon::parse($data->after_handover_money_due_date)->format('jS F Y')}}</td>
                                         <td>{{$data->after_handover_money_note}}</td>
-                                </tr> 
+                                </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -101,8 +101,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead  class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -112,7 +112,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($building_pilling as $data)
@@ -123,14 +123,14 @@
                                         <td>{{$data->building_pilling_money_due}}</td>
                                         <td>{{Carbon\Carbon::parse($data->building_pilling_money_due_date)->format('jS F Y')}}</td>
                                         <td>{{$data->building_pilling_money_note}}</td>
-                                    </tr>     
+                                    </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -145,8 +145,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -156,7 +156,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($car_parking as $data)
@@ -168,14 +168,14 @@
                                         <td>{{Carbon\Carbon::parse($data->car_parking_money_due_date)->format('jS F Y')}}</td>
                                         <td>{{$data->car_parking_money_note}}</td>
                                 </tr>
-                                    
+
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -190,8 +190,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -201,7 +201,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($down_payment as $data)
@@ -214,12 +214,12 @@
                                         <td>{{$data->downpayment_money_note}}</td>
                                     </tr>
                                 @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -233,8 +233,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -244,7 +244,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                 @foreach ($finishing_money as $data)
@@ -258,12 +258,12 @@
                                         <td>{{$data->finishing_work_money_note}}</td>
                                     </tr>
                                 @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -277,8 +277,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -288,7 +288,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($first_floor as $data)
@@ -301,12 +301,12 @@
                                     <td>{{$data->floor_roof_casting_money_note_1st}}</td>
                                     </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -320,8 +320,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -331,7 +331,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($land_filling_1st as $data)
@@ -344,12 +344,12 @@
                                     <td>{{$data->land_filling_money_note}}</td>
                                     </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -363,8 +363,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -374,7 +374,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($land_filling_2nd as $data)
@@ -387,12 +387,12 @@
                                         <td>{{$data->land_filling_money_note}}</td>
                                     </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -407,8 +407,8 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-    
-                            <thead>
+
+                            <thead class="bg-dark text-white">
                                 <tr>
                                     <th>File No</th>
                                     <th>Name</th>
@@ -418,7 +418,7 @@
                                     <th>Note</th>
 
                                 </tr>
-                            </thead>   
+                            </thead>
                             <tbody>
 
                                @foreach ($installment as $data)
@@ -432,18 +432,18 @@
                                     <td>{{$data->installment_note}}</td>
                                     </tr>
                                @endforeach
-                                
-                               
+
+
                             </tbody>
                         </table>
                     </div>
-    
+
                 </div>
             </div>
         </div>
     </div>
-   
-    
+
+
 </div>
 @endsection
 
