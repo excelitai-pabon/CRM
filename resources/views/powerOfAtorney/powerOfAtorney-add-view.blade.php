@@ -29,14 +29,14 @@
                             </thead>
                             <tbody>
                                 @foreach ($super_admins as $super_admin)
-
-                                @endforeach
                                     <tr>
 
-                                        <td>{{$super_admin->admin->name}}</td>
-                                        <td>{{$super_admin->admin->email}}</td>
-                                        <td class="d-flex flex-row"><a href="" class="btn btn-warning">Deactivate</a></td>
+                                        <td>{{optional($super_admin->admin)->name}}</td>
+                                        <td>{{optional($super_admin->admin)->email}}</td>
+                                        <td class="d-flex flex-row"><a href="{{route('super_admin.powerOfAtorney.delete',optional($super_admin->admin)->id)}}" class="btn btn-warning">Deactivate</a></td>
                                     </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
 

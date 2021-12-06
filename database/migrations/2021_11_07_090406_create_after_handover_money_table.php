@@ -17,6 +17,7 @@ class CreateAfterHandoverMoneyTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('after_handover_money')->nullable();
+            $table->string('initial_after_handover_money')->nullable();
             $table->string('after_handover_money_payment_type')->nullable();
             $table->string('after_handover_money_money_paid')->nullable();
             $table->string('after_handover_money_money_due')->nullable();

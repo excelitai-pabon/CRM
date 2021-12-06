@@ -17,6 +17,7 @@ class CreateBuildingPillingStatusesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('building_pilling_money')->nullable();
+            $table->string('initial_building_pilling_money')->nullable();
             $table->string('building_pilling_money_payment_type')->nullable();
             $table->string('building_pilling_money_paid')->nullable();
             $table->string('building_pilling_money_due')->nullable();

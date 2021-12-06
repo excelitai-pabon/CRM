@@ -16,7 +16,7 @@
 @auth('super_admin')
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card printb">
                 <div class="card-body">
                     <form action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.yearly_report') }}
                         @elseif(Auth::guard('admin')->check()) {{ route('admin.yearly_report')  }} @endif " autocomplete="off">

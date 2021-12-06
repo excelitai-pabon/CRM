@@ -17,6 +17,7 @@ class CreateBookingStatusesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('booking_money')->nullable();
+            $table->string('initial_booking_money')->nullable();
             $table->string('booking_money_payment_type')->nullable();
             $table->string('booking_money_paid')->nullable();
             $table->string('booking_money_due')->nullable();

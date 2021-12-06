@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                © <script>document.write(new Date().getFullYear())</script> Excel It Ai<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Saddam.</span>
+                © <script>document.write(new Date().getFullYear())</script> Shapla City Limited <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> Excel It Ai.</span>
             </div>
         </div>
     </div>

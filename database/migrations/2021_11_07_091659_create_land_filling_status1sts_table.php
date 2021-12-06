@@ -17,6 +17,7 @@ class CreateLandFillingStatus1stsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('land_filling_money')->nullable();
+            $table->string('initial_land_filling_money')->nullable();
             $table->string('land_filling_money_payment_type')->nullable();
             $table->string('land_filling_money_paid')->nullable();
             $table->string('land_filling_money_due')->nullable();

@@ -17,6 +17,7 @@ class CreateDownpaymentStatusesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('downpayment_money')->nullable();
+            $table->string('initial_downpayment_money')->nullable();
             $table->string('downpayment_money_payment_type')->nullable();
             $table->string('downpayment_money_paid')->nullable();
             $table->string('downpayment_money_due')->nullable();

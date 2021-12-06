@@ -1,4 +1,4 @@
-{{-- 
+{{--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +22,11 @@
                     </div>
                     <div class="signin-main-btn">
                         <button class="signin-btn" type="submit"><h4>Sing In</h4> </button>
-                      
+
                         <a class="forget-pw-btn" href="#"> <h4>Forget Password</h4>  </a>
                     </div>
                 </form>
-               
+
             </div>
 
         </section>
@@ -37,7 +37,7 @@
             <div class="footer-subbg">
                 <img src="{{asset('assets')}}/images/backgrounds/Group 832.png" alt="img-not-found">
             </div>
-            <div class="footerbg"></div>       
+            <div class="footerbg"></div>
         </div>
     </footer>
 </body>
@@ -71,7 +71,7 @@
 
 <body>
 
-    
+
     <div class="account-pages my-5 pt-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -128,8 +128,9 @@
                     </div>
 
                     <div class="mt-5 text-center">
-                        
+
                         <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> All right reserved by Shapla City.</p>
+                        <p class="mb-0">  <a href="{{route('super_admin.login')}}">Super Admin. </a> <a href="{{route('admin.login')}}">Admin. </a> <a href="{{route('employee.login')}}">Employee</a></p>
                     </div>
 
 

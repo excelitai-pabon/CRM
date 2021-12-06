@@ -17,6 +17,7 @@ class CreateCarParkingStatusesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('car_parking_money')->nullable();
+            $table->string('initial_car_parking_money')->nullable();
             $table->string('car_parking_money_payment_type')->nullable();
             $table->string('car_parking_money_paid')->nullable();
             $table->string('car_parking_money_due')->nullable();

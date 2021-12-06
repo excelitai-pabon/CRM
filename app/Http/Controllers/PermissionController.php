@@ -80,20 +80,30 @@ class PermissionController extends Controller
 
     public function powerOfAtorneyStore(Request $request)
     {
-        $find = AdminsRole::where('admin_id',$request->name)->get();
-        if($find)
+        $find = AdminsRole::where('admin_id',$request->name)->first();
+        if(isset($find->admin_id))
         {
+
             return redirect()->back()->with(['error'=>'Already Exists']);
         }
         else
         {
-            $role = new AdminsRole();
-            $role->admin_id = $request->name;
-            $role->role_id = $request->check;
-            $role->save();
+
+            AdminsRole::insert([
+                'admin_id' => $request->name,
+                'role_id' =>$request->check,
+            ]);
             return redirect()->back()->with(['success'=>'success fully added as Super Admin']);
 
         }
 
+    }
+
+    public function powerOfAtorneyDelete($id)
+    {
+        $adminRole = AdminsRole::where('admin_id',$id)->delete();
+
+
+        return redirect()->back();
     }
 }
