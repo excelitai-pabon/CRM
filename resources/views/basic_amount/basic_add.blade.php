@@ -195,7 +195,12 @@
                                             <label>Booking Money Paid :
                                             </label>
 
-                                            <input type="text" name="booking_money_paid"  id="booking_money_paid" class="form-control">
+                                            <input type="text" name="booking_money_paid"  id="booking_money_paid" class="form-control @error('booking_money_paid')is-invalid @enderror">
+                                            @error('booking_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -280,9 +285,16 @@
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label>Down Payment Paid : </label>
-                                            <input type="text" name="downpayment_money_paid"  id="down-payment-paid" class="form-control">
+                                            <input type="text" name="downpayment_money_paid"  id="down-payment-paid" class="form-control @error('downpayment_money_paid')is-invalid @enderror">
+
+                                            @error('downpayment_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
+
 
                                 </div>
 
@@ -360,7 +372,12 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Car Parking Paid :</label>
-                                                <input type="text" name="car_parking_money_paid" id="car-parking-paid" class="form-control">
+                                                <input type="text" name="car_parking_money_paid" id="car-parking-paid" class="form-control @error('car_parking_money_paid')is-invalid @enderror">
+                                                @error('car_parking_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                             </div>
                                         </div>
 
@@ -440,7 +457,12 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Land Filling(1st) Paid : </label>
-                                                <input type="text" name="land_filling_money_paid"  id="land-filling-1-paid" class="form-control">
+                                                <input type="text" name="land_filling_money_paid"  id="land-filling-1-paid" class="form-control @error('land_filling_money_paid')is-invalid @enderror">
+                                                @error('land_filling_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                             </div>
                                         </div>
 
@@ -529,7 +551,12 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Land Filling(2nd) Paid: </label>
-                                                <input type="text" name="land_filling_money_paid2" id="land_filling_money_paid2" class="form-control">
+                                                <input type="text" name="land_filling_money_paid2" id="land_filling_money_paid2" class="form-control @error('land_filling_money_paid2')is-invalid @enderror">
+                                                @error('land_filling_money_paid2')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                             </div>
                                         </div>
 
@@ -610,7 +637,12 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Building Pilling Paid :</label>
-                                                <input type="text" name="building_pilling_money_paid" id="building-pilling-paid" class="form-control">
+                                                <input type="text" name="building_pilling_money_paid" id="building-pilling-paid" class="form-control @error('building_pilling_money_paid')is-invalid @enderror">
+                                                @error('building_pilling_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                             </div>
                                         </div>
 
@@ -695,7 +727,12 @@
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>1st floor Roof Casting Paid :</label>
-                                                <input type="text"  name="floor_roof_casting_money_paid_1st" id="roof-casting-paid" class="form-control">
+                                                <input type="text"  name="floor_roof_casting_money_paid_1st" id="roof-casting-paid" class="form-control @error('floor_roof_casting_money_paid_1st')is-invalid @enderror">
+                                                @error('floor_roof_casting_money_paid_1st')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                             </div>
                                         </div>
 
@@ -772,7 +809,12 @@
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label>Finishing Work Paid Amount : </label>
-                                            <input type="text" name="finishing_work_money_paid"  class="form-control">
+                                            <input type="text" name="finishing_work_money_paid"  class="form-control @error('finishing_work_money_paid')is-invalid @enderror">
+                                            @error('finishing_work_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -858,7 +900,12 @@
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label>After Handover Money Paid Amount :</label>
-                                            <input type="text" name="after_handover_money_money_paid"  id="after_handover_money_paid_amount" class="form-control">
+                                            <input type="text" name="after_handover_money_money_paid"  id="after_handover_money_paid_amount" class="form-control @error('after_handover_money_money_paid')is-invalid @enderror">
+                                            @error('after_handover_money_money_paid')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
 
