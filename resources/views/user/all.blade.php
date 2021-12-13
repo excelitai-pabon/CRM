@@ -1,7 +1,5 @@
 @extends('master.master')
 @section('css')
-
-
 <link href="{{asset('assets')}}/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="{{asset('assets')}}/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -13,24 +11,19 @@
 @section('content')
 <div class="page-content">
     <div class="container-fluid">
-
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-
-
-
-
-
                         <h4 class="card-title">All Users</h4>
                         <p class="card-title-desc">Here you can view all users from the CRM
                         </p>
 
+                        <div class="table-responsive  scrollbar scrollbar-primary">
 
-
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons"
+                         class="table table-striped table-bordered dt-responsive wrap"
+                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
                             <thead class="bg-dark text-white">
                                 <tr>
@@ -54,18 +47,28 @@
                                     <td>{{$user->phone_no_1}}
 
                                     <td>
-                                        <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.profile',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.profile',$user->id)}} @endif" class="btn btn-success"><i class="fas fa-user-shield"></i></a>
-                                        <a href="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.edit',$user->id)}} @elseif(Auth::guard('admin')->check()) {{route('admin.user.edit',$user->id)}} @endif" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger deleteBtn" data-url="@if(Auth::guard('super_admin')->check()) {{route('super_admin.user.delete',$user->id)}} @elseif(Auth::guard('admin')->check())  {{route('admin.user.delete',$user->id)}} @endif" ><i class="fas fa-trash"></i></a>
+                                        <a href="@if(Auth::guard('super_admin')->check())
+                                            {{route('super_admin.user.profile',$user->id)}} @elseif(Auth::guard('admin')->check())
+                                            {{route('admin.user.profile',$user->id)}} @endif" class="btn btn-success"><i class="fas fa-user-shield"></i>
+                                        </a>
+
+                                        <a href="@if(Auth::guard('super_admin')->check())
+                                            {{route('super_admin.user.edit',$user->id)}} @elseif(Auth::guard('admin')->check())
+                                             {{route('admin.user.edit',$user->id)}} @endif" class="btn btn-warning"><i class="fas fa-edit"></i>
+                                            </a>
+
+                                        <a href="javascript:void(0)" class="btn btn-danger deleteBtn" data-url="@if(Auth::guard('super_admin')->check())
+                                             {{route('super_admin.user.delete',$user->id)}} @elseif(Auth::guard('admin')->check())
+                                              {{route('admin.user.delete',$user->id)}} @endif" ><i class="fas fa-trash"></i>
+                                            </a>
+
                                     </td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
-
-
                     </div>
+                  </div>
                 </div>
             </div> <!-- end col -->
         </div> <!-- end row -->

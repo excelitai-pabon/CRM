@@ -85,11 +85,12 @@
                         <img class="rounded-circle header-profile-user" src="{{asset('assets')}}/images/users/user-4.jpg"
                             alt="Header Avatar">
                     </button>
+
                     @auth('admin')
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
 
-                            <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
+                            {{-- <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a> --}}
 
                             <div class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-undo font-size-17 align-middle me-1"></i>
                                 <form method="POST" action="{{ route('admin.logout') }}">
@@ -109,7 +110,7 @@
                     @auth('employee')
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+                            {{-- <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a> --}}
                             <div class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-undo font-size-17 align-middle me-1"></i>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
@@ -129,7 +130,7 @@
                     @auth('super_admin')
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+                            {{-- <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a> --}}
                             <div class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-undo font-size-17 align-middle me-1"></i>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
@@ -149,7 +150,7 @@
                     @auth('web')
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+                        {{-- <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a> --}}
                         <a class="dropdown-item" href="#"><i class="mdi mdi-wallet font-size-17 align-middle me-1"></i> My Wallet</a>
                         <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
                         <a class="dropdown-item" href="#"><i class="fa fa-undo font-size-17 align-middle me-1"></i> Lock screen</a>

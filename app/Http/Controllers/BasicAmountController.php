@@ -368,54 +368,30 @@ class BasicAmountController extends Controller
 
         //booking status part
         // dd($request);
-
-
         $booking_status = BookingStatus::where('user_id', $id)->first();
-
         $approve_updates=ApproveUpdate::where('user_id',$id)->first();
-
         $booking_status->booking_money= $approve_updates->booking_money;
         $booking_status->initial_booking_money= $approve_updates->initial_booking_money;
         $booking_status->booking_money_paid=$approve_updates->booking_money_paid;
         $booking_status-> booking_money_paid_date =$approve_updates->booking_money_paid_date;
         $booking_status-> booking_money_due_date =$approve_updates->booking_money_due_date;
-
-
         $booking_status->booking_money_due=$approve_updates->booking_money_due;
-
-
-
-
         $booking_status->booking_money_due=$approve_updates->booking_money_due;
         $booking_status->booking_money_note=$approve_updates->booking_money_note;
         $booking_status->booking_money_payment_type=$approve_updates->booking_money_payment_type;
-
         // dd($booking_status);
         $booking_status->save();
-
-
-
         //downpayment part
         $down_payment = DownpaymentStatus::where('user_id', $id)->first();
-
         $down_payment->downpayment_money= $approve_updates->downpayment_money;
         $down_payment->initial_downpayment_money= $approve_updates->initial_downpayment_money;
         $down_payment->downpayment_money_paid=$approve_updates->downpayment_money_paid;
         $down_payment-> downpayment_money_paid_date =$approve_updates->downpayment_money_paid_date;
         $down_payment-> downpayment_money_due_date =$approve_updates->downpayment_money_due_date;
-
-
-
-
         $down_payment->downpayment_money_due =$approve_updates->downpayment_money_due;
-
         $down_payment->downpayment_money_note=$approve_updates->downpayment_money_note;
         $down_payment->downpayment_money_payment_type=$approve_updates->downpayment_money_payment_type;
         $down_payment->save();
-
-
-
-
         //car_parking part
         $car_parking = CarParkingStatus::where('user_id', $id)->first();
         $car_parking->car_parking_money= $approve_updates->car_parking_money;
@@ -423,18 +399,10 @@ class BasicAmountController extends Controller
         $car_parking->car_parking_money_paid=$approve_updates->car_parking_money_paid;
         $car_parking-> car_parking_money_paid_date =$approve_updates->car_parking_money_paid_date;
         $car_parking-> car_parking_money_due_date =$approve_updates->car_parking_money_due_date;
-
-
-
-
         $car_parking->car_parking_money_due=$approve_updates->car_parking_money_due;
         $car_parking->car_parking_money_note=$approve_updates->car_parking_money_note;
         $car_parking->car_parking_money_payment_type=$approve_updates->car_parking_money_payment_type;
-
         $car_parking->save();
-
-
-
         //land_filling1st part
         $land_filing_1st = LandFillingStatus1st::where('user_id', $id)->first();
         $land_filing_1st->land_filling_money= $approve_updates->land_filling_money_1;
@@ -446,11 +414,7 @@ class BasicAmountController extends Controller
         $land_filing_1st->land_filling_money_note=$approve_updates->land_filling_money_note_1;
         $land_filing_1st->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_1;
         $land_filing_1st->save();
-
-
-
         //land_filling2nd part
-
         $land_filing_2nd = LandFillingStatus2nd::where('user_id', $id)->first();
         $land_filing_2nd->land_filling_money= $approve_updates->land_filling_money_2;
         $land_filing_2nd->initial_land_filling_money= $approve_updates->initial_land_filling_money2;
@@ -461,13 +425,7 @@ class BasicAmountController extends Controller
         $land_filing_2nd->land_filling_money_note=$approve_updates->land_filling_money_note_2;
         $land_filing_2nd->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_2;
         $land_filing_2nd->save();
-
-
-
-
-
         //land_filling2nd part
-
         $building_pilling_status = BuildingPillingStatus::where('user_id', $id)->first();
         $building_pilling_status->building_pilling_money= $approve_updates->building_pilling_money;
         $building_pilling_status->initial_building_pilling_money= $approve_updates->initial_building_pilling_money;
@@ -476,14 +434,9 @@ class BasicAmountController extends Controller
         $building_pilling_status-> building_pilling_money_due_date =$approve_updates->land_filling_money_due_date2;
         $building_pilling_status->building_pilling_money_due=$approve_updates->building_pilling_money_due;
         $building_pilling_status->building_pilling_money_note=$approve_updates->building_pilling_money_note;
+        $building_pilling_status->building_pilling_money_payment_type=$approve_updates->building_pilling_money_payment_type;
         $building_pilling_status->save();
-
-
-
-
-
         //roof casting  part
-
         $roof_casting_1st= FloorRoofCasting1st::where('user_id', $id)->first();
         $roof_casting_1st->floor_roof_casting_money_1st= $approve_updates->floor_roof_casting_money_1st;
         $roof_casting_1st->initial_floor_roof_casting_money_1st= $approve_updates->initial_floor_roof_casting_money_1st;
@@ -494,13 +447,7 @@ class BasicAmountController extends Controller
         $roof_casting_1st->floor_roof_casting_money_note_1st=$approve_updates->floor_roof_casting_money_note_1st;
         $roof_casting_1st->floor_roof_casting_money_payment_type_1st=$approve_updates->floor_roof_casting_money_payment_type_1st;
         $roof_casting_1st->save();
-
-
-
-
-
         //finishing work
-
         $finishing_work= FinishingWorkStatus::where('user_id', $id)->first();
         $finishing_work->finishing_work_money= $approve_updates->finishing_work_money;
         $finishing_work->initial_finishing_work_money= $approve_updates->initial_finishing_work_money;
@@ -511,14 +458,7 @@ class BasicAmountController extends Controller
         $finishing_work->finishing_work_money_note=$approve_updates->finishing_work_money_note;
         $finishing_work->finishing_work_money_payment_type=$approve_updates->finishing_work_money_payment_type;
         $finishing_work->save();
-
-
-
-
-
-
         //after hand over part
-
         $after_hand_over_money= AfterHandoverMoney::where('user_id', $id)->first();
         $after_hand_over_money->after_handover_money= $approve_updates->after_handover_money;
         $after_hand_over_money->initial_after_handover_money= $approve_updates->initial_after_handover_money;
@@ -529,11 +469,7 @@ class BasicAmountController extends Controller
         $after_hand_over_money->after_handover_money_note=$approve_updates->after_handover_money_note;
         $after_hand_over_money->after_handover_money_payment_type=$approve_updates->after_handover_money_payment_type;
         $after_hand_over_money->save();
-
-
         $approve_updates->delete();
-
-
         return redirect()->route('super_admin.dashboard');
 
     }

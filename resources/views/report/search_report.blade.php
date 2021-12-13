@@ -32,7 +32,8 @@
                                 </div>
                                 <div class="col-lg-2">
                                     <select name="basic_information" id="" class="form-control" required>
-                                        <option disabled>Select Basic Information</option>
+                                        <option value="" selected disabled>Select type
+                                        </option>
                                         <option value="booking_money">Booking Status</option>
                                         <option value="down_payment">Down Payment Status</option>
                                         <option value="car_parking">Car parking Status</option>
@@ -93,9 +94,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $booking_status_total }}</td>
-                                        <td></td>
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$booking_status_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$booking_status_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
                                 @endif
@@ -113,9 +115,11 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $down_payment_total }}</td>
-                                        <td></td>
+
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$down_payment_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$down_payment_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -134,9 +138,11 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $car_parking_total }}</td>
-                                        <td></td>
+
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$car_parking_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$car_parking_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -155,9 +161,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $land_filling_1st_total }}</td>
-                                        <td></td>
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$land_filling_1st_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$land_filling_1st_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -176,9 +183,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $land_filling_2nd_total }}</td>
-                                        <td></td>
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$land_filling_2nd_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$land_filling_2nd_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -197,9 +205,11 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $building_pilling_total }}</td>
-                                        <td></td>
+
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$building_pilling_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$building_pilling_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -218,9 +228,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $first_floor_total }}</td>
-                                        <td></td>
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$first_floor_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$first_floor_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -239,9 +250,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td colspan="2">{{ $finishing_money_total }}</td>
-                                        <td></td>
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$finishing_money_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$finishing_money_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 
@@ -260,10 +272,10 @@
 
                                     @endforeach
                                     <tr>
-                                        <td colspan="2">Total Amount</td>
-                                        <td>{{ $after_handover_money_total }}</td>
-                                        <td></td>
-
+                                        <td colspan="2"  style="text-align: right;"><h5>Total paid Amount </h5> </td>
+                                        <td><h4 class="text-success ">{{$after_handover_money_total}}</h4></td>
+                                        <td><h5 style="text-align: right;">Total Due Amount </h5></td>
+                                        <td><h4 class="text-danger">{{$after_handover_money_total_due}}</h4></td>
                                         <td></td>
                                     </tr>
 

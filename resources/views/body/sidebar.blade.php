@@ -216,6 +216,17 @@
                     </a>
                 </li>
 
+                <li >
+                    <a href="{{ route ('testTable')}}" class=" waves-effect">
+                        <i class="ti-email"></i>
+                        <span>Information</span>
+                    </a>
+                </li>
+
+
+
+
+
 
             </ul>
 

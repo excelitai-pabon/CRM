@@ -29,15 +29,9 @@ public function basicUpdateRequest(Request $request,$id){
 
     if($check_request->isEmpty()){
         $user= User::where('id',$id)->first();
-
-
-
-
         // dd($request->after_handover_money_money_paid);
         // dd($request->initial_booking_money);
-
         $approve_status =new ApproveUpdate;
-
         $approve_status->user_id= $id;
         $approve_status->admin_id= 1;
         // dd($request);
@@ -45,7 +39,6 @@ public function basicUpdateRequest(Request $request,$id){
         $booking_status = BookingStatus::where('user_id', $id)->first();
         $check_due=$booking_status->booking_money_due-$request->booking_money_paid;
         //if else start
-
         if($request->booking_money_paid>$request->booking_money){
             Session::flash('error',"Paid is greater than due");
             return redirect()->back();
@@ -68,7 +61,6 @@ public function basicUpdateRequest(Request $request,$id){
             return redirect()->back();
         }
         else{
-
             $request_booking_status_total=$booking_status->booking_money_due;
             $request_booking_status_due= $request_booking_status_total-$request->booking_money_paid;
             $approve_status->booking_money_due= $request_booking_status_due;
@@ -83,8 +75,6 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status->booking_money_payment_type=$request->booking_money_payment_type;
             $approve_status->initial_booking_money=$request->initial_booking_money;
         }
-
-
         //down payment
         $down_payment = DownpaymentStatus::where('user_id', $id)->first();
         $check_due=$down_payment->downpayment_money_due-$request->downpayment_money_paid;
@@ -95,7 +85,6 @@ public function basicUpdateRequest(Request $request,$id){
             Session::flash('error',"Paid is greater than due");
             return redirect()->back();
         }
-
         elseif($down_payment->downpayment_money_due==0 ){
             $request_down_payment_total=$request->downpayment_money;
             $request_down_payment_due=$request_down_payment_total-$request->downpayment_money_paid;
@@ -112,26 +101,15 @@ public function basicUpdateRequest(Request $request,$id){
 
 
         }
-
         elseif($check_due<0){
-
             Session::flash('error',"Check the Due");
             return redirect()->back();
-
         }
-
-
         else{
-
         $request_down_payment_total=$down_payment->downpayment_money_due;
-
        $request_down_payment_due= $request_down_payment_total-$request->downpayment_money_paid;
-
        $approve_status->downpayment_money_due= $request_down_payment_due;
-
         // $approve_status->downpayment_money= $request_down_payment_total;
-
-
         $approve_status->downpayment_money_paid=$request->downpayment_money_paid;
         $approve_status-> downpayment_money_paid_date =$request->downpayment_money_paid_date;
         $approve_status-> downpayment_money_due_date =$request->downpayment_money_due_date;
@@ -143,22 +121,17 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
 
     }
-
     $car_parking = CarParkingStatus::where('user_id', $id)->first();
     $check_due=$car_parking->car_parking_money_due-$request->car_parking_money_paid;
-
-
     if($request->car_parking_money_paid > $request->car_parking_money){
 
         Session::flash('error',"Paid is greater than due");
             return redirect()->back();
     }
-
     elseif($car_parking->car_parking_money_due==0){
         $request_car_parking_total=$request->car_parking_money;
         $request_car_parking_due=$request_car_parking_total-$request->car_parking_money_paid;
         $approve_status->car_parking_money_due= $request_car_parking_due;
-
         // $approve_status->car_parking_money= $request->car_parking_money;
         $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
         $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
@@ -170,17 +143,11 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
     }
     elseif($check_due<0){
-
         Session::flash('error',"Check the Due");
         return redirect()->back();
-
     }
-
-
-
     else{
         //start
-
         $request_car_parking_total=$car_parking->car_parking_money_due;
         $request_car_parking_due= $request_car_parking_total-$request->car_parking_money_paid;
         $approve_status->car_parking_money_due= $request_car_parking_due;
@@ -196,7 +163,6 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->car_parking_money=$request->car_parking_money;
         $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
     }
-
     $land_filling_1 = LandFillingStatus1st::where('user_id', $id)->first();
     $check_due=$land_filling_1->land_filling_money_due-$request->land_filling_money_paid;
 
@@ -204,7 +170,6 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Paid is greater than due");
             return redirect()->back();
     }
-
     elseif($land_filling_1->land_filling_money_due==0){
         $request_land_filling_1_total=$request->land_filling_money;
         $request_land_filling_due_1=$request_land_filling_1_total-$request->land_filling_money_paid;
@@ -222,7 +187,6 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Check the Due");
         return redirect()->back();
     }
-
     else{
           //start
 
@@ -246,13 +210,10 @@ public function basicUpdateRequest(Request $request,$id){
             return redirect()->back();
     }
 
-
     elseif($land_filling_2->land_filling_money_due2==0){
         $request_land_filling_2_total=$request->land_filling_money2;
-
         $request_land_filling_due_2=$request_land_filling_2_total-$request->land_filling_money_paid2;
         $approve_status->land_filling_money_due_2= $request_land_filling_due_2;
-
         $approve_status->land_filling_money_paid_2=$request->land_filling_money_paid2;
         $approve_status-> land_filling_money_paid_date_2 =$request->land_filling_money_paid_date2;
         $approve_status-> land_filling_money_due_date_2 =$request->land_filling_money_due_date2;
@@ -266,11 +227,7 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Check the Due");
         return redirect()->back();
     }
-
     else{
-
-
-
           $approve_status->land_filling_money_paid_2=$request->land_filling_money_paid2;
           $approve_status-> land_filling_money_paid_date_2 =$request->land_filling_money_paid_date2;
           $approve_status-> land_filling_money_due_date_2 =$request->land_filling_money_due_date2;
@@ -280,11 +237,12 @@ public function basicUpdateRequest(Request $request,$id){
           $approve_status->land_filling_money_due_2= $request_land_filling_2_due;
         //end
 
-        $approve_status->land_filling_money_note_2=$request->land_filling_money_note2;
-        $approve_status->land_filling_money_payment_type_2=$request->land_filling_money_payment_type2;
+           $approve_status->land_filling_money_note_2=$request->land_filling_money_note2;
+          $approve_status->land_filling_money_payment_type_2=$request->land_filling_money_payment_type2;
           //adding booking money field
           $approve_status->land_filling_money_2=$request->land_filling_money2;
           $approve_status->initial_land_filling_money2=$request->initial_land_filling_money2;
+
 
     }
         //building pilling
@@ -304,19 +262,19 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status-> building_pilling_money_paid_date =$request->building_pilling_money_paid_date;
             $approve_status-> building_pilling_money_due_date =$request->building_pilling_money_due_date;
             $approve_status->building_pilling_money_note=$request->building_pilling_money_note;
+            $approve_status->building_pilling_money_payment_type=$request->building_pilling_money_payment_type;
              //adding booking money field
           $approve_status->building_pilling_money=$request->building_pilling_money;
+
           $approve_status->initial_building_pilling_money=$request->initial_building_pilling_money;
         }
 
         elseif($check_due<0){
             Session::flash('error',"Check the Due");
             return redirect()->back();
-
         }
 
         else{
-
            //start
            $request_building_pilling_total=$building_pillling->building_pilling_money_due;
            $request_building_pilling_due= $request_building_pilling_total-$request->building_pilling_money_paid;
@@ -325,34 +283,25 @@ public function basicUpdateRequest(Request $request,$id){
            $approve_status->building_pilling_money_paid=$request->building_pilling_money_paid;
            $approve_status-> building_pilling_money_paid_date =$request->building_pilling_money_paid_date;
            $approve_status-> building_pilling_money_due_date =$request->building_pilling_money_due_date;
-           $approve_status->building_pilling_money_note=$request->building_pilling_money_note;
+          
+
              //adding booking money field
           $approve_status->building_pilling_money=$request->building_pilling_money;
           $approve_status->initial_building_pilling_money=$request->initial_building_pilling_money;
 
-        }
 
+        }
      //roof casting
      $floor_roof= FloorRoofCasting1st::where('user_id', $id)->first();
      $check_due=$floor_roof->floor_roof_casting_money_1st-$request->floor_roof_casting_money_paid_1st;
-
-
      if($request->floor_roof_casting_money_paid_1st>$request->floor_roof_casting_money_1st){
         Session::flash('error',"Paid is greater than due");
         return redirect()->back();
     }
-
-
-
-
      elseif($floor_roof->floor_roof_casting_money_due_1st==0 ){
         $request_floor_roof_total=$request->floor_roof_casting_money_1st;
         $request_floor_roof_due=$request_floor_roof_total-$request->floor_roof_casting_money_paid_1st;
         $approve_status->floor_roof_casting_money_due_1st= $request_floor_roof_due;
-
-
-
-
             $approve_status->floor_roof_casting_money_paid_1st=$request->floor_roof_casting_money_paid_1st;
             $approve_status-> floor_roof_casting_money_paid_date_1st =$request->floor_roof_casting_money_paid_date_1st;
             $approve_status-> floor_roof_casting_money_due_date_1st =$request->floor_roof_casting_money_due_date_1st;
@@ -368,13 +317,8 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Check the Due");
         return redirect()->back();
      }
-
-
-
      else{
          //start
-
-
          $request_floor_roof_total=$floor_roof->floor_roof_casting_money_due_1st;
          $request_floor_roof_due= $request_floor_roof_total-$request->floor_roof_casting_money_paid_1st;
          $approve_status->floor_roof_casting_money_due_1st= $request_floor_roof_due;
@@ -388,19 +332,14 @@ public function basicUpdateRequest(Request $request,$id){
           //adding booking money field
           $approve_status->floor_roof_casting_money_1st=$request->floor_roof_casting_money_1st;
           $approve_status->initial_floor_roof_casting_money_1st=$request->initial_floor_roof_casting_money_1st;
-
-
-
      }
 
      $finishing_work = FinishingWorkStatus::where('user_id', $id)->first();
      $check_due=$finishing_work->finishing_work_money_due-$request->finishing_work_money_paid;
-
      if($request->finishing_work_money_paid>$request->finishing_work_money){
         Session::flash('error',"Paid is greater than duee");
         return redirect()->back();
     }
-
      elseif($finishing_work->finishing_work_money_due==0){
         $request_finishing_work_total=$request->finishing_work_money;
         $request_finishing_work_due=$request_finishing_work_total-$request->finishing_work_money_paid;
@@ -419,7 +358,6 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Check the Due");
         return redirect()->back();
      }
-
      else{
           //start
           $request_finishing_work_total=$finishing_work->finishing_work_money_due;
@@ -436,9 +374,6 @@ public function basicUpdateRequest(Request $request,$id){
            $approve_status->finishing_work_money=$request->finishing_work_money;
            $approve_status->initial_finishing_work_money=$request->initial_finishing_work_money;
      }
-
-
-
      $after_hand = AfterHandoverMoney::where('user_id', $id)->first();
      $check_due=$after_hand->after_handover_money_money_due-$request->after_handover_money_money_paid;
 
@@ -447,7 +382,6 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Paid is greater than due");
         return redirect()->back();
 }
-
         elseif($after_hand->after_handover_money_money_due==0){
         $request_afterhand_total=$request->after_handover_money;
         $request_afterhand_due=$request_afterhand_total-$request->after_handover_money_money_paid;
@@ -468,8 +402,6 @@ public function basicUpdateRequest(Request $request,$id){
         Session::flash('error',"Check the Due");
         return redirect()->back();
         }
-
-
      else{
 
           //start
@@ -489,7 +421,7 @@ public function basicUpdateRequest(Request $request,$id){
 
      }
 
-        $approve_status->save();
+       $approve_status->save();
 
         if(Auth::guard('admin')||Auth::guard('employee')||hasRole('manager'))
         {
@@ -501,9 +433,6 @@ public function basicUpdateRequest(Request $request,$id){
 
         }
 
-
-
-
     }
 
     else{
@@ -511,9 +440,7 @@ public function basicUpdateRequest(Request $request,$id){
          return redirect()->back();
      }
 
-
     }
-
 
 
     public function show_request(){
@@ -523,20 +450,14 @@ public function basicUpdateRequest(Request $request,$id){
 
     }
 
-
     public function destroy_request($id){
-
-
         $request_destroy=ApproveUpdate::where('user_id',$id);
         $request_destroy->delete();
 
         return redirect()->route('super_admin.show.request');
     }
     public function getBasic_data($id){
-
         $check_request=ApproveUpdate::where('user_id',$id)->get();
-
-
 
 
     }

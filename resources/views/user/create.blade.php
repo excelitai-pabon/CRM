@@ -125,7 +125,7 @@
 
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control @error('date_of_birth')is-invalid @enderror" name="date_of_birth" id="validationCustom01" placeholder="Permanenrt Address" value="{{old('date_of_birth')}}" required>
+                            <input type="date" class="form-control @error('date_of_birth')is-invalid @enderror" name="date_of_birth" id="example-date-input" placeholder="Permanenrt Address"  required>
                             @error('date_of_birth')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -214,7 +214,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img id="image_preview" src="{{asset('assets')}}/images/users/user-4.jpg" alt="your image" />
+                            <img id="image_preview" src="{{asset('assets')}}/images/clients/avatar11.jpg" alt="your image" />
                         </div>
 
                         <div class="col-md-6">
@@ -227,7 +227,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img id="image_preview2" src="{{asset('assets')}}/images/users/user-4.jpg" alt="your image" />
+                            <img id="image_preview2" src="{{asset('assets')}}/images/clients/avatar11.jpg" alt="your image" />
                         </div>
 
                         <div class="col-md-6">

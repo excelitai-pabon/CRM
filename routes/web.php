@@ -8,6 +8,7 @@ use App\Http\Controllers\CrmController;
 use App\Http\Controllers\DueController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PdfController;
@@ -342,7 +343,10 @@ Route::get('/clients', function () {
 
 
 Route::get('/roles', [PermissionController::class,'Permission']);
+Route::get('/test', [TestController::class,'testTable'])->name('testTable');
 Route::get('/permission_show', [PermissionController::class,'permission_show']);
+
+
 
 //pdf routes for basic info
 // Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
