@@ -25,7 +25,7 @@
         <!-- Essential css-->
         @yield('css')
         <!-- App Css-->
-
+        <link  rel="stylesheet" href="{{asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}">
         <link href="{{asset('assets')}}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
         <script src="{{asset('assets')}}/libs/jquery/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

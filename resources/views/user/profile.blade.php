@@ -56,13 +56,13 @@
                    <div class="submenu my-5 pb-5"role="tablist" >
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                          <a href="#!"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"  role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                          <a href="#!"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"  role="tab" aria-controls="pills-home" aria-selected="true">Personal Information</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <a href="#!"  id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                          <a href="#!"  id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Basic Insformation</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <a href="#!"  id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"  role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                          <a href="#!"  id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"  role="tab" aria-controls="pills-contact" aria-selected="false">Installment Information</a>
                         </li>
                       </ul>
                    </div>
@@ -72,8 +72,8 @@
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <section id="BasicInfo">
                             <div class="user-detail mt-5 p-5">
-                                <div class="user-detail-info p-5">
-                                    <h3>Basic Information</h3>
+                                <div class="user-detail-info pb-3">
+                                    <h3>Personal Information</h3>
                                 </div>
                                 <div class="pt-5">
                                     <div class="row no-gutter">
@@ -268,7 +268,7 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <section id="BasicAmount">
                             <div class="user-detail mt-5 p-5">
-                                <div class="user-detail-info p-5">
+                                <div class="user-detail-info pb-2">
                                     <h3>Basic Amount</h3>
                                 </div>
                                 <table class="table table-bordered table-striped">
@@ -297,7 +297,7 @@
                                             <td>{{optional($user->downPayment)->downpayment_money_paid_date}}</td>
                                             <td>{{optional($user->downPayment)->downpayment_money_due_date}}</td>
                                             <td>{{optional($user->downPayment)->downpayment_money_note}}</td>
-
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Down Payment')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
                                         </tr>
                                         <tr>
                                             <td>Car Parking</td>
@@ -305,6 +305,7 @@
                                             <td>{{optional($user->carParking)->car_parking_money_paid_date}}</td>
                                             <td>{{optional($user->carParking)->car_parking_money_due_date}}</td>
                                             <td>{{optional($user->carParking)->car_parking_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Car Parking')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
                                         </tr>
                                         <tr>
                                             <td>Land Filling 1</td>
@@ -312,6 +313,7 @@
                                             <td>{{optional($user->landFilling1)->land_filling_money_paid_date}}</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money_due_date}}</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('First Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
                                         </tr>
                                         <tr>
                                             <td>Land Filling 2</td>
@@ -319,6 +321,7 @@
                                             <td>{{optional($user->landFilling2)->land_filling_money_paid_date}}</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money_due_date}}</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Secound Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
                                         </tr>
                                         <tr>
                                             <td>Building Pilling</td>
@@ -326,6 +329,7 @@
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_paid_date}}</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_due_date}}</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Building Pilling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
 
                                         </tr>
                                         <tr>
@@ -334,6 +338,7 @@
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_paid_date_1st}}</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_due_date_1st}}</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_note_1st}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('First Floor Roof Casting')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
                                         </tr>
                                         <tr>
                                             <td>Finishing Work Amount:</td>
@@ -341,6 +346,7 @@
                                             <td>{{optional($user->finishingWork)->finishing_work_money_paid_date}}</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money_due_date}}</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Finishing Work')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
 
                                         </tr>
                                         <tr>
@@ -349,6 +355,7 @@
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_paid_date}}</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_due_date}}</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_note}}</td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
 
                                         </tr>
                                     </tbody>
@@ -374,11 +381,12 @@
                                 @endphp
 
                                 <table class="table">
-                                    <thead>
+                                    <thead class="bg-dark text-white">
                                         <tr>
                                             <th>Instalment Number </th>
                                             <th>Instalment Amount</th>
                                             <th>Instalment Amount Paid</th>
+                                            <th>Instalment  Paid Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>

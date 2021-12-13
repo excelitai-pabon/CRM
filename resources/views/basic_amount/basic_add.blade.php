@@ -225,9 +225,8 @@
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label>Booking Money Payment Type </label>
-                                            <select name="booking_money_payment_type" id="" class="form-control">
-                                                <option value="" disabled >Select Payment type
-                                                </option>
+                                            <select name="booking_money_payment_type" id="" class="form-select">add
+                                                <option value="" disabled selected> View Options </option>
                                                 <option value="Check">Check</option>
                                                 <option value="Bank" >Bank</option>
                                                 <option value="Cash">Cash</option>

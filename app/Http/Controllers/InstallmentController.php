@@ -34,7 +34,7 @@ class InstallmentController extends Controller
         if($validated){
             if(Auth::guard('admin')->check()){
                 $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('admin')->user()->crm_id)->first();
-                
+
             }
             if(Auth::guard('employee')->check()){
                 $user = User::where('file_no',$request->file_no)->where('crm_id',Auth::guard('employee')->user()->crm_id)->first();
@@ -70,14 +70,14 @@ class InstallmentController extends Controller
         if(Auth::guard('admin')->check()){
             // $user = User::where('file_no',$request->file_no)->first();
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('admin')->user()->crm_id)->where('id',$user->id);
-           
-            
+
+
         }
         if(Auth::guard('employee')->check()){
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('employee')->user()->crm_id)->where('id',$user->id);
         }
         elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
-            
+
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->findOrFail($user->id);
         }
         else
@@ -95,7 +95,7 @@ class InstallmentController extends Controller
         }
         else
         {
-            
+
             return redirect()->back();
         }
 

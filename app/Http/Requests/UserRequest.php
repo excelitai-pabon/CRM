@@ -66,8 +66,8 @@ class UserRequest extends FormRequest
             'nominee_name'=>'required|regex:/^[a-zA-Z ]*/',
             'relation_with_nominee'=>'required|regex:/^[a-zA-Z ]*/',
             'building_no'=>'required|string',
-            'member_image'=>'required|mimes:png,jpg,jpeg,svg',
-            'nominee_image'=>'required|mimes:png,jpg,jpeg,svg',
+            'member_image'=>'required|image|mimes:png,jpg,jpeg,svg',
+            'nominee_image'=>'required|image|mimes:png,jpg,jpeg,svg',
             'password'=>'required|min:8',
         ];
     }
