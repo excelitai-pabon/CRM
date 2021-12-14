@@ -143,6 +143,7 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::post('/installment/edit/store/{id}',[InstallmentController::class,'storeEditInstallment'])->middleware('auth:super_admin')->name('installments.edit.store');
     Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:super_admin')->name('installments.create');
     Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:super_admin')->name('installments.create.store');
+    Route::post('/multi-installment/create/store/{user}',[InstallmentController::class,'storeNewMultiInstallment'])->middleware('auth:super_admin')->name('multi.installments.create.store');
 
     //Basic amounts
     Route::get('/basic', [BasicAmountController::class, 'basic'])->middleware('auth:super_admin')->name('basicAmount');

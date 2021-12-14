@@ -2,15 +2,69 @@
 @extends('master.master')
 
 @section('content')
+
+
 <div class="container-fluid">
 
 
 
     <div class="row">
+        <div class="col-lg-6">
+            <h4>All Installment</h4>
+        </div>
+        <div class="col-lg-6 text-end">
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Multi Installment
+              </button>
+
+
+            </div>
+
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade @error('multiPayment')show @enderror"   @error('multiPayment')style="display: block;" @enderror id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}">
+            @csrf
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Multi Installment Amount</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <input type="number" name="multiPayment" class="form-control @error('multiPayment') is-invalid @enderror">
+            @error('multiPayment')
+                <span class="text-danger">{{$message}}</span>
+            @enderror
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-success" type="submit">Multiple Payment</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    {{-- <div class="row">
+        <div class="col-lg-6">
+            <h4 class="card-title">All Installment</h4>
+            <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}">
+                @csrf
+                <input type="number" name="multiPayment">
+                <button class="btn btn-success" type="submit">Multiple Payment</button>
+            </form>
+        </div>
+
+   </div> --}}
+
+    <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">All Installment</h4>
 
 
 
@@ -141,6 +195,19 @@
 
 
 </div>
+@endsection
+
+@section('script')
+
+<script>
+    $('#close').on('click',function()
+    {
+        console.log('work');
+        $('#exampleModal').hide();
+    });
+
+</script>
+
 @endsection
 
 

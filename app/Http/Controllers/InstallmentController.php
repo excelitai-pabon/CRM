@@ -11,6 +11,7 @@ use App\Notifications\InstallmentPaid;
 use App\Notifications\NotifyToAdmin;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Mail;
@@ -208,5 +209,85 @@ class InstallmentController extends Controller
             return redirect()->route('super_admin.installments')->with('success','Installment update successfully');
         }
 
+    }
+
+    public function storeNewMultiInstallment(Request $request,User $user)
+    {
+        $paidInstallment = Installment::where('user_id',$user->id)->sum('installment_paid');
+        $total_paid = $paidInstallment + Installment::where('user_id',$user->id)->sum('installment_due');
+
+        $dueInstallment = $user->totalNoOfInstallment->total_installment_amount-$total_paid;
+
+        $validated = $request->validate([
+            'multiPayment' => "required|max:{$dueInstallment}",
+        ],[
+
+            'multiPayment.max' => "Not more than {$dueInstallment} taka",
+        ]);
+
+
+
+        if($dueInstallment<$request->multiPayment)
+        {
+            return back()->with('error','taka komai den');
+        }
+
+
+
+
+        $totalMoney = $request->multiPayment;
+        $paymentByYear = InstallmentYear::where('user_id',$user->id)->first();
+
+        $paidInstallment = Installment::where('user_id',$user->id)->count();
+
+
+
+        while(true)
+        {
+            $i = ceil(($paidInstallment+1)/12)-1;
+
+            if($i==-1)
+            {
+                $i = 0;
+            }
+
+
+
+             $installment = new Installment();
+             $installment->installment_no = $paidInstallment+1;
+
+             $installment->user_id = $user->id;
+             $installment->crm_id = $user->crm_id;
+             $installment->payment_installment_type = 'cash';
+
+            $installment->installment_amount = $paymentByYear->installment_years_amount[$i];
+
+            if($paymentByYear->installment_years_amount[$i]>$totalMoney)
+            {
+
+                $installment->installment_paid = $totalMoney;
+                $installment->installment_due = $paymentByYear->installment_years_amount[$i]-$totalMoney;
+                $totalMoney=0;
+            }
+            elseif($totalMoney>=$paymentByYear->installment_years_amount[$i])
+            {
+                $installment->installment_paid = $paymentByYear->installment_years_amount[$i];
+                $totalMoney -= $paymentByYear->installment_years_amount[$i];
+                $installment->installment_due = 0;
+            }
+
+            $installment->installment_date = Carbon::now();
+            $installment->save();
+
+            $paidInstallment++;
+
+
+            if($totalMoney==0)
+            {
+                 break;
+            }
+
+        }
+        return back();
     }
 }

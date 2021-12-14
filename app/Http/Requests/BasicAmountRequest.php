@@ -29,7 +29,7 @@ class BasicAmountRequest extends FormRequest
         return [
             'total_amount'=>'required|numeric',
             'installment_number'=>'required|numeric',
-            'booking_money'=>"required|numeric",
+            'booking_money'=>"nullable|numeric",
             'installment_amount'=>'required|numeric',
             'installment_start_date'=>'required',
             'installment_years_amount'=>'required|array',

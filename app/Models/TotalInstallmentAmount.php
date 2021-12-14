@@ -16,4 +16,5 @@ class TotalInstallmentAmount extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 }
