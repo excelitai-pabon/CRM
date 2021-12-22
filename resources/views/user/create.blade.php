@@ -63,6 +63,17 @@
                             @enderror
                         </div>
 
+                        {{-- new add --}}
+
+                        <div class="col-md-12">
+                            <label for="validationCustom04" class="form-label">Select Relationship:</label>
+                            <input name="relation_name" type="checkbox" value="husband">husband
+                            <input name="relation_name" type="checkbox" value="wife">wife
+                            </div>
+
+                        {{-- end --}}
+
+
                         <div class="col-md-6">
                             <label for="validationCustom05" class="form-label">Husband / Wife Name (optional)</label>
                             <input type="text" class="form-control @error('husband_wife_name')is-invalid @enderror" name="husband_wife_name" id="validationCustom05"  placeholder="Husband / Wife name" value="{{old('husband_wife_name')}}">
@@ -203,6 +214,36 @@
                             </div>
                             @enderror
                         </div>
+
+
+                        {{-- //new add --}}
+                        {{-- added --}}
+
+
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Broker Name </label>
+                            <input type="text" class="form-control @error('broker_name')is-invalid @enderror" name="broker_name" id="validationCustom01" placeholder="broker_name" value="{{old('broker_name')}}" required>
+                            @error('broker_name')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+
+                        {{-- new add --}}
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Broker Phone no </label>
+                            <input type="text" class="form-control @error('broker_number')is-invalid @enderror" name="broker_number" id="validationCustom01" placeholder="broker_number" value="{{old('broker_number')}}" required>
+                            @error('broker_number')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+
+
+
+
 
                         <div class="col-md-6">
                             <label for="imgInp" class="form-label">Member Image</label>

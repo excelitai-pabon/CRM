@@ -240,7 +240,7 @@
 
     @auth('super_admin')
         <div class="row mt-4">
-        <div class="col-6">
+        <div class="col-8 offset-lg-2">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Update User Password</h4>
@@ -252,7 +252,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="validationCustom03" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" id="validationCustom03" placeholder="Password"  required>
+                                <input type="password" class="form-control" name="password" id="validationCustom03" placeholder="Password" required>
                                 @error('password')
                                     <span class="text-danger"> {{$message}}</span>
                                 @enderror

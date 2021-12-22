@@ -472,11 +472,11 @@
                                 <td style="border-left:1px solid #C9CACC;">{{$down_payment->downpayment_money_paid}}</td>
                                 <td style="border-left:1px solid #C9CACC;">{{$down_payment->downpayment_money_paid_date}}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>Car Parking:</td>
                                 <td style="border-left:1px solid #C9CACC;">{{$car_parking->car_parking_money_paid}}</td>
                                 <td style="border-left:1px solid #C9CACC;">{{$car_parking->car_parking_money_paid_date}}</td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td>Land Fillig 1</td>
                                 <td style="border-left:1px solid #C9CACC;">{{$land_filing_1st->land_filling_money_paid}}</td>

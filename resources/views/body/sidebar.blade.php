@@ -167,6 +167,19 @@
                             <span>Installments</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ti-file"></i>
+                            <span>Other</span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li><a href="{{route('super_admin.car.parking.search')}}">Find other</a></li>
+                            <li><a href="{{route('super_admin.car.parking.show')}}">View other</a></li>
+
+
+                        </ul>
+                    </li>
+
                     <li >
                         <a href="{{route('super_admin.all.user.due')}}" class=" waves-effect">
                             <i class="fas fa-folder"></i>
@@ -204,6 +217,14 @@
                         </a>
 
                     </li>
+                    <li >
+                        <a href="{{ route ('super_admin.custom.pdf')}}" class=" waves-effect">
+                            <i class="ti-email"></i>
+                            <span>Report Generate</span>
+                        </a>
+                    </li>
+
+
                 @endauth
 
 
@@ -222,6 +243,8 @@
                         <span>Information</span>
                     </a>
                 </li>
+
+
 
 
 

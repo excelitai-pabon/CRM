@@ -248,7 +248,7 @@
             </div>
 
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-6">
                     <div class="card" style="background: #9eb8c04f" >
                         <div class="card-body pt-2">
@@ -463,7 +463,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
 
@@ -505,7 +505,7 @@
                                                     <label>Land Filling(2nd) Due Date</label>
                                                     <input type="date" name="land_filling_money_paid_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date2))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date))}}"
                                                         id="land-filling-2-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -529,7 +529,7 @@
                                                     <label>Land Filling(2nd) Paid Date</label>
                                                     <input type="date" name="land_filling_money_due_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date2))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date))}}"
                                                         id="land-filling-2-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -745,16 +745,16 @@
                                                     <label>1st floor Roof Casting Paid Date</label>
                                                     <input type="date" name="floor_roof_casting_money_paid_date_1st"
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_paid_date_1st))}}"
+                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_paid_date_1st))}}"
                                                         id="roof-casting-paid-date" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Due Date</label>
-                                                    <input type="date" name="floor_roof_casting_money_due_1st"
+                                                    <input type="date" name="floor_roof_casting_money_due_date_1st"
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_due_1st))}}"
+                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_due_date_1st))}}"
                                                         id="roof-casting-due-date" class="form-control">
                                                 </div>
                                             </div>

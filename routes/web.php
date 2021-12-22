@@ -104,6 +104,8 @@ Route::prefix('admin')->name('admin.')->group(function()
 
         // pdf
         Route::get('/daily-report/pdf',[ReportController::class,'pdfDailyReport'])->name('pdf.daily_report');
+        //basic amounts pdf
+        Route::get('pdf/{basic_amount}/{user}',[PdfController::class,'basicAmountPDF'])->name('basic-amount.pdf')->middleware('auth:admin');
 
 
 });
@@ -152,12 +154,25 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:super_admin')->name('basic_amount.create');
     Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])
     ->middleware('auth:super_admin')->name('basic_amount.store');
+    //car parking start
+    Route::get('/carparking',[BasicAmountController::class,'carParking'])->middleware('auth:super_admin')->name('car.parking');
+    Route::get('/carparking/search', [BasicAmountController::class, 'carParkingSearch'])->middleware('auth:super_admin')->name('car.parking.search');
+    Route::post('/carparking/{user}', [BasicAmountController::class, 'carParkingStore'])->middleware('auth:super_admin')->name('car.parking.store');
 
+    Route::get('/carparking/show', [BasicAmountController::class, 'carParkingShow'])->middleware('auth:super_admin')->name('car.parking.show');
+    Route::get('/carparking/edit/{file}', [BasicAmountController::class, 'carParkingEdit'])->middleware('auth:super_admin')->name('car.parking.edit');
+    Route::post('/carparking/update/{user}', [BasicAmountController::class, 'carParkingUpdate'])->middleware('auth:super_admin')->name('car.parking.update');
+    Route::get('/carparking/delete/{user}', [BasicAmountController::class, 'carParkingDestroy'])->middleware('auth:super_admin')->name('car.parking.delete');
 
     ///power of atorney routes
     Route::get('/powerOfAtorney',[PermissionController::class, 'powerOfAtorney'])->middleware('auth:super_admin')->name('powerOfAtorney');
     Route::post('/powerOfAtorney/store',[PermissionController::class, 'powerOfAtorneyStore'])->middleware('auth:super_admin')->name('powerOfAtorney.store');
     Route::get('/powerOfAtorney/delete/{id}',[PermissionController::class, 'powerOfAtorneyDelete'])->middleware('auth:super_admin')->name('powerOfAtorney.delete');
+
+
+    // Invoice Route
+    Route::get('/custom/pdf', [UserController::class,'customPdf'])->middleware('auth:super_admin')->name('custom.pdf');
+    Route::post('/custom/pdf/post', [UserController::class,'customPdfPost'])->middleware('auth:super_admin')->name('custom.pdf.post');
 
 
     Route::post('/basic/create/{id}', [BasicAmountController::class, 'basicCreate'])->middleware('auth:super_admin');
@@ -216,7 +231,8 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
     Route::get('/member/{id}/viewpdf',[PdfController::class,'viewPDF'])->middleware('auth:super_admin');
     Route::get('/member/pdf/{id}',[PdfController::class,'pdfDownload'])->middleware('auth:super_admin');
 
-
+    //basic amounts pdf
+    Route::get('pdf/{basic_amount}/{user}',[PdfController::class,'basicAmountPDF'])->name('basic-amount.pdf')->middleware('auth:super_admin');
 
     //excel
     Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');

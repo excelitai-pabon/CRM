@@ -228,6 +228,7 @@ class ReportController extends Controller
 
 
         $startOfTheDay = Carbon::now()->startOfMonth();
+
         $endOfTheDay= Carbon::now()->endOfMonth();
         $crms = Crm::all();
         if($request->month){

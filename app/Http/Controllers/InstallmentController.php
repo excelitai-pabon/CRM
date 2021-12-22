@@ -11,6 +11,7 @@ use App\Notifications\InstallmentPaid;
 use App\Notifications\NotifyToAdmin;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -67,19 +68,24 @@ class InstallmentController extends Controller
 
     public function allInstallment(User $user)
     {
+
         $userdata=null;
         if(Auth::guard('admin')->check()){
+
             // $user = User::where('file_no',$request->file_no)->first();
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('admin')->user()->crm_id)->where('id',$user->id);
 
 
         }
-        if(Auth::guard('employee')->check()){
+        else if(Auth::guard('employee')->check()){
+
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->where('crm_id',Auth::guard('employee')->user()->crm_id)->where('id',$user->id);
         }
         elseif(Auth::guard('super_admin')->check() || Auth::guard('admin')->user()->hasRole('manager')){
 
             $userdata = User::with(['totalNoOfInstallment','installment','installment_year'])->findOrFail($user->id);
+
+
         }
         else
         {
@@ -99,6 +105,15 @@ class InstallmentController extends Controller
 
             return redirect()->back();
         }
+
+
+
+
+
+        // $myDate = '12/08/2020';
+        // $result = Carbon::createFromFormat('m/d/Y', $myDate)->isPast();
+
+        // var_dump($date);
 
     }
 
@@ -217,34 +232,59 @@ class InstallmentController extends Controller
         $total_paid = $paidInstallment + Installment::where('user_id',$user->id)->sum('installment_due');
 
         $dueInstallment = $user->totalNoOfInstallment->total_installment_amount-$total_paid;
-
-        $validated = $request->validate([
-            'multiPayment' => "required|max:{$dueInstallment}",
-        ],[
-
-            'multiPayment.max' => "Not more than {$dueInstallment} taka",
-        ]);
-
-
-
-        if($dueInstallment<$request->multiPayment)
-        {
-            return back()->with('error','taka komai den');
-        }
-
-
-
-
         $totalMoney = $request->multiPayment;
         $paymentByYear = InstallmentYear::where('user_id',$user->id)->first();
 
         $paidInstallment = Installment::where('user_id',$user->id)->count();
+        $dueMoney = Installment::where('user_id',$user->id)->get();
+
+
+        foreach($dueMoney as $item)
+        {
+            if(isset($request->check[$item->id]))
+            {
+                if($totalMoney==0)
+                {
+                     break;
+                }
+                if($item->installment_due <= $totalMoney)
+                {
+                    $totalMoney-=$item->installment_due;
+                    $item->installment_due = 0;
+                    $item->installment_paid = $item->installment_amount;
+                    $item->installment_date = Carbon::now();
+                    $item->save();
+                }
+                elseif($item->installment_due>$totalMoney)
+                {
+                    $item->installment_due -= $totalMoney;
+                    $item->installment_paid += $totalMoney;
+                    $item->installment_date = Carbon::now();
+                    $item->save();
+                    $totalMoney=0;
+                }
+            }
+
+
+        }
 
 
 
         while(true)
         {
+
+            if($totalMoney==0)
+            {
+                 break;
+            }
             $i = ceil(($paidInstallment+1)/12)-1;
+
+            $c = count($paymentByYear->installment_years_amount);
+
+            if($i>($c-1))
+            {
+                break;
+            }
 
             if($i==-1)
             {
@@ -282,12 +322,13 @@ class InstallmentController extends Controller
             $paidInstallment++;
 
 
-            if($totalMoney==0)
-            {
-                 break;
-            }
+
 
         }
         return back();
     }
 }
+
+
+
+#(@5kW{lIe3;

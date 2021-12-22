@@ -6,9 +6,9 @@
 
 <div class="container-fluid">
 
-
-
-    <div class="row">
+    <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}">
+        @csrf
+    {{-- <div class="row">
         <div class="col-lg-6">
             <h4>All Installment</h4>
         </div>
@@ -39,6 +39,19 @@
             @error('multiPayment')
                 <span class="text-danger">{{$message}}</span>
             @enderror
+
+            <div class="row">
+                @foreach ($user->installment as $item)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="check[{{$item->id}}]" value="1" id="flexCheckDefault">
+                        @php
+                            $date = Carbon\Carbon::parse($item->installment_date)->format('F');
+                        @endphp
+                        <label class="form-check-label" for="flexCheckDefault">{{$date}}</label>
+                    </div>
+                @endforeach
+
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
@@ -47,19 +60,25 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> --}}
 
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-lg-6">
-            <h4 class="card-title">All Installment</h4>
-            <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}">
-                @csrf
-                <input type="number" name="multiPayment">
-                <button class="btn btn-success" type="submit">Multiple Payment</button>
-            </form>
-        </div>
 
-   </div> --}}
+            <div class="card ">
+            <div class=" card-body">
+            <h4 class="card-title">All Installment</h4>
+            <hr>
+            {{-- <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}"> --}}
+                {{-- @csrf --}}
+                <input type="number" name="multiPayment" class="form-control">
+                <button class="btn btn-success mt-3 " type="submit">Multiple Payment</button>
+            {{-- </form> --}}
+        </div>
+        </div>
+    </div>
+
+   </div>
 
     <div class="row">
         <div class="col-lg-12">
@@ -89,6 +108,7 @@
                                     <th>Due Date</th>
                                     <th>Action</th>
                                     <th>Note</th>
+                                    <th>Check Box</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,7 +161,13 @@
 
                                         @if (isset($user->Installment[$i]))
 
-                                            <td><a href="@if(Auth::guard('admin')->check()){{route('admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.edit',$user->Installment[$i]->id)}} @endif" class="btn btn-success">Edit</a></td>
+
+
+                                            <td><a href="@if(Auth::guard('admin')->check()){{route('admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.edit',$user->Installment[$i]->id)}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.edit',$user->Installment[$i]->id)}} @endif" class="btn @if ($user->Installment[$i]->installment_due==0)
+                                                btn-success
+                                            @else
+                                                btn-warning
+                                            @endif ">Edit</a></td>
 
                                         @else
 
@@ -150,6 +176,33 @@
                                                 <td><a href="@if(Auth::guard('admin')->check()) {{route('admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}}@elseif(Auth::guard('super_admin')->check()){{route('super_admin.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @elseif(Auth::guard('employee')->check()){{route('employee.installments.create',[$user->id,$i+1,$user->installment_year->installment_years_amount[$yearCounter]])}} @endif" class="btn btn-primary">Payment</a></td>
                                                 @php
                                                     $paymentCheck=0;
+                                                @endphp
+
+                                                @php
+
+                                                    $date = $paid_date->startOfMonth();
+                                                    $check_date=Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->isPast();
+
+
+
+                                                    if($check_date){
+                                                        $createInstallment = new App\Models\Installment;
+                                                        $createInstallment->user_id = $user->id;
+                                                        $createInstallment->crm_id = $user->crm_id;
+                                                        $createInstallment->installment_no = $i+1;
+
+
+                                                        $createInstallment->installment_amount =$user->installment_year->installment_years_amount[$yearCounter];
+                                                        $createInstallment->installment_paid =0;
+                                                        $createInstallment->installment_due = $user->installment_year->installment_years_amount[$yearCounter];
+                                                        $createInstallment->installment_date = Carbon\Carbon::now();
+                                                        $createInstallment->installment_due_date = Carbon\Carbon::now();
+                                                        $createInstallment->payment_installment_type = 'cash';
+                                                        $createInstallment->installment_note = '';
+                                                        $createInstallment->save();
+                                                        header("Refresh:0");
+                                                    }
+
                                                 @endphp
 
                                             @else
@@ -166,6 +219,26 @@
                                         @else
                                             <td></td>
                                         @endif
+
+
+                                        @if (isset($user->Installment[$i]))
+                                            @if($user->Installment[$i]->installment_due!=0)
+
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="check[{{$user->Installment[$i]->id}}]" value="{{$user->Installment[$i]->id}}" id="flexCheckDefault">
+
+
+                                                    </div>
+                                                </td>
+                                            @else
+                                            <td></td>
+                                            @endif
+                                        @else
+                                            <td></td>
+                                        @endif
+
+
 
 
                                         @php
@@ -192,6 +265,8 @@
     </div>
 
 
+
+        </form>
 
 
 </div>

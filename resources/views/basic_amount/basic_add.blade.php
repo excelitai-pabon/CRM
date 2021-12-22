@@ -344,7 +344,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            {{-- <div class="col-lg-6">
                 <div class="card" style="background: #9eb8c04f">
                     <div class="card-body pt-2">
                         <div class="row">
@@ -428,7 +428,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-lg-6">
                 <div class="card" style="background: #9eb8c04f">
                     <div class="card-body pt-2">
@@ -873,7 +873,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="card" style="background: #9eb8c04f">
                     <div class="card-body pt-2">
                         <div class="row">

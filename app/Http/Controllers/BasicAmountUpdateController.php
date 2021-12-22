@@ -121,48 +121,48 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
 
     }
-    $car_parking = CarParkingStatus::where('user_id', $id)->first();
-    $check_due=$car_parking->car_parking_money_due-$request->car_parking_money_paid;
-    if($request->car_parking_money_paid > $request->car_parking_money){
+    // $car_parking = CarParkingStatus::where('user_id', $id)->first();
+    // $check_due=$car_parking->car_parking_money_due-$request->car_parking_money_paid;
+    // if($request->car_parking_money_paid > $request->car_parking_money){
 
-        Session::flash('error',"Paid is greater than due");
-            return redirect()->back();
-    }
-    elseif($car_parking->car_parking_money_due==0){
-        $request_car_parking_total=$request->car_parking_money;
-        $request_car_parking_due=$request_car_parking_total-$request->car_parking_money_paid;
-        $approve_status->car_parking_money_due= $request_car_parking_due;
-        // $approve_status->car_parking_money= $request->car_parking_money;
-        $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
-        $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
-        $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
-        $approve_status->car_parking_money_note=$request->car_parking_money_note;
-        $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
-        //adding booking money field
-        $approve_status->car_parking_money=$request->car_parking_money;
-        $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
-    }
-    elseif($check_due<0){
-        Session::flash('error',"Check the Due");
-        return redirect()->back();
-    }
-    else{
-        //start
-        $request_car_parking_total=$car_parking->car_parking_money_due;
-        $request_car_parking_due= $request_car_parking_total-$request->car_parking_money_paid;
-        $approve_status->car_parking_money_due= $request_car_parking_due;
-        //end
-        $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
-        $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
-        $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
-        $approve_status->car_parking_money_note=$request->car_parking_money_note;
-        $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
+    //     Session::flash('error',"Paid is greater than due");
+    //         return redirect()->back();
+    // }
+    // elseif($car_parking->car_parking_money_due==0){
+    //     $request_car_parking_total=$request->car_parking_money;
+    //     $request_car_parking_due=$request_car_parking_total-$request->car_parking_money_paid;
+    //     $approve_status->car_parking_money_due= $request_car_parking_due;
+    //     // $approve_status->car_parking_money= $request->car_parking_money;
+    //     $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
+    //     $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
+    //     $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
+    //     $approve_status->car_parking_money_note=$request->car_parking_money_note;
+    //     $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
+    //     //adding booking money field
+    //     $approve_status->car_parking_money=$request->car_parking_money;
+    //     $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
+    // }
+    // elseif($check_due<0){
+    //     Session::flash('error',"Check the Due");
+    //     return redirect()->back();
+    // }
+    // else{
+    //     //start
+    //     $request_car_parking_total=$car_parking->car_parking_money_due;
+    //     $request_car_parking_due= $request_car_parking_total-$request->car_parking_money_paid;
+    //     $approve_status->car_parking_money_due= $request_car_parking_due;
+    //     //end
+    //     $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
+    //     $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
+    //     $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
+    //     $approve_status->car_parking_money_note=$request->car_parking_money_note;
+    //     $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
 
-        //car parking ends
-        //adding booking money field
-        $approve_status->car_parking_money=$request->car_parking_money;
-        $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
-    }
+    //     //car parking ends
+    //     //adding booking money field
+    //     $approve_status->car_parking_money=$request->car_parking_money;
+    //     $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
+    // }
     $land_filling_1 = LandFillingStatus1st::where('user_id', $id)->first();
     $check_due=$land_filling_1->land_filling_money_due-$request->land_filling_money_paid;
 
@@ -261,6 +261,7 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status->building_pilling_money_paid=$request->building_pilling_money_paid;
             $approve_status-> building_pilling_money_paid_date =$request->building_pilling_money_paid_date;
             $approve_status-> building_pilling_money_due_date =$request->building_pilling_money_due_date;
+
             $approve_status->building_pilling_money_note=$request->building_pilling_money_note;
             $approve_status->building_pilling_money_payment_type=$request->building_pilling_money_payment_type;
              //adding booking money field
@@ -283,7 +284,8 @@ public function basicUpdateRequest(Request $request,$id){
            $approve_status->building_pilling_money_paid=$request->building_pilling_money_paid;
            $approve_status-> building_pilling_money_paid_date =$request->building_pilling_money_paid_date;
            $approve_status-> building_pilling_money_due_date =$request->building_pilling_money_due_date;
-          
+
+
 
              //adding booking money field
           $approve_status->building_pilling_money=$request->building_pilling_money;

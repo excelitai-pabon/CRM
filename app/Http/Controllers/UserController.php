@@ -15,12 +15,14 @@ use App\Models\FinishingWorkStatus;
 use App\Models\FloorRoofCasting1st;
 use App\Models\LandFillingStatus1st;
 use App\Models\LandFillingStatus2nd;
+use App\Models\Broker;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Mail;
+use PDF;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -58,11 +60,12 @@ class UserController extends Controller
 
     //user store
     public function store(UserRequest $request){
-        //  dd($request->all());
 
+        // dd($request);
         $userData=[
             'crm_id'=>$request->crm,
             'file_no'=>$request->file_no,
+            'relation_name'=>$request->relation_name,
             'member_name'=>$request->member_name,
             'father_name'=>$request->father_name,
             'mother_name'=>$request->mother_name,
@@ -84,6 +87,8 @@ class UserController extends Controller
             'created_at'=>Carbon::now()->toDateTimeString()
         ];
 
+
+
         //member image
         if($request->hasFile('member_image')){
             $userData['member_image'] = $this->uploadImageSize('user',$request->member_image,'user',150,160);
@@ -94,6 +99,15 @@ class UserController extends Controller
         }
 
         $user=User::create($userData);
+
+        $broker=new Broker;
+        $broker->user_id=$user->id;
+        $broker->crm_id=$user->crm_id;
+        $broker->broker_number=$request->broker_number;
+
+        $broker->save();
+
+
 
         if($user){
             Session::flash('success',"Successfully Add  User");
@@ -334,10 +348,87 @@ class UserController extends Controller
    }
 
 
+   public function ok()
+   {
+       return 'from-blade';
+   }
+
+
+   public function customPdf(){
+        return view('invoice.invoice');
+    }
+
+    public function customPdfPost(Request $request)
+    {
+        $path='assets/logo/logo.jpg';
+        $data=file_get_contents($path);
+        $logo='data:image/'.pathinfo($path, PATHINFO_EXTENSION).';base64,'.base64_encode($data);
+
+        $user = User::where('file_no',$request->file_no)->first();
+        $status = [];
+        $total=0;
+        if($user)
+        {
+            if(isset($request->status['after_handover_money']))
+            {
+                $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->first();
+                $status['after_handover_money'] =  $after_handover_money;
+                $total+=$after_handover_money->after_handover_money_money_paid;
+            }
+            if(isset($request->status['booking_status']))
+            {
+                $booking_status = BookingStatus::where('user_id',$user->id)->first();
+                $status['booking_status'] =  $booking_status;
+                $total+=$booking_status->booking_money_paid;
+            }
+            if(isset($request->status['building_pilling_status']))
+            {
+                $building_pilling_status = BuildingPillingStatus::where('user_id',$user->id)->first();
+                $status['building_pilling_status'] =  $building_pilling_status;
+                $total+=$building_pilling_status->building_pilling_money_paid;
+            }
+            if(isset($request->status['down_payment_status']))
+            {
+                $down_payment_status = DownpaymentStatus::where('user_id',$user->id)->first();
+                $status['down_payment_status'] =  $down_payment_status;
+                $total+=$down_payment_status->downpayment_money_paid;
+            }
+            if(isset($request->status['finishing_work_status']))
+            {
+                $finishing_work_status = FinishingWorkStatus::where('user_id',$user->id)->first();
+                $status['finishing_work_status'] =  $finishing_work_status;
+                $total+=$finishing_work_status->finishing_work_money_paid;
+            }
+            if(isset($request->status['floor_roof_casting1st']))
+            {
+                $floor_roof_casting1st = FloorRoofCasting1st::where('user_id',$user->id)->first();
+                $status['floor_roof_casting1st'] =  $floor_roof_casting1st;
+                $total+=$floor_roof_casting1st->floor_roof_casting_money_paid_1st;
+            }
+            if(isset($request->status['land_filling_status_1']))
+            {
+                $land_filling_status_1 = LandFillingStatus1st::where('user_id',$user->id)->first();
+                $status['land_filling_status_1'] =  $land_filling_status_1;
+                $total+=$land_filling_status_1->land_filling_money_paid;
+            }
+            if(isset($request->status['land_filling_status_2']))
+            {
+                $land_filling_status_2 = LandFillingStatus2nd::where('user_id',$user->id)->first();
+                $status['land_filling_status_2'] =  $land_filling_status_2;
+                $total+=$land_filling_status_2->land_filling_money_paid;
+            }
+            $status['total'] =  $total;
 
 
 
+            $pdf = PDF::loadView('pdf.invoice', compact('user','status','logo'));
+            return $pdf->download('Invoice.pdf');
+        }
 
-
+        else
+        {
+                return redirect()->back()->with(['error' => 'No User Found!']);
+        }
+    }
 
 }

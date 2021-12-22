@@ -509,11 +509,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
         <td>{{$down_payment->downpayment_money_paid}}</td>
         <td>{{$down_payment->downpayment_money_paid_date}}</td>
     </tr>
-    <tr>
+    {{-- <tr>
         <td>Car Parking:</td>
         <td>{{$car_parking->car_parking_money_paid}}</td>
         <td>{{$car_parking->car_parking_money_paid_date}}</td>
-    </tr>
+    </tr> --}}
     <tr>
         <td>Land Fillig 1</td>
         <td>{{$land_filing_1st->land_filling_money_paid}}</td>

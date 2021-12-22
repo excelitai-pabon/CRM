@@ -15,8 +15,11 @@ class CreateBrokersTable extends Migration
     {
         Schema::create('brokers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('number');
+            $table->bigInteger('user_id');
+            //new add
+            $table->string('broker_name')->nullable();
+            $table->string('broker_number')->nullable();
+
             $table->string('address')->nullable();
             $table->string('broker_image')->nullable();
             $table->string('crm_id')->nullable();
