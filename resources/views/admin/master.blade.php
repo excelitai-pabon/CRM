@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/my-task.style.min.css')}}">
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link   rel="stylesheet" href="{{asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}">
+
 
 {{-- addproduct cse start --}}
  <!-- Favicon-->

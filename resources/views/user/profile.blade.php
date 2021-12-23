@@ -1,4 +1,3 @@
-
 @extends('master.master')
 @section('css')
     <link rel="stylesheet" href="{{asset('assets/css/user.css')}}">
@@ -279,7 +278,7 @@
                                             <th>Paid Amount Date</th>
                                             <th>Due Amount Date</th>
                                             <th>Note</th>
-                                            <th>Send Mail</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -289,7 +288,9 @@
                                             <td>{{optional($user->bookingStatus)->booking_money_paid_date}}</td>
                                             <td>{{optional($user->bookingStatus)->booking_money_due_date}}</td>
                                             <td>{{optional($user->bookingStatus)->booking_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Booking Money')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Booking Money')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Booking Money')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Booking Money')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                            <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'booking-money','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'booking-money','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Down Payment</td>
@@ -297,7 +298,10 @@
                                             <td>{{optional($user->downPayment)->downpayment_money_paid_date}}</td>
                                             <td>{{optional($user->downPayment)->downpayment_money_due_date}}</td>
                                             <td>{{optional($user->downPayment)->downpayment_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Down Payment')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'down-payment','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'down-payment','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Car Parking</td>
@@ -305,7 +309,9 @@
                                             <td>{{optional($user->carParking)->car_parking_money_paid_date}}</td>
                                             <td>{{optional($user->carParking)->car_parking_money_due_date}}</td>
                                             <td>{{optional($user->carParking)->car_parking_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Car Parking')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'car-parking','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'car-parking','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Land Filling 1</td>
@@ -313,7 +319,9 @@
                                             <td>{{optional($user->landFilling1)->land_filling_money_paid_date}}</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money_due_date}}</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('First Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'land-filling1','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'land-filling1','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Land Filling 2</td>
@@ -321,7 +329,9 @@
                                             <td>{{optional($user->landFilling2)->land_filling_money_paid_date}}</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money_due_date}}</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Secound Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'land-filling2','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'land-filling2','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Building Pilling</td>
@@ -329,7 +339,9 @@
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_paid_date}}</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_due_date}}</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Building Pilling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'building-pilling','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'building-pilling','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
 
                                         </tr>
                                         <tr>
@@ -338,7 +350,9 @@
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_paid_date_1st}}</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_due_date_1st}}</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_note_1st}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('First Floor Roof Casting')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'first-floor-roof-casting','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'first-floor-roof-casting','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Finishing Work Amount:</td>
@@ -346,7 +360,9 @@
                                             <td>{{optional($user->finishingWork)->finishing_work_money_paid_date}}</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money_due_date}}</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('Finishing Work')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'fisnishing-work','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'finishing-work','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
 
                                         </tr>
                                         <tr>
@@ -355,7 +371,9 @@
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_paid_date}}</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_due_date}}</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a></td>
+                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                            </td>
 
                                         </tr>
                                     </tbody>
@@ -406,30 +424,17 @@
                                                     <td>{{$user->installment_year->installment_years_amount[$yearCounter]}}</td>
                                                 @endif
 
-
-
                                                 @if (isset($user->Installment[$i]))
                                                     <td>Paid: {{$user->Installment[$i]->installment_paid}}</td>
                                                 @else
                                                     <td>Paid: 0</td>
                                                 @endif
 
-
-
                                                 @if (isset($user->Installment[$i]))
                                                     <td>{{$user->Installment[$i]->installment_date}}</td>
                                                 @else
                                                     <td>{{$installment_paid_date->startOfMonth()}}</td>
                                                 @endif
-
-
-
-
-
-
-
-
-
 
                                                 @php
                                                     if($monthCounter==12)

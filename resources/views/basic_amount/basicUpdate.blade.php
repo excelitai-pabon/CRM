@@ -249,108 +249,7 @@
 
 
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="card" style="background: #9eb8c04f" >
-                        <div class="card-body pt-2">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5 class="text-center pt-3 pb-3 text-bold ">Car parking Status</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Initail Car Parking Total</label>
-                                                    <input
-                                                    type="text" name="initial_car_parking_money"
-                                                        value="{{ $car_parking->initial_car_parking_money }}" id="car-parking"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
 
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Total</label>
-                                                    <input
-                                                    type="text" name="car_parking_money"
-                                                        value="{{ $car_parking->car_parking_money_due }}" id="car-parking"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Paid :</label>
-                                                    <input type="text" name="car_parking_money_paid"
-                                                        value="{{ $car_parking->car_parking_money_paid }}"
-                                                        id="car-parking-paid" class="form-control">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Paid Date</label>
-                                                    <input type="date" name="car_parking_money_paid_date"
-
-                                                        value="{{date('Y-m-d',strtotime($car_parking->car_parking_money_paid_date))}}"
-                                                        id="car-parking-paid-date" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Due Date</label>
-                                                    <input type="date" name="car_parking_due_date"
-
-                                                        value="{{date('Y-m-d',strtotime($car_parking->car_parking_due_date))}}"
-                                                        id="car-parking-due-date" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Payment Type </label>
-
-                                                    <select name="car_parking_money_payment_type" id=""
-                                                        class="form-control">
-                                                        <option value="" disabled <?php if ($car_parking->car_parking_money_payment_type == '') {
-                                                                echo 'selected="selected"';
-                                                            } ?>>Select Payment type
-                                                        </option>
-                                                        <option value="Check" <?php if ($car_parking->car_parking_money_payment_type == 'Check') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Check</option>
-                                                        <option value="Bank" <?php if ($car_parking->car_parking_money_payment_type == 'Bank') {
-                                                                echo 'selected="selected"';
-                                                            } ?>>Bank</option>
-                                                        <option value="Cash" <?php if ($car_parking->car_parking_money_payment_type == 'Cash') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col-lg-12">
-                                                <div class="form-group mb-3">
-                                                    <label>Car Parking Note</label>
-                                                    <textarea rows="3" cols="50" type="text" name="car_parking_money_note"
-                                                        class="form-control">{{ $car_parking->car_parking_money_note }}</textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <div class="card" style="background: #9eb8c04f">
                         <div class="card-body pt-2">
@@ -463,11 +362,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
-            <div class="row">
                 <div class="col-lg-6">
                     <div class="card" style="background: #9eb8c04f">
                         <div class="card-body pt-2">
@@ -505,7 +400,7 @@
                                                     <label>Land Filling(2nd) Due Date</label>
                                                     <input type="date" name="land_filling_money_paid_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date2))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date))}}"
                                                         id="land-filling-2-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -529,7 +424,7 @@
                                                     <label>Land Filling(2nd) Paid Date</label>
                                                     <input type="date" name="land_filling_money_due_date2"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date2))}}"
+                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date))}}"
                                                         id="land-filling-2-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -686,14 +581,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
-
-
-
-            <div class="row">
                 <div class="col-lg-6">
                     <div class="card" style="background: #9eb8c04f">
                         <div class="card-body pt-2">
@@ -745,16 +633,16 @@
                                                     <label>1st floor Roof Casting Paid Date</label>
                                                     <input type="date" name="floor_roof_casting_money_paid_date_1st"
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_paid_date_1st))}}"
+                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_paid_date_1st))}}"
                                                         id="roof-casting-paid-date" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Due Date</label>
-                                                    <input type="date" name="floor_roof_casting_money_due_1st"
+                                                    <input type="date" name="floor_roof_casting_money_due_date_1st"
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_due_1st))}}"
+                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_due_date_1st))}}"
                                                         id="roof-casting-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -908,10 +796,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card" style="background: #9eb8c04f">
                         <div class="card-body pt-2">
                             <div class="row">

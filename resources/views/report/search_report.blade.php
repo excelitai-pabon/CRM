@@ -16,7 +16,8 @@
         <div class="col-12">
             <div class="card printb">
                 <div class="card-body">
-                    <form action="{{ route('admin.search_report') }}" autocomplete="off" class="needs-validation" novalidate>
+                    <form action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.search_report') }}
+                        @elseif(Auth::guard('admin')->check()) {{ route('admin.search_report')  }} @endif " autocomplete="off" class="needs-validation" novalidate>
                         <div class="mb-4">
                             <label class="form-label">Search Range</label>
                             <div class="row">

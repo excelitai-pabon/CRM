@@ -228,6 +228,7 @@ class ReportController extends Controller
 
 
         $startOfTheDay = Carbon::now()->startOfMonth();
+
         $endOfTheDay= Carbon::now()->endOfMonth();
         $crms = Crm::all();
         if($request->month){
@@ -594,7 +595,7 @@ class ReportController extends Controller
 
                     $totalPaidAmount=$booking_status_total + $after_handover_money_total + $building_pilling_total +$car_parking_total +$down_payment_total + $finishing_money_total +$first_floor_total + $land_filling_1st_total +$land_filling_2nd_total;
 
-                    return view('report.yearly_report',compact('totalPaidAmount','booking_status','booking_status_total','after_handover_money','after_handover_money_total','building_pilling','building_pilling_total','car_parking','car_parking_total','down_payment','down_payment_total','finishing_money','finishing_money_total','first_floor','first_floor_total','land_filling_1st','land_filling_1st_total','land_filling_2nd','land_filling_2nd_total','crms'));
+                    return view('report.yearly_report',compact('totalPaidAmount','booking_status','booking_status_total','after_handover_money','after_handover_money_total','building_pilling','building_pilling_total','car_parking','car_parking_total','down_payment','down_payment_total','finishing_money','finishing_money_total','first_floor','first_floor_total','land_filling_1st','land_filling_1st_total','land_filling_2nd','land_filling_2nd_total','crms','totalPaidAmount_due'));
             }
 
 

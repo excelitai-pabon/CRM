@@ -14,9 +14,7 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active">Welcome to ShaplaCity Dashboard</li>
                 </ol>
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">{{Auth::user()->crm_id}}</li>
-                </ol>
+
             </div>
             <div class="col-md-4">
                 <div class="float-end d-none d-md-block">

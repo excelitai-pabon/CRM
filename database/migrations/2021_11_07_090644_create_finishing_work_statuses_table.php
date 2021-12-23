@@ -27,6 +27,7 @@ class CreateFinishingWorkStatusesTable extends Migration
             $table->boolean('approval')->default(1);
             $table->string('crm_id')->nullable();
             $table->timestamps();
+
         });
     }
 

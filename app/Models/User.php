@@ -62,6 +62,7 @@ class User extends Authenticatable
     //     'profile_photo_url',
     // ];
 
+
     public function totalNoOfInstallment()
     {
         return $this->hasOne(TotalInstallmentAmount::class,'user_id','id');
@@ -129,6 +130,11 @@ class User extends Authenticatable
     public function approveUpdate()
     {
         return $this->hasOne(ApproveUpdate::class);
+    }
+
+    //new add
+    public function broker(){
+        return $this->hasOne(Broker::class);
     }
 
 

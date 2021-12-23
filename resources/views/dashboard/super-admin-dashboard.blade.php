@@ -116,6 +116,53 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div id="main5" style="width:600px;height:400px;"></div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="main4" style="width:600px;height:400px;"></div>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div id="main3" style="width:600px;height:400px;"></div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="main6" style="width:600px;height:400px;"></div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="main2" style="width:600px;height:400px;"></div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="main" style="width:600px;height:400px;"></div>
+        </div>
+
+
+    </div>
+
+
+
+
     </div>
     <!-- end row -->
 
@@ -125,3 +172,319 @@
 
 </div> <!-- container-fluid -->
 @endsection
+
+@section('script')
+
+
+<script type="text/javascript">
+    // Initialize the echarts instance based on the prepared dom
+    var myChart = echarts.init(document.getElementById('main'));
+    var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+    console.log(cData);
+
+    // Specify the configuration items and data for the chart
+    var option = {
+        title: [
+    {
+      text: 'daily due'
+    }
+
+  ],
+        color:{
+        0: "#FF0000",
+        1: "#91cc75",
+        2: "#fac858",
+        3: "#ee6666",
+        4: "#73c0de",
+        5: "#3ba272",
+        6: "#fc8452",
+        7: "#9a60b4",
+        8: "#ea7ccc",
+    },
+
+      tooltip: {},
+      legend: {
+        data: ['sales']
+      },
+      xAxis: {
+        data: ['booking', 'building', 'downPay', 'floor', 'land1', 'land2','finishing']
+      },
+      yAxis: {},
+      series: [
+        {
+          name: 'sales',
+          type: 'bar',
+          data: [cData.booking_status_daily,cData.building_pilling_daily,cData.down_payment_daily, cData.first_floor_daily,cData.land_filling_1st_daily,cData.land_filling_2nd_daily,cData.finishing_money_daily]
+        }
+      ]
+    };
+
+    // Display the chart using the configuration items and data just specified.
+    myChart.setOption(option);
+  </script>
+
+
+
+<script type="text/javascript">
+    // Initialize the echarts instance based on the prepared dom
+    var myChart = echarts.init(document.getElementById('main3'));
+    var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+    console.log(cData);
+
+    // Specify the configuration items and data for the chart
+    var option = {
+        title: [
+    {
+      text: 'yearly due'
+    }
+  ],
+
+      tooltip: {},
+      legend: {
+        data: ['sales']
+      },
+      xAxis: {
+        data: ['booking', 'pilling', 'downPay', 'floor', 'land1', 'land2','finishing']
+      },
+      color:{
+        1: "#91cc75",
+        2: "#fac858",
+        3: "#ee6666",
+        4: "#73c0de",
+        5: "#3ba272",
+        6: "#fc8452",
+        7: "#9a60b4",
+        8: "#ea7ccc",
+      },
+      yAxis: {},
+      series: [
+        {
+          name: 'sales',
+          type: 'bar',
+          data: [cData.booking_status_yearly, cData.building_pilling_yearly, cData.down_payment_yearly, cData.first_floor_yearly,cData.land_filling_1st_yearly,cData.land_filling_2nd_yearly,cData.finishing_money_yearly]
+        }
+      ]
+    };
+
+    // Display the chart using the configuration items and data just specified.
+    myChart.setOption(option);
+  </script>
+
+
+
+
+<script>
+
+var chartDom = document.getElementById('main2');
+var myChart = echarts.init(chartDom);
+var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+var option;
+
+option = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '40',
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: cData.paid_data, name: 'PAID' },
+        { value: cData.due_data, name: 'DUE' },
+      ]
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+</script>
+
+
+<script>
+
+    var chartDom = document.getElementById('main5');
+    var myChart = echarts.init(chartDom);
+    var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+    var option;
+
+    option = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '40',
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: cData.monthlyTotalDue, name: 'Monthly Due' },
+            { value: cData.monthlyTotalPaid, name: 'Monthly Paid' },
+          ]
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+    </script>
+
+
+
+<script>
+
+    var chartDom = document.getElementById('main6');
+    var myChart = echarts.init(chartDom);
+    var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+    var option;
+
+    option = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '40',
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: cData.yearlyTotalDue, name: 'Yearly Due' },
+            { value: cData.yearlyTotalPaid, name: 'Yearly Paid' },
+          ]
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+    </script>
+
+
+
+
+
+
+<script>
+     // Initialize the echarts instance based on the prepared dom
+     var myChart = echarts.init(document.getElementById('main4'));
+    var cData = JSON.parse(`<?php echo $data['chart_data']; ?>`);
+    console.log(cData);
+
+    // Specify the configuration items and data for the chart
+    var option = {
+        title: [
+    {
+      text: 'Monthly due',
+      color:"red",
+      borderColor: "red"
+    }
+  ],
+      tooltip: {},
+      legend: {
+        data: ['sales']
+      },
+      xAxis: {
+        data: ['booking', 'pilling', 'downPay', 'floor', 'land1', 'land2','finishing']
+      },
+      yAxis: {},
+      color:{
+
+        1: "#91cc75",
+        2: "#fac858",
+        3: "#ee6666",
+        4: "#73c0de",
+        5: "#3ba272",
+        6: "#fc8452",
+        7: "#9a60b4",
+        8: "#ea7ccc",
+        },
+
+      series: [
+        {
+          name: 'sales',
+          type: 'bar',
+          data: [cData.booking_status_monthly, cData.building_pilling_monthly, cData.down_payment_monthly, cData.first_floor_monthly,cData.land_filling_1st_monthly,cData.land_filling_2nd_monthly,cData.land_filling_2nd_monthly]
+        }
+      ]
+    };
+
+    // Display the chart using the configuration items and data just specified.
+    myChart.setOption(option);
+
+    option && myChart.setOption(option);
+</script>
+
+@endsection
+
+
+

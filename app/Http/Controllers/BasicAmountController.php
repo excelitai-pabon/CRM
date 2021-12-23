@@ -18,6 +18,7 @@ use App\Models\TotalAmount;
 use App\Models\TotalInstallmentAmount;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Other;
 use App\Models\ApproveUpdate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -152,28 +153,28 @@ class BasicAmountController extends Controller
     }
         //Car Parking
 
-        if($request->car_parking_money_paid>$request->car_parking_money){
-            Session::flash('error',"Check the amount fields");
-            return redirect()->back();
-        }
+        // if($request->car_parking_money_paid>$request->car_parking_money){
+        //     Session::flash('error',"Check the amount fields");
+        //     return redirect()->back();
+        // }
 
-        else{
-            $car_parking_due=$request->car_parking_money - $request->car_parking_money_paid;
-        $carParking=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_car_parking_money'=>$request->initial_car_parking_money,
-            'car_parking_money'=>$request->car_parking_money,
-            'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
-            'car_parking_money_paid'=>$request->car_parking_money_paid,
-            'car_parking_money_due'=>$car_parking_due,
-            'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
-            'car_parking_money_due_date'=>$request->car_parking_due_date,
-            'car_parking_money_note'=>$request->car_parking_money_note,
-        ];
-        CarParkingStatus::create($carParking);
+        // else{
+        //     $car_parking_due=$request->car_parking_money - $request->car_parking_money_paid;
+        // $carParking=[
+        //     'user_id'=>$user->id,
+        //     'crm_id'=>$user->crm_id,
+        //     'initial_car_parking_money'=>$request->initial_car_parking_money,
+        //     'car_parking_money'=>$request->car_parking_money,
+        //     'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
+        //     'car_parking_money_paid'=>$request->car_parking_money_paid,
+        //     'car_parking_money_due'=>$car_parking_due,
+        //     'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
+        //     'car_parking_money_due_date'=>$request->car_parking_due_date,
+        //     'car_parking_money_note'=>$request->car_parking_money_note,
+        // ];
+        // CarParkingStatus::create($carParking);
 
-        }
+        // }
 
 
         //1st Land Filling
@@ -367,7 +368,7 @@ class BasicAmountController extends Controller
     public function basicUpdate($id){
 
         //booking status part
-        // dd($request);
+
         $booking_status = BookingStatus::where('user_id', $id)->first();
         $approve_updates=ApproveUpdate::where('user_id',$id)->first();
         $booking_status->booking_money= $approve_updates->booking_money;
@@ -387,28 +388,31 @@ class BasicAmountController extends Controller
         $down_payment->initial_downpayment_money= $approve_updates->initial_downpayment_money;
         $down_payment->downpayment_money_paid=$approve_updates->downpayment_money_paid;
         $down_payment-> downpayment_money_paid_date =$approve_updates->downpayment_money_paid_date;
+
         $down_payment-> downpayment_money_due_date =$approve_updates->downpayment_money_due_date;
+
         $down_payment->downpayment_money_due =$approve_updates->downpayment_money_due;
         $down_payment->downpayment_money_note=$approve_updates->downpayment_money_note;
         $down_payment->downpayment_money_payment_type=$approve_updates->downpayment_money_payment_type;
         $down_payment->save();
         //car_parking part
-        $car_parking = CarParkingStatus::where('user_id', $id)->first();
-        $car_parking->car_parking_money= $approve_updates->car_parking_money;
-        $car_parking->initial_car_parking_money= $approve_updates->initial_car_parking_money;
-        $car_parking->car_parking_money_paid=$approve_updates->car_parking_money_paid;
-        $car_parking-> car_parking_money_paid_date =$approve_updates->car_parking_money_paid_date;
-        $car_parking-> car_parking_money_due_date =$approve_updates->car_parking_money_due_date;
-        $car_parking->car_parking_money_due=$approve_updates->car_parking_money_due;
-        $car_parking->car_parking_money_note=$approve_updates->car_parking_money_note;
-        $car_parking->car_parking_money_payment_type=$approve_updates->car_parking_money_payment_type;
-        $car_parking->save();
+        // $car_parking = CarParkingStatus::where('user_id', $id)->first();
+        // $car_parking->car_parking_money= $approve_updates->car_parking_money;
+        // $car_parking->initial_car_parking_money= $approve_updates->initial_car_parking_money;
+        // $car_parking->car_parking_money_paid=$approve_updates->car_parking_money_paid;
+        // $car_parking-> car_parking_money_paid_date =$approve_updates->car_parking_money_paid_date;
+        // $car_parking-> car_parking_money_due_date =$approve_updates->car_parking_money_due_date;
+        // $car_parking->car_parking_money_due=$approve_updates->car_parking_money_due;
+        // $car_parking->car_parking_money_note=$approve_updates->car_parking_money_note;
+        // $car_parking->car_parking_money_payment_type=$approve_updates->car_parking_money_payment_type;
+        // $car_parking->save();
         //land_filling1st part
         $land_filing_1st = LandFillingStatus1st::where('user_id', $id)->first();
         $land_filing_1st->land_filling_money= $approve_updates->land_filling_money_1;
         $land_filing_1st->initial_land_filling_money= $approve_updates->initial_land_filling_money;
         $land_filing_1st->land_filling_money_paid=$approve_updates->land_filling_money_paid_1;
         $land_filing_1st-> land_filling_money_paid_date =$approve_updates->land_filling_money_paid_date_1;
+
         $land_filing_1st-> land_filling_money_due_date =$approve_updates->land_filling_money_due_date_1;
         $land_filing_1st->land_filling_money_due=$approve_updates->land_filling_money_due_1;
         $land_filing_1st->land_filling_money_note=$approve_updates->land_filling_money_note_1;
@@ -425,13 +429,15 @@ class BasicAmountController extends Controller
         $land_filing_2nd->land_filling_money_note=$approve_updates->land_filling_money_note_2;
         $land_filing_2nd->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_2;
         $land_filing_2nd->save();
+
         //land_filling2nd part
         $building_pilling_status = BuildingPillingStatus::where('user_id', $id)->first();
         $building_pilling_status->building_pilling_money= $approve_updates->building_pilling_money;
         $building_pilling_status->initial_building_pilling_money= $approve_updates->initial_building_pilling_money;
         $building_pilling_status->building_pilling_money_paid=$approve_updates->building_pilling_money_paid;
         $building_pilling_status-> building_pilling_money_paid_date =$approve_updates->building_pilling_money_paid_date;
-        $building_pilling_status-> building_pilling_money_due_date =$approve_updates->land_filling_money_due_date2;
+        $building_pilling_status-> building_pilling_money_due_date =$approve_updates->building_pilling_money_due_date;
+
         $building_pilling_status->building_pilling_money_due=$approve_updates->building_pilling_money_due;
         $building_pilling_status->building_pilling_money_note=$approve_updates->building_pilling_money_note;
         $building_pilling_status->building_pilling_money_payment_type=$approve_updates->building_pilling_money_payment_type;
@@ -473,6 +479,172 @@ class BasicAmountController extends Controller
         return redirect()->route('super_admin.dashboard');
 
     }
+
+    public function carParkingSearch(){
+
+        return view('carparking.search');
+    }
+    public function carParking(Request $request){
+
+        $user=User::where('file_no',$request->file_no)->first();
+
+        $other=Other::where('user_id',$user->id)->first();
+
+        if($other){
+            Session::flash('error',"The file no already exist");
+            return redirect()->back();
+
+        }
+        else{
+            $file_no=$request->file_no;
+
+            $user= User::where('file_no',$file_no)->first();
+
+
+            return view('carparking.index',compact('user'));
+
+        }
+
+
+
+    }
+
+    public function carParkingStore(Request $request ,User $user){
+
+
+
+
+        $khajna_money_due=$request->khajna_money - $request->khajna_money_paid;
+        $car_parking_money_due=$request->car_parking_money - $request->car_parking_money_paid;
+        $registrationpayment_money_due=$request->registrationpayment_money - $request->registrationpayment_money_paid;
+    Other::create([
+        'user_id'=>$user->id,
+        'crm_id'=>$user->crm_id,
+        'khajna_money'=>$request->khajna_money,
+        'initial_khajna_money'=>$request->initial_khajna_money,
+        'khajna_money_payment_type'=>$request->khajna_money_payment_type,
+        'khajna_money_paid'=>$request->khajna_money_paid,
+        'khajna_money_due'=>$khajna_money_due,
+        'khajna_money_paid_date'=>$request->khajna_money_paid_date,
+        'khajna_money_due_date'=>$request->khajna_money_due_date,
+        'khajna_money_note'=>$request->khajna_money_note,
+        'car_parking_money'=>$request->car_parking_money,
+        'initial_car_parking_money'=>$request->initial_car_parking_money,
+        'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
+        'car_parking_money_paid'=>$request->car_parking_money_paid,
+        'car_parking_money_due'=>$car_parking_money_due,
+        'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
+        'car_parking_money_due_date'=>$request->car_parking_money_due_date,
+        'car_parking_money_note'=>$request->car_parking_money_note,
+        'registrationpayment_money'=>$request->registrationpayment_money,
+        'initial_registrationpayment_money'=>$request->initial_registrationpayment_money,
+        'registrationpayment_money_payment_type'=>$request->registrationpayment_money_payment_type,
+        'registrationpayment_money_paid'=>$request->registrationpayment_money_paid,
+        'registrationpayment_money_due'=>$registrationpayment_money_due,
+        'registrationpayment_money_paid_date'=>$request->registrationpayment_money_paid_date,
+        'registrationpayment_money_due_date'=>$request->registrationpayment_money_due_date,
+        'registrationpayment_money_note'=>$request->registrationpayment_money_note,
+
+
+    ]);
+    Session::flash('success',"Successfully Insert  other Amounts");
+    if(auth()->guard('super_admin')->check()){
+        return redirect()->route('super_admin.car.parking.show')->with(['success'=>'Successfully insert basic amount']);
+    }
+    if(auth()->guard('employee')->check()){
+        return redirect()->route('employee.car.parking.show')->with(['success'=>'Successfully insert basic amount']);
+    }
+    else if(auth()->guard('admin')->check()){
+        return redirect()->route('admin.car.parking.show')->with(['success'=>'Successfully insert basic amount']);
+    }
+
+
+
+    }
+
+    public function carParkingShow(Other $other){
+
+        $others=Other::all();
+        return view('carparking.show',compact('others'));
+    }
+
+
+    public function carParkingEdit($user_id){
+
+        $other=Other::where('user_id',$user_id)->first();
+
+
+
+
+
+
+
+
+        return view('carparking.edit',compact('other'));
+    }
+
+    public function carParkingUpdate(Request $request,$user_id){
+
+
+        $user=User::where('id',$user_id)->first();
+
+
+
+
+        $khajna_money_due=$request->khajna_money - $request->khajna_money_paid;
+        $car_parking_money_due=$request->car_parking_money - $request->car_parking_money_paid;
+        $registrationpayment_money_due=$request->registrationpayment_money - $request->registrationpayment_money_paid;
+        $other=Other::where('user_id',$user_id)->first();
+        $other->update([
+        'user_id'=>$user_id,
+        'crm_id'=>$user->crm_id,
+        'khajna_money'=>$request->khajna_money,
+        'initial_khajna_money'=>$request->initial_khajna_money,
+        'khajna_money_payment_type'=>$request->khajna_money_payment_type,
+        'khajna_money_paid'=>$request->khajna_money_paid,
+        'khajna_money_due'=>$khajna_money_due,
+        'khajna_money_paid_date'=>$request->khajna_money_paid_date,
+        'khajna_money_due_date'=>$request->khajna_money_due_date,
+        'khajna_money_note'=>$request->khajna_money_note,
+        'car_parking_money'=>$request->car_parking_money,
+        'initial_car_parking_money'=>$request->initial_car_parking_money,
+        'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
+        'car_parking_money_paid'=>$request->car_parking_money_paid,
+        'car_parking_money_due'=>$car_parking_money_due,
+        'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
+        'car_parking_money_due_date'=>$request->car_parking_money_due_date,
+        'car_parking_money_note'=>$request->car_parking_money_note,
+        'registrationpayment_money'=>$request->registrationpayment_money,
+        'initial_registrationpayment_money'=>$request->initial_registrationpayment_money,
+        'registrationpayment_money_payment_type'=>$request->registrationpayment_money_payment_type,
+        'registrationpayment_money_paid'=>$request->registrationpayment_money_paid,
+        'registrationpayment_money_due'=>$registrationpayment_money_due,
+        'registrationpayment_money_paid_date'=>$request->registrationpayment_money_paid_date,
+        'registrationpayment_money_due_date'=>$request->registrationpayment_money_due_date,
+        'registrationpayment_money_note'=>$request->registrationpayment_money_note,
+
+
+    ]);
+
+
+
+
+
+
+
+
+
+    }
+    public function carParkingDestroy($user){
+
+
+        Other::where('user_id',$user)->delete();
+
+        return redirect()->back();
+    }
+
+
+
 
 
 }
