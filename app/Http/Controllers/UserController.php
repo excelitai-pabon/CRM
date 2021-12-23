@@ -347,28 +347,66 @@ class UserController extends Controller
         }
    }
 
-
-   public function ok()
-   {
-       return 'from-blade';
-   }
-
-
    public function customPdf(){
-        return view('invoice.invoice');
+        return view('invoice.find_user');
+    }
+
+    public function pdfFindUser(Request $request)
+    {
+        $user = User::where('file_no',$request->file_no)->first();
+
+        return redirect()->route('super_admin.custom.pdf.getValues',$user->file_no);
+        if($user)
+        {
+            return redirect()->route('super_admin.custom.pdf.getValues',$user->file_no);
+        }
+        else
+        {
+            return redirect()->back()->with(['error' => 'No User Found!']);
+        }
+
+        return $request;
+    }
+
+
+    public function pdfGetValues($file_no)
+    {
+
+        $installments = User::with('installment')->where('file_no',$file_no)->first();
+
+        return view('invoice.invoice',compact('installments'));
     }
 
     public function customPdfPost(Request $request)
     {
+
+
+
+
+        $installment=Installment::where('user_id',$request->user_id)->get();
+        $all_installment=[];
+        // dd($request);
+        foreach($request->installment as $ins){
+
+            $requested_installment=$installment->where('id',$ins)->first();
+            array_push($all_installment, $requested_installment);
+
+
+        }
+
+        // $requested_installment=$installment::where('id',$request->)
+        // dd($installment);
         $path='assets/logo/logo.jpg';
         $data=file_get_contents($path);
         $logo='data:image/'.pathinfo($path, PATHINFO_EXTENSION).';base64,'.base64_encode($data);
 
-        $user = User::where('file_no',$request->file_no)->first();
+        $user = User::where('id',$request->user_id)->first();
+        // dd($user);
+
+
         $status = [];
         $total=0;
-        if($user)
-        {
+        if($user) {
             if(isset($request->status['after_handover_money']))
             {
                 $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->first();
@@ -421,7 +459,7 @@ class UserController extends Controller
 
 
 
-            $pdf = PDF::loadView('pdf.invoice', compact('user','status','logo'));
+            $pdf = PDF::loadView('pdf.invoice', compact('user','status','logo','all_installment'));
             return $pdf->download('Invoice.pdf');
         }
 

@@ -19,7 +19,7 @@
             <div class="card printb">
                 <div class="card-body">
                     <form action=" @if (Auth::guard('super_admin')->check()) {{ route('super_admin.yearly_report') }}
-                        @elseif(Auth::guard('admin')->check()) {{ route('admin.yearly_report')  }} @endif " autocomplete="off">
+                        @elseif(Auth::guard('admin')->check()) {{ route('admin.yearly_report')}} @endif " autocomplete="off">
                         <div class="mb-4">
                             <label class="form-label">Search Range</label>
                             <div class="row">

@@ -210,9 +210,13 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
     </table>
     <table width="100% " style="margin-top:30px !important;">
-        <p style="margin-top:50px;">--------------------------</p>
-        <p style="margin-top: -15px;font-size:15px;margin-left:30px;">Signature</p>
-    <p style="margin-top:30px; font-size:12px;">Thanks a lot because you keep giving your payment our company promises to provide high quality support for you as well as outstrading customer service for every transaction</p>
+        <tr>
+            <td>
+                <p style="margin-top:50px;" >--------------------------</p>
+                <p style="margin-top: -15px;font-size:15px;margin-left:30px;">Signature</p>
+                <p style="margin-top:30px; font-size:12px;">Thanks a lot because you keep giving your payment our company promises to provide high quality support for you as well as outstrading customer service for every transaction</p>
+            </td>
+        </tr>
     </table>
 
 

@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <label for="totalAmount"> Total Amount  (required**)</label>
+                                            <label for="totalAmount"> Total Amount  <label class="text-danger"> (required**)</label></label>
                                             <input type="number" name="total_amount" id="totalAmount" class="form-control @error('total_amount')is-invalid @enderror" required>
                                             @error('total_amount')
                                                 <div class="invalid-feedback">
@@ -68,7 +68,7 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <label>Total Amount Note  (required**)</label>
+                                            <label>Total Amount Note  <label class="text-danger"> (required**)</label></label>
                                             <textarea rows="3" cols="50" type="text" name="total_amount_note" class="form-control"> </textarea>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
-                                            <label for="installamount">Installment Amount (required**)</label>
+                                            <label for="installamount">Installment Amount <label class="text-danger"> (required**)</label></label>
                                             <input  type="text" name="installment_amount" id="installamount" class="form-control @error('installment_amount')is-invalid @enderror" required>
                                             @error('installment_amount')
                                                 <div class="invalid-feedback">
@@ -116,7 +116,7 @@
                                     <div class="col-lg-4">
 
                                         <div class="form-group mb-3">
-                                            <label> No of Installment (required**)</label>
+                                            <label> No of Installment <label class="text-danger"> (required**)</label></label>
                                             <input type="text" name="installment_number" id="installmentnumber" class="form-control  @error('installment_number')is-invalid @enderror @error('installment_years_amount')is-invalid @enderror" value="{{old('installment_number')}}" required>
                                             @error('installment_number')
                                                 <div class="invalid-feedback">
@@ -137,7 +137,7 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <label>Installment Note (required**)</label>
+                                            <label>Installment Note <label class="text-danger"> (required**)</label></label>
                                             <textarea rows="3" cols="50" type="text" name="installment_amount_note" class="form-control"> </textarea>
                                         </div>
                                     </div>
@@ -979,7 +979,7 @@
          $("#fieldList").append(`
          <div class="col-lg-4">
             <div class="form-group mb-3">
-                <label> ${i} year Intallment Amount</label>
+                <label> ${i} year Intallment Amount <label class="text-danger"> (required**)</label></label>
                 <input class="form-control" type='text' name='installment_years_amount[]' placeholder=' Intallment Amount' required />
             </div>
          </div>

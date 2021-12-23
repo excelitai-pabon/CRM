@@ -6,7 +6,8 @@
 
 <div class="container-fluid">
 
-    <form method="POST" action="{{route('super_admin.multi.installments.create.store',$user->id)}}">
+    <form method="POST" action="@if (Auth::guard('super_admin')->check()) {{ route('super_admin.multi.installments.create.store',$user->id) }}
+        @elseif(Auth::guard('admin')->check()) {{ route('admin.multi.installments.create.store',$user->id)}} @elseif(Auth::guard('employee')->check()) {{ route('employee.multi.installments.create.store',$user->id)}} @endif">
         @csrf
     {{-- <div class="row">
         <div class="col-lg-6">

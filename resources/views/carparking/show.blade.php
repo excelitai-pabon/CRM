@@ -32,7 +32,8 @@
                     <tbody>
                         @foreach ($others as $other)
                     <tr>
-                        <td>Tiger Nixon</td>
+                        {{-- @php dd($other) @endphp --}}
+                        <td>{{$other->user->member_name}}</td>
 
 
 
@@ -91,7 +92,7 @@
                     <tbody>
                         @foreach ($others as $other)
                         <tr>
-                            <td>Tiger Nixon</td>
+                            <td>{{$other->user->member_name}}</td>
 
 
 
@@ -149,7 +150,7 @@
                     <tbody>
                         @foreach ($others as $other)
                         <tr>
-                            <td>Tiger Nixon</td>
+                            <td>{{$other->user->member_name}}</td>
 
 
 

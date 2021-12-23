@@ -137,13 +137,16 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-6">
-            <div id="main6" style="width:600px;height:400px;"></div>
-        </div>
 
         <div class="col-lg-6">
             <div id="main3" style="width:600px;height:400px;"></div>
         </div>
+
+        <div class="col-lg-6">
+            <div id="main6" style="width:600px;height:400px;"></div>
+        </div>
+
+
     </div>
     <div class="row">
         <div class="col-lg-6">
@@ -188,7 +191,7 @@
 
   ],
         color:{
-        0: "#5470c6",
+        0: "#FF0000",
         1: "#91cc75",
         2: "#fac858",
         3: "#ee6666",

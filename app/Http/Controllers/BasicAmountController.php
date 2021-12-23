@@ -563,6 +563,7 @@ class BasicAmountController extends Controller
     }
 
     public function carParkingShow(Other $other){
+
         $others=Other::all();
         return view('carparking.show',compact('others'));
     }

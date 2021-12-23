@@ -2,17 +2,10 @@
 @section('content')
             <h2 style="align:center">Invoice Statement</h2>
 <div class="container-fluid" id="status_field">
-    <form action="{{route('super_admin.custom.pdf.post')}}" method="POST">
+    <form action="@if (Auth::guard('super_admin')->check()) {{ route('super_admin.custom.pdf.post') }}
+        @elseif(Auth::guard('admin')->check()){{route('admin.custom.pdf.post')}} @endif" method="POST">
+        <input type="text" name= "user_id" hidden value="{{$installments->id}}">
         @csrf
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <div class="table-responsive">
-                        <input type="text" name="file_no" placeholder="Enter File No" class="form-control name_list" />
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-6" id="status_content">
                 <div class="row  row0 mt-3">
@@ -29,8 +22,27 @@
                             <option value="land_filling_status_2">Land filling status 2</option>
                         </select>
                     </div>
+
                     <div class="col-8">
-                        <input type="button" name="submit" id="add_more" class="btn btn-warning col-2" value="Add More"/>
+                        <input type="button" name="submit" id="add_more" class="btn btn-warning col-3" value="Add More"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" id="installment_container">
+                <div class="row mt-3" id="installment1" >
+                    <div class="col-4 mt-2" id="installment_select">
+                        <select class="form-control col-4 check_installment" id="installment" name="installment[]">
+                            <option value="" disabled selected>Select a basic amount</option>
+
+                            @foreach ($installments->installment as $data)
+                                <option value="{{$data->id}}"> Installment {{$data->installment_no}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                    <div class="col-8">
+                        <input type="button" name="add_installment" id="add_installment" class="btn btn-warning col-3 mt-2" value="Add More"/>
                     </div>
                 </div>
             </div>
@@ -39,6 +51,8 @@
     </form>
 </div>
 <script>
+
+
 var i=1;
 $("#add_more").on('click',function()
 {
@@ -57,7 +71,7 @@ $("#add_more").on('click',function()
                     </select>
                 </div>
                 <div class="col-4">
-                    <button type="button" name="remove" id="${i}" class="btn btn-danger btn_remove">X</button>
+                    <button type="button" name="remove" id="${i}" class="btn btn-danger btn_remove">&times;</button>
                 </div>
             </div>`;
     $("#status_content").append(s);
@@ -89,4 +103,45 @@ $(document).on('change','.check_status',function()
     });
 });
 </script>
+
+
+<script>
+    var installment_counter = 2;
+    $('#add_installment').on('click',function()
+    {
+        var s = $('#installment_select').clone();
+        var b = `<div class="col-4">
+                    <button type="button" id="${installment_counter}" name="installment_remove" class="btn btn-danger installment_remove">&times;</button>
+                </div>`;
+
+        var r = `<div class="row mt-3" id="installment${installment_counter}" > </div>`;
+
+        var selection = 'installment'+installment_counter;
+        installment_counter++;
+
+        var row = $('#installment_container').append(r);
+
+        var test = $(`#${selection}`).append(s);
+        var test2 = $(`#${selection}`).append(b);
+        console.log(row);
+
+    })
+
+    $(document).on('change','.check_installment',function()
+    {
+        var value = $(this).val();
+        console.log(value,this);
+        var current = $(this);
+        $(this).attr('name', `installment[${value}]`);
+
+    });
+
+
+    $(document).on('click','.installment_remove',function()
+    {
+            var button_id = $(this).attr("id");
+            $('#installment'+button_id).remove();
+    });
+</script>
+
 @endsection

@@ -66,6 +66,13 @@ Route::prefix('admin')->name('admin.')->group(function()
 
     //request
 
+        // Invoice Route
+        Route::get('/custom/pdf', [UserController::class,'customPdf'])->middleware('auth:admin')->name('custom.pdf');
+        Route::get('/custom/pdf/findUser',[UserController::class,'pdfFindUser'])->middleware('auth:admin')->name('custom.pdf.find.user');
+        Route::get('/custom/pdf/getValues/{file_no}',[UserController::class,'pdfGetValues'])->middleware('auth:admin')->name('custom.pdf.getValues');
+        Route::post('/custom/pdf/post', [UserController::class,'customPdfPost'])->middleware('auth:admin')->name('custom.pdf.post');
+
+
 
 
 
@@ -93,6 +100,8 @@ Route::prefix('admin')->name('admin.')->group(function()
         Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:admin')->name('installments.create.store');
 
         Route::get('/all-installment',[InstallmentController::class,'getFileNo'])->middleware('auth:admin')->name('all-installments');
+
+        Route::post('/multi-installment/create/store/{user}',[InstallmentController::class,'storeNewMultiInstallment'])->middleware('auth:admin')->name('multi.installments.create.store');
         // ==================== Due Route ====================
         Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 
@@ -172,6 +181,8 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
 
     // Invoice Route
     Route::get('/custom/pdf', [UserController::class,'customPdf'])->middleware('auth:super_admin')->name('custom.pdf');
+    Route::get('/custom/pdf/findUser',[UserController::class,'pdfFindUser'])->middleware('auth:super_admin')->name('custom.pdf.find.user');
+    Route::get('/custom/pdf/getValues/{file_no}',[UserController::class,'pdfGetValues'])->middleware('auth:super_admin')->name('custom.pdf.getValues');
     Route::post('/custom/pdf/post', [UserController::class,'customPdfPost'])->middleware('auth:super_admin')->name('custom.pdf.post');
 
 
@@ -316,7 +327,7 @@ Route::prefix('employee')->name('employee.')->group(function()
           Route::get('/installment/create/{user}/{installment_no}/{payment}',[InstallmentController::class,'createNewInstallment'])->middleware('auth:employee')->name('installments.create');
           Route::post('/installment/create/store/{user}/{installment_no}/{payment}',[InstallmentController::class,'storeNewInstallment'])->middleware('auth:employee')->name('installments.create.store');
 
-
+          Route::post('/multi-installment/create/store/{user}',[InstallmentController::class,'storeNewMultiInstallment'])->middleware('auth:employee')->name('multi.installments.create.store');
           // ==================== Due Route ====================
           Route::get('/today-due',[DueController::class,'todayAllUserDue'])->name('all.user.due');
 });

@@ -17,7 +17,8 @@ use App\Models\AfterHandoverMoney;
 use App\Models\Installment;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
-use Barryvdh\DomPDF\PDF;
+
+use PDF;
 
 
 
