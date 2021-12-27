@@ -148,13 +148,13 @@
                                         @endif
 
                                         @if (isset($user->Installment[$i]))
-                                            <td>{{$user->Installment[$i]->installment_date}}</td>
+                                            <td>{{\Carbon\Carbon::parse($user->Installment[$i]->installment_date)->format('d-M-Y')}}</td>
                                         @else
                                             <td>{{$paid_date->startOfMonth()}}</td>
                                         @endif
 
                                         @if (isset($user->Installment[$i]))
-                                            <td>{{$user->Installment[$i]->installment_due_date}}</td>
+                                            <td>{{\Carbon\Carbon::parse($user->Installment[$i]->installment_due_date)->format('d-M-Y')}}</td>
                                         @else
                                             <td></td>
                                         @endif

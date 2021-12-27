@@ -177,6 +177,8 @@ public function basicUpdateRequest(Request $request,$id){
 
         $approve_status->land_filling_money_paid_1=$request->land_filling_money_paid;
         $approve_status-> land_filling_money_paid_date_1 =$request->land_filling_money_paid_date;
+        $approve_status-> land_filling_money_due_date_1 =$request->land_filling_money_due_date;
+
         $approve_status->land_filling_money_note_1=$request->land_filling_money_note;
         $approve_status->land_filling_money_payment_type_1=$request->land_filling_money_payment_type;
          //adding booking money field
@@ -196,6 +198,8 @@ public function basicUpdateRequest(Request $request,$id){
         //end
         $approve_status->land_filling_money_paid_1=$request->land_filling_money_paid;
         $approve_status-> land_filling_money_paid_date_1 =$request->land_filling_money_paid_date;
+        $approve_status-> land_filling_money_due_date_1 =$request->land_filling_money_due_date;
+
         $approve_status->land_filling_money_note_1=$request->land_filling_money_note;
         $approve_status->land_filling_money_payment_type_1=$request->land_filling_money_payment_type;
          //adding booking money field
@@ -222,6 +226,7 @@ public function basicUpdateRequest(Request $request,$id){
          //adding booking money field
          $approve_status->land_filling_money_2=$request->land_filling_money2;
          $approve_status->initial_land_filling_money2=$request->initial_land_filling_money2;
+
     }
     elseif($check_due<0){
         Session::flash('error',"Check the Due");

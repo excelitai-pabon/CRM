@@ -115,6 +115,27 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card mini-stat bg-primary text-white">
+                <div class="card-body">
+                    <div class="mb-4">
+                        <div class="float-start mini-stat-img me-4">
+                            <img src="{{asset('assets')}}/images/services-icon/04.png" alt="">
+                        </div>
+                        <h5 class="font-size-16 text-uppercase text-white-50">Today Total Due</h5>
+                        <h4 class="fw-medium font-size-24">{{$allTotal}} </h4>
+                        <div class="mini-stat-label bg-warning">
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="float-end">
+                            <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- end row -->
 

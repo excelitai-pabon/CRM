@@ -89,17 +89,40 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Paid Date</label>
-                                                                <input type="date" name="booking_money_paid_date"
+                                                                    @php
+                                                                        if(isset($booking_status->booking_money_paid_date))
+                                                                        {
 
-                                                                    value="{{date('Y-m-d',strtotime($booking_status->booking_money_paid_date))}}"
-                                                                    id="booking-money-paid-date" class="form-control">
+                                                                            $date = $booking_status->booking_money_paid_date;
+                                                                            $old_date_timestamp = strtotime($date);
+                                                                            $new_date = date('Y-m-d', $old_date_timestamp);
+                                                                        }
+                                                                        else {
+                                                                            $new_date ="";
+                                                                        }
+
+                                                                    @endphp
+                                                                <input type="date" name="booking_money_paid_date" value="{{$new_date}}" id="booking-money-paid-date" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group mb-3">
                                                                 <label>Booking Money Due Date</label>
                                                                 <input type="date" name="booking_money_due_date"
-                                                                    value="{{date('Y-m-d',strtotime($booking_status->booking_money_due_date))}}"
+                                                                @php
+                                                                        if(isset($booking_status->booking_money_due_date))
+                                                                        {
+
+                                                                            $date = $booking_status->booking_money_due_date;
+                                                                            $old_date_timestamp = strtotime($date);
+                                                                            $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                                        }
+                                                                        else {
+                                                                            $new_date ="";
+                                                                        }
+                                                                    @endphp
+                                                                    value="{{ $new_date}}"
 
                                                                     id="booking-money-due-date" class="form-control">
                                                             </div>
@@ -163,7 +186,7 @@
                                                 <label>Initial Payment Total</label>
                                                 <input
                                                  type="text" name="initial_downpayment_money"
-                                                    value="{{ $down_payment->initial_downpayment_money }}" id="initial_downpayment_money"
+                                                    value="{{$down_payment->initial_downpayment_money}}" id="initial_downpayment_money"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -193,7 +216,20 @@
                                                 <label>Down Payment Paid Date</label>
                                                 {{-- {{date('Y-m-d',strtotime($booking_status->booking_money_due_date))}} --}}
                                                 <input type="date" name="downpayment_money_paid_date"
-                                                    value="{{date('Y-m-d',strtotime($down_payment->downpayment_money_paid_date ))}}"
+                                                @php
+                                                if(isset($down_payment->downpayment_money_paid_date))
+                                                {
+
+                                                    $date = $down_payment->downpayment_money_paid_date;
+                                                    $old_date_timestamp = strtotime($date);
+                                                    $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                }
+                                                else {
+                                                    $new_date ="";
+                                                }
+                                            @endphp
+                                                    value="{{ $new_date }}"
                                                     id="down-payment-paid-date" class="form-control">
                                             </div>
                                         </div>
@@ -201,8 +237,23 @@
                                             <div class="form-group mb-3">
                                                 <label>Down Payment Due Date</label>
                                                 <input type="date" name="downpayment_money_due_date"
+                                                @php
+                                                if(isset($down_payment->downpayment_money_due_date))
+                                                {
 
-                                                    value="{{date('Y-m-d',strtotime($down_payment->downpayment_money_due_date))}}"
+                                                    $date = $down_payment->downpayment_money_due_date;
+                                                    $old_date_timestamp = strtotime($date);
+                                                    $new_date = date('Y-m-d', $old_date_timestamp);
+
+
+                                                }
+                                                else {
+
+                                                    $new_date ="";
+                                                }
+                                            @endphp
+
+                                                    value="{{$new_date}}"
                                                     id="down-payment-due-date" class="form-control">
                                             </div>
                                         </div>
@@ -285,7 +336,7 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Paid : </label>
                                                     <input type="text" name="land_filling_money_paid"
-                                                        value="{{ $land_filing_1st->land_filling_money_paid }}"
+                                                        value="{{$land_filing_1st->land_filling_money_paid}}"
                                                         id="land-filling-1-paid" class="form-control">
                                                 </div>
                                             </div>
@@ -298,7 +349,22 @@
                                                     <label>Land Filling(1st) Paid Date</label>
                                                     <input type="date" name="land_filling_money_paid_date"
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_1st->land_filling_money_paid_date))}}"
+                                                    @php
+                                                    if(isset($booking_status->land_filling_money_paid_date))
+                                                    {
+
+                                                        $date = $booking_status->land_filling_money_paid_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+
+                                                        value="{{$new_date}}"
                                                         id="land-filling-1-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -307,8 +373,23 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(1st) Due Date</label>
                                                     <input type="date" name="land_filling_money_due_date"
+                                                    @php
+                                                    if(isset($land_filing_1st->land_filling_money_due_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime( $land_filing_1st->land_filling_money_due_date))}}"
+                                                        $date = $land_filing_1st->land_filling_money_due_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+
+                                                        value="{{$new_date}}"
                                                         id="land-filling-1-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -399,8 +480,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Due Date</label>
                                                     <input type="date" name="land_filling_money_paid_date2"
+                                                    @php
+                                                    if(isset($land_filing_2nd->land_filling_money_paid_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_paid_date))}}"
+                                                        $date = $land_filing_2nd->land_filling_money_paid_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="land-filling-2-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -414,7 +508,20 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid: </label>
                                                     <input type="text" name="land_filling_money_paid2"
-                                                        value="{{ $land_filing_2nd->land_filling_money_paid }}"
+                                                @php
+                                                    if(isset($land_filing_2nd->land_filling_money_paid))
+                                                    {
+
+                                                        $date = $land_filing_2nd->land_filling_money_paid;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+                                                        value="{{$new_date}}"
                                                         id="land_filling_money_paid2" class="form-control">
                                                 </div>
                                             </div>
@@ -423,8 +530,22 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid Date</label>
                                                     <input type="date" name="land_filling_money_due_date2"
+                                                    @php
+                                                    if(isset($land_filing_2nd->land_filling_money_due_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime($land_filing_2nd->land_filling_money_due_date))}}"
+                                                        $date = $land_filing_2nd->land_filling_money_due_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+
+                                                        value="{{$new_date}}"
                                                         id="land-filling-2-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -519,8 +640,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Paid Date</label>
                                                     <input type="date" name="building_pilling_money_paid_date"
+                                                    @php
+                                                    if(isset($building_pilling_status->building_pilling_money_paid_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime( $building_pilling_status->building_pilling_money_paid_date))}}"
+                                                        $date = $building_pilling_status->building_pilling_money_paid_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="building-pilling-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -529,8 +663,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>Building Pilling Due Date</label>
                                                     <input type="date" name="building_pilling_money_due_date"
+                                                    @php
+                                                    if(isset($building_pilling_status->building_pilling_money_due_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime( $building_pilling_status->building_pilling_money_due_date ))}}"
+                                                        $date = $building_pilling_status->building_pilling_money_due_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="building-pilling-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -632,8 +779,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Paid Date</label>
                                                     <input type="date" name="floor_roof_casting_money_paid_date_1st"
+                                                    @php
+                                                    if(isset($roof_casting_1st->floor_roof_casting_money_paid_date_1st))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_paid_date_1st))}}"
+                                                        $date = $roof_casting_1st->floor_roof_casting_money_paid_date_1st;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="roof-casting-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -641,8 +801,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>1st floor Roof Casting Due Date</label>
                                                     <input type="date" name="floor_roof_casting_money_due_date_1st"
+                                                    @php
+                                                    if(isset($roof_casting_1st->floor_roof_casting_money_due_date_1st))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime($roof_casting_1st->floor_roof_casting_money_due_date_1st))}}"
+                                                        $date = $roof_casting_1st->floor_roof_casting_money_due_date_1st;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="roof-casting-due-date" class="form-control">
                                                 </div>
                                             </div>
@@ -757,8 +930,21 @@
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Paid Date</label>
                                                 <input type="date" name="finishing_work_money_paid_date"
+                                                @php
+                                                if(isset($finishing_work->finishing_work_money_paid_date))
+                                                {
 
-                                                    value="{{date('Y-m-d',strtotime($finishing_work->finishing_work_money_paid_date))}}"
+                                                    $date = $finishing_work->finishing_work_money_paid_date;
+                                                    $old_date_timestamp = strtotime($date);
+                                                    $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                }
+                                                else {
+                                                    $new_date ="";
+                                                }
+                                            @endphp
+
+                                                    value="{{$new_date}}"
                                                     id="finishing-work-paid-date" class="form-control">
                                             </div>
                                         </div>
@@ -766,8 +952,21 @@
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Due Date</label>
                                                 <input type="date" name="finishing_work_money_due_date"
+                                                @php
+                                                if(isset($finishing_work->finishing_work_money_due_date))
+                                                {
 
-                                                    value="{{date('Y-m-d',strtotime($finishing_work->finishing_work_money_due_date))}}"
+                                                    $date = $finishing_work->finishing_work_money_due_date;
+                                                    $old_date_timestamp = strtotime($date);
+                                                    $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                }
+                                                else {
+                                                    $new_date ="";
+                                                }
+                                            @endphp
+
+                                                    value="{{$new_date}}"
                                                     id="finishing-work-paid-date" class="form-control">
                                             </div>
                                         </div>
@@ -862,8 +1061,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>After Handover Money Paid Date</label>
                                                     <input type="date" name="after_handover_money_paid_date"
+                                                    @php
+                                                    if(isset($after_hand_over_money->after_handover_money_paid_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime($after_hand_over_money->after_handover_money_paid_date))}}"
+                                                        $date = $after_hand_over_money->after_handover_money_paid_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         id="after-handover-money-paid-date" class="form-control">
                                                 </div>
                                             </div>
@@ -871,8 +1083,21 @@
                                                 <div class="form-group mb-3">
                                                     <label>After Handover Money Due Date</label>
                                                     <input type="date" name="after_handover_money_due_date"
+                                                    @php
+                                                    if(isset($after_hand_over_money->after_handover_money_due_date))
+                                                    {
 
-                                                        value="{{date('Y-m-d',strtotime( $after_hand_over_money->after_handover_money_due_date))}}"
+                                                        $date = $after_hand_over_money->after_handover_money_due_date;
+                                                        $old_date_timestamp = strtotime($date);
+                                                        $new_date = date('Y-m-d', $old_date_timestamp);
+
+                                                    }
+                                                    else {
+                                                        $new_date ="";
+                                                    }
+                                                @endphp
+
+                                                        value="{{$new_date}}"
                                                         class="form-control">
                                                 </div>
                                             </div>

@@ -92,7 +92,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
             </td>
 			<td style="text-align: right;padding-top:15px; width:50%;">
-				<p>Sata Tower(17 Floor),11/A <br>
+				<p>Sara Tower(17 Floor),11/A <br>
 				Toyenbee Circular Road,<br> shapla Cattar, <br>
 				Motijheel C/A, Dhaka -1000 </p>
 			</td>
@@ -102,7 +102,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     <table width="100% " style="margin-top:50px !important;">
         <tr>
             <td  style="background:#2c9e613b; padding:10px;">
-                <p> <b> Invoice ##########</b></p>
+                <p style="text-align:center;font-size:22px;font-weight:600;">Money Recived</p>
+                <p> <b> Invoice No.  </b></p>
                 <p>  Invoice Date : @if(isset($booking_money))
                     {{\Carbon\Carbon::parse($booking_money->booking_money_paid_date)->format("D jS F, Y") }}
                     @elseif(isset($down_payment))

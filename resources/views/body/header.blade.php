@@ -40,17 +40,17 @@
         @if (Session::has('success'))
         <script>
             Swal.fire({ title: 'Success', text: '{{Session::get("success")}}', icon: 'success'})
-            setTimeout(function(){
-                window.location.reload(1);
-            }, 2000);
+            // setTimeout(function(){
+            //     window.location.reload(1);
+            // }, 2000);
         </script>
 
         @endif
         @if(Session::has('error'))
         <script>
            Swal.fire({ title: 'Opps!', text: '{{Session::get("error")}}', icon: 'error' })
-           setTimeout(function(){
-                window.location.reload(1);
-            }, 2000);D
+        //    setTimeout(function(){
+        //         window.location.reload(1);
+        //     }, 2000);
         </script>
         @endif

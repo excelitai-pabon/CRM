@@ -90,7 +90,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
             </td>
 			<td style="text-align: right;padding-top:15px; width:50%;">
-				<p>Sata Tower(17 Floor),11/A <br>
+				<p>Sara Tower(17 Floor),11/A <br>
 				Toyenbee Circular Road,<br> shapla Cattar, <br>
 				Motijheel C/A, Dhaka -1000 </p>
 			</td>
@@ -100,8 +100,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     <table width="100% " style="margin-top:50px !important;">
         <tr>
             <td  style="background:#2c9e613b; padding:10px;">
-                <p>  Phone No: 0893787738 </p>
-                <p>  Email Address : </p>
+                <p style="text-align:center;font-size:22px;font-weight:600;">Statement</p>
+                <p>  Invoice No :  </p>
+                <p>  Invoice Date : </p>
             </td>
         </tr>
     </table>
@@ -172,8 +173,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
             <tr style="font-family: sans-serif !important;">
 
                 <th >SL.NO</th>
-                <th >Server Name</th>
-                <th >Payemnt type</th>
+                <th >Service</th>
+                <th >Payment </th>
                 <th >Details</th>
                 <th >Total</th>
             </tr>
@@ -338,23 +339,25 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
 
         @endif
+        @isset($all_installment)
+            @foreach ($all_installment as $installment)
 
-        @foreach ($all_installment as $installment)
+            <tr>
 
-        <tr>
+                <td></td>
 
-            <td></td>
-
-            <td>Installment{{$installment->installment_no}}</td>
-            <td>{{$installment->installment_amount}}</td>
-            <td>{{$installment->installment_paid}}</td>
-            <td>{{$installment->installment_due}}</td>
+                <td>Installment{{$installment->installment_no}}</td>
+                <td>{{$installment->installment_amount}}</td>
+                <td>{{$installment->installment_paid}}</td>
+                <td>{{$installment->installment_due}}</td>
 
 
 
-        </tr>
+            </tr>
 
-        @endforeach
+            @endforeach
+        @endisset
+
 
 
 

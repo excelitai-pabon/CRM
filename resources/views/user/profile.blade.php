@@ -285,8 +285,8 @@
                                         <tr>
                                             <td>Booking Money</td>
                                             <td>{{optional($user->bookingStatus)->booking_money}}</td>
-                                            <td>{{optional($user->bookingStatus)->booking_money_paid_date}}</td>
-                                            <td>{{optional($user->bookingStatus)->booking_money_due_date}}</td>
+                                            <td>@if($user->bookingStatus->booking_money_paid_date != null){{\Carbon\Carbon::parse(optional($user->bookingStatus)->booking_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td>@if($user->landFilling2->booking_money_due_date != null){{\Carbon\Carbon::parse(optional($user->bookingStatus)->booking_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                             <td>{{optional($user->bookingStatus)->booking_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Booking Money')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Booking Money')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                             <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'booking-money','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'booking-money','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -295,8 +295,8 @@
                                         <tr>
                                             <td>Down Payment</td>
                                             <td>{{optional($user->downPayment)->downpayment_money}}</td>
-                                            <td>{{optional($user->downPayment)->downpayment_money_paid_date}}</td>
-                                            <td>{{optional($user->downPayment)->downpayment_money_due_date}}</td>
+                                            <td>@if($user->downPayment->downpayment_money_paid_date != null){{\Carbon\Carbon::parse(optional($user->downPayment)->downpayment_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
+                                            <td> @if($user->downPayment->downpayment_money_paid_date != null){{\Carbon\Carbon::parse(optional($user->downPayment)->downpayment_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                             <td>{{optional($user->downPayment)->downpayment_money_note}}</td>
                                             <td>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Down Payment')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
@@ -306,8 +306,8 @@
                                         <tr>
                                             <td>Car Parking</td>
                                             <td>{{optional($user->carParking)->car_parking_money}}</td>
-                                            <td>{{optional($user->carParking)->car_parking_money_paid_date}}</td>
-                                            <td>{{optional($user->carParking)->car_parking_money_due_date}}</td>
+                                            <td>@if($user->landFilling2->land_filling_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->carParking)->car_parking_money_paid_date)->format('d-M-Y') }} @else  @endif</td>
+                                            <td>@if($user->landFilling2->car_parking_money_due_date != null){{\Carbon\Carbon::parse(optional($user->carParking)->car_parking_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->carParking)->car_parking_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Car Parking')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'car-parking','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'car-parking','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -316,8 +316,8 @@
                                         <tr>
                                             <td>Land Filling 1</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money}}</td>
-                                            <td>{{optional($user->landFilling1)->land_filling_money_paid_date}}</td>
-                                            <td>{{optional($user->landFilling1)->land_filling_money_due_date}}</td>
+                                            <td>@if($user->landFilling1->land_filling_money_paid_date != null){{\Carbon\Carbon::parse(optional($user->landFilling1)->land_filling_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td>@if($user->landFilling1->land_filling_money_due_date != null){{\Carbon\Carbon::parse(optional($user->landFilling1)->land_filling_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->landFilling1)->land_filling_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'land-filling1','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'land-filling1','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -326,8 +326,8 @@
                                         <tr>
                                             <td>Land Filling 2</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money}}</td>
-                                            <td>{{optional($user->landFilling2)->land_filling_money_paid_date}}</td>
-                                            <td>{{optional($user->landFilling2)->land_filling_money_due_date}}</td>
+                                            <td> @if($user->landFilling2->land_filling_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->landFilling2)->land_filling_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td> @if($user->landFilling2->land_filling_money_due_date != null) {{\Carbon\Carbon::parse(optional($user->landFilling2)->land_filling_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->landFilling2)->land_filling_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Secound Land Filling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'land-filling2','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'land-filling2','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -336,8 +336,8 @@
                                         <tr>
                                             <td>Building Pilling</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money}}</td>
-                                            <td>{{optional($user->buildingPilling)->building_pilling_money_paid_date}}</td>
-                                            <td>{{optional($user->buildingPilling)->building_pilling_money_due_date}}</td>
+                                            <td> @if($user->buildingPilling->building_pilling_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->buildingPilling)->building_pilling_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td> @if($user->buildingPilling->building_pilling_money_due_date != null) {{\Carbon\Carbon::parse(optional($user->buildingPilling)->building_pilling_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->buildingPilling)->building_pilling_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Building Pilling')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'building-pilling','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'building-pilling','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -347,8 +347,8 @@
                                         <tr>
                                             <td>1st floor Roof Casting:</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_1st}}</td>
-                                            <td>{{optional($user->floorRoof)->floor_roof_casting_money_paid_date_1st}}</td>
-                                            <td>{{optional($user->floorRoof)->floor_roof_casting_money_due_date_1st}}</td>
+                                            <td> @if($user->floorRoof->floor_roof_casting_money_paid_date_1st != null) {{\Carbon\Carbon::parse(optional($user->floorRoof)->floor_roof_casting_money_paid_date_1st)->format('d-M-Y')}} @else @endif</td>
+                                            <td> @if($user->floorRoof->floor_roof_casting_money_due_date_1st != null) {{\Carbon\Carbon::parse(optional($user->floorRoof)->floor_roof_casting_money_due_date_1st)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->floorRoof)->floor_roof_casting_money_note_1st}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('First Floor Roof Casting')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'first-floor-roof-casting','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'first-floor-roof-casting','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -357,8 +357,8 @@
                                         <tr>
                                             <td>Finishing Work Amount:</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money}}</td>
-                                            <td>{{optional($user->finishingWork)->finishing_work_money_paid_date}}</td>
-                                            <td>{{optional($user->finishingWork)->finishing_work_money_due_date}}</td>
+                                            <td> @if($user->finishingWork->finishing_work_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->finishingWork)->finishing_work_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td> @if($user->finishingWork->finishing_work_money_due_date != null) {{\Carbon\Carbon::parse(optional($user->finishingWork)->finishing_work_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->finishingWork)->finishing_work_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('Finishing Work')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'fisnishing-work','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'finishing-work','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -368,8 +368,8 @@
                                         <tr>
                                             <td>After Handover Amount:</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money}}</td>
-                                            <td>{{optional($user->afterHandOverMoney)->after_handover_money_paid_date}}</td>
-                                            <td>{{optional($user->afterHandOverMoney)->after_handover_money_due_date}}</td>
+                                            <td> @if($user->afterHandOverMoney->after_handover_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->afterHandOverMoney)->after_handover_money_paid_date)->format('d-M-Y')}} @else @endif</td>
+                                            <td> @if($user->afterHandOverMoney->after_handover_money_due_date != null) {{\Carbon\Carbon::parse(optional($user->afterHandOverMoney)->after_handover_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_note}}</td>
                                             <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
@@ -431,7 +431,7 @@
                                                 @endif
 
                                                 @if (isset($user->Installment[$i]))
-                                                    <td>{{$user->Installment[$i]->installment_date}}</td>
+                                                    <td>{{\Carbon\Carbon::parse($user->Installment[$i]->installment_date)->format('d-M-Y')}}</td>
                                                 @else
                                                     <td>{{$installment_paid_date->startOfMonth()}}</td>
                                                 @endif

@@ -81,9 +81,11 @@
                                 <th>{{optional($item->user)->file_no}}</th>
                                 <td>Booking Money</td>
                                 <td>{{$item->booking_money_paid}}</td>
-                                <td>{{$item->booking_money_paid_date}}</td>
+                                {{-- <td>{{$item->booking_money_paid_date}}</td> --}}
+                                <td>@if($item->booking_money_paid_date != null){{\Carbon\Carbon::parse($item->booking_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                 <td>{{$item->booking_money_due}}</td>
-                                <td>{{$item->booking_money_due_date}}</td>
+                                {{-- <td>{{$item->booking_money_due_date}}</td> --}}
+                                <td>@if($item->booking_money_due_date != null){{\Carbon\Carbon::parse($item->booking_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                             </tr>
 
                             @endforeach
@@ -96,9 +98,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Down Payment </td>
                                     <td>{{$item->downpayment_money_paid}}</td>
-                                    <td>{{$item->downpayment_money_paid_date}}</td>
+                                    {{-- <td>{{$item->downpayment_money_paid_date}}</td> --}}
+                                    <td>@if($item->downpayment_money_paid_date != null){{\Carbon\Carbon::parse($item->downpayment_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->downpayment_money_due}}</td>
-                                    <td>{{$item->downpayment_money_due_date}}</td>
+                                    <td>@if($item->downpayment_money_due_date != null){{\Carbon\Carbon::parse($item->downpayment_money_due_date)->format('d-M-Y')}}  @else @endif</td>
+                                    {{-- <td>{{$item->downpayment_money_due_date}}</td> --}}
                                 </tr>
 
                                 @endforeach
@@ -112,9 +116,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Car parking </td>
                                     <td>{{$item->car_parking_money_paid}}</td>
-                                    <td>{{$item->car_parking_money_paid_date}}</td>
+                                    {{-- <td>{{$item->car_parking_money_paid_date}}</td> --}}
+                                    <td>@if($item->car_parking_money_paid_date != null){{\Carbon\Carbon::parse($item->car_parking_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->car_parking_money_due}}</td>
-                                    <td>{{$item->car_parking_money_due_date}}</td>
+                                    {{-- <td>{{$item->car_parking_money_due_date}}</td> --}}
+                                    <td>@if($item->car_parking_money_due_date != null){{\Carbon\Carbon::parse($item->car_parking_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                 </tr>
 
                                 @endforeach
@@ -128,9 +134,11 @@
                                 <th>{{optional($item->user)->file_no}}</th>
                                 <td>Land Filling 1st </td>
                                 <td>{{$item->land_filling_money_paid}}</td>
-                                <td>{{$item->land_filling_money_paid_date}}</td>
+                                {{-- <td>{{$item->land_filling_money_paid_date}}</td> --}}
+                                <td>@if($item->land_filling_money_paid_date != null){{\Carbon\Carbon::parse($item->land_filling_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                 <td>{{$item->land_filling_money_due}}</td>
-                                <td>{{$item->land_filling_money_due_date}}</td>
+                                {{-- <td>{{$item->land_filling_money_due_date}}</td> --}}
+                                <td>@if($item->land_filling_money_due_date != null){{\Carbon\Carbon::parse($item->land_filling_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                             </tr>
 
                             @endforeach
@@ -144,9 +152,13 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Land Filling 1st </td>
                                     <td>{{$item->land_filling_money_paid}}</td>
-                                    <td>{{$item->land_filling_money_paid_date}}</td>
+                                    {{-- <td>{{$item->land_filling_money_paid_date}}</td> --}}
+                                    <td>@if($item->land_filling_money_paid_date != null){{\Carbon\Carbon::parse($item->land_filling_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
+
+
                                     <td>{{$item->land_filling_money_due}}</td>
-                                    <td>{{$item->land_filling_money_due_date}}</td>
+                                    <td>@if($item->land_filling_money_due_date != null){{\Carbon\Carbon::parse($item->land_filling_money_due_date)->format('d-M-Y')}}  @else @endif</td>
+                                    {{-- <td>{{$item->land_filling_money_due_date}}</td> --}}
                                 </tr>
 
                                 @endforeach
@@ -160,9 +172,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Land Filling 1st </td>
                                     <td>{{$item->building_pilling_money_paid}}</td>
-                                    <td>{{$item->building_pilling_money_paid_date}}</td>
+                                    {{-- <td>{{$item->building_pilling_money_paid_date}}</td> --}}
+                                    <td>@if($item->building_pilling_money_paid_date != null){{\Carbon\Carbon::parse($item->building_pilling_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->building_pilling_money_due}}</td>
-                                    <td>{{$item->building_pilling_money_due_date}}</td>
+                                    {{-- <td>{{$item->building_pilling_money_due_date}}</td> --}}
+                                    <td>@if($item->building_pilling_money_due_date != null){{\Carbon\Carbon::parse($item->building_pilling_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                 </tr>
 
                                 @endforeach
@@ -176,9 +190,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Land Filling 1st </td>
                                     <td>{{$item->floor_roof_casting_money_paid_1st}}</td>
-                                    <td>{{$item->floor_roof_casting_money_paid_date_1st}}</td>
+                                    {{-- <td>{{$item->floor_roof_casting_money_paid_date_1st}}</td> --}}
+                                    <td>@if($item->floor_roof_casting_money_paid_date_1st != null){{\Carbon\Carbon::parse($item->floor_roof_casting_money_paid_date_1st)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->floor_roof_casting_money_due_1st}}</td>
-                                    <td>{{$item->floor_roof_casting_money_paid_date_1st}}</td>
+                                    {{-- <td>{{$item->floor_roof_casting_money_paid_date_1st}}</td> --}}
+                                    <td>@if($item->floor_roof_casting_money_paid_date_1st != null){{\Carbon\Carbon::parse($item->floor_roof_casting_money_paid_date_1st)->format('d-M-Y')}}  @else @endif</td>
                                 </tr>
 
                                 @endforeach
@@ -191,9 +207,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Finishing Work </td>
                                     <td>{{$item->finishing_work_money_paid}}</td>
-                                    <td>{{$item->finishing_work_money_paid_date}}</td>
+                                    {{-- <td>{{$item->finishing_work_money_paid_date}}</td> --}}
+                                    <td>@if($item->finishing_work_money_paid_date != null){{\Carbon\Carbon::parse($item->finishing_work_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->finishing_work_money_due}}</td>
-                                    <td>{{$item->finishing_work_money_due_date}}</td>
+                                    {{-- <td>{{$item->finishing_work_money_due_date}}</td> --}}
+                                    <td>@if($item->finishing_work_money_due_date != null){{\Carbon\Carbon::parse($item->finishing_work_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                 </tr>
 
                                 @endforeach
@@ -207,9 +225,11 @@
                                     <th>{{optional($item->user)->file_no}}</th>
                                     <td>Ater handover </td>
                                     <td>{{$item->after_handover_money_money_paid}}</td>
-                                    <td>{{$item->after_handover_money_paid_date}}</td>
+                                    {{-- <td>{{$item->after_handover_money_paid_date}}</td> --}}
+                                    <td>@if($item->after_handover_money_paid_date != null){{\Carbon\Carbon::parse($item->after_handover_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
                                     <td>{{$item->after_handover_money_money_due}}</td>
-                                    <td>{{$item->after_handover_money_due_date}}</td>
+                                    {{-- <td>{{$item->after_handover_money_due_date}}</td> --}}
+                                    <td>@if($item->after_handover_money_due_date != null){{\Carbon\Carbon::parse($item->after_handover_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                                 </tr>
 
                                 @endforeach

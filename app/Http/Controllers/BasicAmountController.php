@@ -67,7 +67,8 @@ class BasicAmountController extends Controller
 
     public function basicAmountStore(BasicAmountRequest $request, User $user){
 
-        // dd($request->all());
+
+
 
 
         //Total amount

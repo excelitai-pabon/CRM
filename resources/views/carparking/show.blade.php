@@ -3,8 +3,8 @@
 
 
 
-<!-- end page title -->
-    <div class="row">
+
+<div class="row">
     <div class="col-12">
         <div class="card text-center">
             <div class="card-body">
@@ -12,11 +12,13 @@
                 <h2 class="card-title">registration</h2>
                 <p class="card-title-desc">registration info
                 </p>
-                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <div class="table-responsive">
+                <table id="datatable" class="table  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>File No.</th>
                         <th>registration money</th>
                         <th>initial money</th>
                         <th>type</th>
@@ -25,6 +27,8 @@
                         <th>paid date</th>
                         <th>due date</th>
                         <th>note</th>
+
+
                     </tr>
                     </thead>
 
@@ -34,6 +38,7 @@
                     <tr>
                         {{-- @php dd($other) @endphp --}}
                         <td>{{$other->user->member_name}}</td>
+                        <td>{{$other->user->file_no}}</td>
 
 
 
@@ -42,8 +47,8 @@
                         <td>{{$other->registrationpayment_money_payment_type}}</td>
                         <td>{{$other->registrationpayment_money_paid}}</td>
                         <td>{{$other->registrationpayment_money_due}}</td>
-                        <td>{{$other->registrationpayment_money_paid_date}}</td>
-                        <td>{{$other->registrationpayment_money_due_date}}</td>
+                        <td>@if($other->registrationpayment_money_paid_date != null){{\Carbon\Carbon::parse($other->registrationpayment_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
+                        <td>@if($other->registrationpayment_money_due_date != null){{\Carbon\Carbon::parse($other->registrationpayment_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                         <td>{{$other->registrationpayment_money_note}}</td>
                         <td>
                             <a href="{{route('super_admin.car.parking.edit',$other->user_id)}}" class="btn btn-info" title="Edit Data"><i class="fas fa-pen"></i> </a>
@@ -56,6 +61,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
 
             </div>
         </div>
@@ -72,11 +78,13 @@
                 <h2 class="card-title">car parking</h2>
                 <p class="card-title-desc">Car parking info
                 </p>
-                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <div class="table-responsive">
+                <table id="datatable" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>File No.</th>
                         <th>parking money</th>
                         <th>initial money</th>
                         <th>type</th>
@@ -85,6 +93,7 @@
                         <th>paid date</th>
                         <th>due date</th>
                         <th>note</th>
+
                     </tr>
                     </thead>
 
@@ -93,6 +102,7 @@
                         @foreach ($others as $other)
                         <tr>
                             <td>{{$other->user->member_name}}</td>
+                            <td>{{$other->user->file_no}}</td>
 
 
 
@@ -101,8 +111,9 @@
                             <td>{{$other->car_parking_money_payment_type}}</td>
                             <td>{{$other->car_parking_money_paid}}</td>
                             <td>{{$other->car_parking_money_due}}</td>
-                            <td>{{$other->car_parking_money_paid_date}}</td>
-                            <td>{{$other->car_parking_money_due_date}}</td>
+                            <td>@if($other->car_parking_money_paid_date != null){{\Carbon\Carbon::parse($other->car_parking_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
+                            <td>@if($other->car_parking_money_due_date != null){{\Carbon\Carbon::parse($other->car_parking_money_due_date)->format('d-M-Y')}}  @else @endif</td>
+
                             <td>{{$other->car_parking_money_note}}</td>
                             <td>
                                 <a href="{{ route('super_admin.car.parking.edit',$other->user_id) }}" class="btn btn-info" title="Edit Data"><i class="fas fa-pen"></i> </a>
@@ -115,6 +126,7 @@
                         @endforeach
                                      </tbody>
                 </table>
+                </div>
 
             </div>
         </div>
@@ -130,11 +142,13 @@
                 <h2 class="card-title">Khajna tables</h2>
                 <p class="card-title-desc">khajna information
                 </p>
-                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <div class="table-responsive">
+                <table id="datatable" class="table  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>file No.</th>
                         <th>khajna money</th>
                         <th>initial money</th>
                         <th>type</th>
@@ -143,6 +157,7 @@
                         <th>paid date</th>
                         <th>due date</th>
                         <th>note</th>
+
                     </tr>
                     </thead>
 
@@ -151,16 +166,14 @@
                         @foreach ($others as $other)
                         <tr>
                             <td>{{$other->user->member_name}}</td>
-
-
-
+                            <td>{{$other->user->file_no}}</td>
                             <td>{{$other->khajna_money}}</td>
                             <td>{{$other->initial_khajna_money}}</td>
                             <td>{{$other->khajna_money_payment_type}}</td>
                             <td>{{$other->khajna_money_paid}}</td>
                             <td>{{$other->khajna_money_due}}</td>
-                            <td>{{$other->khajna_money_paid_date}}</td>
-                            <td>{{$other->khajna_money_due_date}}</td>
+                            <td>@if($other->khajna_money_paid_date != null){{\Carbon\Carbon::parse($other->khajna_money_paid_date)->format('d-M-Y')}}  @else @endif</td>
+                            <td>@if($other->khajna_money_due_date != null){{\Carbon\Carbon::parse($other->khajna_money_due_date)->format('d-M-Y')}}  @else @endif</td>
                             <td>{{$other->khajna_money_note}}</td>
                             <td>
                                 <a href="{{ route('super_admin.car.parking.edit',$other->user_id) }}" class="btn btn-info" title="Edit Data"><i class="fas fa-pen"></i> </a>
@@ -174,6 +187,7 @@
 
                     </tbody>
                 </table>
+                <div>
 
             </div>
         </div>

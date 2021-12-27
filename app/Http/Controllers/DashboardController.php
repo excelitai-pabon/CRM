@@ -77,6 +77,7 @@ class DashboardController extends Controller
         $first_floor = FloorRoofCasting1st::whereBetween('floor_roof_casting_money_due_date_1st',[$start,$end])->sum('floor_roof_casting_money_due_1st');
         $land_filling_1st = LandFillingStatus1st::whereBetween('land_filling_money_due_date',[$start,$end])->sum('land_filling_money_due');
         $land_filling_2nd = LandFillingStatus2nd::whereBetween('land_filling_money_due_date',[$start,$end])->sum('land_filling_money_due');
+
         $installment = Installment::whereBetween('installment_due_date',[$start,$end])->sum('installment_paid');
         //YEAR STARTS
         $booking_status_yearly = BookingStatus::whereBetween('booking_money_due_date',[$start_year,$end_year])->sum('booking_money_due');
@@ -152,6 +153,7 @@ class DashboardController extends Controller
         $data['finishing_money_daily'] = (int) $finishing_money;
         $data['first_floor_daily'] = (int) $first_floor;
         $data['land_filling_1st_daily'] = (int) $land_filling_1st;
+
         $data['land_filling_2nd_daily'] = (int) $land_filling_2nd;
 
         $data['booking_status_yearly'] = (int) $booking_status_yearly;
@@ -178,15 +180,9 @@ class DashboardController extends Controller
         $data['monthlyTotalDue'] = (int) $monthlyTotalDue;
         $data['monthlyTotalPaid'] = (int) $monthlyTotalPaid;
         $data['yearlyTotalPaid'] = (int) $yearlyTotalPaid;
+        // dd($data);
 
         $data['chart_data'] = json_encode($data);
-
-
-
-
-
-
-
 
 
         return view('dashboard.super-admin-dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue','data'));
@@ -283,6 +279,7 @@ class DashboardController extends Controller
         $land_filling_2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->whereBetween('land_filling_money_due_date',[$start,$end])->sum('land_filling_money_due');
         $installment = Installment::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->whereBetween('installment_due_date',[$start,$end])->sum('installment_paid');
         $todayTotalDue = $after_handover_money + $booking_status + $building_pilling + $car_parking + $down_payment + $finishing_money + $first_floor + $land_filling_1st + $land_filling_2nd + $installment;
-        return view('dashboard.employee-dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue'));
+        $allTotal=$totalPaidAmount+  $totalDueAmount;
+        return view('dashboard.employee-dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue','allTotal'));
     }
 }
