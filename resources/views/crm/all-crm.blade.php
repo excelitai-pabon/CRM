@@ -23,6 +23,8 @@
 
                                     <th>Name</th>
                                     <th>Address</th>
+                                    <th>Details</th>
+                                    <th>Crm Logo</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -33,6 +35,8 @@
                                     <tr>
                                         <td>{{$crm->name}}</td>
                                         <td>{{$crm->address}}</td>
+                                        <td>{{$crm->details}}</td>
+                                        <td><img src="{{ asset('upload/crm_icon/' .$crm->icon) }}" style="width: 60px; height: 50px;"></td>
 
                                         <td class="d-flex flex-row">
                                             <a href="{{route('super_admin.crm.add.employee',$crm->id)}}" class="btn btn-success"><i class="fas fa-user-shield"></i></a>

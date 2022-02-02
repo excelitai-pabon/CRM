@@ -22,10 +22,9 @@ class BasicAmountUpdateController extends Controller
 {
 
 public function basicUpdateRequest(Request $request,$id){
+    // dd($request);
 
     $check_request=ApproveUpdate::where('user_id',$id)->get();
-
-
 
     if($check_request->isEmpty()){
         $user= User::where('id',$id)->first();
@@ -34,16 +33,18 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status =new ApproveUpdate;
         $approve_status->user_id= $id;
         $approve_status->admin_id= 1;
-        // dd($request);
-        //start
+
         $booking_status = BookingStatus::where('user_id', $id)->first();
         $check_due=$booking_status->booking_money_due-$request->booking_money_paid;
+
+
         //if else start
         if($request->booking_money_paid>$request->booking_money){
             Session::flash('error',"Paid is greater than due");
             return redirect()->back();
         }
         elseif($booking_status->booking_money_due==0){
+
             $request_booking_status_total=$request->booking_money;
             $request_booking_payment_due=$request_booking_status_total-$request->booking_money_paid;
             $approve_status->booking_money_due= $request_booking_payment_due;
@@ -61,16 +62,16 @@ public function basicUpdateRequest(Request $request,$id){
             return redirect()->back();
         }
         else{
+
             $request_booking_status_total=$booking_status->booking_money_due;
             $request_booking_status_due= $request_booking_status_total-$request->booking_money_paid;
             $approve_status->booking_money_due= $request_booking_status_due;
             //end
-
             $approve_status->booking_money_paid=$request->booking_money_paid;
             $approve_status-> booking_money_paid_date =$request->booking_money_paid_date;
             $approve_status-> booking_money_due_date =$request->booking_money_due_date;
               //adding booking money field
-              $approve_status->booking_money=$request->booking_money;
+            $approve_status->booking_money=$request->booking_money;
             $approve_status->booking_money_note=$request->booking_money_note;
             $approve_status->booking_money_payment_type=$request->booking_money_payment_type;
             $approve_status->initial_booking_money=$request->initial_booking_money;
@@ -78,6 +79,7 @@ public function basicUpdateRequest(Request $request,$id){
         //down payment
         $down_payment = DownpaymentStatus::where('user_id', $id)->first();
         $check_due=$down_payment->downpayment_money_due-$request->downpayment_money_paid;
+
 
 
         if($request->downpayment_money_paid > $request->downpayment_money){
@@ -94,12 +96,10 @@ public function basicUpdateRequest(Request $request,$id){
             $approve_status-> downpayment_money_due_date =$request->downpayment_money_due_date;
              //request due
               //adding booking money field
-              $approve_status->downpayment_money=$request->downpayment_money;
+            $approve_status->downpayment_money=$request->downpayment_money;
             $approve_status->downpayment_money_note=$request->downpayment_money_note;
             $approve_status->downpayment_money_payment_type=$request->downpayment_money_payment_type;
             $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
-
-
         }
         elseif($check_due<0){
             Session::flash('error',"Check the Due");
@@ -119,50 +119,8 @@ public function basicUpdateRequest(Request $request,$id){
         $approve_status->downpayment_money_note=$request->downpayment_money_note;
         $approve_status->downpayment_money_payment_type=$request->downpayment_money_payment_type;
         $approve_status->initial_downpayment_money=$request->initial_downpayment_money;
-
     }
-    // $car_parking = CarParkingStatus::where('user_id', $id)->first();
-    // $check_due=$car_parking->car_parking_money_due-$request->car_parking_money_paid;
-    // if($request->car_parking_money_paid > $request->car_parking_money){
 
-    //     Session::flash('error',"Paid is greater than due");
-    //         return redirect()->back();
-    // }
-    // elseif($car_parking->car_parking_money_due==0){
-    //     $request_car_parking_total=$request->car_parking_money;
-    //     $request_car_parking_due=$request_car_parking_total-$request->car_parking_money_paid;
-    //     $approve_status->car_parking_money_due= $request_car_parking_due;
-    //     // $approve_status->car_parking_money= $request->car_parking_money;
-    //     $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
-    //     $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
-    //     $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
-    //     $approve_status->car_parking_money_note=$request->car_parking_money_note;
-    //     $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
-    //     //adding booking money field
-    //     $approve_status->car_parking_money=$request->car_parking_money;
-    //     $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
-    // }
-    // elseif($check_due<0){
-    //     Session::flash('error',"Check the Due");
-    //     return redirect()->back();
-    // }
-    // else{
-    //     //start
-    //     $request_car_parking_total=$car_parking->car_parking_money_due;
-    //     $request_car_parking_due= $request_car_parking_total-$request->car_parking_money_paid;
-    //     $approve_status->car_parking_money_due= $request_car_parking_due;
-    //     //end
-    //     $approve_status->car_parking_money_paid=$request->car_parking_money_paid;
-    //     $approve_status-> car_parking_money_paid_date =$request->car_parking_money_paid_date;
-    //     $approve_status-> car_parking_money_due_date =$request->car_parking_money_due_date;
-    //     $approve_status->car_parking_money_note=$request->car_parking_money_note;
-    //     $approve_status->car_parking_money_payment_type=$request->car_parking_money_payment_type;
-
-    //     //car parking ends
-    //     //adding booking money field
-    //     $approve_status->car_parking_money=$request->car_parking_money;
-    //     $approve_status->initial_car_parking_money=$request->initial_car_parking_money;
-    // }
     $land_filling_1 = LandFillingStatus1st::where('user_id', $id)->first();
     $check_due=$land_filling_1->land_filling_money_due-$request->land_filling_money_paid;
 
@@ -191,7 +149,6 @@ public function basicUpdateRequest(Request $request,$id){
     }
     else{
           //start
-
           $request_land_filling_1_total=$land_filling_1->land_filling_money_due;
           $request_land_filling_1_due= $request_land_filling_1_total-$request->land_filling_money_paid;
           $approve_status->land_filling_money_due_1= $request_land_filling_1_due;
@@ -441,15 +398,12 @@ public function basicUpdateRequest(Request $request,$id){
         }
 
     }
-
     else{
         Session::flash('error',"Your previous request is pending");
          return redirect()->back();
      }
 
     }
-
-
     public function show_request(){
         $update_request=ApproveUpdate::all();
 
@@ -465,7 +419,6 @@ public function basicUpdateRequest(Request $request,$id){
     }
     public function getBasic_data($id){
         $check_request=ApproveUpdate::where('user_id',$id)->get();
-
 
     }
     public function fetch_data($id){

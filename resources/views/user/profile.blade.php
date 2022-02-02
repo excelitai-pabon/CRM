@@ -371,7 +371,8 @@
                                             <td> @if($user->afterHandOverMoney->after_handover_money_paid_date != null) {{\Carbon\Carbon::parse(optional($user->afterHandOverMoney)->after_handover_money_paid_date)->format('d-M-Y')}} @else @endif</td>
                                             <td> @if($user->afterHandOverMoney->after_handover_money_due_date != null) {{\Carbon\Carbon::parse(optional($user->afterHandOverMoney)->after_handover_money_due_date)->format('d-M-Y')}} @else @endif</td>
                                             <td>{{optional($user->afterHandOverMoney)->after_handover_money_note}}</td>
-                                            <td><a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                            <td>
+                                                <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @elseif(Auth::guard('admin')->check()){{route('admin.user.email',['id'=>$user->id,'subject'=>Str::slug('After Handover')])}} @endif" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Mail</a>
                                                 <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}}@elseif(Auth::guard('admin')->check()){{route('admin.basic-amount.pdf',['basic_amount'=>'after-handover','user'=>$user->id])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
                                             </td>
 
@@ -405,6 +406,7 @@
                                             <th>Instalment Amount</th>
                                             <th>Instalment Amount Paid</th>
                                             <th>Instalment  Paid Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -444,7 +446,9 @@
                                                     }
                                                     $installment_paid_date->addMonthsNoOverflow(1)->startOfMonth();
                                                 @endphp
-
+                                                <td>
+                                                    <a href="@if(Auth::guard('super_admin')->check()){{route('super_admin.installment.pdf',['user'=>$user->id,'installment'=>$user->Installment[$i]])}}@elseif(Auth::guard('admin')->check()){{route('admin.installment.pdf',['user'=>$user->id,'installment'=>$user->Installment[$i]])}} @endif" class="btn btn-danger "><i class="fas fa-download"></i> Invoice </a>
+                                                </td>
 
                                             </tr>
                                         @endfor

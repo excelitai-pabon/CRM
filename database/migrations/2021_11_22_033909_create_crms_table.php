@@ -17,6 +17,8 @@ class CreateCrmsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('address');
+            $table->string('icon')->nullable();
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }

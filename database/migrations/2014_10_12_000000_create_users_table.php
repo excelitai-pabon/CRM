@@ -36,6 +36,8 @@ class CreateUsersTable extends Migration
             $table->string('building_no')->nullable();
 	        $table->string('member_image')->nullable();
 	        $table->string('nominee_image')->nullable();
+            //up
+	        $table->date('booking_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('crm_id');
             $table->string('password');

@@ -248,13 +248,43 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
                     </tr>
 
                     <tr>
-
-                        <td  style="text-align:left; padding-top:-80px!important;">Nominee Img
+                        {{-- up --}}
+                        <td  style="text-align:left; padding-top:-80px!important;">Applicant Img
                         </td>
                     </tr>
 
                 </table>
+
+
             </td>
+
+            {{-- adding --}}
+            <td width="70%" style="border: 0px !important;">
+                <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="border: 0px; padding-right: 20px">
+
+                    <tr>
+
+                        <td height="150" width="100" style="border: 0px;border-radius: 50px;overflow: hidden; border-radius:50%!important;">
+                            <p style="height: 100px; width: 100px !important;  float:left!important; ">
+                                <img src="<?php echo $pic3;?>" alt="" style="height:100%;width:100%;">
+                            </p>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        {{-- up --}}
+                        <td  style="text-align:left; padding-top:-80px!important;">Applicant Img
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </td>
+
+
+
             <td width="50%" style="border: 0px !important">
                 <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="border: 0px; margin-left: 20px">
                     <tr>
@@ -358,6 +388,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     <td>Building No:</td>
     <td >{{$user->building_no}}</td>
 </tr>
+
+
 
 </table>
 
@@ -490,6 +522,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
         </tr>
      </thead>
+
+
+
+
     <thead>
       <tr>
 
@@ -501,37 +537,33 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
      <tr>
         <td>Booking Money:</td>
-        <td>{{$booking_status->booking_money_paid}}</td>
+        <td>{{($booking_status->initial_booking_money)-($booking_status->booking_money_due)}}</td>
         <td>{{$booking_status->booking_money_paid_date}}</td>
     </tr>
     <tr>
         <td>Down Payment:</td>
-        <td>{{$down_payment->downpayment_money_paid}}</td>
+        <td>{{($down_payment->initial_downpayment_money)-($down_payment->downpayment_money_due)}}</td>
         <td>{{$down_payment->downpayment_money_paid_date}}</td>
     </tr>
-    {{-- <tr>
-        <td>Car Parking:</td>
-        <td>{{$car_parking->car_parking_money_paid}}</td>
-        <td>{{$car_parking->car_parking_money_paid_date}}</td>
-    </tr> --}}
+
     <tr>
         <td>Land Fillig 1</td>
-        <td>{{$land_filing_1st->land_filling_money_paid}}</td>
+        <td>{{($land_filing_1st->initial_land_filling_money)-($land_filing_1st->land_filling_money_due)}}</td>
         <td>{{$land_filing_1st->land_filling_money_paid_date}}</td>
     </tr>
     <tr>
         <td>Land Filling 2</td>
-        <td>{{$land_filing_2nd->land_filling_money_paid}}</td>
+        <td>{{($land_filing_2nd->initial_land_filling_money)-($land_filing_2nd->land_filling_money_due)}}</td>
         <td>{{$land_filing_2nd->land_filling_money_paid_date}}</td>
     </tr>
     <tr>
         <td>Building Pilling</td>
-        <td>{{$building_pilling_status->building_pilling_money_paid}}</td>
+        <td>{{($building_pilling_status->initial_building_pilling_money)-($building_pilling_status->building_pilling_money_due)}}</td>
         <td>{{$building_pilling_status->building_pilling_money_paid_date}}</td>
     </tr>
     <tr>
         <td>1st Floor Roof Casting:</td>
-        <td>{{$roof_casting_1st->floor_roof_casting_money_paid_1st}}</td>
+        <td>{{($roof_casting_1st->initial_floor_roof_casting_money_1st)-($roof_casting_1st->floor_roof_casting_money_due_1st)}}</td>
         <td>{{$roof_casting_1st->floor_roof_casting_money_due_date_1st}}</td>
     </tr>
     <tr>
@@ -541,7 +573,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     </tr>
     <tr>
         <td>After HandOver Amount</td>
-        <td>{{$after_hand_over_money->after_handover_money_money_paid}}</td>
+        <td>{{($after_hand_over_money->initial_after_handover_money)-($after_hand_over_money->after_handover_money_money_due)}}</td>
         <td>{{$after_hand_over_money->after_handover_money_paid_date}}</td>
     </tr>
 

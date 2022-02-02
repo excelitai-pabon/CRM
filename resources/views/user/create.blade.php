@@ -66,12 +66,24 @@
 
                         <!--added-->
 
-                           <div class="col-md-12">
-                            <label for="validationCustom04" class="form-label">Select Relationship:</label>
-                            <input name="relation_name" type="checkbox" value="husband">husband
-                            <input name="relation_name" type="checkbox" value="wife">wife
+                           <div class="col-md-6">
+                                    <label for="validationCustom04" class="form-label">Select Relationship:</label>
+                                    <input name="relation_name" type="checkbox" value="husband">husband
+                                    <input name="relation_name" type="checkbox" value="wife">wife
                             </div>
                         <!--end-->
+
+                        {{-- up --}}
+                        <div class="col-md-6">
+                            <label  class="form-label">Booking date</label>
+                            <input type="date" class="form-control @error('booking_date')is-invalid @enderror" name="booking_date" id="booking_date"  value="{{old('booking_date')}}" >
+                            @error('booking_date')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+
+                        </div>
 
                         <div class="col-md-6">
                             <label for="validationCustom05" class="form-label">Husband / Wife Name (optional)</label>

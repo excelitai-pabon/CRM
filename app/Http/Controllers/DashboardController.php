@@ -21,29 +21,103 @@ class DashboardController extends Controller
     {
         $users = User::count();
         $totalDueAmount=0;
-        $afterHandOverMoney = AfterHandoverMoney::sum('after_handover_money_money_due');
-        $bookingStatus = BookingStatus::sum('booking_money_due');
-        $buildingPillingStatus = BuildingPillingStatus::sum('building_pilling_money_due');
-        $carParkingMoneyDue = CarParkingStatus::sum('car_parking_money_due');
-        $downPaymentStatus = DownpaymentStatus::sum('downpayment_money_due');
-        $finishingWorkStatus = FinishingWorkStatus::sum('finishing_work_money_due');
-        $firstRoofCasting = FloorRoofCasting1st::sum('floor_roof_casting_money_due_1st');
-        $landFillingStatus1st = LandFillingStatus1st::sum('land_filling_money_due');
-        $landFillingStatus2nd = LandFillingStatus2nd::sum('land_filling_money_due');
-        $installment = Installment::sum('installment_due');
-        $totalDueAmount = $afterHandOverMoney + $bookingStatus + $buildingPillingStatus + $carParkingMoneyDue + $downPaymentStatus + $finishingWorkStatus + $firstRoofCasting + $landFillingStatus1st + $landFillingStatus2nd + $installment;
-        $totalPaidAmount=0;
-        $afterHandOverMoney = AfterHandoverMoney::sum('after_handover_money_money_paid');
-        $bookingStatus = BookingStatus::sum('booking_money_paid');
-        $buildingPillingStatus = BuildingPillingStatus::sum('building_pilling_money_paid');
-        $carParkingMoneyDue = CarParkingStatus::sum('car_parking_money_paid');
-        $downPaymentStatus = DownpaymentStatus::sum('downpayment_money_paid');
-        $finishingWorkStatus = FinishingWorkStatus::sum('finishing_work_money_paid');
-        $firstRoofCasting = FloorRoofCasting1st::sum('floor_roof_casting_money_paid_1st');
-        $landFillingStatus1st = LandFillingStatus1st::sum('land_filling_money_paid');
-        $landFillingStatus2nd = LandFillingStatus2nd::sum('land_filling_money_paid');
-        $installment = Installment::sum('installment_paid');
-        $totalPaidAmount = $afterHandOverMoney + $bookingStatus + $buildingPillingStatus + $carParkingMoneyDue + $downPaymentStatus + $finishingWorkStatus + $firstRoofCasting + $landFillingStatus1st + $landFillingStatus2nd + $installment;
+            //booking
+            $total_initial_bookng= BookingStatus::sum('initial_booking_money');
+            $total_due_booking = BookingStatus::sum('booking_money_due');
+            $total_booking=$total_initial_bookng- $total_due_booking;
+
+
+        //after hand over
+            $total_initial_afterhand= AfterHandoverMoney::sum('initial_after_handover_money');
+            $total_due_afterhand = AfterHandoverMoney::sum('after_handover_money_money_due');
+            $total_afterhand=$total_initial_afterhand- $total_due_afterhand;
+
+
+
+            //building pilling
+            $total_initial_buildingpilling= BuildingPillingStatus::sum('initial_building_pilling_money');
+            $total_due_buildingpilling = BuildingPillingStatus::sum('building_pilling_money_due');
+            $total_buildingpilling=$total_initial_afterhand- $total_due_afterhand;
+
+
+
+
+         //down payment
+            $total_initial_downpay= DownpaymentStatus::sum('initial_downpayment_money');
+            $total_due_downpay = DownpaymentStatus::sum('downpayment_money_due');
+            $total_downpay=$total_initial_downpay- $total_due_downpay;
+
+
+             //finishing status
+             $total_initial_finishstatus= FinishingWorkStatus::sum('initial_finishing_work_money');
+             $total_due_finishstatus = FinishingWorkStatus::sum('finishing_work_money_due');
+             $total_finishstatus=$total_initial_finishstatus- $total_due_finishstatus;
+
+
+            //firstfloor status
+              $total_initial_firstfloor= FloorRoofCasting1st::sum('initial_floor_roof_casting_money_1st');
+              $total_due_firstfloor = FloorRoofCasting1st::sum('floor_roof_casting_money_due_1st');
+              $total_firstfloor=$total_initial_firstfloor- $total_due_firstfloor;
+
+
+              //landfilling1
+              $total_initial_landfilling1= LandFillingStatus1st::sum('initial_land_filling_money');
+              $total_due_landfilling1 = LandFillingStatus1st::sum('land_filling_money_due');
+              $total_landfilling1=$total_initial_landfilling1- $total_due_landfilling1;
+
+
+
+               //landfilling2
+               $total_initial_landfilling2= LandFillingStatus2nd::sum('initial_land_filling_money');
+               $total_due_landfilling2 = LandFillingStatus2nd::sum('land_filling_money_due');
+               $total_landfilling2=$total_initial_landfilling2- $total_due_landfilling2;
+
+
+
+               $installment = Installment::sum('installment_paid');
+
+               $total_amount=$total_booking+$total_afterhand+$total_buildingpilling+$total_downpay+$total_finishstatus+$total_firstfloor+$total_landfilling1+$total_landfilling2+$installment;
+
+
+
+
+
+
+                    $totalPaidAmount=0;
+                    $afterHandOverMoney = AfterHandoverMoney::sum('after_handover_money_money_paid');
+                    $bookingStatus = BookingStatus::sum('booking_money_paid');
+                    $buildingPillingStatus = BuildingPillingStatus::sum('building_pilling_money_paid');
+                    // $carParkingMoneyDue = CarParkingStatus::sum('car_parking_money_paid');
+                    $downPaymentStatus = DownpaymentStatus::sum('downpayment_money_paid');
+                    $finishingWorkStatus = FinishingWorkStatus::sum('finishing_work_money_paid');
+                    $firstRoofCasting = FloorRoofCasting1st::sum('floor_roof_casting_money_paid_1st');
+                    $landFillingStatus1st = LandFillingStatus1st::sum('land_filling_money_paid');
+                    $landFillingStatus2nd = LandFillingStatus2nd::sum('land_filling_money_paid');
+                    $installment = Installment::sum('installment_paid');
+                    $totalPaidAmount = $afterHandOverMoney + $bookingStatus + $buildingPillingStatus  + $downPaymentStatus + $finishingWorkStatus + $firstRoofCasting + $landFillingStatus1st + $landFillingStatus2nd + $installment;
+
+
+
+
+        //tiil_today_due
+        $till_today_due=0;
+        $todayDate = Carbon::now();
+        $end = $todayDate->startOfDay();
+        $booking_status = BookingStatus::where('booking_money_due_date','<',$end)->sum('booking_money_due');
+        $after_handover_money = AfterHandoverMoney::where('after_handover_money_due_date','<',$end)->sum('after_handover_money_money_due');
+        $building_pilling = BuildingPillingStatus::where('building_pilling_money_due_date','<',$end)->sum('building_pilling_money_due');
+        // $car_parking = CarParkingStatus::whereBetween('car_parking_money_due_date',[$start,$end])->sum('car_parking_money_due');
+        $down_payment = DownpaymentStatus::where('downpayment_money_due_date','<',$end)->sum('downpayment_money_due');
+
+        $finishing_money = FinishingWorkStatus::where('finishing_work_money_due_date','<',$end)->sum('finishing_work_money_due');
+        $first_floor = FloorRoofCasting1st::where('floor_roof_casting_money_due_date_1st','<',$end)->sum('floor_roof_casting_money_due_1st');
+        $land_filling_1st = LandFillingStatus1st::where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+        $land_filling_2nd = LandFillingStatus2nd::where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+        $installment = Installment::where('installment_due_date','<',$end)->sum('installment_paid');
+        $till_today_due= $booking_status+ $after_handover_money + $building_pilling + $down_payment + $finishing_money +  $first_floor + $land_filling_1st + $land_filling_2nd +  $installment;
+        // dd($till_today_due);
+        //end_till_day_due
+
         $todayTotalDue = 0;
         $todayDate = Carbon::now();
         $start = $todayDate->startOfDay();
@@ -181,11 +255,11 @@ class DashboardController extends Controller
         $data['monthlyTotalPaid'] = (int) $monthlyTotalPaid;
         $data['yearlyTotalPaid'] = (int) $yearlyTotalPaid;
         // dd($data);
-
+        // dd($data);
         $data['chart_data'] = json_encode($data);
 
 
-        return view('dashboard.super-admin-dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue','data'));
+        return view('dashboard.super-admin-dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue','data','till_today_due'));
     }
     public function adminDashboard()
     {
@@ -202,6 +276,24 @@ class DashboardController extends Controller
         $landFillingStatus2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->sum('land_filling_money_due');
         $installment = Installment::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->sum('installment_due');
         $totalDueAmount = $afterHandOverMoney + $bookingStatus + $buildingPillingStatus + $carParkingMoneyDue + $downPaymentStatus + $finishingWorkStatus + $firstRoofCasting + $landFillingStatus1st + $landFillingStatus2nd + $installment;
+         //tiil_today_due
+         $till_today_due=0;
+         $todayDate = Carbon::now();
+         $end = $todayDate->startOfDay();
+         $booking_status = BookingStatus::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('booking_money_due_date','<',$end)->sum('booking_money_due');
+         $after_handover_money = AfterHandoverMoney::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('after_handover_money_due_date','<',$end)->sum('after_handover_money_money_due');
+         $building_pilling = BuildingPillingStatus::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('building_pilling_money_due_date','<',$end)->sum('building_pilling_money_due');
+         // $car_parking = CarParkingStatus::whereBetween('car_parking_money_due_date',[$start,$end])->sum('car_parking_money_due');
+         $down_payment = DownpaymentStatus::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('downpayment_money_due_date','<',$end)->sum('downpayment_money_due');
+
+         $finishing_money = FinishingWorkStatus::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('finishing_work_money_due_date','<',$end)->sum('finishing_work_money_due');
+         $first_floor = FloorRoofCasting1st::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('floor_roof_casting_money_due_date_1st','<',$end)->sum('floor_roof_casting_money_due_1st');
+         $land_filling_1st = LandFillingStatus1st::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+         $land_filling_2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+         $installment = Installment::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->where('installment_due_date','<',$end)->sum('installment_due');
+         $till_today_due= $booking_status+ $after_handover_money + $building_pilling + $down_payment + $finishing_money +  $first_floor + $land_filling_1st + $land_filling_2nd +$installment;
+         // dd($till_today_due);
+         //end_till_day_due
         $totalPaidAmount=0;
         $afterHandOverMoney = AfterHandoverMoney::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->sum('after_handover_money_money_paid');
         $bookingStatus = BookingStatus::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->sum('booking_money_paid');
@@ -231,7 +323,7 @@ class DashboardController extends Controller
         $land_filling_2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->whereBetween('land_filling_money_due_date',[$start,$end])->sum('land_filling_money_due');
         $installment = Installment::where('crm_id','=',Auth::guard('admin')->user()->crm_id)->whereBetween('installment_due_date',[$start,$end])->sum('installment_paid');
         $todayTotalDue = $after_handover_money + $booking_status + $building_pilling + $car_parking + $down_payment + $finishing_money + $first_floor + $land_filling_1st + $land_filling_2nd + $installment;
-        return view('dashboard.dashboard',compact('users','totalDueAmount','totalPaidAmount','todayTotalDue'));
+        return view('dashboard.dashboard',compact('users','totalDueAmount','totalPaidAmount','till_today_due'));
     }
 
 
@@ -250,6 +342,24 @@ class DashboardController extends Controller
         $landFillingStatus2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->sum('land_filling_money_due');
         $installment = Installment::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->sum('installment_due');
         $totalDueAmount = $afterHandOverMoney + $bookingStatus + $buildingPillingStatus + $carParkingMoneyDue + $downPaymentStatus + $finishingWorkStatus + $firstRoofCasting + $landFillingStatus1st + $landFillingStatus2nd + $installment;
+         //tiil_today_due
+         $till_today_due=0;
+         $todayDate = Carbon::now();
+         $end = $todayDate->startOfDay();
+         $booking_status = BookingStatus::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('booking_money_due_date','<',$end)->sum('booking_money_due');
+         $after_handover_money = AfterHandoverMoney::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('after_handover_money_due_date','<',$end)->sum('after_handover_money_money_due');
+         $building_pilling = BuildingPillingStatus::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('building_pilling_money_due_date','<',$end)->sum('building_pilling_money_due');
+         // $car_parking = CarParkingStatus::whereBetween('car_parking_money_due_date',[$start,$end])->sum('car_parking_money_due');
+         $down_payment = DownpaymentStatus::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('downpayment_money_due_date','<',$end)->sum('downpayment_money_due');
+
+         $finishing_money = FinishingWorkStatus::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('finishing_work_money_due_date','<',$end)->sum('finishing_work_money_due');
+         $first_floor = FloorRoofCasting1st::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('floor_roof_casting_money_due_date_1st','<',$end)->sum('floor_roof_casting_money_due_1st');
+         $land_filling_1st = LandFillingStatus1st::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+         $land_filling_2nd = LandFillingStatus2nd::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('land_filling_money_due_date','<',$end)->sum('land_filling_money_due');
+         $installment = Installment::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->where('installment_due_date','<',$end)->sum('installment_due');
+         $till_today_due= $booking_status+ $after_handover_money + $building_pilling + $down_payment + $finishing_money +  $first_floor + $land_filling_1st + $land_filling_2nd +$installment;
+         // dd($till_today_due);
+         //end_till_day_due
         $totalPaidAmount=0;
         $afterHandOverMoney = AfterHandoverMoney::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->sum('after_handover_money_money_paid');
         $bookingStatus = BookingStatus::where('crm_id','=',Auth::guard('employee')->user()->crm_id)->sum('booking_money_paid');

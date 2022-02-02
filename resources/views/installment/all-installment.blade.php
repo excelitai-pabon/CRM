@@ -108,7 +108,7 @@
                                     <th>Paid Date</th>
                                     <th>Due Date</th>
                                     <th>Action</th>
-                                    <th>Note</th>
+                                    <th style="width: 250px">Note</th>
                                     <th>Check Box</th>
                                 </tr>
                             </thead>
@@ -150,13 +150,14 @@
                                         @if (isset($user->Installment[$i]))
                                             <td>{{\Carbon\Carbon::parse($user->Installment[$i]->installment_date)->format('d-M-Y')}}</td>
                                         @else
-                                            <td>{{$paid_date->startOfMonth()}}</td>
+                                            <td>Not Paid Yet</td>
+                                            {{-- <td>{{\Carbon\Carbon::parse($paid_date->startOfMonth())->format('d-M-Y')}}</td> --}}
                                         @endif
 
                                         @if (isset($user->Installment[$i]))
                                             <td>{{\Carbon\Carbon::parse($user->Installment[$i]->installment_due_date)->format('d-M-Y')}}</td>
                                         @else
-                                            <td></td>
+                                            <td>{{\Carbon\Carbon::parse($paid_date->startOfMonth())->format('d-M-Y')}}</td>
                                         @endif
 
 
@@ -181,12 +182,17 @@
 
                                                 @php
 
+
                                                     $date = $paid_date->startOfMonth();
+
+
+
                                                     $check_date=Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->isPast();
 
 
 
                                                     if($check_date){
+                                                        // dd($date);
                                                         $createInstallment = new App\Models\Installment;
                                                         $createInstallment->user_id = $user->id;
                                                         $createInstallment->crm_id = $user->crm_id;
@@ -196,11 +202,19 @@
                                                         $createInstallment->installment_amount =$user->installment_year->installment_years_amount[$yearCounter];
                                                         $createInstallment->installment_paid =0;
                                                         $createInstallment->installment_due = $user->installment_year->installment_years_amount[$yearCounter];
-                                                        $createInstallment->installment_date = Carbon\Carbon::now();
-                                                        $createInstallment->installment_due_date = Carbon\Carbon::now();
+                                                        $createInstallment->installment_date = $date;
+
+                                                        $endDate = $createInstallment->installment_date;
+                                                        $finalEndDate=Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $endDate)->endOfMonth();
+
+                                                        $createInstallment->installment_due_date = $finalEndDate;
                                                         $createInstallment->payment_installment_type = 'cash';
                                                         $createInstallment->installment_note = '';
                                                         $createInstallment->save();
+                                                        // dd($createInstallment->installment_date);
+
+
+
                                                         header("Refresh:0");
                                                     }
 

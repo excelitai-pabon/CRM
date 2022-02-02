@@ -96,6 +96,7 @@ class InstallmentController extends Controller
 
         $paid_date = Carbon::parse(optional($userdata->totalNoOfInstallment)->installment_starting_date);
 
+
         if(isset($paid_date))
         {
             return view('installment.all-installment',compact('user','paid_date'));
@@ -211,8 +212,7 @@ class InstallmentController extends Controller
         //   });
 
         $user->notify(new InstallmentPaid($user));
-        $admin=Admin::find(2);
-        $admin->notify(new NotifyToAdmin($user));
+
 
         if(Auth::guard('admin')->check()){
             return redirect()->route('admin.installments')->with('success','Installment update successfully');

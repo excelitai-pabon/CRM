@@ -122,7 +122,7 @@
                                 }, 2000);
                             },
                             error : function(res){
-                                Swal.fire( 'Failed!', 'Somethung went wrong.', 'error')
+                                Swal.fire( 'Failed!', 'Something went wrong.', 'error')
                             },
                     });
                 } else {

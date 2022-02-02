@@ -96,7 +96,7 @@
 
 
                                                 @if (isset($user->Installment[$i]))
-                                                    <td>{{$user->Installment[$i]->installment_date}}</td>
+                                                    <td>{{Carbon\Carbon::parse($user->Installment[$i]->installment_date)->format('Y-m-d')}}</td>
 
                                                 @endif
 
@@ -371,13 +371,14 @@
                                         @endif
 
                                         @if (isset($user->Installment[$i]))
-                                            <td>{{$user->Installment[$i]->installment_date}}</td>
+                                        {{-- //up --}}
+                                            <td>{{Carbon\Carbon::parse($user->Installment[$i]->installment_date)->format('Y-m-d')}}</td>
                                         @else
-                                            <td>{{$paid_date->startOfMonth()}}</td>
+                                            <td>{{Carbon\Carbon::parse($paid_date->startOfMonth())->format('Y-m-d')}}</td>
                                         @endif
 
                                         @if (isset($user->Installment[$i]))
-                                            <td>{{$user->Installment[$i]->installment_due_date}}</td>
+                                            <td>{{Carbon\Carbon::parse($user->Installment[$i]->installment_due_date)->format('Y-m-d')}}</td>
                                         @else
                                             <td></td>
                                         @endif
@@ -401,7 +402,7 @@
                                                 $monthCounter = 0;
                                                 $yearCounter++;
                                             }
-                                            $paid_date->addMonthsNoOverflow(1)->startOfMonth();
+                                            Carbon\Carbon::parse($paid_date->addMonthsNoOverflow(1)->startOfMonth())->format('Y-m-d');
                                         @endphp
 
 

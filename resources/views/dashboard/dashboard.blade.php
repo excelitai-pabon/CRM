@@ -124,7 +124,7 @@
                             <img src="{{asset('assets')}}/images/services-icon/04.png" alt="">
                         </div>
                         <h5 class="font-size-16 text-uppercase text-white-50">Today Total Due</h5>
-                        <h4 class="fw-medium font-size-24">{{$todayTotalDue}} </h4>
+                        <h4 class="fw-medium font-size-24">{{$till_today_due}} </h4>
                         <div class="mini-stat-label bg-warning">
                         </div>
                     </div>

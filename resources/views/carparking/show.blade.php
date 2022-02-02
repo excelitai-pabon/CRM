@@ -37,8 +37,8 @@
                         @foreach ($others as $other)
                     <tr>
                         {{-- @php dd($other) @endphp --}}
-                        <td>{{$other->user->member_name}}</td>
-                        <td>{{$other->user->file_no}}</td>
+                         <td>{{$other->user->member_name}}</td>
+                         <td>{{$other->user->file_no}}</td>
 
 
 
@@ -101,8 +101,8 @@
                     <tbody>
                         @foreach ($others as $other)
                         <tr>
-                            <td>{{$other->user->member_name}}</td>
-                            <td>{{$other->user->file_no}}</td>
+                            {{-- <td>{{$other->user->member_name}}</td>
+                            <td>{{$other->user->file_no}}</td> --}}
 
 
 

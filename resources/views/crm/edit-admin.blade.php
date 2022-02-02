@@ -5,7 +5,7 @@
 
 
     <style>
-       
+
         #image_preview{
             width: 150px;
             height: 160px;
@@ -22,7 +22,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            
+
 
             <div class="col-6">
                 <div class="card">
@@ -33,10 +33,10 @@
                             submission before sending it to your server.</p>
                         <form class="row g-3 needs-validation"  enctype="multipart/form-data" method="POST" action="{{route('super_admin.crm.details.update.admin',$admin->id)}}">
                             @csrf
-    
+
                             <div class="row">
 
-                            
+
                                 <div class="col-md-6">
                                     <label for="validationCustom02" class="form-label">Admin Name</label>
                                     <input type="text" class="form-control" value="{{$admin->name}}" name="name" id="validationCustom02" placeholder="Admin Name" required>
@@ -44,17 +44,17 @@
                                         <span class="text-danger"> {{$message}}</span>
                                     @enderror
                                 </div>
-        
+
                                 <div class="col-md-6">
                                     <label for="validationCustom03" class="form-label">Email Address</label>
                                     <input type="email" class="form-control" value="{{$admin->email}}" name="email" id="validationCustom03" placeholder="Email Address"  required>
                                     @error('email')
                                         <span class="text-danger"> {{$message}}</span>
                                     @enderror
-        
+
                                 </div>
                             </div>
-                            
+
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -78,14 +78,12 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Update Admin Password</h4>
-                        <p class="card-title-desc">Parsley is a javascript form validation
-                            library. It helps you provide your users with feedback on their form
-                            submission before sending it to your server.</p>
+                        <h4 class="card-title">Update CRM</h4>
+                        <p class="card-title-desc"></p>
                         <form class="row g-3 needs-validation"  enctype="multipart/form-data" method="POST" action="{{route('super_admin.crm.password.update.admin',$admin->id)}}">
                             @csrf
-    
-                            
+
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="validationCustom03" class="form-label">Password</label>
@@ -93,20 +91,22 @@
                                     @error('password')
                                         <span class="text-danger"> {{$message}}</span>
                                     @enderror
-        
+
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom03" class="form-label">Confirm Password</label>
                                     <input type="password" class="form-control" name="confirm_password" id="validationCustom03" placeholder="Confirm Password"  required>
                                     @error('confirm_password')
-                                    
+
                                         <span class="text-danger"> {{$message}}</span>
-                                    
+
                                     @enderror
-        
+
                                 </div>
 
-                                
+
+
+
                                 <div>
                                     @if (Session::has('notMatched'))
                                         <span class="text-danger">{{Session::get('notMatched')}}</span>
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">ADD ADMIN</button>
                             </div>
@@ -165,10 +165,10 @@
                         }
                 });
         });
-        
-        
 
-        
+
+
+
     </script>
 
 
@@ -184,8 +184,8 @@
             }
         }
 
-        
-        
+
+
     </script>
 
 @endsection

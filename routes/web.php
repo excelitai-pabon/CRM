@@ -89,6 +89,10 @@ Route::prefix('admin')->name('admin.')->group(function()
         Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])->middleware('auth:admin')->name('basic_amount.store');
 
 
+         // installment pdf
+           //new_update
+           Route::get('pdf/installment/{user}/{installment}',[PdfController::class,'installmentPDF'])->name('installment.pdf')->middleware('auth:admin');
+
 
         //** installment Routes */
         Route::get('/installment',[InstallmentController::class,'getFileNo'])->middleware('auth:admin')->name('installments');
@@ -244,6 +248,8 @@ Route::prefix('super-admin')->name('super_admin.')->group(function()
 
     //basic amounts pdf
     Route::get('pdf/{basic_amount}/{user}',[PdfController::class,'basicAmountPDF'])->name('basic-amount.pdf')->middleware('auth:super_admin');
+    // installment pdf
+    Route::get('pdf/installment/{user}/{installment}',[PdfController::class,'installmentPDF'])->name('installment.pdf')->middleware('auth:super_admin');
 
     //excel
     Route::get('/export-excel/{id}',[ExcelController::class,'exportExcel'])->middleware('auth:super_admin')->name('download.excel');
@@ -315,6 +321,8 @@ Route::prefix('employee')->name('employee.')->group(function()
           Route::get('/add-basic-amount', [BasicAmountController::class, 'addBasicAmountSearch'])->middleware('auth:employee')->name('basic_amount.add');
           Route::get('/add-basic-create', [BasicAmountController::class, 'createBasicAmount'])->middleware('auth:employee')->name('basic_amount.create');
           Route::post('/add-basic-store/{user}', [BasicAmountController::class, 'basicAmountStore'])->middleware('auth:employee')->name('basic_amount.store');
+
+
 
 
 

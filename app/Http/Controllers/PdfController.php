@@ -8,12 +8,15 @@ use App\Models\InstallmentYear;
 use App\Models\BookingStatus;
 use App\Models\DownpaymentStatus;
 use App\Models\CarParkingStatus;
+use App\Models\TotalAmount;
+
 use App\Models\LandFillingStatus1st;
 use App\Models\LandFillingStatus2nd;
 use App\Models\BuildingPillingStatus;
 use App\Models\FloorRoofCasting1st;
 use App\Models\FinishingWorkStatus;
 use App\Models\AfterHandoverMoney;
+use App\Models\Crm;
 use App\Models\Installment;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
@@ -58,7 +61,12 @@ class PdfController extends Controller
 
      //PDF download function
         public function pdfDownload($id){
+
         $user = User::findOrFail($id);
+        $user_crm=$user->crm_id;
+        $crm=Crm::where('id',$user_crm)->first();
+        dd($crm);
+
         //basic amounts
         $booking_status = BookingStatus::where('user_id', $user->id)->first();
         $down_payment= DownpaymentStatus::where('user_id', $user->id)->first();
@@ -66,6 +74,8 @@ class PdfController extends Controller
         $land_filing_1st= LandFillingStatus1st::where('user_id', $user->id)->first();
         $land_filing_2nd= LandFillingStatus2nd::where('user_id', $user->id)->first();
         $building_pilling_status=BuildingPillingStatus::where('user_id', $user->id)->first();
+        $total_amount=TotalAmount::where('user_id', $user->id)->first();
+
         $roof_casting_1st=FloorRoofCasting1st::where('user_id', $user->id)->first();
         $finishing_work=FinishingWorkStatus::where('user_id', $user->id)->first();
         $after_hand_over_money=AfterHandoverMoney::where('user_id', $user->id)->first();
@@ -73,10 +83,19 @@ class PdfController extends Controller
         $installmentYear=InstallmentYear::where('user_id',$user->id)->first();
         $ins =  Installment::where('user_id', $user->id)->get();
         //$path=base_path('Upload_image/'.$user->profile_photo_path);
+
         $path=$user->member_image;
         $type=pathinfo($path, PATHINFO_EXTENSION);
         $data=file_get_contents($path);
         $pic='data:image/'.$type.';base64,'.base64_encode($data);
+
+
+        $path3='crm_icon/' .$crm->icon;
+        $type3=pathinfo($path3, PATHINFO_EXTENSION);
+        $data3=file_get_contents($path3);
+        $pic3='data:image/'.$type3.';base64,'.base64_encode($data3);
+
+
         $path2=$user->nominee_image;
         $type2=pathinfo($path2, PATHINFO_EXTENSION);
         $data2=file_get_contents($path2);
@@ -133,6 +152,18 @@ class PdfController extends Controller
             $pdf = PDF::loadView('pdf.basic_amount', compact('after_hand_over_money','user','logo'));
             return $pdf->download('basic-amount.pdf');
         }
+    }
+
+    // single installment pdf
+    public function installmentPDF(User $user, $installment){
+        $path='assets/logo/logo.jpg';
+        $data=file_get_contents($path);
+        $logo='data:image/'.pathinfo($path, PATHINFO_EXTENSION).';base64,'.base64_encode($data);
+
+        $installment=Installment::where('user_id',$user->id)->where('id',$installment)->first();
+        // dd($installment);
+        $pdf = PDF::loadView('pdf.installment', compact('installment','user','logo'));
+        return $pdf->download('installment.pdf');
     }
 
 

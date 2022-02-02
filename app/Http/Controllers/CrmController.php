@@ -17,6 +17,7 @@ class CrmController extends Controller
 
     public function storeCrm(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
@@ -24,9 +25,19 @@ class CrmController extends Controller
 
         if($validated)
         {
+
             $crm = new Crm();
             $crm->name = $request->name;
             $crm->address = $request->address;
+            $crm->details = $request->details;
+
+            if ($request->file('icon')) {
+                $file = $request->file('icon');
+                $filename = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('upload/crm_icon'),$filename);
+                $crm['icon'] = $filename;
+            }
+
             $crm->save();
         }
 
@@ -63,6 +74,15 @@ class CrmController extends Controller
         $crm = Crm::find($id);
         $crm->name = $request->name;
         $crm->address = $request->address;
+        $crm->details = $request->details;
+
+        if ($request->file('icon')) {
+            $file = $request->file('icon');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/crm_icon'),$filename);
+            $crm['icon'] = $filename;
+        }
+
         $crm->save();
 
         return redirect()->route('super_admin.all.crm');
@@ -111,7 +131,7 @@ class CrmController extends Controller
         {
             return redirect()->back()->with(['notMatched'=>'Password and Confirm Password did not match']);
         }
-        
+
 
 
     }
@@ -119,7 +139,7 @@ class CrmController extends Controller
     public function editCrmAdmin($id)
     {
         $admin = Admin::find($id);
-       
+
         return view('crm.edit-admin',compact('admin'));
     }
 
@@ -127,13 +147,13 @@ class CrmController extends Controller
     {
         $admin = Admin::find($request->admin_id);
         $admin->delete();
-        
+
         return redirect()->back();
     }
 
     public function detailsUpdateCrmAdmin(Request $request,$id)
     {
-        
+
             $validated = $request->validate([
             'name' => 'required|max:100',
             'email' => 'required|max:200',
@@ -160,7 +180,7 @@ class CrmController extends Controller
             {
                 return redirect()->back();
             }
-       
+
     }
 
     public function passwordUpdateCrmAdmin(Request $request,$id)
@@ -169,7 +189,7 @@ class CrmController extends Controller
          if($request->password == $request->confirm_password)
         {
             $validated = $request->validate([
-            
+
             'password' => 'required|min:8',
             'confirm_password' =>'required|min:8',
 
@@ -177,9 +197,9 @@ class CrmController extends Controller
             if($validated)
             {
                 $admin = Admin::find($id);
-               
+
                 $admin->password = Hash::make($request->password);
-                
+
                 $admin->save();
                 return redirect()->route('super_admin.crm.add.employee',$admin->crm_id);
             }
@@ -238,7 +258,7 @@ class CrmController extends Controller
         $employee->delete();
 
         return redirect()->back();
-        
+
     }
 
     public function editCrmemployee($id)
@@ -278,7 +298,7 @@ class CrmController extends Controller
                 $employee->save();
                 return redirect()->route('super_admin.crm.add.employee',$employee->crm_id);
             }
-       
+
     }
 
     public function passwordUpdateCrmEmployee(Request $request,$id)
@@ -286,7 +306,7 @@ class CrmController extends Controller
         if($request->password == $request->confirm_password)
         {
             $validated = $request->validate([
-            
+
             'password' => 'required|min:8',
             'confirm_password' =>'required|min:8',
 
@@ -294,9 +314,9 @@ class CrmController extends Controller
             if($validated)
             {
                 $employee = Employee::find($id);
-               
+
                 $employee->password = Hash::make($request->password);
-                
+
                 $employee->save();
                 return redirect()->route('super_admin.crm.add.employee',$employee->crm_id);
             }

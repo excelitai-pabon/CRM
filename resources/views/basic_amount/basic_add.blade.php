@@ -189,8 +189,6 @@
                                         </div>
                                     </div>
 
-
-
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label>Booking Money Paid :
@@ -344,91 +342,6 @@
                 </div>
             </div>
 
-            {{-- <div class="col-lg-6">
-                <div class="card" style="background: #9eb8c04f">
-                    <div class="card-body pt-2">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5 class="text-center pt-3 pb-3 text-bold ">Car parking Status</h5>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Initial Car Parking Total</label>
-                                                <input type="text" name="initial_car_parking_money" id="initial-car-parking" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Total</label>
-                                                <input type="text" name="car_parking_money" id="car-parking" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Paid :</label>
-                                                <input type="text" name="car_parking_money_paid" id="car-parking-paid" class="form-control @error('car_parking_money_paid')is-invalid @enderror">
-                                                @error('car_parking_money_paid')
-                                                <div class="invalid-feedback">
-                                                    {{$message}}
-                                                </div>
-                                            @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Paid Date</label>
-                                                <input type="date" name="car_parking_money_paid_date" id="car-parking-paid-date" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Due Date</label>
-                                                <input type="date" name="car_parking_due_date" id="car-parking-due-date" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Payment Type </label>
-
-                                                <select name="car_parking_money_payment_type" id="" class="form-control">
-                                                    <option value="" disabled>Select Payment type
-                                                    </option>
-                                                    <option value="Check">Check</option>
-                                                    <option value="Bank">Bank</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group mb-3">
-                                                <label>Car Parking Note</label>
-                                                <textarea rows="3" cols="50" type="text" name="car_parking_money_note" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             <div class="col-lg-6">
                 <div class="card" style="background: #9eb8c04f">
                     <div class="card-body pt-2">

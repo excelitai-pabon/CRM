@@ -113,29 +113,30 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
                 File Number :
             </td>
             <td >
-                873838
+               {{$user->file_no}}
             </td>
 
             <td  style="color:#057539fd;">
-                Bill Date :
+                Booking date :
             </td>
             <td >
-               11 december, 2021
+                {{$user->booking_date}}
             </td>
         </tr>
         <tr>
             <td  style="color:#057539fd;">
-               Client Name :
+               Member Name :
             </td>
             <td >
-                873838
+                {{$user->member_name}}
+
             </td>
 
             <td  style="color:#057539fd;">
                 Date of Birth :
             </td>
             <td >
-               11 december, 2021
+                {{$user->date_of_birth}}
             </td>
         </tr>
 
@@ -144,14 +145,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
                 Nominee Name :
             </td>
             <td >
-                873838
+               {{$user->nominee_name}}
             </td>
 
             <td  style="color:#057539fd;">
                 Proffesion :
             </td>
             <td >
-               11 december, 2021
+              {{$user->profession}}
             </td>
         </tr>
     </table>
@@ -191,7 +192,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
             <td>Booking status</td>
             <td>{{$status['booking_status']->booking_money_payment_type}}</td>
             <td>{{$status['booking_status']->booking_money_note}}</td>
-            <td>{{$status['booking_status']->booking_money_paid}}</td>
+            <td>{{($status['booking_status']->booking_money_initial)-($status['booking_status']->booking_money_due)}}</td>
 
         </tr>
 
@@ -336,6 +337,54 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
         </tr>
         @else
+        @endif
+        @if(isset($status['registrationpayment_money']))
+        <tr>
+
+            <td></td>
+
+            <td>Registrationpayment Money</td>
+            <td>{{$status['registrationpayment_money']->registrationpayment_money_payment_type}}</td>
+            <td>{{$status['registrationpayment_money']->registrationpayment_money_note}}</td>
+            <td>{{$status['registrationpayment_money']->registrationpayment_money_paid}}</td>
+
+
+
+        </tr>
+        @else
+        @endif
+
+        @if(isset($status['car_parking']))
+        <tr>
+
+            <td></td>
+
+            <td>Car Parking</td>
+            <td>{{$status['car_parking']->car_parking_money_payment_type}}</td>
+            <td>{{$status['car_parking']->car_parking_money_note}}</td>
+            <td>{{$status['car_parking']->car_parking_money_paid}}</td>
+
+
+
+        </tr>
+        @else
+        @endif
+
+
+        @if(isset($status['khajna']))
+        <tr>
+
+            <td></td>
+
+            <td>Khajna Money</td>
+            <td>{{$status['khajna']->khajna_money_payment_type}}</td>
+            <td>{{$status['khajna']->khajna_money_note}}</td>
+            <td>{{$status['khajna']->khajna_money_paid}}</td>
+
+
+
+        </tr>
+        @else
 
 
         @endif
@@ -347,9 +396,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
                 <td></td>
 
                 <td>Installment{{$installment->installment_no}}</td>
-                <td>{{$installment->installment_amount}}</td>
+                <td>{{$installment->payment_installment_type}}</td>
+                <td>{{$installment->installment_note}}</td>
                 <td>{{$installment->installment_paid}}</td>
-                <td>{{$installment->installment_due}}</td>
 
 
 
@@ -362,11 +411,12 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
 
         @if(isset($status['total']))
-        <tr>
-            <td colspan="4"> Grand Total</td>
-            <td>{{$status['total']}}</td>
-        </tr>
+            <tr>
+                <td colspan="4"> Grand Total</td>
+                <td>{{$status['total']}}</td>
+            </tr>
         @else
+            <tr>....</tr>
         @endif
 
 

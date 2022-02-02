@@ -67,10 +67,203 @@ class BasicAmountController extends Controller
 
     public function basicAmountStore(BasicAmountRequest $request, User $user){
 
+        // dd($request);
 
 
+          // Bokking Money
+        if($request->booking_money != $request->initial_booking_money){
 
 
+            return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with booking money']);
+        }
+
+        else{
+        $booking_money_due=$request->booking_money-$request->booking_money_paid;
+        $bookingMoney=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_booking_money'=>$request->initial_booking_money,
+            'booking_money'=>$request->booking_money,
+            'booking_money_payment_type'=>$request->booking_money_payment_type,
+            'booking_money_paid'=>$request->booking_money_paid,
+            'booking_money_due'=>$booking_money_due,
+            'booking_money_paid_date'=>$request->booking_money_paid_date,
+            'booking_money_due_date'=>$request->booking_money_due_date,
+            'booking_money_note'=>$request->booking_money_note,
+        ];
+        BookingStatus::create($bookingMoney);
+        }
+          //Down Payment
+        if($request->downpayment_money!= $request->initial_downpayment_money){
+            return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with down payment money']);
+        }
+        else{
+        $down_payment_due=$request->downpayment_money - $request->downpayment_money_paid;
+        $downPayment=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_downpayment_money'=>$request->initial_downpayment_money,
+            'downpayment_money'=>$request->downpayment_money,
+            'downpayment_money_payment_type'=>$request->downpayment_money_payment_type,
+            'downpayment_money_paid'=>$request->downpayment_money_paid,
+            'downpayment_money_due'=>$down_payment_due,
+            'downpayment_money_paid_date'=>$request->downpayment_money_paid_date,
+            'downpayment_money_due_date'=>$request->downpayment_money_due_date,
+            'downpayment_money_note'=>$request->downpayment_money_note,
+        ];
+        DownpaymentStatus::create($downPayment);
+    }
+
+    if($request->land_filling_money!= $request->initial_land_filling_money){
+
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with land filling money']);
+    }
+    else{
+        $land_filling_due= $request->land_filling_money - $request->land_filling_money_paid;
+        $lanfFilling=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_land_filling_money'=>$request->initial_land_filling_money,
+            'land_filling_money'=>$request->land_filling_money,
+            'land_filling_money_payment_type'=>$request->land_filling_money_payment_type,
+            'land_filling_money_paid'=>$request->land_filling_money_paid,
+            'land_filling_money_due'=>$land_filling_due,
+            'land_filling_money_paid_date'=>$request->land_filling_money_paid_date,
+            'land_filling_money_due_date'=>$request->land_filling_money_due_date,
+            'land_filling_money_note'=>$request->land_filling_money_note,
+        ];
+        LandFillingStatus1st::create($lanfFilling);
+    }
+     // 2nd Land Filling
+     if($request->land_filling_money2!= $request->initial_land_filling_money2){
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with land filling money']);
+    }
+
+    else{
+
+        $land_filing_due_2=$request->land_filling_money2 - $request->land_filling_money_paid2;
+        $landFilling2nd=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_land_filling_money'=>$request->initial_land_filling_money2,
+            'land_filling_money'=>$request->land_filling_money2,
+            'land_filling_money_payment_type'=>$request->land_filling_money_payment_type2,
+            'land_filling_money_paid'=>$request->land_filling_money_paid2,
+            'land_filling_money_due'=>$land_filing_due_2,
+            'land_filling_money_paid_date'=>$request->land_filling_money_paid_date2,
+            'land_filling_money_due_date'=>$request->land_filling_money_due_date2,
+            'land_filling_money_note'=>$request->land_filling_money_note2,
+        ];
+        LandFillingStatus2nd::create($landFilling2nd);
+
+    }
+
+    //Bulding Pilling
+    if($request->building_pilling_money != $request->initial_building_pilling_money){
+
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with building money']);
+    }
+    else{
+        $building_pilling_due= $request->building_pilling_money - $request->building_pilling_money_paid;
+        $buildingPilling=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_building_pilling_money'=>$request->initial_building_pilling_money,
+            'building_pilling_money'=>$request->building_pilling_money,
+            'building_pilling_money_payment_type'=>$request->building_pilling_money_payment_type,
+            'building_pilling_money_paid'=>$request->building_pilling_money_paid,
+            'building_pilling_money_due'=>$building_pilling_due,
+            'building_pilling_money_paid_date'=>$request->building_pilling_money_paid_date,
+            'building_pilling_money_due_date'=>$request->building_pilling_money_due_date,
+            'building_pilling_money_note'=>$request->building_pilling_money_note,
+        ];
+
+        BuildingPillingStatus::create($buildingPilling);
+
+    }
+
+     //Floor Roof Casting
+    if($request->floor_roof_casting_money_1st != $request->initial_floor_roof_casting_money_1st){
+
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with building money']);
+    }
+    else{
+
+        $floor_roof_casting_amount_due_1st= $request->floor_roof_casting_money_1st - $request->floor_roof_casting_money_paid_1st;
+        $floorRoofCasting=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_floor_roof_casting_money_1st'=>$request->initial_floor_roof_casting_money_1st,
+            'floor_roof_casting_money_1st'=>$request->floor_roof_casting_money_1st,
+            'floor_roof_casting_money_payment_type_1st'=>$request->floor_roof_casting_money_payment_type_1st,
+            'floor_roof_casting_money_paid_1st'=>$request->floor_roof_casting_money_paid_1st,
+            'floor_roof_casting_money_due_1st'=>$floor_roof_casting_amount_due_1st,
+            'floor_roof_casting_money_paid_date_1st'=>$request->floor_roof_casting_money_paid_date_1st,
+            'floor_roof_casting_money_due_date_1st'=>$request->floor_roof_casting_money_due_1st,
+            'floor_roof_casting_money_note_1st'=>$request->floor_roof_casting_money_note_1st,
+        ];
+        FloorRoofCasting1st::create($floorRoofCasting);
+
+
+    }
+
+      // Finishing Work Money
+    if($request->finishing_work_money != $request->initial_finishing_work_money){
+
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with finishing money']);
+    }
+
+    else{
+
+        $finishing_work_due=$request->finishing_work_money - $request->finishing_work_money_paid;
+        $finishigWork=[
+            'user_id'=>$user->id,
+            'crm_id'=>$user->crm_id,
+            'initial_finishing_work_money'=>$request->initial_finishing_work_money,
+            'finishing_work_money'=>$request->finishing_work_money,
+            'finishing_work_money_payment_type'=>$request->finishing_work_money_payment_type,
+            'finishing_work_money_paid'=>$request->finishing_work_money_paid,
+            'finishing_work_money_due'=>$finishing_work_due,
+            'finishing_work_money_paid_date'=>$request->finishing_work_money_paid_date,
+            'finishing_work_money_due_date'=>$request->finishing_work_money_due_date,
+            'finishing_work_money_note'=>$request->finishing_work_money_note,
+        ];
+        FinishingWorkStatus::create($finishigWork);
+
+    }
+
+    //After handover
+
+    if($request->after_handover_money != $request->initial_after_handover_money){
+
+
+        return redirect()->route('super_admin.basicAmount')->with(['error'=>'initial  money did not match with after hand money']);
+    }
+
+
+    else{
+       $after_handover_money_due= $request->after_handover_money - $request->after_handover_money_money_paid;
+            $afterhandOver=[
+                'user_id'=>$user->id,
+                'crm_id'=>$user->crm_id,
+                'initial_after_handover_money'=>$request->initial_after_handover_money,
+                'after_handover_money'=>$request->after_handover_money,
+                'after_handover_money_payment_type'=>$request->after_handover_money_payment_type,
+                'after_handover_money_money_paid'=>$request->after_handover_money_money_paid,
+                'after_handover_money_money_due'=>$after_handover_money_due,
+                'after_handover_money_paid_date'=>$request->after_handover_money_paid_date,
+                'after_handover_money_due_date'=>$request->after_handover_money_due_date,
+                'after_handover_money_note'=>$request->after_handover_money_note,
+            ];
+            AfterHandoverMoney::create($afterhandOver);
+
+
+    }
         //Total amount
         $totalAmount=[
             'user_id'=>$user->id,
@@ -79,7 +272,6 @@ class BasicAmountController extends Controller
             'description'=>$request->total_amount_note,
         ];
         TotalAmount::create($totalAmount);
-
         // Total Installment Amount
         TotalInstallmentAmount::create([
             'user_id'=>$user->id,
@@ -98,202 +290,6 @@ class BasicAmountController extends Controller
         ];
         InstallmentYear::create($installmentYears);
 
-        // Bokking Money
-        if($request->booking_money_paid>$request->booking_money){
-
-
-            Session::flash('error',"Check the amount fields");
-            return redirect()->back();
-        }
-
-        else{
-
-        $booking_money_due=$request->booking_money-$request->booking_money_paid;
-
-
-        $bookingMoney=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_booking_money'=>$request->initial_booking_money,
-            'booking_money'=>$request->booking_money,
-            'booking_money_payment_type'=>$request->booking_money_payment_type,
-            'booking_money_paid'=>$request->booking_money_paid,
-            'booking_money_due'=>$booking_money_due,
-            'booking_money_paid_date'=>$request->booking_money_paid_date,
-            'booking_money_due_date'=>$request->booking_money_due_date,
-            'booking_money_note'=>$request->booking_money_note,
-        ];
-        BookingStatus::create($bookingMoney);
-        }
-
-
-        //Down Payment
-        if($request->downpayment_money_paid>$request->downpayment_money){
-
-
-            Session::flash('error',"Check the amount fields");
-            return redirect()->back();
-        }
-        else{
-
-
-        $down_payment_due=$request->downpayment_money - $request->downpayment_money_paid;
-        $downPayment=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_downpayment_money'=>$request->initial_downpayment_money,
-            'downpayment_money'=>$request->downpayment_money,
-            'downpayment_money_payment_type'=>$request->downpayment_money_payment_type,
-            'downpayment_money_paid'=>$request->downpayment_money_paid,
-            'downpayment_money_due'=>$down_payment_due,
-            'downpayment_money_paid_date'=>$request->downpayment_money_paid_date,
-            'downpayment_money_due_date'=>$request->downpayment_money_due_date,
-            'downpayment_money_note'=>$request->downpayment_money_note,
-        ];
-        DownpaymentStatus::create($downPayment);
-    }
-        //Car Parking
-
-        // if($request->car_parking_money_paid>$request->car_parking_money){
-        //     Session::flash('error',"Check the amount fields");
-        //     return redirect()->back();
-        // }
-
-        // else{
-        //     $car_parking_due=$request->car_parking_money - $request->car_parking_money_paid;
-        // $carParking=[
-        //     'user_id'=>$user->id,
-        //     'crm_id'=>$user->crm_id,
-        //     'initial_car_parking_money'=>$request->initial_car_parking_money,
-        //     'car_parking_money'=>$request->car_parking_money,
-        //     'car_parking_money_payment_type'=>$request->car_parking_money_payment_type,
-        //     'car_parking_money_paid'=>$request->car_parking_money_paid,
-        //     'car_parking_money_due'=>$car_parking_due,
-        //     'car_parking_money_paid_date'=>$request->car_parking_money_paid_date,
-        //     'car_parking_money_due_date'=>$request->car_parking_due_date,
-        //     'car_parking_money_note'=>$request->car_parking_money_note,
-        // ];
-        // CarParkingStatus::create($carParking);
-
-        // }
-
-
-        //1st Land Filling
-
-        if($request->land_filling_money_paid>$request->land_filling_money){
-            Session::flash('error',"Check the amount fields");
-            return redirect()->back();
-        }
-        else{
-            $land_filling_due= $request->land_filling_money - $request->land_filling_money_paid;
-            $lanfFilling=[
-                'user_id'=>$user->id,
-                'crm_id'=>$user->crm_id,
-                'initial_land_filling_money'=>$request->initial_land_filling_money,
-                'land_filling_money'=>$request->land_filling_money,
-                'land_filling_money_payment_type'=>$request->land_filling_money_payment_type,
-                'land_filling_money_paid'=>$request->land_filling_money_paid,
-                'land_filling_money_due'=>$land_filling_due,
-                'land_filling_money_paid_date'=>$request->land_filling_money_paid_date,
-                'land_filling_money_due_date'=>$request->land_filling_money_due_date,
-                'land_filling_money_note'=>$request->land_filling_money_note,
-            ];
-            LandFillingStatus1st::create($lanfFilling);
-        }
-
-        // 2nd Land Filling
-
-        if($request->land_filling_money_paid2>$request->land_filling_money2){
-            Session::flash('error',"Check the amount fields");
-            return redirect()->back();
-        }
-
-        else{
-
-            $land_filing_due_2=$request->land_filling_money2 - $request->land_filling_money_paid2;
-            $landFilling2nd=[
-                'user_id'=>$user->id,
-                'crm_id'=>$user->crm_id,
-                'initial_land_filling_money'=>$request->initial_land_filling_money2,
-                'land_filling_money'=>$request->land_filling_money2,
-                'land_filling_money_payment_type'=>$request->land_filling_money_payment_type2,
-                'land_filling_money_paid'=>$request->land_filling_money_paid2,
-                'land_filling_money_due'=>$land_filing_due_2,
-                'land_filling_money_paid_date'=>$request->land_filling_money_paid_date2,
-                'land_filling_money_due_date'=>$request->land_filling_money_due_date2,
-                'land_filling_money_note'=>$request->land_filling_money_note2,
-            ];
-            LandFillingStatus2nd::create($landFilling2nd);
-
-        }
-
-
-
-
-
-        //Bulding Pilling
-        $building_pilling_due= $request->building_pilling_money - $request->building_pilling_money_paid;
-        $buildingPilling=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_building_pilling_money'=>$request->initial_building_pilling_money,
-            'building_pilling_money'=>$request->building_pilling_money,
-            'building_pilling_money_payment_type'=>$request->building_pilling_money_payment_type,
-            'building_pilling_money_paid'=>$request->building_pilling_money_paid,
-            'building_pilling_money_due'=>$building_pilling_due,
-            'building_pilling_money_paid_date'=>$request->building_pilling_money_paid_date,
-            'building_pilling_money_due_date'=>$request->building_pilling_money_due_date,
-            'building_pilling_money_note'=>$request->building_pilling_money_note,
-        ];
-        BuildingPillingStatus::create($buildingPilling);
-
-        //Floor Roof Casting
-        $floor_roof_casting_amount_due_1st= $request->floor_roof_casting_money_1st - $request->floor_roof_casting_money_paid_1st;
-        $floorRoofCasting=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_floor_roof_casting_money_1st'=>$request->initial_floor_roof_casting_money_1st,
-            'floor_roof_casting_money_1st'=>$request->floor_roof_casting_money_1st,
-            'floor_roof_casting_money_payment_type_1st'=>$request->floor_roof_casting_money_payment_type_1st,
-            'floor_roof_casting_money_paid_1st'=>$request->floor_roof_casting_money_paid_1st,
-            'floor_roof_casting_money_due_1st'=>$floor_roof_casting_amount_due_1st,
-            'floor_roof_casting_money_paid_date_1st'=>$request->floor_roof_casting_money_paid_date_1st,
-            'floor_roof_casting_money_due_date_1st'=>$request->floor_roof_casting_money_due_1st,
-            'floor_roof_casting_money_note_1st'=>$request->floor_roof_casting_money_note_1st,
-        ];
-        FloorRoofCasting1st::create($floorRoofCasting);
-
-        // Finishing Work Money
-        $finishing_work_due=$request->finishing_work_money - $request->finishing_work_money_paid;
-        $finishigWork=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_finishing_work_money'=>$request->initial_finishing_work_money,
-            'finishing_work_money'=>$request->finishing_work_money,
-            'finishing_work_money_payment_type'=>$request->finishing_work_money_payment_type,
-            'finishing_work_money_paid'=>$request->finishing_work_money_paid,
-            'finishing_work_money_due'=>$finishing_work_due,
-            'finishing_work_money_paid_date'=>$request->finishing_work_money_paid_date,
-            'finishing_work_money_due_date'=>$request->finishing_work_money_due_date,
-            'finishing_work_money_note'=>$request->finishing_work_money_note,
-        ];
-        FinishingWorkStatus::create($finishigWork);
-
-        //After handover
-        $after_handover_money_due= $request->after_handover_money - $request->after_handover_money_money_paid;
-        $afterhandOver=[
-            'user_id'=>$user->id,
-            'crm_id'=>$user->crm_id,
-            'initial_after_handover_money'=>$request->initial_after_handover_money,
-            'after_handover_money'=>$request->after_handover_money,
-            'after_handover_money_payment_type'=>$request->after_handover_money_payment_type,
-            'after_handover_money_money_paid'=>$request->after_handover_money_money_paid,
-            'after_handover_money_money_due'=>$after_handover_money_due,
-            'after_handover_money_paid_date'=>$request->after_handover_money_paid_date,
-            'after_handover_money_due_date'=>$request->after_handover_money_due_date,
-            'after_handover_money_note'=>$request->after_handover_money_note,
-        ];
-        AfterHandoverMoney::create($afterhandOver);
 
         Session::flash('success',"Successfully Insert  Basic Amounts");
 
@@ -317,6 +313,7 @@ class BasicAmountController extends Controller
     // change the view page with compact to do
 
     public function basicShowDataUpdate(Request $request){
+
 
         //$user= User::find($request->file_no);
 
@@ -418,6 +415,7 @@ class BasicAmountController extends Controller
         $land_filing_1st->land_filling_money_due=$approve_updates->land_filling_money_due_1;
         $land_filing_1st->land_filling_money_note=$approve_updates->land_filling_money_note_1;
         $land_filing_1st->land_filling_money_payment_type=$approve_updates->land_filling_money_payment_type_1;
+
         $land_filing_1st->save();
         //land_filling2nd part
         $land_filing_2nd = LandFillingStatus2nd::where('user_id', $id)->first();

@@ -20,6 +20,9 @@
                             <option value="floor_roof_casting1st">Floor Roof Casting 1</option>
                             <option value="land_filling_status_1">Land filling status 1</option>
                             <option value="land_filling_status_2">Land filling status 2</option>
+                            <option value="registrationpayment_money">Registrationpayment Money</option>
+                            <option value="car_parking">Car Parking</option>
+                            <option value="khajna">Khajna Money</option>
                         </select>
                     </div>
 
@@ -68,6 +71,9 @@ $("#add_more").on('click',function()
                         <option value="floor_roof_casting1st">Floor Roof Casting 1</option>
                         <option value="land_filling_status_1">Land filling status 1</option>
                         <option value="land_filling_status_2">Land filling status 2</option>
+                        <option value="registrationpayment_money">Registrationpayment Money</option>
+                        <option value="car_parking">Car Parking</option>
+                        <option value="khajna">Khajna Money</option>
                     </select>
                 </div>
                 <div class="col-4">

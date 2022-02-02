@@ -25,7 +25,65 @@
                   </tr>
                 </thead>
 
+
                 <tbody class="user_table">
+                    {{-- after starts --}}
+                    <tr>
+                        <td >after_handover_money
+                        </td>
+                          <td id="after_handover_money" >
+
+                          </td>
+                      </tr>
+
+                      <tr>
+                        <td>after_handover_money_due
+                        </td>
+                          <td id="after_handover_money_due">
+                         </td>
+                    </tr>
+
+                    <tr>
+                        <td>after_handover_money_due_date
+                        </td>
+
+                        <td id="after_handover_money_due_date">
+                      </td>
+                    </tr>
+
+                    <tr>
+                        <td>after_handover_money_note
+                        </td>
+                        <td id="after_handover_money_note">
+                       </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>after_handover_money_paid
+                        </td>
+                        <td id="after_handover_money_paid">
+                       </td >
+                    </tr>
+
+                    <tr>
+                        <td> after_handover_money_paid_date
+                        </td>
+                        <td id="after_handover_money_paid_date">
+                        </td>
+                    </tr>
+
+
+                        <tr>
+                            <td>after_handover_money_payment_type
+
+                            </td>
+                            <td id="after_handover_money_payment_type">
+
+                            </td>
+                      </tr>
+
+                    {{-- after ends --}}
                   <tr>
                     <td >Booking Money
                     </td>
@@ -253,6 +311,15 @@
 
                       </td>
                       </tr>
+                      <tr>
+                        <td>finishing_work_money_due
+
+                        </td>
+                        <td id="finishing_work_money_due">
+
+                        </td>
+                        </tr>
+
                     <tr>
                       <td>Finishing Work Money Paid Date
 
@@ -463,9 +530,7 @@
                                     </a>
 
                                     {{-- @if ($list->approve_status!=1) --}}
-
                                       <a href="{{route('super_admin.basic.approve.store',$req->user_id)}}" name="app" id="approve" value="" class="btn btn-success">Aprove</a>
-
                                       {{-- @endif
                                     @endif --}}
                                         </td>
@@ -533,9 +598,11 @@
                dataType:"json",
 
                success:function(response){
+                   console.log(response);
                 $('#booking_money').text(response.update_request.booking_money);
                 $('#booking_money_payment_type').text(response.update_request.booking_money_payment_type);
                 $('#booking_money_paid').text(response.update_request.booking_money_paid);
+                $('#booking_money_due').text(response.update_request.booking_money_due);
                 $('#booking_money_paid_date').text(response.update_request.booking_money_paid_date);
                 $('#booking_money_note').text(response.update_request.booking_money_note);
                 $('#booking_money_due_date').text(response.update_request.booking_money_due_date);
@@ -580,7 +647,7 @@
 
 
                 $('#land_filling_money_1').text(response.update_request.land_filling_money_1);
-                $('#land_filling_money_due_1').text(response.update_request.land_filling_money_1);
+                $('#land_filling_money_due_1').text(response.update_request.land_filling_money_due_1);
                 $('#land_filling_money_note_1').text(response.update_request.land_filling_money_note_1);
                 $('#land_filling_money_due_date_1').text(response.update_request.land_filling_money_due_date_1);
                 $('#land_filling_money_paid_1').text(response.update_request.land_filling_money_paid_1);
@@ -599,12 +666,13 @@
 
 
 
-
-
-
-
-
-
+                $('#after_handover_money').text(response.update_request.after_handover_money);
+                $('#after_handover_money_due').text(response.update_request.after_handover_money_due);
+                $('#after_handover_money_due_date').text(response.update_request.after_handover_money_due_date);
+                $('#after_handover_money_note').text(response.update_request.after_handover_money_note);
+                $('#after_handover_money_paid').text(response.update_request.after_handover_money_paid);
+                $('#after_handover_money_paid_date').text(response.update_request.after_handover_money_paid_date);
+                $('#after_handover_money_payment_type').text(response.update_request.after_handover_money_payment_type);
 
 
                }

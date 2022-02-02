@@ -9,6 +9,7 @@ use App\Models\BookingStatus;
 use App\Models\AfterHandoverMoney;
 use App\Models\BuildingPillingStatus;
 use App\Models\CarParkingStatus;
+use App\Models\ApproveUpdate;
 use App\Models\Crm;
 use App\Models\DownpaymentStatus;
 use App\Models\FinishingWorkStatus;
@@ -16,6 +17,10 @@ use App\Models\FloorRoofCasting1st;
 use App\Models\LandFillingStatus1st;
 use App\Models\LandFillingStatus2nd;
 use App\Models\Broker;
+use App\Models\InstallmentYear;
+use App\Models\Other;
+use App\Models\TotalAmount;
+use App\Models\TotalInstallmentAmount;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,12 +85,15 @@ class UserController extends Controller
             'profession'=>$request->profession,
             'office_address'=>$request->office_address,
             'designation'=>$request->designation,
+            // up
+            'booking_date'=>$request->booking_date,
             'nominee_name'=>$request->nominee_name,
             'relation_with_mominee'=>$request->relation_with_nominee,
             'building_no'=>$request->building_no,
             'password'=>Hash::make($request->password),
             'created_at'=>Carbon::now()->toDateTimeString()
         ];
+        // dd($userData);
 
 
 
@@ -152,14 +160,14 @@ class UserController extends Controller
         //member image
         if($request->hasFile('member_image')){
             if(file_exists(public_path($user->member_image))){
-                unlink(public_path($user->member_image));
+                // unlink(public_path('user/' .$user->member_image));
             }
             $userData['member_image'] = $this->uploadImageSize('user',$request->member_image,'user',150,160);
         }
         //nominee image
         if($request->hasFile('nominee_image')){
             if(file_exists(public_path($user->nominee_image))){
-                unlink(public_path($user->nominee_image));
+                // unlink(public_path($user->nominee_image));
             }
             $userData['nominee_image'] = $this->uploadImageSize('nominee',$request->nominee_image,'nominee',150,160);
         }
@@ -179,6 +187,7 @@ class UserController extends Controller
 
     public function destroy(User $user){
 
+
         if(!empty($user->member_image) && file_exists(public_path($user->member_image))){
             unlink(public_path($user->member_image));
             if(!empty($user->nominee_image) && file_exists(public_path($user->nominee_image))){
@@ -189,10 +198,29 @@ class UserController extends Controller
             $delete=$user->delete();
         }
 
-        if($delete){
-            return response()->json(['success'=>"Successfully Delete Warehouse Staff"],200);
-        }else{
-            return response()->json(['error'=>"Failed Delete Warehouse Staff"],500);
+        if($delete)
+        {
+            $booking_status = BookingStatus::where('user_id',$user->id)->delete();
+            $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->delete();
+            $building_pilling = BuildingPillingStatus::where('user_id',$user->id)->delete();
+            $car_parking = CarParkingStatus::where('user_id',$user->id)->delete();
+            $down_payment = DownpaymentStatus::where('user_id',$user->id)->delete();
+            $finishing_money = FinishingWorkStatus::where('user_id',$user->id)->delete();
+            $first_floor = FloorRoofCasting1st::where('user_id',$user->id)->delete();
+            $land_filling_1st = LandFillingStatus1st::where('user_id',$user->id)->delete();
+            $land_filling_2nd = LandFillingStatus2nd::where('user_id',$user->id)->delete();
+            $installments = Installment::where('user_id',$user->id)->delete();
+            $installmentYear = InstallmentYear::where('user_id',$user->id)->delete();
+            $totalInstallmentAmount = TotalInstallmentAmount::where('user_id',$user->id)->delete();
+            $totalAmount = TotalAmount::where('user_id',$user->id)->delete();
+            $other = Other::where('user_id',$user->id)->delete();
+            $broker = Broker::where('user_id',$user->id)->delete();
+            $approve = ApproveUpdate::where('user_id',$user->id)->delete();
+
+            return response()->json(['success'=>"Successfully Delete User"],200);
+        }
+        else{
+            return response()->json(['error'=>"Failed Delete User"],500);
         }
 
 
@@ -355,7 +383,7 @@ class UserController extends Controller
     {
         $user = User::where('file_no',$request->file_no)->first();
 
-        return redirect()->route('super_admin.custom.pdf.getValues',$user->file_no);
+
         if($user)
         {
             return redirect()->route('super_admin.custom.pdf.getValues',$user->file_no);
@@ -380,99 +408,132 @@ class UserController extends Controller
     public function customPdfPost(Request $request)
     {
 
-
         $path='assets/logo/logo.jpg';
         $data=file_get_contents($path);
         $logo='data:image/'.pathinfo($path, PATHINFO_EXTENSION).';base64,'.base64_encode($data);
-
         $user = User::where('id',$request->user_id)->first();
 
-// dd($request->all());
         if(!$request->status  && !$request->installment ){
-
             return redirect()->back()->with(['error' => 'please provide a field!']);
-
         }elseif($request->status && $request->installment){
-
             $installment=Installment::where('user_id',$request->user_id)->get();
             $all_installment=[];
-
+            $total=0;
             foreach($request->installment as $ins){
                 $requested_installment=$installment->where('id',$ins)->first();
+                $installment_total = $installment->where('id',$ins)->sum('installment_paid');
+                $total+=$installment_total;
                 array_push($all_installment, $requested_installment);
-
             }
-
             $status = [];
-            $total=0;
             if($user) {
                 if(isset($request->status['after_handover_money']))
                 {
                     $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->first();
                     $status['after_handover_money'] =  $after_handover_money;
-                    $total+=$after_handover_money->after_handover_money_money_paid;
+                    $total+=($after_handover_money->initial_after_handover_money-$after_handover_money->after_handover_money_money_due);
                 }
                 if(isset($request->status['booking_status']))
                 {
                     $booking_status = BookingStatus::where('user_id',$user->id)->first();
                     $status['booking_status'] =  $booking_status;
-                    $total+=$booking_status->booking_money_paid;
+                    $total+=($booking_status->initial_booking_money-$booking_status->booking_money_due);
                 }
                 if(isset($request->status['building_pilling_status']))
                 {
                     $building_pilling_status = BuildingPillingStatus::where('user_id',$user->id)->first();
                     $status['building_pilling_status'] =  $building_pilling_status;
-                    $total+=$building_pilling_status->building_pilling_money_paid;
+                    $total+=($building_pilling_status->initial_building_pilling_money-$building_pilling_status->building_pilling_money_due);
+
                 }
                 if(isset($request->status['down_payment_status']))
                 {
                     $down_payment_status = DownpaymentStatus::where('user_id',$user->id)->first();
                     $status['down_payment_status'] =  $down_payment_status;
-                    $total+=$down_payment_status->downpayment_money_paid;
+                    $total+=($down_payment_status->initial_downpayment_money-$down_payment_status->downpayment_money_due);
                 }
                 if(isset($request->status['finishing_work_status']))
                 {
                     $finishing_work_status = FinishingWorkStatus::where('user_id',$user->id)->first();
                     $status['finishing_work_status'] =  $finishing_work_status;
-                    $total+=$finishing_work_status->finishing_work_money_paid;
+                    $total+=($finishing_work_status->initial_finishing_work_money-$finishing_work_status->finishing_work_money_due);
                 }
                 if(isset($request->status['floor_roof_casting1st']))
                 {
                     $floor_roof_casting1st = FloorRoofCasting1st::where('user_id',$user->id)->first();
                     $status['floor_roof_casting1st'] =  $floor_roof_casting1st;
-                    $total+=$floor_roof_casting1st->floor_roof_casting_money_paid_1st;
+                    $total+=($floor_roof_casting1st->initial_floor_roof_casting_money_1st-$floor_roof_casting1st->floor_roof_casting_money_due_1st);
                 }
                 if(isset($request->status['land_filling_status_1']))
                 {
                     $land_filling_status_1 = LandFillingStatus1st::where('user_id',$user->id)->first();
                     $status['land_filling_status_1'] =  $land_filling_status_1;
-                    $total+=$land_filling_status_1->land_filling_money_paid;
+                    $total+=($land_filling_status_1->initial_land_filling_money-$land_filling_status_1->land_filling_money_due);
+
                 }
                 if(isset($request->status['land_filling_status_2']))
                 {
                     $land_filling_status_2 = LandFillingStatus2nd::where('user_id',$user->id)->first();
                     $status['land_filling_status_2'] =  $land_filling_status_2;
-                    $total+=$land_filling_status_2->land_filling_money_paid;
+                    $total+=($land_filling_status_2->initial_land_filling_money-$land_filling_status_2->land_filling_money_due);
+                }
+
+                if(isset($request->status['registrationpayment_money']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                        $status['registrationpayment_money'] =  $other;
+                        $total+=$other->registrationpayment_money_paid;
+                    }
+                    else{
+                        return redirect()->back()->with(['error' => 'registration field is empty!']);
+                    }
+
+
+                }
+                if(isset($request->status['car_parking']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                    $status['car_parking'] =  $other;
+                    $total+=$other->car_parking_money_paid;
+                    }
+                    else{
+                        return redirect()->back()->with(['error' => 'car parking field is empty!']);
+                    }
+                }
+                if(isset($request->status['khajna']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                    $status['khajna'] =  $other;
+                    $total+=$other->khajna_money_paid;
+                    }
+                    else{
+                        return redirect()->back()->with(['error' => 'khajna field is empty!']);
+                    }
                 }
 
              }
-
              $status['total'] =  $total;
              $pdf = PDF::loadView('pdf.invoice', compact('user','status','logo','all_installment'));
              return $pdf->download('Invoice.pdf');
 
         }elseif($request->installment){
+                $total=0;
                 $installment=Installment::where('user_id',$request->user_id)->get();
                 $all_installment=[];
                 // dd($request);
                 foreach($request->installment as $ins){
                     $requested_installment=$installment->where('id',$ins)->first();
+                    $installment_total = $installment->where('id',$ins)->sum('installment_paid');
+                    $total+=$installment_total;
                     array_push($all_installment, $requested_installment);
                 }
 
 
-
-                $pdf = PDF::loadView('pdf.invoice', compact('user','logo','all_installment'));
+                $status['total'] =  $total;
+                $pdf = PDF::loadView('pdf.invoice', compact('user','logo','all_installment','status'));
                 return $pdf->download('Invoice.pdf');
 
         }elseif($request->status){
@@ -480,54 +541,98 @@ class UserController extends Controller
                 $status = [];
                 $total=0;
                 if($user) {
+
+
+
                     if(isset($request->status['after_handover_money']))
-                    {
-                        $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->first();
-                        $status['after_handover_money'] =  $after_handover_money;
-                        $total+=$after_handover_money->after_handover_money_money_paid;
+                {
+                    $after_handover_money = AfterHandoverMoney::where('user_id',$user->id)->first();
+                    $status['after_handover_money'] =  $after_handover_money;
+                    $total+=($after_handover_money->initial_after_handover_money-$after_handover_money->after_handover_money_money_due);
+                }
+                if(isset($request->status['booking_status']))
+                {
+                    $booking_status = BookingStatus::where('user_id',$user->id)->first();
+                    $status['booking_status'] =  $booking_status;
+                    $total+=($booking_status->initial_booking_money-$booking_status->booking_money_due);
+                }
+                if(isset($request->status['building_pilling_status']))
+                {
+                    $building_pilling_status = BuildingPillingStatus::where('user_id',$user->id)->first();
+                    $status['building_pilling_status'] =  $building_pilling_status;
+                    $total+=($building_pilling_status->initial_building_pilling_money-$building_pilling_status->initial_building_pilling_money);
+
+                }
+                if(isset($request->status['down_payment_status']))
+                {
+                    $down_payment_status = DownpaymentStatus::where('user_id',$user->id)->first();
+                    $status['down_payment_status'] =  $down_payment_status;
+                    $total+=($down_payment_status->initial_downpayment_money-$down_payment_status->downpayment_money_due);
+                }
+                if(isset($request->status['finishing_work_status']))
+                {
+                    $finishing_work_status = FinishingWorkStatus::where('user_id',$user->id)->first();
+                    $status['finishing_work_status'] =  $finishing_work_status;
+                    $total+=($finishing_work_status->initial_finishing_work_money-$finishing_work_status->finishing_work_money_due);
+                }
+                if(isset($request->status['floor_roof_casting1st']))
+                {
+                    $floor_roof_casting1st = FloorRoofCasting1st::where('user_id',$user->id)->first();
+                    $status['floor_roof_casting1st'] =  $floor_roof_casting1st;
+                    $total+=($floor_roof_casting1st->initial_floor_roof_casting_money_1st-$floor_roof_casting1st->floor_roof_casting_money_due_1st);
+                }
+                if(isset($request->status['land_filling_status_1']))
+                {
+                    $land_filling_status_1 = LandFillingStatus1st::where('user_id',$user->id)->first();
+                    $status['land_filling_status_1'] =  $land_filling_status_1;
+                    $total+=($land_filling_status_1->initial_land_filling_money-$land_filling_status_1->land_filling_money_due);
+
+                }
+                if(isset($request->status['land_filling_status_2']))
+                {
+                    $land_filling_status_2 = LandFillingStatus2nd::where('user_id',$user->id)->first();
+                    $status['land_filling_status_2'] =  $land_filling_status_2;
+                    $total+=($land_filling_status_2->initial_land_filling_money-$land_filling_status_2->land_filling_money_due);
+                }
+
+
+
+                    if(isset($request->status['registrationpayment_money']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                        $status['registrationpayment_money'] =  $other;
+                        $total+=$other->registrationpayment_money_paid;
                     }
-                    if(isset($request->status['booking_status']))
-                    {
-                        $booking_status = BookingStatus::where('user_id',$user->id)->first();
-                        $status['booking_status'] =  $booking_status;
-                        $total+=$booking_status->booking_money_paid;
+                    else{
+                        return redirect()->back()->with(['error' => 'registration field is empty!']);
                     }
-                    if(isset($request->status['building_pilling_status']))
-                    {
-                        $building_pilling_status = BuildingPillingStatus::where('user_id',$user->id)->first();
-                        $status['building_pilling_status'] =  $building_pilling_status;
-                        $total+=$building_pilling_status->building_pilling_money_paid;
+
+
+                }
+                if(isset($request->status['car_parking']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                    $status['car_parking'] =  $other;
+                    $total+=$other->car_parking_money_paid;
                     }
-                    if(isset($request->status['down_payment_status']))
-                    {
-                        $down_payment_status = DownpaymentStatus::where('user_id',$user->id)->first();
-                        $status['down_payment_status'] =  $down_payment_status;
-                        $total+=$down_payment_status->downpayment_money_paid;
+                    else{
+                        return redirect()->back()->with(['error' => 'car parking field is empty!']);
                     }
-                    if(isset($request->status['finishing_work_status']))
-                    {
-                        $finishing_work_status = FinishingWorkStatus::where('user_id',$user->id)->first();
-                        $status['finishing_work_status'] =  $finishing_work_status;
-                        $total+=$finishing_work_status->finishing_work_money_paid;
+                }
+                if(isset($request->status['khajna']))
+                {
+                    $other = Other::where('user_id',$user->id)->first();
+                    if($other){
+                    $status['khajna'] =  $other;
+                    $total+=$other->khajna_money_paid;
                     }
-                    if(isset($request->status['floor_roof_casting1st']))
-                    {
-                        $floor_roof_casting1st = FloorRoofCasting1st::where('user_id',$user->id)->first();
-                        $status['floor_roof_casting1st'] =  $floor_roof_casting1st;
-                        $total+=$floor_roof_casting1st->floor_roof_casting_money_paid_1st;
+                    else{
+                        return redirect()->back()->with(['error' => 'khajna field is empty!']);
                     }
-                    if(isset($request->status['land_filling_status_1']))
-                    {
-                        $land_filling_status_1 = LandFillingStatus1st::where('user_id',$user->id)->first();
-                        $status['land_filling_status_1'] =  $land_filling_status_1;
-                        $total+=$land_filling_status_1->land_filling_money_paid;
-                    }
-                    if(isset($request->status['land_filling_status_2']))
-                    {
-                        $land_filling_status_2 = LandFillingStatus2nd::where('user_id',$user->id)->first();
-                        $status['land_filling_status_2'] =  $land_filling_status_2;
-                        $total+=$land_filling_status_2->land_filling_money_paid;
-                    }
+                }
+
                     $status['total'] =  $total;
 
                 $pdf = PDF::loadView('pdf.invoice', compact('user','status','logo'));

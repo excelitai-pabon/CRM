@@ -350,10 +350,10 @@
                                                     <input type="date" name="land_filling_money_paid_date"
 
                                                     @php
-                                                    if(isset($booking_status->land_filling_money_paid_date))
+                                                    if(isset($land_filing_1st->land_filling_money_paid_date))
                                                     {
 
-                                                        $date = $booking_status->land_filling_money_paid_date;
+                                                        $date = $land_filing_1st->land_filling_money_paid_date;
                                                         $old_date_timestamp = strtotime($date);
                                                         $new_date = date('Y-m-d', $old_date_timestamp);
 
@@ -508,21 +508,9 @@
                                                 <div class="form-group mb-3">
                                                     <label>Land Filling(2nd) Paid: </label>
                                                     <input type="text" name="land_filling_money_paid2"
-                                                @php
-                                                    if(isset($land_filing_2nd->land_filling_money_paid))
-                                                    {
+                                                    value="{{$land_filing_2nd->land_filling_money_paid}}"
+                                                    id="land-filling-1-paid" class="form-control">
 
-                                                        $date = $land_filing_2nd->land_filling_money_paid;
-                                                        $old_date_timestamp = strtotime($date);
-                                                        $new_date = date('Y-m-d', $old_date_timestamp);
-
-                                                    }
-                                                    else {
-                                                        $new_date ="";
-                                                    }
-                                                @endphp
-                                                        value="{{$new_date}}"
-                                                        id="land_filling_money_paid2" class="form-control">
                                                 </div>
                                             </div>
 
@@ -905,27 +893,7 @@
 
 
                                     <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group mb-3">
-                                                <label>Finishing Work Payment Type </label>
-                                                <select name="finishing_work_money_payment_type" id=""
-                                                    class="form-control">
-                                                    <option value="" disabled <?php if ($finishing_work->finishing_work_money_payment_type == '') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Select Payment type
-                                                    </option>
-                                                    <option value="Check" <?php if ($finishing_work->finishing_work_money_payment_type == 'Check') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Check</option>
-                                                    <option value="Bank" <?php if ($finishing_work->finishing_work_money_payment_type == 'Bank') {
-                                                        echo 'selected="selected"';
-                                                    } ?>>Bank</option>
-                                                    <option value="Cash" <?php if ($finishing_work->finishing_work_money_payment_type == 'Cash') {
-                                                    echo 'selected="selected"';
-                                                } ?>>Cash</option>
-                                                </select>
-                                            </div>
-                                        </div>
+
                                         <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label>Finishing Work Paid Date</label>
@@ -968,6 +936,27 @@
 
                                                     value="{{$new_date}}"
                                                     id="finishing-work-paid-date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group mb-3">
+                                                <label>Finishing Work Payment Type </label>
+                                                <select name="finishing_work_money_payment_type" id=""
+                                                    class="form-control">
+                                                    <option value="" disabled <?php if ($finishing_work->finishing_work_money_payment_type == '') {
+                                                        echo 'selected="selected"';
+                                                    } ?>>Select Payment type
+                                                    </option>
+                                                    <option value="Check" <?php if ($finishing_work->finishing_work_money_payment_type == 'Check') {
+                                                        echo 'selected="selected"';
+                                                    } ?>>Check</option>
+                                                    <option value="Bank" <?php if ($finishing_work->finishing_work_money_payment_type == 'Bank') {
+                                                        echo 'selected="selected"';
+                                                    } ?>>Bank</option>
+                                                    <option value="Cash" <?php if ($finishing_work->finishing_work_money_payment_type == 'Cash') {
+                                                    echo 'selected="selected"';
+                                                } ?>>Cash</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -1037,26 +1026,7 @@
 
 
                                         <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group mb-3">
-                                                    <label>After Handover Money Payment Type </label>
 
-                                                    <select name="after_handover_money_payment_type" id="" class="form-control">
-                                                        <option value="" disabled <?php if ($after_hand_over_money->after_handover_money_payment_type == '') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Select Payment type </option>
-                                                        <option value="Check" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Check') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Check</option>
-                                                        <option value="Bank" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Bank') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Bank</option>
-                                                        <option value="Cash" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Cash') {
-                                                            echo 'selected="selected"';
-                                                        } ?>>Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group mb-3">
                                                     <label>After Handover Money Paid Date</label>
@@ -1099,6 +1069,26 @@
 
                                                         value="{{$new_date}}"
                                                         class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group mb-3">
+                                                    <label>After Handover Money Payment Type </label>
+
+                                                    <select name="after_handover_money_payment_type" id="" class="form-control">
+                                                        <option value="" disabled <?php if ($after_hand_over_money->after_handover_money_payment_type == '') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Select Payment type </option>
+                                                        <option value="Check" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Check') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Check</option>
+                                                        <option value="Bank" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Bank') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Bank</option>
+                                                        <option value="Cash" <?php if ($after_hand_over_money->after_handover_money_payment_type == 'Cash') {
+                                                            echo 'selected="selected"';
+                                                        } ?>>Cash</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
